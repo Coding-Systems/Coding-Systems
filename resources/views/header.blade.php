@@ -1,18 +1,18 @@
 <header>
-
+<link rel="stylesheet" type="text/css" href="{{ url('/css/default.css') }}" />
   <div id="menu">
     <div id="cssThemeSwitcher">
       <button id="defaultTheme" class="cssTheme"
-              onclick="document.getElementById('cssTheme').href='css/themes/default.css';">Thème Default
+              onclick="document.getElementById('cssTheme').href='public/themes/default.css';">Thème Default
       </button>
       <button id="crackendTheme" class="cssTheme"
-              onclick="document.getElementById('cssTheme').href='css/themes/crackend.css';">Thème Crack'end
+              onclick="document.getElementById('cssTheme').href='public/css/crackend.css';">Thème Crack'end
       </button>
       <button id="phoenixmlTheme" class="cssTheme"
-              onclick="document.getElementById('cssTheme').href='css/themes/phoenixml.css';">Thème PhoeniXML
+              onclick="document.getElementById('cssTheme').href='public/themes/phoenixml.css';">Thème PhoeniXML
       </button>
       <button id="gistuneTheme" class="cssTheme"
-              onclick="document.getElementById('cssTheme').href='css/themes/gitsune.css';">Thème Gistune
+              onclick="document.getElementById('cssTheme').href={{ URL::asset('css/gitsune.css') }}">Thème Gistune
       </button>
     </div>
 
