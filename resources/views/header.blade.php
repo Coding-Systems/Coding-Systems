@@ -18,12 +18,12 @@
 
     <div id="pagesMenu">
       <img id="logo" src="img/logo.png" alt="logo">
-      <a class="menuLink" href="home.php">Accueil</a>
-      <a class="menuLink" href="rankings.php">Classements</a>
-      <a class="menuLink" href="houses.php">Maisons</a>
-      <a class="menuLink" href="rules.php">Règles</a>
-      <a class="menuLink" href="challenges.php">Défis</a>
-      <a class="menuLink" href="login.php">Login</a>
+      <a class="menuLink" href="/">Accueil</a>
+      <a class="menuLink" href="/classements">Classements</a>
+      <a class="menuLink" href="/maisons">Maisons</a>
+      <a class="menuLink" href="/regles">Règles</a>
+      <a class="menuLink" href="/challenges">Défis</a>
+      <a class="menuLink" href="/login">Login</a>
     </div>
   </div>
 

@@ -1,0 +1,198 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.story{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.houseIconStory{
+  width: 300px;
+  height: 300px;
+  transition-duration: 1s;
+}
+
+.houseInfos {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5em;
+}
+
+.cardContent{
+  visibility: hidden;
+}
+.cardContent{
+  visibility: visible;
+}
+
+.container {
+  flex-grow: 1;
+
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+  width: 99%;
+  margin: 5px;
+  left: calc(50% - 300px);
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-grow: 1;
+  height: 500px;
+  width: 200px;
+  background-color: #45414f;
+  opacity: 50%;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0;
+  color : #45414f;
+}
+
+.card:not(:first-child) {
+  justify-content: center;
+  align-content: center;
+}
+
+.secretTitle, .secret{
+  visibility: hidden;
+}
+
+.secret{
+  font-size: 0px;
+}
+
+.card:hover .secretTitle, .card:hover .secret {
+  visibility: visible;
+}
+
+.card:hover .secret{
+  font-size: 100%;
+}
+
+img{
+  visibility: visible;
+}
+
+.card:hover {
+  z-index: 99999999;
+  opacity: 80%;
+  height: 100%;
+  width: 80%;
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+  word-break: break-word;
+  color : white;
+}
+
+.title {
+  color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.bar {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  height: 5px;
+  width: 150px;
+}
+
+.emptybar {
+  background-color: #2e3033;
+  width: 100%;
+  height: 100%;
+}
+
+.filledbar {
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  width: 0px;
+  height: 100%;
+  background: rgb(125, 131, 138);
+  background: linear-gradient(90deg, rgb(69, 65, 79) 0%, rgb(57, 8, 47) 65%, rgb(37, 14, 28) 100%);
+  transition: 0.6s ease-out;
+}
+
+#Crackend_card .filledbar {
+  background: linear-gradient(90deg, #FFF9FF 0%, #006FA1 65%, #070057 100%);
+}
+
+#Gitsune_card .filledbar {
+  background: linear-gradient(90deg, #fffefc 0%, #9a7c53 65%, #895f32 100%);
+}
+
+#PhoeniXMl_Card .filledbar {
+  background: linear-gradient(90deg, #ffee72 0%, #fa6c00 65%, #ac0000 100%);
+}
+
+.card:hover .filledbar {
+  width: 100%;
+  transition: 0.4s ease-out;
+}
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+.card:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
+}
+
+.houseRankForm select, .houseRankForm button{
+  background-color: #bbbcc4;
+  border-radius: 20px;
+  border : 0px;
+  outline: none;
+  font-size: 100%;
+}
+
+.houseRankForm button:hover {
+  background-color: #7d838a;
+}
+
+.houseMembers{
+  width: 100%;
+
+}
+
+.listMembers{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.listMembers p{
+  width: 47%;
+}
