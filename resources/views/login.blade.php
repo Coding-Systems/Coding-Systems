@@ -8,10 +8,10 @@
     <link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/login.scss"/>
-    <?php
+    <!--<?php
 $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 ?>
-    <link rel="stylesheet" href="css/<?php echo $numero;?>.css)"/>
+    <link rel="stylesheet" href="css/<?php echo $numero;?>.css)"/>-->
 </head>
 
 <body class="login">
@@ -24,16 +24,14 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
 <form class="login">
     <section class="login">
-    <label class="email">email</label>
-    <label>
+    <label class="email">E-mail
         <input type="text"/>
-    </label>
-    <label class="password">password</label>
-    <label>
+    </label> </br>
+    <label class="password">Mot de passe
         <input type="password"/>
-    </label>
+    </label> </br>
     <button><span>Valider</span></button>
-    <button><span>mdp oublié</span></button>
+    <button><span>MDP oublié</span></button>
     </section>
 </form>
 
