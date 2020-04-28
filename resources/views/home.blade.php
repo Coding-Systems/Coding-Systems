@@ -18,6 +18,8 @@
 
 @include('header')
 
+<h1>Coding Houses</h1>
+
 <section id="rankings">
     <div class="bg"></div>
     <div class="bg bg2"></div>
