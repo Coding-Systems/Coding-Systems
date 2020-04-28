@@ -5,7 +5,35 @@
     <meta charset="UTF-8">
     <title>Coding house</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
-    <link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>
+
+    <?php
+
+    if(isset($_COOKIE['themeCookie'])) {
+        switch ($_COOKIE['themeCookie']){
+            case 'crackend' :
+                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/crackend.css" title="defaultStyle"/>';
+                echo $_COOKIE['themeCookie'].'C';
+                break;
+            case 'phoenixml':
+                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/phoenixml.css" title="defaultStyle"/>';
+                echo $_COOKIE['themeCookie'].'P';
+                break;
+            case 'gitsune' :
+                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/gitsune.css" title="defaultStyle"/>';
+                echo $_COOKIE['themeCookie'].'G';
+                break;
+            default :
+                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>';
+                echo $_COOKIE['themeCookie'].'D';
+        }
+    }
+    else {
+        echo '<link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>';
+        echo 'nop';
+    }
+    ?>
+
+
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/home.scss"/>
 
@@ -66,7 +94,7 @@
             </p>
             <p>
                 <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Marie : +5 [Défis]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] MArine : +34 [Event]
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marine : +30 [Event]
                 <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Corentin +9 [Défis : Smash]
                 <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Brian : +20 [Defis : Smash]
                 <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Anthony : +7 [Notes]
