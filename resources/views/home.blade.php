@@ -6,39 +6,10 @@
     <title>Coding house</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
 
-    <?php
-
-    if(isset($_COOKIE['themeCookie'])) {
-        switch ($_COOKIE['themeCookie']){
-            case 'crackend' :
-                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/crackend.css" title="defaultStyle"/>';
-                echo $_COOKIE['themeCookie'].'C';
-                break;
-            case 'phoenixml':
-                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/phoenixml.css" title="defaultStyle"/>';
-                echo $_COOKIE['themeCookie'].'P';
-                break;
-            case 'gitsune' :
-                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/gitsune.css" title="defaultStyle"/>';
-                echo $_COOKIE['themeCookie'].'G';
-                break;
-            default :
-                echo '<link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>';
-                echo $_COOKIE['themeCookie'].'D';
-        }
-    }
-    else {
-        echo '<link id="cssTheme" rel="stylesheet" href="css/themes/default.css" title="defaultStyle"/>';
-        echo 'nop';
-    }
-    ?>
-
+    @include('cssSwitcher')
 
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/home.scss"/>
-
-    <!-- <link rel="stylesheet" href="../sass/app.css"/>
-    <link rel="stylesheet" href="../sass/pages/home.css"/>-->
 
 </head>
 
