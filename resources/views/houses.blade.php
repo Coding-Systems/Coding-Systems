@@ -34,17 +34,10 @@
           </p>
           <h2 class="secretTitle">Histoire</h2>
           <p class="story secret">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec molestie ligula euismod, suscipit urna quis, consectetur ex.
-            Nulla mattis hendrerit massa, ut posuere nunc aliquam vel.
-            Nulla et magna bibendum, molestie leo ut, vestibulum purus.
-            Nulla suscipit, libero non vulputate vulputate, nunc neque cursus sem, in luctus dolor augue at massa.
-            Quisque id gravida lectus, non placerat arcu.
-            Aenean tempor, nulla at ultricies tincidunt, nisl lacus rhoncus augue, in eleifend lorem augue eget turpis.
-            Nulla pellentesque accumsan odio eget porta.
-            Nullam dignissim nec purus sed luctus.
-            Phasellus blandit est condimentum dui interdum, nec dapibus turpis iaculis.
-            Vivamus ullamcorper gravida quam.
+              Passez entre les mailles du filet, c'est leur spécialité, et les bons plans, c'est leur passion.
+              Besoin d'un code promo ? Pas de problème, ils en ont tout un répertoire !
+              Envie d'optimiser votre machine ? Un Crackend sera forcément vous éclairer.
+              Des rumeurs disent qu'ils arrivent à avoir gratuitement certains logiciel payants :O
           </p>
         </section>
         <section class="houseMembers secret">
@@ -102,17 +95,9 @@
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec molestie ligula euismod, suscipit urna quis, consectetur ex.
-          Nulla mattis hendrerit massa, ut posuere nunc aliquam vel.
-          Nulla et magna bibendum, molestie leo ut, vestibulum purus.
-          Nulla suscipit, libero non vulputate vulputate, nunc neque cursus sem, in luctus dolor augue at massa.
-          Quisque id gravida lectus, non placerat arcu.
-          Aenean tempor, nulla at ultricies tincidunt, nisl lacus rhoncus augue, in eleifend lorem augue eget turpis.
-          Nulla pellentesque accumsan odio eget porta.
-          Nullam dignissim nec purus sed luctus.
-          Phasellus blandit est condimentum dui interdum, nec dapibus turpis iaculis.
-          Vivamus ullamcorper gravida quam.
+            L'organiation, ça c'est important !
+            Avec les Gitsune tout est toujours plus simple.
+            Certains disent qu'ils ont le pouvoir de retourner dans le temps...
         </p>
       </section>
       <section class="houseMembers secret">
@@ -169,17 +154,9 @@
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec molestie ligula euismod, suscipit urna quis, consectetur ex.
-          Nulla mattis hendrerit massa, ut posuere nunc aliquam vel.
-          Nulla et magna bibendum, molestie leo ut, vestibulum purus.
-          Nulla suscipit, libero non vulputate vulputate, nunc neque cursus sem, in luctus dolor augue at massa.
-          Quisque id gravida lectus, non placerat arcu.
-          Aenean tempor, nulla at ultricies tincidunt, nisl lacus rhoncus augue, in eleifend lorem augue eget turpis.
-          Nulla pellentesque accumsan odio eget porta.
-          Nullam dignissim nec purus sed luctus.
-          Phasellus blandit est condimentum dui interdum, nec dapibus turpis iaculis.
-          Vivamus ullamcorper gravida quam.
+            Le web c'est leur spécialité.
+            Ils leur arrive parfois de passer des journées à survoler des pages webs.
+            Ils ont soit disant la capacité de controller les pages web et changer leurs apparances selon leurs volontés.
         </p>
       </section>
       <section class="houseMembers secret">
