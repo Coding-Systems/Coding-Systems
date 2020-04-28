@@ -51,11 +51,11 @@
 
         <section id=history>
             <p>
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison">[jour/heure] Alyssia : +50
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : +8
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure]. blibli : -1
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +6
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blibli : +34
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Alyssia : +100 [Parceque j'ai décidé]
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marion : +100 [C'est une déesse]
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Hugo : -10 [Aime pas les kinders]
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Houssam : -1 [Animations abusives]
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Emerick : -34
                 <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : +6
                 <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blibli : +5
                 <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blublu : +12
