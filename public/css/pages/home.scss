@@ -48,12 +48,13 @@ section #rankings {
     width: 150px;
 }
 
-#rankingNamesUsers {
+#history {
+    font-size: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: left;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }

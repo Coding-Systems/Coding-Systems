@@ -47,32 +47,32 @@
     </section>
     <section>
 
-        <h2>Classement solo</h2>
+        <h2>Historique des derniers points</h2>
 
-        <section id=rankingNamesUsers>
+        <section id=history>
             <p>
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 1. Alyssia
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 2. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 3. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 4. blublu
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 5. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 6. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 7. blibli
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 8. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 9. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 10. blublu
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison">[jour/heure] Alyssia : +50
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : +8
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure]. blibli : -1
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +6
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blibli : +34
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : +6
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blibli : +5
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blublu : +12
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blibli : +6
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +6
             </p>
             <p>
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 11. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 12. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 13. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 14. blublu
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 15. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 16. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 17. blibli
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 18. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 19. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 20. blublu
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blibli : +5
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : +34
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blibli +9
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : -4
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blibli : +7
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] blublu : -1
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blibli : +5
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blublu : +20
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blibli : +4
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +1
             </p>
         </section>
 
