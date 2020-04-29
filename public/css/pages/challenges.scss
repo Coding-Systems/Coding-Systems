@@ -1,0 +1,39 @@
+select, input, table{
+    background-color: #bbbcc4;
+    border-radius: 10px;
+    border : 0px;
+    outline: none;
+    font-size: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:focus{
+    background-color: #7d838a;
+}
+
+table{
+    margin: auto;
+}
+
+td {
+    border-bottom: 1px solid #7d838a;
+}
+
+
+[type="checkbox"].[value="M1"]:checked {
+                                  display: block;
+                              }
+
+[type="checkbox"].[value="M1"]:checked{
+                                  display: block;
+                              }
+
+[type="checkbox"].[value="M1"]:not(:checked) {
+                                  display: none;
+                              }
+
+[type="checkbox"].[value="M2"]:not(:checked) {
+                                  display: none;
+                              }
