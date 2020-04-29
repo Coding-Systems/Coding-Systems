@@ -1,3 +1,11 @@
+
+
+h1, h2{
+    font-family:   cursive;
+}
+
+
+
 /*backgroud*/
 .bg {
     animation: slide 5s ease-in-out infinite alternate;
