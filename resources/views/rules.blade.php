@@ -18,25 +18,26 @@
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
+    <h1>Coding Houses, c'est quoi ? </h1>
+    <img id="logo_rules" src="img/logo.png" alt="logo">
     <p class="rules">
-        Coding Houses est un projet communautaire d’implantation de maisons à la Harry Potter dans le cadre de
-        la Coding Factory.
-        </br>Le principe serait de développer l’univers aussi bien technique que social et événementiel, avec
-        l’accord et idéalement la participation de l’école.
-
-        Seront placés dans trois maisons les élèves, selon un process à déterminer, qui auront chacune leurs
-        valeurs et symboles. Un système de points de maisons déterminé créera une ambiance ludique et
-        compétitive. Les points pourraient être attribués:
-        </br>-Par les PO (à développer)
-        </br>-De manière pré-déterminé sur des activités diverses (coding dojo, coding battle…) (plus
-        d’exemples)
+    Coding Houses, c'est un système de maisons à la Harry Potter mettant en compétition les élèves et permettant 
+    à chacun de s'amuser dans la bienveillance.
         </br>
-        </br> -En récompense de services rendus (portes ouvertes, organisation d’un évènement, conférences…)
-        </br>-En fonctions de notes? (à discuter avec les responsables pédago)
+        Les élèves seront placés dans une des trois maisons (Gitsune, Crack'end et PhoeniXML) 
+        au début de l'année scolaire, qui ont chacune leurs valeurs et leurs symboles. 
+        Chaque élève à la possibilité de gagner des points pour sa maison de différentes manières : 
+        </br>- En participant aux diverses activités au sein de la Coding (Coding Dojo, Coding battle...)
+        </br>- En remportant des défis (chifoumi, Smash bros...)
+        </br>- En participant aux tournois organisés dans l'année (Tournoi Smash...)
+        </br>- Par les PO et en fonction de certaines notes
+        </br>- En récompense de services rendus (portes ouvertes, organisation d'un événement, conférences...)
+        </br> </br>
+        Les élèves pourront aussi perdre quelques points : 
+        </br>- En faisant sonner la clochette pour rien (quand on en aura une de nouveau, RIP Cergy)
 
-        </br> À la fin d’une année scolaire, une remise de prix/gage pour les perdants (Goûter) pour les
-        maisons
-        pourra être mit en place afin de récompenser les maisons et meilleurs participants.
+        </br> </br> À la fin de l'année scolaire, un goûter sera organisé par les maisons perdantes.
+        <!--J'sais pas quoi mettre :'(-->
 
     </p>
 </section>
