@@ -28,16 +28,18 @@
 
     <div class="stat">
 
-        <h1>statistiques</h1>
+        <h1>Historique</h1>
         <div id="imgH">
         <img id="H" src="img/logo.png" alt="image de la maison">
         </div>
         <label>
             <select>
-                <option>tout le joueur</option>
-                <option>gitsune</option>
-                <option>crackend</option>
-                <option>phoenixml</option>
+                <option>Tout</option>
+                <option>Gitsune</option>
+                <option>Crack'end</option>
+                <option>PhoeniXML</option>
+                <option>Défis</option>
+                <option>Events</option>
             </select>
         </label>
     </div>
