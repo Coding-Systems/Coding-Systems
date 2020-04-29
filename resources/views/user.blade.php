@@ -82,18 +82,35 @@
                 <button>Valider</button>
             </form>
 
-            <p id="history">
-                <br/>[jour/heure] +100 [Parceque j'ai décidé]
-                <br/>[jour/heure] +100 [C'est une déesse]
-                <br/>[jour/heure] -10 [Aime pas les kinders]
-                <br/>[jour/heure] -1 [Animations abusives]
-                <br/>[jour/heure] -34 [Outrage à Frozen]
-                <br/>[jour/heure] +6 [Notes]
-                <br/>[jour/heure] +5 [Notes]
-                <br/>[jour/heure] +30 [Défis : PFC]
-                <br/>[jour/heure] -20 [Outrage à la coiffure]
-                <br/>[jour/heure]-5 [Abandon de la Coding]
-            </p>
+            <section id="history">
+                <p>
+                    <br/>[jour/heure] +100 [Parceque j'ai décidé]
+                    <br/>[jour/heure] +100 [C'est une déesse]
+                    <br/>[jour/heure] -10 [Aime pas les kinders]
+                    <br/>[jour/heure] -1 [Animations abusives]
+                    <br/>[jour/heure] -34 [Outrage à Frozen]
+                    <br/>[jour/heure] +6 [Notes]
+                    <br/>[jour/heure] +5 [Notes]
+                    <br/>[jour/heure] +30 [Défis : PFC]
+                    <br/>[jour/heure] -20 [Outrage à la coiffure]
+                    <br/>[jour/heure]-5 [Abandon de la Coding]
+                </p>
+
+                <p>
+                    <br/>[jour/heure] +100 [Parceque j'ai décidé]
+                    <br/>[jour/heure] +100 [C'est une déesse]
+                    <br/>[jour/heure] -10 [Aime pas les kinders]
+                    <br/>[jour/heure] -1 [Animations abusives]
+                    <br/>[jour/heure] -34 [Outrage à Frozen]
+                    <br/>[jour/heure] +6 [Notes]
+                    <br/>[jour/heure] +5 [Notes]
+                    <br/>[jour/heure] +30 [Défis : PFC]
+                    <br/>[jour/heure] -20 [Outrage à la coiffure]
+                    <br/>[jour/heure]-5 [Abandon de la Coding]
+                </p>
+
+            </section>
+
 
         </div>
 
