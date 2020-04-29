@@ -45,7 +45,6 @@
         <option>Défis 18 </option>
         <option>Défis 19 </option>
     </select>
-    <input type="checkbox" name="cb" value="true">
 </form>
 
 <h2>Choisisez votre adversaire :</h2>
@@ -83,7 +82,6 @@
         <option>(M2)Adversaire 18 </option>
         <option>(M2)Adversaire 19 </option>
     </select>
-    <input type="checkbox" name="cb" value="true">
 </form>
 
 <h2>Choisisez votre arbitre :</h2>
@@ -112,8 +110,7 @@
         <option>Arbitre 18 </option>
         <option>Arbitre 19 </option>
     </select>
-    <input type="checkbox" name="cb" value="true">
-
+    
     <table>
         <thead>
         <tr>
