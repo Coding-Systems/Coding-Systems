@@ -65,7 +65,7 @@
             </p>
             <p>
                 <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Marie : +5 [Défis]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] MArine : +34 [Event]
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marine : +30 [Event]
                 <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Corentin +9 [Défis : Smash]
                 <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Brian : +20 [Defis : Smash]
                 <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Anthony : +7 [Notes]

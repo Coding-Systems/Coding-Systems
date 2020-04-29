@@ -1,6 +1,6 @@
 
 <header>
-<link rel="stylesheet" type="text/css" href="{{ url('/css/default.css') }}" />
+
   <div id="menu">
     <div id="cssThemeSwitcher">
 
@@ -39,6 +39,8 @@
       <button id="gistuneTheme" class="cssTheme"
               onclick="document.getElementById('cssTheme').href='css/themes/gitsune.css';">Thème Gistune
       </button>
+      -->
+
     </div>
 
     <div id="pagesMenu">
