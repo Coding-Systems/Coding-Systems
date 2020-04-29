@@ -29,6 +29,10 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/historique', function () {
+    return view('historique');
+});
+
 Route::get('/classements', function () {
     return view('rankings');
 });
