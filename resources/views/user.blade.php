@@ -29,11 +29,14 @@
             <div>
                 <p id="stats">
                     <h2>Statistiques</h2>
-                    Total de points : ...
-                    <br>Défis lancés : ...
-                    <br>Défis gagnés : ...
+                    Total de points :
+                    <br>Défis lancés :
+                    <br>Défis gagnés :
                     <br>Classement général :
                     <br>Classement maison :
+                    <br>
+                    <br>Points donnés :
+                    <br>Event organisés :
                     <br>
                 </p>
             </div>
@@ -45,7 +48,7 @@
                 <button id="defaultTheme" class="cssTheme"
                         onclick='document.cookie = "themeCookie=default"; path="/";
                 document.getElementById("cssTheme").href="css/themes/default.css";
-                ;'>Thème Default
+                ;'>Thème Coding Houses
                 </button>
                 <button id="crackendTheme" class="cssTheme"
                         onclick='document.cookie = "themeCookie=crackend"; path="/";
@@ -61,7 +64,7 @@
                         onclick='document.cookie = "themeCookie=gitsune"; path="/";
                 document.getElementById("cssTheme").href="css/themes/gitsune.css";
 
-                ;')>Thème Gistune
+                ;')>Thème Gitsune
                 </button>
 
             </div>
@@ -79,7 +82,7 @@
                 <button>Valider</button>
             </form>
 
-            <p>
+            <p id="history">
                 <br/>[jour/heure] +100 [Parceque j'ai décidé]
                 <br/>[jour/heure] +100 [C'est une déesse]
                 <br/>[jour/heure] -10 [Aime pas les kinders]
