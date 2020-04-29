@@ -1,0 +1,62 @@
+img#H{
+    margin-top: 0;
+    height: 250px;
+    filter: saturate(150%);
+    padding-top: 48px;padding-bottom: 48px;
+}
+div.stat{
+    height: 18em;
+    padding-bottom: 48px;
+}
+section {
+    margin: auto;
+    justify-content: space-around;
+}
+p {
+    font-size: 150%;
+    justify-content: space-around;
+    color: white;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+section #rankings {
+    justify-content: center;
+}
+
+#rankings {
+    background-size: 50% 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#logoHousesPodium {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.logoPodium {
+
+    height: 125px;
+    width: 125px;
+}
+
+.logoPodiumFirst {
+    height: 150px;
+    width: 150px;
+}
+
+#history {
+    font-size: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom : 10%;
+    //
+}
