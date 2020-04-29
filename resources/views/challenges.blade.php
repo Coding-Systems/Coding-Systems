@@ -110,7 +110,7 @@
         <option>Arbitre 18 </option>
         <option>Arbitre 19 </option>
     </select>
-    
+
     <table>
         <thead>
         <tr>
