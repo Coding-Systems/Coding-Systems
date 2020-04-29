@@ -36,3 +36,7 @@ Route::get('/classements', function () {
 Route::get('/regles', function () {
     return view('rules');
 });
+
+Route::get('/utilisateur', function () {
+    return view('user');
+});
