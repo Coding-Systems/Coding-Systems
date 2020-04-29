@@ -1,11 +1,19 @@
 p {
   color: white;
-  text-align: center;
+  text-align: justify;
   overflow: hidden;
 }
 
+#logo_rules {
+  margin-top: -2%;
+  margin-bottom: 1%;
+  width: 250px;
+}
+
 section#rules.rules {
-  margin-bottom: 25%;
+  margin-bottom: 15%;
+  padding-right: 2%;
+  padding-left: 2%;
 }
 
 html, body .rules {
