@@ -43,15 +43,18 @@
 
             <section>
                 <img class="logoPodium" src="img/logoGitsune.png" alt="logo de la maison">
-                <p>2</p>
+                <p class="numberRanking">2</p>
+                <p>486 pts</p>
             </section>
             <section>
                 <img class="logoPodiumFirst" src="img/logoPhoenixml.png" alt="logo de la maison">
-                <p>1</p>
+                <p class="numberRanking">1</p>
+                <p>587 pts</p>
             </section>
             <section>
                 <img class="logoPodium" src="img/logoCrackend.png" alt="logo de la maison">
-                <p>3</p>
+                <p class="numberRanking">3</p>
+                <p>284 pts</p>
             </section>
 
         </section>
@@ -63,28 +66,28 @@
 
         <section id=rankingNamesUsers>
             <p>
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 1. Alyssia
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 2. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 3. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 4. blublu
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 5. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 6. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 7. blibli
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 8. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 9. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 10. blublu
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 1. Alyssia : 67 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 2. blublu : 65 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 3. blibli : 54 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 4. blublu : 53 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 5. blibli : 45 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 6. blublu : 45 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 7. blibli : 41 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 8. blublu : 39 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 9. blibli : 37 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 10. blublu : 34 pts
             </p>
             <p>
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 11. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 12. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 13. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 14. blublu
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 15. blibli
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 16. blublu
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 17. blibli
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 18. blublu
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 19. blibli
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 20. blublu
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 11. blibli : 30 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 12. blublu pts : 29 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 13. blibli : 24 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 14. blublu : 23 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 15. blibli : 21 pts
+                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 16. blublu : 20 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 17. blibli : 18 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 18. blublu : 16 pts
+                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 19. blibli : 17 pts
+                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 20. blublu : 6 pts
             </p>
         </section>
 

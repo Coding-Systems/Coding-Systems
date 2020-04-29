@@ -32,15 +32,18 @@
 
             <section>
                 <img class="logoPodium" src="img/logoGitsune.png" alt="logo de la maison">
-                <p>2</p>
+                <p class="numberRanking">2</p>
+                <p>486 pts</p>
             </section>
             <section>
                 <img class="logoPodiumFirst" src="img/logoPhoenixml.png" alt="logo de la maison">
-                <p>1</p>
+                <p class="numberRanking">1</p>
+                <p>587 pts</p>
             </section>
             <section>
                 <img class="logoPodium" src="img/logoCrackend.png" alt="logo de la maison">
-                <p>3</p>
+                <p class="numberRanking">3</p>
+                <p>284 pts</p>
             </section>
 
         </section>
