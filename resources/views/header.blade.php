@@ -1,7 +1,32 @@
+
 <header>
-<link rel="stylesheet" type="text/css" href="{{ url('/css/default.css') }}" />
+
   <div id="menu">
     <div id="cssThemeSwitcher">
+
+        <button id="defaultTheme" class="cssTheme"
+                onclick='document.cookie = "themeCookie=default"; path="/";
+                document.getElementById("cssTheme").href="css/themes/default.css";
+                ;'>Thème Default
+        </button>
+        <button id="crackendTheme" class="cssTheme"
+                onclick='document.cookie = "themeCookie=crackend"; path="/";
+                document.getElementById("cssTheme").href="css/themes/crackend.css";
+                ;'>Thème Crack'end
+        </button>
+        <button id="phoenixmlTheme" class="cssTheme"
+                onclick='document.cookie = "themeCookie=phoenixml"; path="/";
+                document.getElementById("cssTheme").href="css/themes/phoenixml.css";
+                ;'>Thème PhoeniXML
+        </button>
+        <button id="gistuneTheme" class="cssTheme"
+                onclick='document.cookie = "themeCookie=gitsune"; path="/";
+                document.getElementById("cssTheme").href="css/themes/gitsune.css";
+
+                ;')>Thème Gistune
+        </button>
+
+        <!--
       <button id="defaultTheme" class="cssTheme"
               onclick="document.getElementById('cssTheme').href='css/themes/default.css';">Thème Default
       </button>
@@ -14,6 +39,8 @@
       <button id="gistuneTheme" class="cssTheme"
               onclick="document.getElementById('cssTheme').href='css/themes/gitsune.css';">Thème Gistune
       </button>
+      -->
+
     </div>
 
     <div id="pagesMenu">
