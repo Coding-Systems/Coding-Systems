@@ -34,20 +34,20 @@ header {
 #pagesMenu {
     background-color: #44153C;
     width: 100%;
-    display: inline-block;
-    flex-wrap: nowrap;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 }
-
-
 
 .menuLink {
     margin: 5px;
-    justify-content: space-between;
+    font-size: 120%;
+    /*justify-content: space-between;
     display: inline-flex;
     flex-wrap: nowrap;
     vertical-align: middle;
-    text-align: center;
+    text-align: center;*/
 }
 
 .menuLink:hover {
@@ -100,10 +100,11 @@ a, a:visited, a:link, a:hover, a:active {
     color: #C8C8CF;
 }
 
-#logo {
-    height: 50px;
-    width: 50px;
-    padding-top: 15px;
+#logoHeader {
+    height: 75px;
+    width: auto;
+    padding-top: 5px;
+    padding-right: 7px;
 }
 
 .houseIcon {

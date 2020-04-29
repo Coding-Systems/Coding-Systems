@@ -4,7 +4,7 @@
   <div id="menu">
 
     <div id="pagesMenu">
-      <img id="logo" src="img/logo.png" alt="logo">
+      <img id="logoHeader" src="img/logo.png" alt="logo">
       <a class="menuLink" href="/">Accueil</a>
       <a class="menuLink" href="/classements">Classements</a>
       <a class="menuLink" href="/maisons">Maisons</a>
