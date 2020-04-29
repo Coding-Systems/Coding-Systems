@@ -1,0 +1,116 @@
+#logoUser {
+    width: 30%;
+}
+
+#user{
+    display : flex;
+    flex-direction: column;
+    color : white;
+}
+
+#statsUser{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#stats{
+    text-align: left;
+    font-size: 150%;
+    width: 30%;
+}
+
+.HistoryForm select, .HistoryForm button{
+    background-color: #bbbcc4;
+    border-radius: 20px;
+    border : 0px;
+    outline: none;
+    font-size: 100%;
+}
+
+.HistoryForm button:hover {
+    background-color: #7d838a;
+}
+
+#history{
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* -------------------------------- Theme Switcher -------------------------------- */
+
+#cssThemeSwitcher {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 30%;
+}
+
+.cssTheme {
+    margin-bottom: 5px;
+    height: 50px;
+    border: none;
+    mix-blend-mode: lighten;
+    /*border-radius: 5% 45px;*/
+    border-radius: 10px;
+    font-size: 17px;
+    outline: none;
+}
+
+.cssTheme:hover {
+    transition-duration: 0.3s;
+}
+
+#defaultTheme {
+    /*border: 1px solid rgb(100, 100, 100); */
+    color: rgb(100, 100, 100);
+    text-shadow: rgb(2, 1, 2) 0px 0px 2px;
+    background-image: linear-gradient(33deg, rgb(100, 100, 100) 25%, rgb(52, 13, 46) 25%);
+}
+
+#defaultTheme:hover {
+    transition-duration: 0.5s;
+    background-image: linear-gradient(33deg, rgb(52, 13, 46) 25%, rgb(100, 100, 100) 25%);
+}
+
+#phoenixmlTheme {
+    /*border: 0px solid #fda917;*/
+    color: #ddae00;
+    text-shadow: rgb(66, 1, 0) 0px 0px 2px;
+    background-image: linear-gradient(33deg, #ddae00 25%, rgb(52, 13, 46) 25%);
+    /*background-image: linear-gradient(33deg, rgb(253, 169, 23) 25%, rgb(133, 3, 0) 25%);*/
+}
+
+#phoenixmlTheme:hover {
+    transition-duration: 0.5s;
+    background-image: linear-gradient(33deg, rgb(133, 3, 0) 25%, #ddae00 25%);
+}
+
+#gistuneTheme {
+    /*border: 1px solid #b9b2a8;*/
+    color: #bbb1a7;
+    text-shadow: #2e200d 0px 0px 2px;
+    background-image: linear-gradient(33deg, #bbb1a7 25%, rgb(52, 13, 46) 25%)
+    /* background-image: linear-gradient(33deg, #bbb1a7 25%, #836039 25%); */
+}
+
+#gistuneTheme:hover {
+    transition-duration: 0.5s;
+    background-image: linear-gradient(33deg, #836039 25%, #b9b2a8 25%);
+}
+
+#crackendTheme {
+    /*border: 1px solid #54a1be;*/
+    color: #56a7c6;
+    text-shadow: #000037 0px 0px 2px;
+    background-image: linear-gradient(33deg, #54a1be 25%, rgb(52, 13, 46) 25%);
+    /*background-image: linear-gradient(33deg, #54a1be 25%, #000053 25%);*/
+}
+
+#crackendTheme:hover {
+    transition-duration: 0.5s;
+    background-image: linear-gradient(33deg, #000053 25%, #54a1be 25%);
+}
