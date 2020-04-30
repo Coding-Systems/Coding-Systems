@@ -56,6 +56,9 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="question2" id="Q2A4">
             <label for="Q2A4">Toute bien évidemment !</label>
 
+
+
+
             <h2>Question X</h2>
             <p>BLABBALBALABLABLABLABALA ?</p>
             <input type="radio" name="questionX" id="QXA1">
@@ -67,7 +70,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="questionX" id="QXA4">
             <label for="QXA4">BLA</label>
 
-            <br></b><input type="submit" value="Envoyer">
+            <br></b><input type="submit" value="Envoyer" id="submitButton">
 
         </form>
     </section>
