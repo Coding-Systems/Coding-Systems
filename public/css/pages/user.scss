@@ -39,6 +39,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 120%;
+}
+
+#history p {
 }
 
 /* -------------------------------- Theme Switcher -------------------------------- */
