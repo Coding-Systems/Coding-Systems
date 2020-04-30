@@ -23,19 +23,4 @@ td {
     border-bottom: 1px solid #7d838a;
 }
 
-
-[type="checkbox"].[value="M1"]:checked {
-                                  display: block;
-                              }
-
-[type="checkbox"].[value="M1"]:checked{
-                                  display: block;
-                              }
-
-[type="checkbox"].[value="M1"]:not(:checked) {
-                                  display: none;
-                              }
-
-[type="checkbox"].[value="M2"]:not(:checked) {
-                                  display: none;
-                              }
+[type="submit"]:checked {}

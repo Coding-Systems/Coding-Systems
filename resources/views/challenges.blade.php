@@ -20,9 +20,9 @@
 
 <h1>Défis</h1>
 
-<h2>Choisisez votre défis :</h2>
+<h2>Choisissez votre défis :</h2>
 
-<form class="listDefi">
+<br class="createDefi">
     <select size="5">
         <option>Défis 0 </option>
         <option>Défis 1 </option>
@@ -45,19 +45,10 @@
         <option>Défis 18 </option>
         <option>Défis 19 </option>
     </select>
-</form>
 
-<h2>Choisisez votre adversaire :</h2>
+<h2>Choisissez votre adversaire :</h2>
 
-<form class="listAdv">
-    <div class="buttonRadio">
-        <input type="radio" name="maison" value="M1" checked>Maison 1
-        <input type="radio" name="maison" value="M2">Maison 2
-    </div>
-
-
-
-    <select size="5" value="M1">
+    <select size="5" class="choixAdv">
         <option>(M1)Adversaire 0 </option>
         <option>(M1)Adversaire 1 </option>
         <option>(M1)Adversaire 2 </option>
@@ -68,9 +59,6 @@
         <option>(M1)Adversaire 7 </option>
         <option>(M1)Adversaire 8 </option>
         <option>(M1)Adversaire 9 </option>
-    </select>
-
-    <select size="5" value="M2">
         <option>(M2)Adversaire 10 </option>
         <option>(M2)Adversaire 11 </option>
         <option>(M2)Adversaire 12 </option>
@@ -82,13 +70,15 @@
         <option>(M2)Adversaire 18 </option>
         <option>(M2)Adversaire 19 </option>
     </select>
+    </br>
+    <input type="submit" value="Choisir son Arbitre" class="choixAdv" onclick="document.getElementsByClassName('choixAdv').setAttribute('disabled', true);
+document.getElementsByClassName('choixArb').setAttribute('disabled', false);">
 </form>
 
-<h2>Choisisez votre arbitre :</h2>
+<form class="choiceArb">
+    <h2>Choisissez votre arbitre :</h2>
 
-<form class="listArb">
-
-    <select size="5">
+    <select size="5" class="choixArb" disabled>
         <option>Arbitre 0 </option>
         <option>Arbitre 1 </option>
         <option>Arbitre 2 </option>
@@ -110,7 +100,10 @@
         <option>Arbitre 18 </option>
         <option>Arbitre 19 </option>
     </select>
-
+    </br>
+    <input type="submit" value="Lancer le Défi" class="choixArb" disabled>
+</form>
+<form class="tableDefi">
     <table>
         <thead>
         <tr>
@@ -119,11 +112,11 @@
         </thead>
         <tbody>
         <tr>
-            <td>Alyssia : Défis de PFC</td>
+            <td>Alyssia : Demande de Défis de PFC</td>
             <td><input type="button" value="Accepter"><input type="button" value="Refuser"></td>
         </tr>
         <tr>
-            <td>Marion : Arbitrage de PFC</td>
+            <td>Marion : Demande d'Arbitrage de PFC</td>
             <td><input type="button" value="Accepter"><input type="button" value="Refuser"></td>
         </tr>
         </tbody>
