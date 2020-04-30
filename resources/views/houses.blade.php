@@ -38,6 +38,7 @@
               Besoin d'un code promo ? Pas de problème, ils en ont tout un répertoire !
               Envie d'optimiser votre machine ? Un Crackend sera forcément vous éclairer.
               Des rumeurs disent qu'ils arrivent à avoir gratuitement certains logiciel payants :O
+              <br>Ils ont également une grande affinité avec l'élément de l'eau et peuvent la controler.
           </p>
         </section>
         <section class="houseMembers secret">
@@ -98,6 +99,9 @@
             L'organiation, ça c'est important !
             Avec les Gitsune tout est toujours plus simple.
             Certains disent qu'ils ont le pouvoir de retourner dans le temps...
+            <br>Ils ont toujours eu un lien étroit avec l'élément de la terre.
+            Ce qui leur permet de maitriser l'élément à leur guise.
+
         </p>
       </section>
       <section class="houseMembers secret">
@@ -155,8 +159,9 @@
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
             Créer, ça c'est leut spécialité !
-            <br>Vous manquez d'idées ? Allez vois un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
-            <br>D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
+            Vous manquez d'idées ? Allez vois un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
+            D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
+            <br>Le feu ne leur à jamais fait peur, ils ont même apprit à le dompter et le maitriser.
         </p>
       </section>
       <section class="houseMembers secret">
