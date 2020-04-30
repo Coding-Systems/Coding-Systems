@@ -29,10 +29,10 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
         <p>Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
             <br>Ou laissez le hasard total opérer en appuyant <button>ICI</button>
             <br>
-            <br>Si vous rencontrez des réponses troll, c'est qu'ils s'agit de réponses neutres, en un peu plus fun :P.
+            <br>Si vous rencontrez des réponses troll, c'est qu'ils s'agit de réponses neutres, mais en un peu plus fun :P.
         </p>
 
-        <form id="quizzForm">
+        <form id="quizzForm"> <!-- PENSER A CHANGER L'ORDRE DE CERTAINES !!!!! -->
 
             <h2>Question 1</h2>
             <p>À quel élément tu t'identifie le plus ?</p>
@@ -56,7 +56,16 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="question2" id="Q2A4">
             <label for="Q2A4">Toute bien évidemment !</label>
 
-
+            <h2>Question 3</h2>
+            <p>Laquelle de ses choses de frustre le plus ?</p>
+            <input type="radio" name="question3" id="Q3A1">
+            <label for="Q3A1">Un bruit de craie sur un tableau</label>
+            <input type="radio" name="question3" id="Q3A2">
+            <label for="Q3A2">Le désordre</label>
+            <input type="radio" name="question3" id="Q3A3">
+            <label for="Q3A3">Une tache sur beau drap blanc</label>
+            <input type="radio" name="question3" id="Q3A4">
+            <label for="Q3A4">Je suis insensible</label>
 
 
             <h2>Question X</h2>
