@@ -154,9 +154,9 @@
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
-            Le web c'est leur spécialité.
-            Ils leur arrive parfois de passer des journées à survoler des pages webs.
-            Ils ont soit disant la capacité de controller les pages web et changer leurs apparances selon leurs volontés.
+            Créer, ça c'est leut spécialité !
+            <br>Vous manquez d'idées ? Allez vois un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
+            <br>D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
         </p>
       </section>
       <section class="houseMembers secret">
