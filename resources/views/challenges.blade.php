@@ -48,7 +48,7 @@
 
 <h2>Choisissez votre adversaire :</h2>
 
-    <select size="5" class="choixAdv">
+    <select size="5" id="listAdv">
         <option>(M1)Adversaire 0 </option>
         <option>(M1)Adversaire 1 </option>
         <option>(M1)Adversaire 2 </option>
@@ -71,14 +71,17 @@
         <option>(M2)Adversaire 19 </option>
     </select>
     </br>
-    <input type="submit" value="Choisir son Arbitre" class="choixAdv" onclick="document.getElementsByClassName('choixAdv').setAttribute('disabled', true);
-document.getElementsByClassName('choixArb').setAttribute('disabled', false);">
+    <input type="submit" value="Choisir son Arbitre" id="buttonAdv" onclick="
+    document.getElementById('listAdv').setAttribute('disabled', true);
+    document.getElementById('buttonAdv').setAttribute('disabled', true);
+    document.getElementById('listArb').removeAttribute('disabled');
+    document.getElementById('buttonArb').removeAttribute('disabled');">
 </form>
 
 <form class="choiceArb">
     <h2>Choisissez votre arbitre :</h2>
 
-    <select size="5" class="choixArb" disabled>
+    <select size="5" id="listArb" disabled>
         <option>Arbitre 0 </option>
         <option>Arbitre 1 </option>
         <option>Arbitre 2 </option>
@@ -101,7 +104,7 @@ document.getElementsByClassName('choixArb').setAttribute('disabled', false);">
         <option>Arbitre 19 </option>
     </select>
     </br>
-    <input type="submit" value="Lancer le Défi" class="choixArb" disabled>
+    <input type="submit" value="Lancer le Défi" id="buttonArb" disabled>
 </form>
 <form class="tableDefi">
     <table>
