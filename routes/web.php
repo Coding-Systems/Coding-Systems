@@ -44,3 +44,7 @@ Route::get('/regles', function () {
 Route::get('/utilisateur', function () {
     return view('user');
 });
+
+Route::get('/quizz', function () {
+    return view('quizz');
+});
