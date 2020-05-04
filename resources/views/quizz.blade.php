@@ -67,6 +67,16 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="question3" id="Q3A4">
             <label for="Q3A4">Je suis insensible</label>
 
+            <h2>Question 4</h2>
+            <p>Dans un projet, tu es plutôt celui qui... ?</p>
+            <input type="radio" name="question4" id="Q4A1">
+            <label for="Q4A1">Donne des idées</label>
+            <input type="radio" name="question4" id="Q4A2">
+            <label for="Q4A2">Planifie tout</label>
+            <input type="radio" name="question4" id="Q4A3">
+            <label for="Q4A3">Débug le code</label>
+            <input type="radio" name="question4" id="Q4A4">
+            <label for="Q4A4">Je fais tout solo moi</label>
 
             <h2>Question X</h2>
             <p>BLABBALBALABLABLABLABALA ?</p>
