@@ -15,10 +15,12 @@ class CreateMvtPointTable extends Migration
     {
         Schema::create('mvt_point', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->text('label');
             $table->foreignId('house_id');
             $table->foreignId('users_id');
             $table->foreignId('professor_id');
+            $table->foreignId('type_point_id');
+            $table->timestamps();
         });
     }
 
