@@ -13,11 +13,11 @@ class CreateHouseTable extends Migration
      */
     public function up()
     {
-        Schema::create('house', function (Blueprint $table) {
+        Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('pointsUp');
-            $table->integer('pointsDown');
+            $table->integer('points_up');
+            $table->integer('points_down');
             $table->timestamps();
         });
     }

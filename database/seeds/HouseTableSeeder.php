@@ -12,22 +12,22 @@ class HouseTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('house')->insert([
+        DB::table('houses')->insert([
             'name' => 'Crackend',
-            'pointsUp' => 0,
-            'pointsDown' => 0,
+            'points_up' => 0,
+            'points_down' => 0,
         ]);
 
-        DB::table('house')->insert([
+        DB::table('houses')->insert([
             'name' => 'PhoeniXML',
-            'pointsUp' => 0,
-            'pointsDown' => 0,
+            'points_up' => 0,
+            'points_down' => 0,
         ]);
 
-        DB::table('house')->insert([
+        DB::table('houses')->insert([
             'name' => 'Gitsune',
-            'pointsUp' => 0,
-            'pointsDown' => 0,
+            'points_up' => 0,
+            'points_down' => 0,
         ]);
         //
     }

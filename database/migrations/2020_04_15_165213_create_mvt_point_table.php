@@ -13,7 +13,7 @@ class CreateMvtPointTable extends Migration
      */
     public function up()
     {
-        Schema::create('mvt_point', function (Blueprint $table) {
+        Schema::create('mvt_points', function (Blueprint $table) {
             $table->id();
             $table->text('label');
             $table->foreignId('house_id');
