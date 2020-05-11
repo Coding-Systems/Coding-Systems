@@ -34,11 +34,11 @@
           </p>
           <h2 class="secretTitle">Histoire</h2>
           <p class="story secret">
-              Passez entre les mailles du filet, c'est leur spécialité, et les bons plans, c'est leur passion.
+              Passer entre les mailles du filet, c'est leur spécialité, et les bons plans, c'est leur passion.
               Besoin d'un code promo ? Pas de problème, ils en ont tout un répertoire !
               Envie d'optimiser votre machine ? Un Crackend sera forcément vous éclairer.
               Des rumeurs disent qu'ils arrivent à avoir gratuitement certains logiciel payants :O
-              <br>Ils ont également une grande affinité avec l'élément de l'eau et peuvent la controler.
+              <br>Ils ont également une grande affinité avec l'élément de l'eau et peuvent le controler.
           </p>
         </section>
         <section class="houseMembers secret">
@@ -158,10 +158,10 @@
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
-            Créer, ça c'est leut spécialité !
-            Vous manquez d'idées ? Allez vois un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
+            Créer, ça c'est leur spécialité !
+            Vous manquez d'idées ? Allez voir un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
             D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
-            <br>Le feu ne leur à jamais fait peur, ils ont même apprit à le dompter et le maitriser.
+            <br>Le feu ne leur à jamais fait peur, ils ont même appris à le dompter et le maitriser.
         </p>
       </section>
       <section class="houseMembers secret">

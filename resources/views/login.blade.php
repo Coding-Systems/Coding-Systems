@@ -32,7 +32,11 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
     </label> </br>
     <button><span>Valider</span></button>
     <button><span>MDP oublié</span></button>
+
+        <br><a class="menuLink" href="/quizz">Quizz</a> <!-- Lien temporaire !!! -->
+
     </section>
+
 </form>
 
 @include("footer")
