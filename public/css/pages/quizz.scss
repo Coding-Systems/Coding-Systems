@@ -1,0 +1,36 @@
+#quizzPage{
+    color : white;
+}
+
+button{
+    color : white;
+    background-color: rgba(187, 188, 196, 0.71);
+    border-radius: 20px;
+    border : 0px;
+    outline: none;
+    font-size: 80%;
+    font-family: 'Comic Neue', 'Open Sans', sans-serif;
+}
+
+input{
+    color : white;
+    background-color: rgba(187, 188, 196, 0.71);
+    border-radius: 20px;
+    border : 0px;
+    outline: none;
+    font-size: 130%;
+    font-family: 'Comic Neue', 'Open Sans', sans-serif;
+}
+
+
+button:hover, input:hover {
+    background-color: #7d838a;
+}
+
+label{
+    padding-right : 30px;
+}
+
+#submitButton{
+    margin :50px;
+}

@@ -14,5 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/challenges', function () {
+    return view('challenges');
+});
+
+Route::get('/maisons', function () {
+    return view('houses');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/historique', function () {
+    return view('historique');
+});
+
+Route::get('/classements', function () {
+    return view('rankings');
+});
+
+Route::get('/regles', function () {
+    return view('rules');
+});
+
+Route::get('/utilisateur', function () {
+    return view('user');
+});
+
+Route::get('/quizz', function () {
+    return view('quizz');
 });

@@ -1,0 +1,26 @@
+select, input, table{
+    background-color: #bbbcc4;
+    border-radius: 10px;
+    border : 0px;
+    outline: none;
+    font-size: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:focus{
+    background-color: #7d838a;
+}
+
+table{
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+td {
+    border-bottom: 1px solid #7d838a;
+}
+
+[type="submit"]:checked {}

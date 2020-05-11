@@ -88,3 +88,9 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+
+*.xml
+
+*.lock
+
+.DS_Store
