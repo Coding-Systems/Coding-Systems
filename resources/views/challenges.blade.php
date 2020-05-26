@@ -22,6 +22,15 @@
 
 <h2>Choisissez votre défis :</h2>
 
+<?php
+    use Illuminate\Support\Facades\DB;
+
+    $users = DB::table('users')->get();
+    foreach ($users as $user) {
+        echo $user->first_name;
+    }
+?>
+
 <br class="createDefi">
     <select size="5">
         <option>Défis 0 </option>
