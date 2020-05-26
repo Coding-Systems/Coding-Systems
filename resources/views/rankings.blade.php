@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+    <?php
+        use Illuminate\Support\Facades\DB;
+        ?>
+
+
 <head>
     <meta charset="UTF-8">
     <title>Coding house</title>
@@ -65,30 +70,33 @@
         <h2>Classement solo</h2>
 
         <section id=rankingNamesUsers>
+
             <p>
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 1. Alyssia : 67 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 2. blublu : 65 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 3. blibli : 54 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 4. blublu : 53 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 5. blibli : 45 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 6. blublu : 45 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 7. blibli : 41 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 8. blublu : 39 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 9. blibli : 37 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 10. blublu : 34 pts
+                <?php
+
+                $users = DB::table('mvt_points')
+                    ->select('mvt_points.label', 'users.first_name', 'users.last_name', 'houses.name')
+                    ->join('users', 'mvt_points.users_id', '=', 'users.id')
+                    ->join('houses', 'users.house_id', '=', 'houses.id')
+
+                    ->get();
+
+                $rank=0;
+
+                foreach ($users as $user) {
+
+                    $rank = $rank+1;
+                    echo '<img class="houseIcon" src="img/logo.png" alt="logo de la maison">'.$rank.". ".$user->first_name." ".$user->last_name." : "."</br>";
+
+
+                    if(intdiv(sizeof($users),2)==$rank){
+                        echo "</p>";
+                        echo "<p>";
+                    }
+                }
+                ?>
             </p>
-            <p>
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 11. blibli : 30 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 12. blublu pts : 29 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 13. blibli : 24 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 14. blublu : 23 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 15. blibli : 21 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 16. blublu : 20 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 17. blibli : 18 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 18. blublu : 16 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 19. blibli : 17 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 20. blublu : 6 pts
-            </p>
+
         </section>
 
     </section>
