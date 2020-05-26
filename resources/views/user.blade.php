@@ -89,9 +89,9 @@
                     <?php
                         use Illuminate\Support\Facades\DB;
 
-                        $mvt_point = DB::table('mvt_points') -> get();
+                    $mvt_point = DB::select('select * from mvt_points where users_id= :id', ['id' => 1]);
                         foreach ($mvt_point as $mvt_points){
-                            echo '-'.$mvt_points->users_id.':'.$mvt_points->label.' ';
+                            echo '+'.$mvt_points->label.' ';
                         }
                     ?>
                 </p>
