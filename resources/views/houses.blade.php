@@ -58,8 +58,8 @@
                 <?php
                 use Illuminate\Support\Facades\DB;
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 1]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
@@ -67,8 +67,8 @@
               <p>
                 <?php
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 1]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
@@ -115,8 +115,8 @@
             <p>
                 <?php
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 2]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
@@ -124,8 +124,8 @@
             <p>
                 <?php
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 2]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
@@ -172,8 +172,8 @@
             <p>
                 <?php
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 3]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
@@ -181,8 +181,8 @@
             <p>
                 <?php
 
-                $user = DB::table('users') -> get();
-                foreach ($user as $users){
+                $results = DB::select('select * from users where id = :id', ['id' => 3]);
+                foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
                 ?>
