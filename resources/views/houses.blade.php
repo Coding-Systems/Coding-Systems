@@ -58,7 +58,7 @@
                 <?php
                 use Illuminate\Support\Facades\DB;
 
-                $results = DB::select('select * from users where id = :id', ['id' => 1]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
@@ -67,7 +67,7 @@
               <p>
                 <?php
 
-                $results = DB::select('select * from users where id = :id', ['id' => 1]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
@@ -115,7 +115,7 @@
             <p>
                 <?php
 
-                $results = DB::select('select * from users where id = :id', ['id' => 2]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 2]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
@@ -124,7 +124,7 @@
             <p>
                 <?php
 
-                $results = DB::select('select * from users where id = :id', ['id' => 2]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 2]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
@@ -172,7 +172,7 @@
             <p>
                 <?php
 
-                $results = DB::select('select * from users where id = :id', ['id' => 3]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 3]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
@@ -181,7 +181,7 @@
             <p>
                 <?php
 
-                $results = DB::select('select * from users where id = :id', ['id' => 3]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 3]);
                 foreach ($results as $users){
                     echo '-'.$users->first_name."<br/>";
                 }
