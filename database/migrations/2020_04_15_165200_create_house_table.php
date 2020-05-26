@@ -11,7 +11,18 @@ class CreateHouseTable extends Migration
      *
      * @return void
      */
+
     public function up()
+    {
+        Schema::create('houses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+
+    /*public function up()
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
@@ -21,6 +32,8 @@ class CreateHouseTable extends Migration
             $table->timestamps();
         });
     }
+
+    */
 
     /**
      * Reverse the migrations.
