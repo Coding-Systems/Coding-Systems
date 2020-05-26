@@ -8,6 +8,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/user.scss"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 </head>
 
 <body class="rules">
@@ -84,32 +86,21 @@
 
             <section id="history">
                 <p>
-                    <br/>[jour/heure] +100 [Parceque j'ai décidé]
-                    <br/>[jour/heure] +100 [C'est une déesse]
-                    <br/>[jour/heure] -10 [Aime pas les kinders]
-                    <br/>[jour/heure] -1 [Animations abusives]
-                    <br/>[jour/heure] -34 [Outrage à Frozen]
-                    <br/>[jour/heure] +6 [Notes]
-                    <br/>[jour/heure] +5 [Notes]
-                    <br/>[jour/heure] +30 [Défis : PFC]
-                    <br/>[jour/heure] -20 [Outrage à la coiffure]
-                    <br/>[jour/heure]-5 [Abandon de la Coding]
-                </p>
+                    <?php
+                        use Illuminate\Support\Facades\DB;
 
-                <p>
-                    <br/>[jour/heure] +100 [Parceque j'ai décidé]
-                    <br/>[jour/heure] +100 [C'est une déesse]
-                    <br/>[jour/heure] -10 [Aime pas les kinders]
-                    <br/>[jour/heure] -1 [Animations abusives]
-                    <br/>[jour/heure] -34 [Outrage à Frozen]
-                    <br/>[jour/heure] +6 [Notes]
-                    <br/>[jour/heure] +5 [Notes]
-                    <br/>[jour/heure] +30 [Défis : PFC]
-                    <br/>[jour/heure] -20 [Outrage à la coiffure]
-                    <br/>[jour/heure]-5 [Abandon de la Coding]
+                        $mvt_point = DB::table('mvt_points') -> get();
+                        foreach ($mvt_point as $mvt_points){
+                            echo '-'.$mvt_points->users_id.':'.$mvt_points->label.' ';
+                        }
+                    ?>
                 </p>
-
             </section>
+
+            <section>
+                <div style="z-index: 999999" class="mypanel"></div>
+            </section>
+
 
 
         </div>

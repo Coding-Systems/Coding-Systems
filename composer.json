@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/installer": "^3.1",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
