@@ -55,28 +55,23 @@
 
           <div class="listMembers">
             <p>
-              <br/> 1. blibli
-              <br/> 2. blublu
-              <br> 3. blibli
-              <br> 4. blublu
-              <br> 5. blibli
-              <br/> 6. blublu
-              <br/> 7. blibli
-              <br/> 8. blublu
-              <br/> 9. blibli
-              <br/> 10. Anticonstitut
+                <?php
+                use Illuminate\Support\Facades\DB;
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
             </p>
-            <p>
-              <br/> 1. blibli
-              <br/> 2. blublu
-              <br> 3. blibli
-              <br> 4. blublu
-              <br> 5. blibli
-              <br/> 6. blublu
-              <br/> 7. blibli
-              <br/> 8. blublu
-              <br/> 9. blibli
-              <br/> 10. Anticonstitutio
+              <p>
+                <?php
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
             </p>
           </div>
         </section>
@@ -117,30 +112,26 @@
         </form>
 
         <div class="listMembers">
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitut
-          </p>
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitutio
-          </p>
+            <p>
+                <?php
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
+            </p>
+            <p>
+                <?php
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
+            </p>
+
+
         </div>
       </section>
     </div>
@@ -178,30 +169,24 @@
         </form>
 
         <div class="listMembers">
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitut
-          </p>
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitutio
-          </p>
+            <p>
+                <?php
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
+            </p>
+            <p>
+                <?php
+
+                $user = DB::table('users') -> get();
+                foreach ($user as $users){
+                    echo '-'.$users->first_name."<br/>";
+                }
+                ?>
+            </p>
         </div>
       </section>
     </section>
