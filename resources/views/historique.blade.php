@@ -59,10 +59,6 @@
                 ->get();
                 foreach ($mvt_points as $user) {
                     $rank++;
-                    if(intdiv(sizeof($mvt_points),2)==$rank){
-                        echo "</p>";
-                        echo "<p>";
-                    }
                     if($user->hname=='Crackend'){
                         echo '<img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison">';
                     }
@@ -75,8 +71,12 @@
                     else {
                         echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
                     }
-                    echo " [", $user->created_at, "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
                     echo '<br/>';
+                    if(intdiv(sizeof($mvt_points),2)==$rank){
+                        echo "</p>";
+                        echo "<p>";
+                    }
                 }
             ?>
         </p>

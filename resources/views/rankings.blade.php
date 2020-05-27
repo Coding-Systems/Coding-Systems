@@ -74,13 +74,23 @@
             <p>
                 <?php
 
+              /*  $test = DB::table('mvt_points')
+                ->groupBy('users_id')
+                ->sum('label');
+                
+                echo $test;
+                /*foreach ($test as $total) {
+                    echo "$total->label";
+                }*/
+                
+
                 $users = DB::table('mvt_points')
-                    ->select('mvt_points.label', 'users.first_name', 'users.last_name', 'houses.name')
+                    ->select('mvt_points.label', 'mvt_points.users_id', 'users.first_name', 'users.last_name', 'houses.name')
                     ->join('users', 'mvt_points.users_id', '=', 'users.id')
                     ->join('houses', 'users.house_id', '=', 'houses.id')
-
                     ->get();
-
+                 
+                    
                 $rank=0;
 
                 foreach ($users as $user) {
