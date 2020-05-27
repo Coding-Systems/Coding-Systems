@@ -54,19 +54,12 @@
           </form>
 
           <div class="listMembers">
-            <p>
                 <?php
                 use Illuminate\Support\Facades\DB;
                 ?>
-                <?php
-                $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
-                foreach ($results as $users){
-                    echo '-'.$users->first_name."<br/>";
-                }
-                ?>
-            </p>
             <p>
                 <?php
+<<<<<<< Updated upstream
                 $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
                 $resultsP = DB::select('select * from mvt_points where users_id= id', ['id'=>1]);
                 foreach ($results as $users){
@@ -74,6 +67,19 @@
                     $labell= $mvt_point->label+$mvt_point->label;
                 echo '-'.$users->first_name.' '.$labell.".<br/>";
                 }
+=======
+
+                $results = DB::table('users')
+                ->join ('mvt_points.users_id', 'users', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->where('house_id', '=', '1')
+                ->get();
+                foreach ($results as $users){
+                    echo '-'.$users->first_name.' '.$mvt_points->label."pts<br/>";
+                }
+                foreach ($results as $users){
+                    echo '-'.$users->first_name.' '.$mvt_points->label."pts<br/>";
+>>>>>>> Stashed changes
                 }
                 ?>
             </p>
