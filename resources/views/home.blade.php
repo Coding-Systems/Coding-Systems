@@ -70,7 +70,6 @@ use Illuminate\Support\Facades\DB;
                     echo 'src="img/logo.png" alt="logo"> ';
                 }
 
-
                 echo '<p class="numberRanking">'.$rank.'</p>';
                 echo '<p>'.$house->pts.' pts</p>';
                 echo '</section>';
