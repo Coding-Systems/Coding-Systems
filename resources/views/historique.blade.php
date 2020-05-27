@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
      ?>
 
@@ -35,8 +35,9 @@
         <div id="imgH">
         <img id="H" src="img/logo.png" alt="image de la maison">
         </div>
-        <label>
-            <select>
+        <form action="{{ url('historique') }}" method="POST">
+            {{ csrf_field() }}
+           <select>
                 <option>Tout</option>
                 <option>Gitsune</option>
                 <option>Crack'end</option>
@@ -44,10 +45,10 @@
                 <option>Défis</option>
                 <option>Events</option>
             </select>
-        </label>
+            <input type="submit" value="ok">
+        </form>
     </div>
     <section id=history>
-
 
          <p>
             <?php
@@ -73,14 +74,13 @@
                     else {
                         echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
                     }
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
                         echo "<p>";
                     }
                 }
-
 
                 $rank=0;
                 $mvt_points = DB::table('mvt_points')
@@ -94,7 +94,7 @@
                 foreach ($mvt_points as $user) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison">';
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
@@ -116,7 +116,7 @@
                 foreach ($mvt_points as $user) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison">';
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
@@ -137,7 +137,7 @@
                 foreach ($mvt_points as $user) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison">';
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ; 
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
