@@ -67,13 +67,13 @@
             </p>
             <p>
                 <?php
-
-                $results = DB::select('select * from users as U, mvt_points as MP where U.house_id= :id', ['id' => 1]);
+                $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
+                $resultsP = DB::select('select * from mvt_points where users_id= id', ['id'=>1]);
                 foreach ($results as $users){
-                    $users_id = DB::table('mvt_points')
-                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                        ->get();
-                    echo '-'.$users->first_name.' '.$mvt_points->label."pts<br/>";
+                foreach ($resultsP as $mvt_point){
+                    $labell= $mvt_point->label+$mvt_point->label;
+                echo '-'.$users->first_name.' '.$labell.".<br/>";
+                }
                 }
                 ?>
             </p>
