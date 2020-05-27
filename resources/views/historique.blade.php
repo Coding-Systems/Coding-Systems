@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php
+<?php 
     use Illuminate\Support\Facades\DB;
      ?>
 
