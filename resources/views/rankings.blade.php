@@ -46,21 +46,50 @@
 
         <section id=logoHousesPodium>
 
-            <section>
-                <img class="logoPodium" src="img/logoGitsune.png" alt="logo de la maison">
-                <p class="numberRanking">2</p>
-                <p>486 pts</p>
-            </section>
-            <section>
-                <img class="logoPodiumFirst" src="img/logoPhoenixml.png" alt="logo de la maison">
-                <p class="numberRanking">1</p>
-                <p>587 pts</p>
-            </section>
-            <section>
-                <img class="logoPodium" src="img/logoCrackend.png" alt="logo de la maison">
-                <p class="numberRanking">3</p>
-                <p>284 pts</p>
-            </section>
+            <?php
+
+            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
+                FROM mvt_points
+                LEFT JOIN users
+                    ON users.id = mvt_points.users_id
+                LEFT JOIN houses
+                    ON houses.id = users.house_id
+                GROUP BY houses.id
+                ORDER BY pts DESC', ['id' => 1]);
+
+            $rank=0;
+
+            foreach ($results as $house){
+                $rank++;
+                echo '<section>';
+
+                if($rank==1){
+                    echo '<img class="logoPodiumFirst logoP"';
+                }
+                else {
+                    echo '<img class="logoPodium logoP"' ;
+                }
+
+                if($house->hname=='Crackend'){
+                    echo 'src="img/logoCrackend.png" alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='PhoeniXML'){
+                    echo 'src="img/logoPhoenixml.png" alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='Gitsune'){
+                    echo 'src="img/logoGitsune.png" alt="logo de la maison"> ';
+                }
+                else {
+                    echo 'src="img/logo.png" alt="logo"> ';
+                }
+
+
+                echo '<p class="numberRanking">'.$rank.'</p>';
+                echo '<p>'.$house->pts.' pts</p>';
+                echo '</section>';
+            }
+
+            ?>
 
         </section>
 
@@ -74,7 +103,7 @@
             <p>
                 <?php
 
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name, houses.name
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
                     FROM mvt_points
                     LEFT JOIN users
                     ON users.id = mvt_points.users_id
@@ -82,8 +111,31 @@
                     ON houses.id = users.house_id
                     GROUP BY mvt_points.users_id
                     ORDER BY pts DESC', ['id' => 1]);
+
+                    $rank = 0;
                     foreach ($results as $users) {
-                    echo '-' . $users->first_name . ' ' . $users->pts . ".<br/>";
+                        $rank++;
+
+                        if($users->hname=='Crackend'){
+                            echo '<img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> ';
+                        }
+                        else if ($users->hname=='PhoeniXML'){
+                            echo '<img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> ';
+                        }
+                        else if ($users->hname=='Gitsune'){
+                            echo '<img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> ';
+                        }
+                        else {
+                            echo '<img id="logoHeader" src="img/logo.png" alt="logo"> ';
+                        }
+
+
+                        echo $rank .'. '. $users->first_name . ' : ' . $users->pts . "pts<br/>";
+
+                        if(intdiv(sizeof($results),2)==$rank){
+                            echo "</p>";
+                            echo "<p>";
+                        }
                     }
                 ?>
             </p>
