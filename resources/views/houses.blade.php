@@ -59,27 +59,16 @@
                 ?>
             <p>
                 <?php
-<<<<<<< Updated upstream
-                $results = DB::select('select * from users where house_id= :id', ['id' => 1]);
-                $resultsP = DB::select('select * from mvt_points where users_id= id', ['id'=>1]);
-                foreach ($results as $users){
-                foreach ($resultsP as $mvt_point){
-                    $labell= $mvt_point->label+$mvt_point->label;
-                echo '-'.$users->first_name.' '.$labell.".<br/>";
-                }
-=======
-
-                $results = DB::table('users')
-                ->join ('mvt_points.users_id', 'users', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->where('house_id', '=', '1')
-                ->get();
-                foreach ($results as $users){
-                    echo '-'.$users->first_name.' '.$mvt_points->label."pts<br/>";
-                }
-                foreach ($results as $users){
-                    echo '-'.$users->first_name.' '.$mvt_points->label."pts<br/>";
->>>>>>> Stashed changes
+                $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id', ['id' => 1]);
+                foreach ($results as $users) {
+                    echo '-' . $users->first_name . ' ' . $users->pts . ".<br/>";
                 }
                 ?>
             </p>
@@ -124,10 +113,16 @@
         <div class="listMembers">
             <p>
                 <?php
-
-                $results = DB::select('select * from users where house_id= :id', ['id' => 3]);
-                foreach ($results as $users){
-                    echo '-'.$users->first_name."<br/>";
+                $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id', ['id' => 3]);
+                foreach ($results as $users) {
+                    echo '-' . $users->first_name . ' ' . $users->pts . ".<br/>";
                 }
                 ?>
             </p>
@@ -171,19 +166,16 @@
         <div class="listMembers">
             <p>
                 <?php
-
-                $results = DB::select('select * from users where house_id= :id', ['id' => 2]);
-                foreach ($results as $users){
-                    echo '-'.$users->first_name."<br/>";
-                }
-                ?>
-            </p>
-            <p>
-                <?php
-
-                $results = DB::select('select * from users where house_id= :id', ['id' => 2]);
-                foreach ($results as $users){
-                    echo '-'.$users->first_name."<br/>";
+                $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id', ['id' => 2]);
+                foreach ($results as $users) {
+                    echo '-' . $users->first_name . ' ' . $users->pts . ".<br/>";
                 }
                 ?>
             </p>
