@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =3;
+    $idUser =9;
 ?>
 
 <head>
@@ -284,11 +284,7 @@
                             WHERE users.id= :id
                             ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
                             }
-                        }
 
-                    if (sizeof($mvt_point)==0) {
-                        echo "Il n'y a encore rien à afficher ici !";
-                    }
 
                         $nbr =0;
                         foreach ($mvt_point as $point){
@@ -299,8 +295,15 @@
                                 echo '</p>';
                                 echo '<p>';
 
+                            }
                         }
+
+                        }
+
+                    if (sizeof($mvt_point)==0) {
+                        echo "Il n'y a encore rien à afficher ici !";
                     }
+
 
 
                     ?>
