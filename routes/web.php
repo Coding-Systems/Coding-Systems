@@ -41,7 +41,7 @@ Route::get('/regles', function () {
     return view('rules');
 });
 
-Route::get('/utilisateur', function () {
+Route::match(['get', 'post'],'/utilisateur', function () {
     return view('user');
 });
 

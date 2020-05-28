@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =5;
+    $idUser =3;
 ?>
 
 <head>
@@ -48,7 +48,6 @@
                     ON users.house_id = houses.id
                 WHERE users.id =:id', ['id' => $idUser]);
 
-
             echo '<img id="logoUser" ';
 
             if(isset($mvt_point[0]->hName)){
@@ -71,8 +70,6 @@
                 echo 'src="img/logo.png"';
             }
 
-
-
             echo 'alt="logo">';
 
             ?>
@@ -91,36 +88,66 @@
 
                     if($userType[0]->statut=='PO'){
                         echo'<br>Points donnés : ';
-
                         $givenPts = DB::select('SELECT SUM(label) AS pts
                             FROM mvt_points
                             LEFT JOIN users
                                 ON users.id = mvt_points.professor_id
                             WHERE users.id= :id ', ['id' => $idUser]);
-
                         echo $givenPts[0]->pts." pts";
-
 
                         echo '<br>Event organisés : ';
                     }
                     else {
                         echo '<br>Total de points : ';
-
                         $givenPts = DB::select('SELECT SUM(label) AS pts
                             FROM mvt_points
                             LEFT JOIN users
                                 ON users.id = mvt_points.users_id
                             WHERE users.id= :id ', ['id' => $idUser]);
-
                         echo $givenPts[0]->pts." pts";
 
-                        echo '<br>Défis lancés :';
-                        echo '<br>Défis gagnés :';
-                        echo '<br>Classement général :';
+                        echo '<br>Défis lancés : ';
 
-                        
+                        echo '<br>Défis gagnés : ';
 
-                        echo '<br>Classement maison :';
+                        echo '<br>Classement général : ';
+
+                        $ranking = DB::select('SELECT  users.id as idU
+                            FROM mvt_points
+                            LEFT JOIN users
+                            ON users.id = mvt_points.users_id
+                            WHERE users.statut="student"
+
+                            GROUP BY mvt_points.users_id
+                            ORDER BY SUM(mvt_points.label) DESC ');
+                        $x =0;
+                        while($ranking[$x]->idU != $idUser){
+                            $x++;
+                        }
+                        echo $x+1;
+
+                        echo '<br>Classement maison : ';
+                        $ranking = DB::select('SELECT  users.id as idU
+                            FROM mvt_points
+                            LEFT JOIN users
+								ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            	ON houses.id = users.house_id
+                            WHERE users.statut="student"
+								AND houses.id = (
+                                	SELECT houses.id
+                                    FROM houses
+                                	LEFT JOIN users AS userBIS
+                                		ON userBIS.house_id = houses.id
+                                	WHERE userBIS.id = :id
+                                	LIMIT 1)
+                            GROUP BY mvt_points.users_id
+                            ORDER BY SUM(mvt_points.label) DESC', ['id' => $idUser]);
+                        $x =0;
+                        while($ranking[$x]->idU != $idUser){
+                            $x++;
+                        }
+                        echo $x+1;
                     }
                 ?>
 
