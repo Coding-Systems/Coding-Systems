@@ -187,11 +187,13 @@
         <div id="hirtoryUser">
             <h2>Historique</h2>
 
-            <form class="HistoryForm">
-                <select>
-                    <option>Tout</option>
-                    <option>Défis</option>
-                    <option>Notes</option>
+            <form method="post" class="HistoryForm">
+                {{ csrf_field() }}
+                <select id="rank" name="rank">
+                    <option value="all">Tout les points</option>
+                    <option value="ptsPO">Points gagnés avec PO</option>
+                    <option value="ptsDefi">Points gagnés avec les défis</option>
+                    <option value="ptsNote">Points gagnés avec les notes</option>
                 </select>
                 <button>Valider</button>
             </form>
@@ -225,7 +227,55 @@
                     }
 
                     else {
-                        $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+
+                        if(isset($_POST['rank'])){
+                            switch ($_POST['rank']){
+                                case 'ptsPO' :
+                                $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+                                    FROM mvt_points
+                                    LEFT JOIN users
+                                        ON users.id = mvt_points.users_id
+                                    LEFT JOIN type_points
+                                        ON type_points.id = mvt_points.type_point_id
+                                    WHERE users.id= :id
+                                        AND type_points.type="PO"
+                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    break;
+                                case 'ptsDefi';
+                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+                                    FROM mvt_points
+                                    LEFT JOIN users
+                                        ON users.id = mvt_points.users_id
+                                    LEFT JOIN type_points
+                                        ON type_points.id = mvt_points.type_point_id
+                                    WHERE users.id= :id
+                                        AND type_points.type="defi"
+                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                     break;
+                                case 'ptsNote' :
+                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+                                    FROM mvt_points
+                                    LEFT JOIN users
+                                        ON users.id = mvt_points.users_id
+                                    LEFT JOIN type_points
+                                        ON type_points.id = mvt_points.type_point_id
+                                    WHERE users.id= :id
+                                        AND type_points.type="note"
+                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    break;
+                                default :
+                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN type_points
+                                            ON type_points.id = mvt_points.type_point_id
+                                        WHERE users.id= :id
+                                        ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                            }
+                        }
+                        else{
+                             $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
                             FROM mvt_points
                             LEFT JOIN users
                                 ON users.id = mvt_points.users_id
@@ -233,6 +283,8 @@
                                 ON type_points.id = mvt_points.type_point_id
                             WHERE users.id= :id
                             ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                            }
+                        }
 
                         $nbr =0;
                         foreach ($mvt_point as $point){
@@ -242,9 +294,10 @@
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';
-                            }
+
                         }
                     }
+
 
                     ?>
                 </p>
