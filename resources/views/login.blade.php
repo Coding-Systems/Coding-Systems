@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\DB;$numero = rand(0, 3);// un numero aléatoire d
 
                     try {
                         $bdd = new PDO('mysql:host=localhost:8889;dbname=coding_house;charset=utf8', 'root', 'coding');
-                        $results = DB::select('SELECT * FROM `users` where `mail`=' . '"' . $email . '"' . ';');
+                        $results = DB::select('SELECT * FROM `users` where `mail`=' . '"' . $email . '"' . 'and `password`=' . '"' . $mdp . '"' . ';');
                     } catch (Exception $e) {
                         die('Erreur : ' . $e->getMessage());
                     }
