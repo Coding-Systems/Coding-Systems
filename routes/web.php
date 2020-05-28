@@ -29,7 +29,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::any('/historique', function () {
+Route::match(['get', 'post'],'/historique', function () {
     return view('historique');
 });
 

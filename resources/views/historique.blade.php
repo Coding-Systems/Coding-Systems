@@ -39,12 +39,12 @@
         <form method="post">
         {{ csrf_field() }}
             <select id="selectHisto" name="histo">
-                    <option value="1">Tout</option>
-                    <option value="2">Gitsune</option>
-                    <option value="3">Crack'end</option>
-                    <option value="4">PhoeniXML</option>
-                    <option value="5">Défis</option>
-                    <option value="6">Events</option>
+                    <option value="all">Tout</option>
+                    <option value="gitsune">Gitsune</option>
+                    <option value="crackend">Crack'end</option>
+                    <option value="phoenixml">PhoeniXML</option>
+                    <option value="defis">Défis</option>
+                    <option value="events">Events</option>
                 </select>
                 <input type="submit">
             </form>
@@ -57,7 +57,7 @@
             <?php
             
  if(isset($_POST['histo'])){
-    if($_POST['histo']=="1"){
+    if($_POST['histo']=="all"){
         $rank=0;
         $mvt_points = DB::table('mvt_points')
         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
@@ -66,6 +66,9 @@
         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
         foreach ($mvt_points as $user) {
             $rank++;
             if($user->hname=='Crackend'){
@@ -87,7 +90,7 @@
                 echo "<p>";
             }
         }
-    }elseif($_POST['histo']=="2"){
+    }elseif($_POST['histo']=="gitsune"){
             
         $rank=0;
         $mvt_points = DB::table('mvt_points')
@@ -98,6 +101,9 @@
         ->where ('houses.name', 'Gitsune')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
         foreach ($mvt_points as $user) {
             $rank++;
             echo '<img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison">';
@@ -108,7 +114,7 @@
                 echo "<p>";
             }
         }
-    }elseif($_POST['histo']=="3"){
+    }elseif($_POST['histo']=="crackend"){
         $rank=0;
         $mvt_points = DB::table('mvt_points')
         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
@@ -118,6 +124,9 @@
         ->where ('houses.name', 'Crackend')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
         foreach ($mvt_points as $user) {
             $rank++;
             echo '<img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison">';
@@ -129,7 +138,7 @@
             }
         }
 
-    }elseif($_POST['histo']=="4"){
+    }elseif($_POST['histo']=="phoenixml"){
         $rank=0;
         $mvt_points = DB::table('mvt_points')
         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
@@ -139,6 +148,9 @@
         ->where ('houses.name', 'phoeniXML')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
         foreach ($mvt_points as $user) {
             $rank++;
             echo '<img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison">';
@@ -149,7 +161,7 @@
                 echo "<p>";
             }
         }
-    }elseif($_POST['histo']=="5"){
+    }elseif($_POST['histo']=="defis"){
         $rank=0;
         $mvt_points = DB::table('mvt_points')
         ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
@@ -157,6 +169,10 @@
         ->where ('type_points.type', 'defi')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        $count = is_null($mvt_points);
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
         foreach ($mvt_points as $user) {
             $rank++;
             echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->tname; 
@@ -166,8 +182,28 @@
                 echo "<p>";
             }
         }
-    }elseif($_POST['histo']=="6"){
-    echo "Il n'y a encore rien à afficher ici !";
+    }elseif($_POST['histo']=="events"){
+    $rank=0;
+        $mvt_points = DB::table('mvt_points')
+        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+        ->select ('type_points.name AS tname', 'mvt_points.*')
+        ->where ('type_points.type', 'events')
+        ->orderBy ('mvt_points.created_at')
+        ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
+        else {
+        foreach ($mvt_points as $user) {
+            $rank++;
+            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->tname; 
+            echo '<br/>';
+            if(intdiv(sizeof($mvt_points),2)==$rank){
+                echo "</p>";
+                echo "<p>";
+            }
+        }
+        }
 }
 }
 else {
@@ -179,6 +215,10 @@ else {
         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*')
         ->orderBy ('mvt_points.created_at')
         ->get();
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";  
+        }
+        else {
         foreach ($mvt_points as $user) {
             $rank++;
             if($user->hname=='Crackend'){
@@ -200,6 +240,7 @@ else {
                 echo "<p>";
             }
         }
+    }
 }
                 
             ?>
