@@ -45,20 +45,23 @@ use Illuminate\Support\Facades\DB;$numero = rand(0, 3);// un numero aléatoire d
 
                     try {
                         $bdd = new PDO('mysql:host=localhost:8889;dbname=coding_house;charset=utf8', 'root', 'coding');
-                        echo '<p>connecter</p>';
+                        $results = DB::select ('SELECT * FROM `users` where `first_name`='.$email.';');
+                        foreach ($results as $users) {
+                            $idu=$users->id;
+                            echo '<p>' . $idu . ".</p><br/>";
+                        }
+
                     } catch (Exception $e) {
                         die('Erreur : ' . $e->getMessage());
                     }
 
-                    $req = $bdd->exec('SELECT * FROM `users` where mail='.$email .';') ;
+
+
+
 
 
                     //$req = DB::select('SELECT * FROM `users` where mail='.$email);
 
-                   foreach ($req as $user) {
-                        $idofuser = $user->id;
-                        echo $idofuser ;
-                    }
                 }
                 ?></h1></div>
 
