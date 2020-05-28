@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =9;
+    $idUser =1;
 ?>
 
 <head>
@@ -53,24 +53,29 @@
             if(isset($mvt_point[0]->hName)){
                 switch ($mvt_point[0]->hName){
                     case 'Crackend' :
-                        echo 'src="img/logoCrackend.png"';
+                        echo 'src="img/logoCrackend_';
                         break;
                     case 'PhoeniXML' :
-                        echo 'src="img/logoPhoeniXML.png"';
+                        echo 'src="img/logoPhoeniXML_';
                         break;
                     case 'Gitsune' :
-                        echo 'src="img/logoGitsune.png"';
+                        echo 'src="img/logoGitsune_';
                         break;
                     default :
                         echo 'src="img/logo.png"';
                 }
+
+                $logoLvl = DB::select('SELECT logo_lvl
+                FROM users
+                WHERE users.id =:id', ['id' => $idUser]);
+                echo $logoLvl[0]->logo_lvl.'.png"';
             }
 
             else {
-                echo 'src="img/logo.png"';
+                echo ' src="img/logo.png"';
             }
 
-            echo 'alt="logo">';
+            echo ' alt="logo">';
 
             ?>
 
