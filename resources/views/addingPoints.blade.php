@@ -72,12 +72,15 @@ if(isset($_POST['envoi'])){
       $nbr_points = $_POST['nbrPoints'];
       $student_id = $_POST['studentId'];
       $challenge_id = $_POST['challengeId'];
+      date_default_timezone_set('Europe/Paris');
+      $date = date("Y-m-d H:i:s");
 
             DB::table('mvt_points')->insert(
                   array(
                         'label' => "$nbr_points",
                         'users_id' => "$student_id",
-                        'type_point_id' => "$challenge_id"
+                        'type_point_id' => "$challenge_id",
+                        'created_at' => "$date"
                   )
                   );
       };
