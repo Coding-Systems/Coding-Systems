@@ -33,7 +33,7 @@ Route::match(['get', 'post'],'/historique', function () {
     return view('historique');
 });
 
-Route::get('/classements', function () {
+Route::match(['get', 'post'],'/classements', function () {
     return view('rankings');
 });
 
