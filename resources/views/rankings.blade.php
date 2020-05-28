@@ -226,7 +226,9 @@
                             ORDER BY pts DESC', ['id' => 1]);
                 }
 
-
+                if (sizeof($results)==0) {
+                    echo "Il n'y a encore rien à afficher ici !";
+                }
 
                     $rank = 0;
                     foreach ($results as $users) {
