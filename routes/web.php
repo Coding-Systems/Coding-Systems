@@ -21,7 +21,7 @@ Route::get('/challenges', function () {
     return view('challenges');
 });
 
-Route::get('/maisons', function () {
+Route::match(['get', 'post'],'/maisons', function () {
     return view('houses');
 });
 
