@@ -33,39 +33,55 @@ $studentList = DB::table('users')
 ->get();
 
 $challengeList = DB::table('type_points')
+->where('type_points.type', 'PO')
+->orWhere('type_points.type', 'events')
 ->get();
 
-
-
-echo "<form method='post' class='login'>". csrf_field() .
-    "<section class='addPoints'>
-    <label class='student'>Eleve
-    <select size='5'>";
+echo '<form name="addPointsForm" method="post">'. csrf_field() .
+    '<section class="addPoints">
+    <label class="student">Eleve
+    <select required="required" name="studentId" size="5">';
 
     foreach ($studentList as $student){
 
-      echo '<option>'.$student->first_name.'</option>';
+      echo '<option value="'.$student->id.'">'.$student->first_name.'</option>';
 
       };
 
-   echo "</select>
+   echo '</select>
     </label> </br>
-    <label class='challenge'>Défi
-    <select size='5'>";
+    <label class="challenge">Défi
+    <select required="required" name="challengeId" size="5">';
     foreach ($challengeList as $challenge){
-          echo '<option>'.$challenge->name.'</option>';
+          echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';  
     }
-   echo "</select>
+   echo '</select>
     </label> </br>
-    <label class='points'>Nombre de points
-    <input type='number'/>
+    <label class="points">Nombre de points
+    <input required="required" name="nbrPoints" type="number"/>
     </label>
     </br>
-    <button><span>Valider</span></button>
+    <input type="submit" name="envoi">
 
     </section>
 
-</form>"
+</form>';
+
+if(isset($_POST['envoi'])){
+
+      $nbr_points = $_POST['nbrPoints'];
+      $student_id = $_POST['studentId'];
+      $challenge_id = $_POST['challengeId'];
+
+            DB::table('mvt_points')->insert(
+                  array(
+                        'label' => "$nbr_points",
+                        'users_id' => "$student_id",
+                        'type_point_id' => "$challenge_id"
+                  )
+                  );
+      };
+
 ?>
 </section>
 
