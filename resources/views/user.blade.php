@@ -105,9 +105,21 @@
                     }
                     else {
                         echo '<br>Total de points : ';
+
+                        $givenPts = DB::select('SELECT SUM(label) AS pts
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            WHERE users.id= :id ', ['id' => $idUser]);
+
+                        echo $givenPts[0]->pts." pts";
+
                         echo '<br>Défis lancés :';
                         echo '<br>Défis gagnés :';
                         echo '<br>Classement général :';
+
+                        
+
                         echo '<br>Classement maison :';
                     }
                 ?>
