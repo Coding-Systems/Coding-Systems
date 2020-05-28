@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+    use Illuminate\Support\Facades\DB;
+    $idUser =9;
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -23,10 +27,63 @@
 
     <div id="user">
 
-        <h1>Nom Prénom User</h1>
+
+        <?php
+
+        $mvt_point = DB::select('SELECT first_name, last_name
+            FROM users
+            WHERE id = :id', ['id' => $idUser]);
+
+        foreach ($mvt_point as $user){
+            echo '<h1>'.$user->first_name." ".$user->last_name.'</h1>';
+        }
+        ?>
 
         <div id="statsUser">
-            <img id="logoUser" src="img/logo.png" alt="logo"> <!--Logo évolutif chez les étudiants -->
+
+            <?php
+
+            $mvt_point = DB::select('SELECT houses.name AS hName
+                FROM houses
+                LEFT JOIN users
+                    ON users.house_id = houses.id
+                WHERE users.id =:id', ['id' => $idUser]);
+
+            echo sizeof($mvt_point[0]->hName) ;
+            echo '<img id="logoUser" ';
+
+
+            /*
+            if(sizeof($mvt_point[0]->hName)>0){
+                switch ($mvt_point[0]->hName){
+                    case 'Crackend' :
+                        echo 'src="img/logoCrackend.png"';
+                        break;
+                    case 'PhoeniXML' :
+                        echo 'src="img/logoPhoeniXML.png"';
+                        break;
+                    case 'Gitsune' :
+                        echo 'src="img/logoGitsune.png"';
+                        break;
+                    default :
+                        echo 'src="img/logo.png"';
+                }
+            }
+            */
+            if(true){
+                
+            }
+            else {
+                echo 'src="img/logo.png"';
+            }
+
+
+
+            echo 'alt="logo">';
+
+            ?>
+
+            <!--Logo évolutif chez les étudiants -->
 
             <div>
                 <p id="stats">
@@ -87,11 +144,24 @@
             <section id="history">
                 <p>
                     <?php
-                        use Illuminate\Support\Facades\DB;
+                        $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN type_points
+                                ON type_points.id = mvt_points.type_point_id
+                            WHERE users.id= :id
+                            ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
 
-                    $mvt_point = DB::select('select * from mvt_points where users_id= :id', ['id' => 1]);
-                        foreach ($mvt_point as $mvt_points){
-                            echo '+'.$mvt_points->label.' ';
+                        $nbr =0;
+                        foreach ($mvt_point as $point){
+                            $nbr++;
+
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->label.' pts '.'['.$point->typePTS.'] '.'</br>';
+                            if($nbr==intdiv(sizeof($mvt_point),2))  {
+                                echo '</p>';
+                                echo '<p>';
+                            }
                         }
                     ?>
                 </p>
