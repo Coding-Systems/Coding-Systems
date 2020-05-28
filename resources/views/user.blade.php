@@ -286,6 +286,10 @@
                             }
                         }
 
+                    if (sizeof($mvt_point)==0) {
+                        echo "Il n'y a encore rien à afficher ici !";
+                    }
+
                         $nbr =0;
                         foreach ($mvt_point as $point){
                             $nbr++;
