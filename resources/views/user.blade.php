@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =9;
+    $idUser =5;
 ?>
 
 <head>
@@ -27,14 +27,13 @@
 
     <div id="user">
 
-
         <?php
 
-        $mvt_point = DB::select('SELECT first_name, last_name
+        $userName = DB::select('SELECT first_name, last_name
             FROM users
             WHERE id = :id', ['id' => $idUser]);
 
-        foreach ($mvt_point as $user){
+        foreach ($userName as $user){
             echo '<h1>'.$user->first_name." ".$user->last_name.'</h1>';
         }
         ?>
@@ -49,12 +48,10 @@
                     ON users.house_id = houses.id
                 WHERE users.id =:id', ['id' => $idUser]);
 
-            echo sizeof($mvt_point[0]->hName) ;
+
             echo '<img id="logoUser" ';
 
-
-            /*
-            if(sizeof($mvt_point[0]->hName)>0){
+            if(isset($mvt_point[0]->hName)){
                 switch ($mvt_point[0]->hName){
                     case 'Crackend' :
                         echo 'src="img/logoCrackend.png"';
@@ -69,10 +66,7 @@
                         echo 'src="img/logo.png"';
                 }
             }
-            */
-            if(true){
-                
-            }
+
             else {
                 echo 'src="img/logo.png"';
             }
@@ -88,14 +82,36 @@
             <div>
                 <p id="stats">
                     <h2>Statistiques</h2>
-                    Total de points :
-                    <br>Défis lancés :
-                    <br>Défis gagnés :
-                    <br>Classement général :
-                    <br>Classement maison :
-                    <br>
-                    <br>Points donnés :
-                    <br>Event organisés :
+
+                <?php
+
+                $userType = DB::select('SELECT statut
+                    FROM users
+                    WHERE id = :id', ['id' => $idUser]);
+
+                    if($userType[0]->statut=='PO'){
+                        echo'<br>Points donnés : ';
+
+                        $givenPts = DB::select('SELECT SUM(label) AS pts
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.professor_id
+                            WHERE users.id= :id ', ['id' => $idUser]);
+
+                        echo $givenPts[0]->pts." pts";
+
+
+                        echo '<br>Event organisés : ';
+                    }
+                    else {
+                        echo '<br>Total de points : ';
+                        echo '<br>Défis lancés :';
+                        echo '<br>Défis gagnés :';
+                        echo '<br>Classement général :';
+                        echo '<br>Classement maison :';
+                    }
+                ?>
+
                     <br>
                 </p>
             </div>
@@ -144,6 +160,32 @@
             <section id="history">
                 <p>
                     <?php
+
+                    if($userType[0]->statut=='PO'){
+                        $mvt_point = DB::select('SELECT * , type_points.name AS typePTS, student.first_name as sName
+                            FROM mvt_points
+                            LEFT JOIN users as PO
+                                ON PO.id = mvt_points.professor_id
+                            LEFT JOIN users as student
+                                ON student.id = mvt_points.users_id
+                            LEFT JOIN type_points
+                                ON type_points.id = mvt_points.type_point_id
+                            WHERE PO.id = :id
+                            ORDER BY mvt_points.created_at DESC  ', ['id' => $idUser]);
+
+                        $nbr =0;
+                        foreach ($mvt_point as $point){
+                            $nbr++;
+
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->label.' pts '.'['.$point->sName.'] '.'</br>';
+                            if($nbr==intdiv(sizeof($mvt_point),2))  {
+                                echo '</p>';
+                                echo '<p>';
+                            }
+                        }
+                    }
+
+                    else {
                         $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
                             FROM mvt_points
                             LEFT JOIN users
@@ -163,6 +205,8 @@
                                 echo '<p>';
                             }
                         }
+                    }
+
                     ?>
                 </p>
             </section>
@@ -171,15 +215,9 @@
                 <div style="z-index: 999999" class="mypanel"></div>
             </section>
 
-
-
         </div>
 
-
     </div>
-
-
-
 
 </section>
 
