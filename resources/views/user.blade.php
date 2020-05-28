@@ -70,11 +70,9 @@
                 WHERE users.id =:id', ['id' => $idUser]);
                 echo $logoLvl[0]->logo_lvl.'.png"';
             }
-
             else {
                 echo ' src="img/logo.png"';
             }
-
             echo ' alt="logo">';
 
             ?>
@@ -299,7 +297,6 @@
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';
-
                             }
                         }
 
