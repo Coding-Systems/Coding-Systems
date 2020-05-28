@@ -58,13 +58,23 @@ use Illuminate\Support\Facades\DB;
                 }
 
                 if($house->hname=='Crackend'){
-                    echo 'src="img/logoCrackend.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoCrackend_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Crackend" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+
+                    echo' alt="logo de la maison"> ';
                 }
                 else if ($house->hname=='PhoeniXML'){
-                    echo 'src="img/logoPhoenixml.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoPhoenixml';
+
+                    echo'.png" alt="logo de la maison"> ';
                 }
                 else if ($house->hname=='Gitsune'){
-                    echo 'src="img/logoGitsune.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoGitsune';
+
+                    echo '.png" alt="logo de la maison"> ';
                 }
                 else {
                     echo 'src="img/logo.png" alt="logo"> ';
