@@ -126,13 +126,28 @@
                 }
 
                 if($house->hname=='Crackend'){
-                    echo 'src="img/logoCrackend.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoCrackend_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Crackend" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
                 }
                 else if ($house->hname=='PhoeniXML'){
-                    echo 'src="img/logoPhoenixml.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoPhoeniXML_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "PhoeniXML" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
                 }
                 else if ($house->hname=='Gitsune'){
-                    echo 'src="img/logoGitsune.png" alt="logo de la maison"> ';
+                    echo 'src="img/logoGitsune_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Gitsune" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
                 }
                 else {
                     echo 'src="img/logo.png" alt="logo"> ';
@@ -161,7 +176,7 @@
                 if(isset($_POST['rank'])){
                     switch ($_POST['rank']){
                         case 'ptsPO' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
                             FROM mvt_points
                             LEFT JOIN users
                             	ON users.id = mvt_points.users_id
@@ -176,7 +191,7 @@
                             break;
 
                         case 'ptsDefi' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
                             FROM mvt_points
                             LEFT JOIN users
                             	ON users.id = mvt_points.users_id
@@ -191,7 +206,7 @@
                             break;
 
                         case 'ptsNote' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
                             FROM mvt_points
                             LEFT JOIN users
                             	ON users.id = mvt_points.users_id
@@ -205,7 +220,7 @@
                             break;
 
                         default :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
                             FROM mvt_points
                             LEFT JOIN users
                             ON users.id = mvt_points.users_id
@@ -216,7 +231,7 @@
                     }
                 }
                 else{
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
                             FROM mvt_points
                             LEFT JOIN users
                             ON users.id = mvt_points.users_id
@@ -235,14 +250,27 @@
                         $rank++;
 
                         if($users->hname=='Crackend'){
-                            echo '<img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> ';
-                        }
+                            echo '<img class="houseIcon" src="img/logoCrackend_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';                        }
                         else if ($users->hname=='PhoeniXML'){
-                            echo '<img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> ';
+                            echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';
                         }
                         else if ($users->hname=='Gitsune'){
-                            echo '<img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> ';
-                        }
+                            echo '<img class="houseIcon" src="img/logoGitsune_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';                        }
                         else {
                             echo '<img id="logoHeader" src="img/logo.png" alt="logo"> ';
                         }
