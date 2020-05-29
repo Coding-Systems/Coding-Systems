@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =9;
+    $idUser =6;
 ?>
 
 <head>
