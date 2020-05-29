@@ -57,7 +57,7 @@ use Illuminate\Support\Facades\DB;
                 <select id="triMembre1" name="triMembre1">
                     <option value="alpha">Ordre alphabétique</option>
                     <option value="NbPoints">Nombre de points</option>
-                    <option value="NbDefis">Nombre de défis gagnés</option>
+                    <option value="ptsDefis">Points de défis</option>
                 </select>
                 <button>Valider</button>
             </form>
@@ -70,15 +70,10 @@ use Illuminate\Support\Facades\DB;
                 if(isset($_POST['triMembre1'])){
                     switch ($_POST['triMembre1']){
                         case 'alpha' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 1
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY users.first_name ASC', ['id' => 1]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=1
+                                 ORDER BY users.first_name ASC');
                             break;
                             /*
                         case 'NbPoints'  :
@@ -92,38 +87,24 @@ use Illuminate\Support\Facades\DB;
                                         GROUP BY mvt_points.users_id
                                         ORDER BY pts DESC', ['id' => 1]);
                             break;*/
-                        case 'NbDefis' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 1
-                                        GROUP BY mvt_points.users_id', ['id' => 1]);
+                        case 'ptsDefis' :
+                            $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=1
+                                 ORDER BY pts DESC');
                             break;
                         default :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 1
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 1]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                             FROM users
+                             WHERE house_id=1
+                             ORDER BY pts DESC');
                     }
                 }
                 else {
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 1
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 1]);
+                    $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                             FROM users
+                             WHERE house_id=1
+                             ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
@@ -182,7 +163,7 @@ use Illuminate\Support\Facades\DB;
               <select id="triMembre3" name="triMembre3">
                   <option value="alpha">Ordre alphabétique</option>
                   <option value="NbPoints">Nombre de points</option>
-                  <option value="NbDefis">Nombre de défis gagnés</option>
+                  <option value="ptsDefis">Points de défis</option>
               </select>
               <button>Valider</button>
           </form>
@@ -193,60 +174,29 @@ use Illuminate\Support\Facades\DB;
                 if(isset($_POST['triMembre3'])){
                     switch ($_POST['triMembre3']){
                         case 'alpha' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 3
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY users.first_name ASC', ['id' => 3]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=3
+                                 ORDER BY users.first_name ASC');
                             break;
-                            /*
-                        case 'NbPoints'  :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 3
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 3]);
-                            break;*/
-                        case 'NbDefis' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 3
-                                        GROUP BY mvt_points.users_id', ['id' => 3]);
+                        case 'ptsDefis' :
+                            $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=3
+                                 ORDER BY pts DESC');
                             break;
                         default :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 3
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 3]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=3
+                                 ORDER BY pts DESC');
                     }
                 }
                 else {
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 3
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 3]);
+                    $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=3
+                                 ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
@@ -303,7 +253,7 @@ use Illuminate\Support\Facades\DB;
           <select id="triMembre2" name="triMembre2">
             <option value="alpha">Ordre alphabétique</option>
             <option value="NbPoints">Nombre de points</option>
-            <option value="NbDefis">Nombre de défis gagnés</option>
+            <option value="ptsDefis">Points de défis</option>
           </select>
           <button>Valider</button>
         </form>
@@ -314,59 +264,28 @@ use Illuminate\Support\Facades\DB;
                 if(isset($_POST['triMembre2'])){
                     switch ($_POST['triMembre2']){
                         case 'alpha' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 2
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY users.first_name ASC', ['id' => 2]);
-                            break;
-                        /*case 'NbPoints'  :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 2
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 2]);
-                            break;*/
-                        case 'NbDefis' :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 2
-                                        GROUP BY mvt_points.users_id', ['id' => 2]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                             FROM users
+                             WHERE house_id=2
+                             ORDER BY users.first_name ASC');
+                        case 'ptsDefis' :
+                            $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=2
+                                 ORDER BY pts DESC');
                             break;
                         default :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 2
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 2]);
+                            $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=2
+                                 ORDER BY pts DESC');
                     }
                 }
                 else {
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN houses
-                                            ON houses.id = users.house_id
-                                        WHERE houses.id = 2
-                                        GROUP BY mvt_points.users_id
-                                        ORDER BY pts DESC', ['id' => 2]);
+                    $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
+                                 FROM users
+                                 WHERE house_id=2
+                                 ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
