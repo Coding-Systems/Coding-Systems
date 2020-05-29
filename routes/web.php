@@ -48,6 +48,9 @@ Route::match(['get', 'post'],'/utilisateur', function () {
 Route::get('/quizz', function () {
     return view('quizz');
 });
+Route::get('/loginregister.blade.php', function () {
+    return view('loginregister');
+});
 
 Route::match(['get', 'post'],'/ajout', function () {
     return view('addingPoints');
