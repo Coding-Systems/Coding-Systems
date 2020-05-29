@@ -75,15 +75,48 @@ if(isset($_POST['envoi'])){
       date_default_timezone_set('Europe/Paris');
       $date = date("Y-m-d H:i:s");
 
-            DB::table('mvt_points')->insert(
+           
+      $student_points = DB::table('users')
+      ->select('users.id', 'users.total_pts', 'users.total_pts_po')
+      ->where('id', $student_id)
+      ->get();
+      
+      foreach ($student_points as $add) {
+            $total_points = $add->total_pts;
+            echo $total_points;
+      }
+
+      $type_Po = DB::table('type_points')
+      ->select ('type_points.type', 'type_points.id')
+      ->where ('id', $challenge_id )
+      ->get ();
+      
+      foreach ($type_Po as $type) {
+            $type_test = $type->type;
+            echo $type_test;
+      }
+
+     if ($type_test=="PO"){
+      DB::table('mvt_points')->insert(
+            array(
+                  'label' => "$nbr_points",
+                  'users_id' => "$student_id",
+                  'type_point_id' => "$challenge_id",
+                  'created_at' => "$date"
+            )
+            );
+            };
+           /* DB::table('users')->DB::update(
                   array(
-                        'label' => "$nbr_points",
-                        'users_id' => "$student_id",
-                        'type_point_id' => "$challenge_id",
-                        'created_at' => "$date"
+                        
                   )
                   );
-      };
+                  };*/
+     }
+     else if ($type_test=="event"){
+           echo "TAMERE";
+     };
+           
 
 ?>
 </section>
