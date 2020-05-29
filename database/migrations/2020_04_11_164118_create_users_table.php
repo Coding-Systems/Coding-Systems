@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->string('statut', 15);
             $table->foreignId('house_id')->nullable($value = true);
             $table->string('password');
-            $table->mediumInteger('total_tps')->default(0);
-            $table->mediumInteger('total_tps_note')->default(0);
-            $table->mediumInteger('total_tps_po')->default(0);
-            $table->mediumInteger('total_tps_defi')->default(0);
+            $table->mediumInteger('total_pts')->default(0);
+            $table->mediumInteger('total_pts_note')->default(0);
+            $table->mediumInteger('total_pts_po')->default(0);
+            $table->mediumInteger('total_pts_defi')->default(0);
             $table->mediumInteger('total_given_pts')->default(0);
             $table->tinyInteger('logo_lvl')->default(1);
             $table->smallInteger('year');
