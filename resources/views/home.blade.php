@@ -37,7 +37,6 @@ use Illuminate\Support\Facades\DB;
 
             $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
                 FROM houses
-                GROUP BY houses.id
                 ORDER BY pts DESC');
 
             $rank=0;
@@ -132,7 +131,7 @@ use Illuminate\Support\Facades\DB;
                     else {
                         echo '<img class="houseIcon" src="img/logo.png" alt="logo">';
                     }
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " pts [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";

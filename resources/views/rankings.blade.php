@@ -52,64 +52,30 @@
             if(isset($_POST['rank'])){
                 switch ($_POST['rank']){
                     case 'ptsPO' :
-                        $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN houses
-                                ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="PO"
-                            GROUP BY houses.id
-                            ORDER BY pts DESC', ['id' => 1]);
+                        $results = DB::select('SELECT total_pts_po AS pts, houses.name AS hname
+                            FROM houses
+                            ORDER BY pts DESC');
                         break;
                     case 'ptsDefi'  :
-                         $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN houses
-                                ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="defi"
-                            GROUP BY houses.id
-                            ORDER BY pts DESC', ['id' => 1]);
+                        $results = DB::select('SELECT total_pts_defi AS pts, houses.name AS hname
+                             FROM houses
+                             ORDER BY pts DESC');
                         break;
                     case 'ptsNote' :
-                         $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN houses
-                                ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="note"
-                            GROUP BY houses.id
-                            ORDER BY pts DESC', ['id' => 1]);
+                         $results = DB::select('SELECT total_pts_note AS pts, houses.name AS hname
+                            FROM houses
+                            ORDER BY pts DESC');
                         break;
                     default :
-                         $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN houses
-                                ON houses.id = users.house_id
-                            GROUP BY houses.id
-                            ORDER BY pts DESC', ['id' => 1]);
+                        $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
+                            FROM houses
+                            ORDER BY pts DESC');
                 }
             }
             else {
-                $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN houses
-                                ON houses.id = users.house_id
-                            GROUP BY houses.id
-                            ORDER BY pts DESC', ['id' => 1]);
+                $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
+                     FROM houses
+                     ORDER BY pts DESC');
             }
 
             $rank=0;
@@ -176,69 +142,53 @@
                 if(isset($_POST['rank'])){
                     switch ($_POST['rank']){
                         case 'ptsPO' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM mvt_points
-                            LEFT JOIN users
-                            	ON users.id = mvt_points.users_id
+                            $results = DB::select('SELECT users.total_pts_po AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM users
                             LEFT JOIN houses
                             	ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="PO"
-                            GROUP BY mvt_points.users_id
-                            ORDER BY pts DESC', ['id' => 1]);
-                            break;
+                            WHERE users.statut="student"
+                            GROUP BY users.id
+                            ORDER BY pts DESC');
                             break;
 
                         case 'ptsDefi' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM mvt_points
-                            LEFT JOIN users
-                            	ON users.id = mvt_points.users_id
+                            $results = DB::select('SELECT users.total_pts_defi AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM users
                             LEFT JOIN houses
                             	ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="defi"
-                            GROUP BY mvt_points.users_id
-                            ORDER BY pts DESC', ['id' => 1]);
-                            break;
+                            WHERE users.statut="student"
+                            GROUP BY users.id
+                            ORDER BY pts DESC');
                             break;
 
                         case 'ptsNote' :
-                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM mvt_points
-                            LEFT JOIN users
-                            	ON users.id = mvt_points.users_id
+                            $results = DB::select('SELECT users.total_pts_note AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM users
                             LEFT JOIN houses
                             	ON houses.id = users.house_id
-                            LEFT JOIN type_points
-                            	ON type_points.id = mvt_points.type_point_id
-                            WHERE type_points.type="note"
-                            GROUP BY mvt_points.users_id
-                            ORDER BY pts DESC', ['id' => 1]);
+                            WHERE users.statut="student"
+                            GROUP BY users.id
+                            ORDER BY pts DESC');
                             break;
 
                         default :
-                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM mvt_points
-                            LEFT JOIN users
-                            ON users.id = mvt_points.users_id
+                            $results = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM users
                             LEFT JOIN houses
-                            ON houses.id = users.house_id
-                            GROUP BY mvt_points.users_id
-                            ORDER BY pts DESC', ['id' => 1]);
+                            	ON houses.id = users.house_id
+                            WHERE users.statut="student"
+                            GROUP BY users.id
+                            ORDER BY pts DESC');
                     }
                 }
                 else{
-                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM mvt_points
-                            LEFT JOIN users
-                            ON users.id = mvt_points.users_id
+                    $results = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM users
                             LEFT JOIN houses
-                            ON houses.id = users.house_id
-                            GROUP BY mvt_points.users_id
-                            ORDER BY pts DESC', ['id' => 1]);
+                            	ON houses.id = users.house_id
+                            WHERE users.statut="student"
+                            GROUP BY users.id
+                            ORDER BY pts DESC');
                 }
 
                 if (sizeof($results)==0) {
@@ -276,7 +226,7 @@
                         }
 
 
-                        echo $rank .'. '. $users->first_name . ' : ' . $users->pts . "pts<br/>";
+                        echo $rank .'. '. $users->first_name . ' : ' . $users->pts . " pts<br/>";
 
                         if(intdiv(sizeof($results),2)==$rank){
                             echo "</p>";
