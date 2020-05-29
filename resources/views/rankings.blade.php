@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+    <?php
+        use Illuminate\Support\Facades\DB;
+        ?>
+
+
 <head>
     <meta charset="UTF-8">
     <title>Coding house</title>
@@ -27,12 +32,13 @@
 
         <h1>Classement</h1>
 
-        <form class="triHouseRankForm">
-            <select>
-                <option>Nombre de points gagnés avec les défis</option>
-                <option>Nombre de points gagnés avec les challenges</option>
-                <option>Nombre de défis gagnés</option>
-                <option>Nombre de challenges gagnés</option>
+        <form method="post" class="triHouseRankForm">
+            {{ csrf_field() }}
+            <select id="rank" name="rank">
+                <option value="all">Tout les points</option>
+                <option value="ptsPO">Points gagnés avec PO</option>
+                <option value="ptsDefi">Points gagnés avec les défis</option>
+                <option value="ptsNote">Points gagnés avec les notes</option>
             </select>
             <button>Valider</button>
         </form>
@@ -41,21 +47,119 @@
 
         <section id=logoHousesPodium>
 
-            <section>
-                <img class="logoPodium" src="img/logoGitsune.png" alt="logo de la maison">
-                <p class="numberRanking">2</p>
-                <p>486 pts</p>
-            </section>
-            <section>
-                <img class="logoPodiumFirst" src="img/logoPhoenixml.png" alt="logo de la maison">
-                <p class="numberRanking">1</p>
-                <p>587 pts</p>
-            </section>
-            <section>
-                <img class="logoPodium" src="img/logoCrackend.png" alt="logo de la maison">
-                <p class="numberRanking">3</p>
-                <p>284 pts</p>
-            </section>
+            <?php
+
+            if(isset($_POST['rank'])){
+                switch ($_POST['rank']){
+                    case 'ptsPO' :
+                        $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                                ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="PO"
+                            GROUP BY houses.id
+                            ORDER BY pts DESC', ['id' => 1]);
+                        break;
+                    case 'ptsDefi'  :
+                         $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                                ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="defi"
+                            GROUP BY houses.id
+                            ORDER BY pts DESC', ['id' => 1]);
+                        break;
+                    case 'ptsNote' :
+                         $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, houses.name AS hname
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                                ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="note"
+                            GROUP BY houses.id
+                            ORDER BY pts DESC', ['id' => 1]);
+                        break;
+                    default :
+                         $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                                ON houses.id = users.house_id
+                            GROUP BY houses.id
+                            ORDER BY pts DESC', ['id' => 1]);
+                }
+            }
+            else {
+                $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
+                            FROM mvt_points
+                            LEFT JOIN users
+                                ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                                ON houses.id = users.house_id
+                            GROUP BY houses.id
+                            ORDER BY pts DESC', ['id' => 1]);
+            }
+
+            $rank=0;
+
+            foreach ($results as $house){
+                $rank++;
+                echo '<section>';
+
+                if($rank==1){
+                    echo '<img class="logoPodiumFirst logoP"';
+                }
+                else {
+                    echo '<img class="logoPodium logoP"' ;
+                }
+
+                if($house->hname=='Crackend'){
+                    echo 'src="img/logoCrackend_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Crackend" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='PhoeniXML'){
+                    echo 'src="img/logoPhoeniXML_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "PhoeniXML" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='Gitsune'){
+                    echo 'src="img/logoGitsune_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Gitsune" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else {
+                    echo 'src="img/logo.png" alt="logo"> ';
+                }
+
+
+                echo '<p class="numberRanking">'.$rank.'</p>';
+                echo '<p>'.$house->pts.' pts</p>';
+                echo '</section>';
+            }
+
+            ?>
 
         </section>
 
@@ -65,30 +169,123 @@
         <h2>Classement solo</h2>
 
         <section id=rankingNamesUsers>
+
             <p>
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 1. Alyssia : 67 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 2. blublu : 65 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 3. blibli : 54 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 4. blublu : 53 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 5. blibli : 45 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 6. blublu : 45 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 7. blibli : 41 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 8. blublu : 39 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 9. blibli : 37 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 10. blublu : 34 pts
+                <?php
+
+                if(isset($_POST['rank'])){
+                    switch ($_POST['rank']){
+                        case 'ptsPO' :
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM mvt_points
+                            LEFT JOIN users
+                            	ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            	ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="PO"
+                            GROUP BY mvt_points.users_id
+                            ORDER BY pts DESC', ['id' => 1]);
+                            break;
+                            break;
+
+                        case 'ptsDefi' :
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM mvt_points
+                            LEFT JOIN users
+                            	ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            	ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="defi"
+                            GROUP BY mvt_points.users_id
+                            ORDER BY pts DESC', ['id' => 1]);
+                            break;
+                            break;
+
+                        case 'ptsNote' :
+                            $results = DB::select('SELECT SUM(DISTINCT mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM mvt_points
+                            LEFT JOIN users
+                            	ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            	ON houses.id = users.house_id
+                            LEFT JOIN type_points
+                            	ON type_points.id = mvt_points.type_point_id
+                            WHERE type_points.type="note"
+                            GROUP BY mvt_points.users_id
+                            ORDER BY pts DESC', ['id' => 1]);
+                            break;
+
+                        default :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM mvt_points
+                            LEFT JOIN users
+                            ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            ON houses.id = users.house_id
+                            GROUP BY mvt_points.users_id
+                            ORDER BY pts DESC', ['id' => 1]);
+                    }
+                }
+                else{
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
+                            FROM mvt_points
+                            LEFT JOIN users
+                            ON users.id = mvt_points.users_id
+                            LEFT JOIN houses
+                            ON houses.id = users.house_id
+                            GROUP BY mvt_points.users_id
+                            ORDER BY pts DESC', ['id' => 1]);
+                }
+
+                if (sizeof($results)==0) {
+                    echo "Il n'y a encore rien à afficher ici !";
+                }
+
+                    $rank = 0;
+                    foreach ($results as $users) {
+                        $rank++;
+
+                        if($users->hname=='Crackend'){
+                            echo '<img class="houseIcon" src="img/logoCrackend_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';                        }
+                        else if ($users->hname=='PhoeniXML'){
+                            echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';
+                        }
+                        else if ($users->hname=='Gitsune'){
+                            echo '<img class="houseIcon" src="img/logoGitsune_';
+                            $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                            echo $logoLvl[0]->logo_lvl.'.png"';
+                            echo' alt="logo de la maison"> ';                        }
+                        else {
+                            echo '<img id="logoHeader" src="img/logo.png" alt="logo"> ';
+                        }
+
+
+                        echo $rank .'. '. $users->first_name . ' : ' . $users->pts . "pts<br/>";
+
+                        if(intdiv(sizeof($results),2)==$rank){
+                            echo "</p>";
+                            echo "<p>";
+                        }
+                    }
+                ?>
             </p>
-            <p>
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 11. blibli : 30 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 12. blublu pts : 29 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 13. blibli : 24 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 14. blublu : 23 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 15. blibli : 21 pts
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> 16. blublu : 20 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 17. blibli : 18 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 18. blublu : 16 pts
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> 19. blibli : 17 pts
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> 20. blublu : 6 pts
-            </p>
+
         </section>
 
     </section>

@@ -38,8 +38,20 @@ section #rankings {
     align-items: flex-end;
 }
 
-.logoPodium {
+#logoHousesPodium section:nth-of-type(1){
+    order :2;
+    -webkit-order : 2;
+}
+#logoHousesPodium section:nth-of-type(2){
+    order : 1;
+    -webkit-order : 1;
+}
+#logoHousesPodium section:nth-of-type(3){
+    order : 3;
+    -webkit-order : 3;
+}
 
+.logoPodium {
     height: 125px;
     width: 125px;
 }
@@ -69,4 +81,10 @@ section #rankings {
 
 .triHouseRankForm button:hover {
     background-color: #7d838a;
+}
+
+.houseIcon {
+    height: 40px;
+    width: 40px;
+    vertical-align: text-bottom;
 }

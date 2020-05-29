@@ -11,7 +11,23 @@ class CreateMvtPointTable extends Migration
      *
      * @return void
      */
+
     public function up()
+    {
+        Schema::create('mvt_points', function (Blueprint $table) {
+            $table->id();
+            $table->text('label');
+            $table->foreignId('users_id');
+            $table->foreignId('professor_id')->nullable();
+            $table->foreignId('type_point_id');
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('type_point_id')->references('id')->on('type_points')->onDelete('cascade');;
+        });
+    }
+
+    /*public function up()
     {
         Schema::create('mvt_points', function (Blueprint $table) {
             $table->id();
@@ -23,6 +39,7 @@ class CreateMvtPointTable extends Migration
             $table->timestamps();
         });
     }
+    */
 
     /**
      * Reverse the migrations.

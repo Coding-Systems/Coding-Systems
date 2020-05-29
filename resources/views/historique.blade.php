@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+    use Illuminate\Support\Facades\DB;
+     ?>
 
 <head>
     <meta charset="UTF-8">
@@ -33,41 +36,140 @@
         <img id="H" src="img/logo.png" alt="image de la maison">
         </div>
         <label>
-            <select>
-                <option>Tout</option>
-                <option>Gitsune</option>
-                <option>Crack'end</option>
-                <option>PhoeniXML</option>
-                <option>Défis</option>
-                <option>Events</option>
-            </select>
+        <form method="post">
+        {{ csrf_field() }}
+            <select id="selectHisto" name="histo">
+                    <option value="all">Tout</option>
+                    <option value="gitsune">Gitsune</option>
+                    <option value="crackend">Crack'end</option>
+                    <option value="phoenixml">PhoeniXML</option>
+                    <option value="defis">Défis</option>
+                    <option value="events">Events</option>
+                </select>
+                <input type="submit">
+            </form>
         </label>
     </div>
     <section id=history>
-        <p>
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Alyssia : +100 [Parceque j'ai décidé]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marion : +100 [C'est une déesse]
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Hugo : -10 [Aime pas les kinders]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Houssam : -1 [Animations abusives]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Emerick : -34 [Outrage à Frozen]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Gwenael : +6 [Notes]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Maxence : +5 [Notes]
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Jonathan : +30 [Défis : PFC]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Juan : -20 [Outrage à la coiffure]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Dylan : -5 [Abandon de la Coding]
+         <p>
+            <?php
+
+    if(isset($_POST['histo'])){
+        if($_POST['histo']=="all"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+        elseif($_POST['histo']=="gitsune"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->where ('houses.name', 'Gitsune')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+        elseif($_POST['histo']=="crackend"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->where ('houses.name', 'Crackend')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+        elseif($_POST['histo']=="phoenixml"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->where ('houses.name', 'phoeniXML')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+        elseif($_POST['histo']=="defis"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->where ('type_points.type', 'defi')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+        elseif($_POST['histo']=="events"){
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->where ('type_points.type', 'events')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+        }
+    }
+
+    else{
+            $mvt_points = DB::table('mvt_points')
+            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+            ->join ('houses', 'users.house_id', '=', 'houses.id')
+            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+            ->orderBy ('mvt_points.created_at')
+            ->get();
+
+            }
+        if ($mvt_points->isEmpty()) {
+            echo "Il n'y a encore rien à afficher ici !";
+        }
+        else {
+            $rank=0;
+        foreach ($mvt_points as $user) {
+            $rank++;
+            if($user->hname=='Crackend'){
+                echo '<img class="houseIcon" src="img/logoCrackend_';
+                $logoLvl = DB::select('SELECT logo_lvl
+                    FROM users
+                    WHERE users.id = :id',['id' => $user->idUser] );
+                echo $logoLvl[0]->logo_lvl.'.png"';
+                echo' alt="logo de la maison"> ';            }
+            else if ($user->hname=='PhoeniXML'){
+                echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                $logoLvl = DB::select('SELECT logo_lvl
+                    FROM users
+                    WHERE users.id = :id',['id' => $user->idUser] );
+                echo $logoLvl[0]->logo_lvl.'.png"';
+                echo' alt="logo de la maison"> ';
+            }
+            else if ($user->hname=='Gitsune'){
+                echo '<img class="houseIcon" src="img/logoGitsune_';
+                $logoLvl = DB::select('SELECT logo_lvl
+                    FROM users
+                    WHERE users.id = :id',['id' => $user->idUser] );
+                echo $logoLvl[0]->logo_lvl.'.png"';
+                echo' alt="logo de la maison"> ';            }
+            else {
+                echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
+            }
+            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
+            echo '<br/>';
+            if(intdiv(sizeof($mvt_points),2)==$rank){
+                echo "</p>";
+                echo "<p>";
+            }
+        }
+    }
+            ?>
         </p>
-        <p>
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Marie : +5 [Défis]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marine : +30 [Event]
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Corentin +9 [Défis : Smash]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Brian : +20 [Defis : Smash]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Anthony : +7 [Notes]
-            <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Corentin : -1 [Clochette]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Eddy : +5 [Défis : Bottle Flip]
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Roman : +10 [Défis : Rubik's Cube]
-            <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blibli : +4 [PO]
-            <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +1 [Défis]
-        </p>
+
+
     </section>
 
 </section>
@@ -78,3 +180,4 @@
 </body>
 
 </html>
+

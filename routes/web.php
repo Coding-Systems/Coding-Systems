@@ -29,11 +29,11 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/historique', function () {
+Route::match(['get', 'post'],'/historique', function () {
     return view('historique');
 });
 
-Route::get('/classements', function () {
+Route::match(['get', 'post'],'/classements', function () {
     return view('rankings');
 });
 
@@ -47,4 +47,8 @@ Route::match(['get', 'post'],'/utilisateur', function () {
 
 Route::get('/quizz', function () {
     return view('quizz');
+});
+
+Route::match(['get', 'post'],'/ajout', function () {
+    return view('addingPoints');
 });

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+use Illuminate\Support\Facades\DB;
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -30,21 +33,64 @@
 
         <section id=logoHousesPodium>
 
-            <section>
-                <img class="logoPodium" src="img/logoGitsune.png" alt="logo de la maison">
-                <p class="numberRanking">2</p>
-                <p>486 pts</p>
-            </section>
-            <section>
-                <img class="logoPodiumFirst" src="img/logoPhoenixml.png" alt="logo de la maison">
-                <p class="numberRanking">1</p>
-                <p>587 pts</p>
-            </section>
-            <section>
-                <img class="logoPodium" src="img/logoCrackend.png" alt="logo de la maison">
-                <p class="numberRanking">3</p>
-                <p>284 pts</p>
-            </section>
+            <?php
+
+            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
+                FROM mvt_points
+                LEFT JOIN users
+                    ON users.id = mvt_points.users_id
+                LEFT JOIN houses
+                    ON houses.id = users.house_id
+                GROUP BY houses.id
+                ORDER BY pts DESC', ['id' => 1]);
+
+            $rank=0;
+
+            foreach ($results as $house){
+                $rank++;
+                echo '<section>';
+
+                if($rank==1){
+                    echo '<img class="logoPodiumFirst logoP"';
+                }
+                else {
+                    echo '<img class="logoPodium logoP"' ;
+                }
+
+                if($house->hname=='Crackend'){
+                    echo 'src="img/logoCrackend_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Crackend" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='PhoeniXML'){
+                    echo 'src="img/logoPhoeniXML_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "PhoeniXML" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else if ($house->hname=='Gitsune'){
+                    echo 'src="img/logoGitsune_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name = "Gitsune" ');
+                    echo $logoLvl[0]->logo_lvl.'.png"';
+                    echo' alt="logo de la maison"> ';
+                }
+                else {
+                    echo 'src="img/logo.png" alt="logo"> ';
+                }
+
+                echo '<p class="numberRanking">'.$rank.'</p>';
+                echo '<p>'.$house->pts.' pts</p>';
+                echo '</section>';
+            }
+
+            ?>
 
         </section>
 
@@ -54,29 +100,51 @@
         <h2>Historique des derniers points</h2>
 
         <section id=history>
-            <p>
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Alyssia : +100 [Parceque j'ai décidé]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marion : +100 [C'est une déesse]
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Hugo : -10 [Aime pas les kinders]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Houssam : -1 [Animations abusives]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Emerick : -34 [Outrage à Frozen]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Gwenael : +6 [Notes]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Maxence : +5 [Notes]
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Jonathan : +30 [Défis : PFC]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Juan : -20 [Outrage à la coiffure]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Dylan : -5 [Abandon de la Coding]
-            </p>
-            <p>
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Marie : +5 [Défis]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Marine : +30 [Event]
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Corentin +9 [Défis : Smash]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Brian : +20 [Defis : Smash]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Anthony : +7 [Notes]
-                <br/> <img class="houseIcon" src="img/logoGitsune.png" alt="logo de la maison"> [jour/heure] Corentin : -1 [Clochette]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] Eddy : +5 [Défis : Bottle Flip]
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] Roman : +10 [Défis : Rubik's Cube]
-                <br/> <img class="houseIcon" src="img/logoPhoenixml.png" alt="logo de la maison"> [jour/heure] blibli : +4 [PO]
-                <br/> <img class="houseIcon" src="img/logoCrackend.png" alt="logo de la maison"> [jour/heure] blublu : +1 [Défis]
+        <p>
+        <?php
+                $rank=0;
+                $mvt_points = DB::table('mvt_points')
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*' , 'users.id AS idUser')
+                ->orderBy ('mvt_points.created_at')
+                ->get();
+                foreach ($mvt_points as $user) {
+                    $rank++;
+                    if($user->hname=='Crackend'){
+                        echo '<img class="houseIcon" src="img/logoCrackend_';
+                        $logoLvl = DB::select('SELECT logo_lvl
+                            FROM users
+                            WHERE users.id = :id',['id' => $user->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                        echo' alt="logo de la maison"> ';                    }
+                    else if ($user->hname=='PhoeniXML'){
+                        echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                        $logoLvl = DB::select('SELECT logo_lvl
+                            FROM users
+                            WHERE users.id = :id',['id' => $user->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                        echo' alt="logo de la maison"> ';                        }
+                    else if ($user->hname=='Gitsune'){
+                        echo '<img class="houseIcon" src="img/logoGitsune_';
+                        $logoLvl = DB::select('SELECT logo_lvl
+                            FROM users
+                            WHERE users.id = :id',['id' => $user->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                        echo' alt="logo de la maison"> ';                        }
+                    else {
+                        echo '<img class="houseIcon" src="img/logo.png" alt="logo">';
+                    }
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
+                    echo '<br/>';
+                    if(intdiv(sizeof($mvt_points),2)==$rank){
+                        echo "</p>";
+                        echo "<p>";
+                    }
+                }
+
+            ?>
             </p>
         </section>
 
