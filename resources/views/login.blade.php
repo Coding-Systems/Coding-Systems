@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\DB;$numero = rand(0, 3);// un numero aléatoire d
         </br>
         <label class="password">Mot de passe
             <input type="text" name="setmdp" id="mdp" value=""/>
-        </label>
+        </label></br>
         <input type="submit" value="validé" name="submit"/>
         <button><span>MDP oublié</span></button>
 
