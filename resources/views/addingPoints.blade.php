@@ -75,32 +75,28 @@ if(isset($_POST['envoi'])){
       date_default_timezone_set('Europe/Paris');
       $date = date("Y-m-d H:i:s");
 
+           
       $student_points = DB::table('users')
       ->select('users.id', 'users.total_pts', 'users.total_pts_po')
       ->where('id', $student_id)
       ->get();
       
-      $type_Pts = DB::table('type_points')
-      ->select ('type_points.type', 'type_points.id')
-      ->where ('id', $challenge_id )
-      ->get ();
-
       foreach ($student_points as $add) {
             $total_points = $add->total_pts;
             echo $total_points;
       }
 
-      foreach ($student_points as $add){
-            $total_pts_po = $add->total_pts_po;
-            echo $total_pts_po;
-      }
+      $type_Po = DB::table('type_points')
+      ->select ('type_points.type', 'type_points.id')
+      ->where ('id', $challenge_id )
+      ->get ();
       
-      foreach ($type_Pts as $type) {
-            $type_select = $type->type;
-            echo $type_select;
+      foreach ($type_Po as $type) {
+            $type_test = $type->type;
+            echo $type_test;
       }
 
-     if ($type_select=="PO"){
+     if ($type_test=="PO"){
       DB::table('mvt_points')->insert(
             array(
                   'label' => "$nbr_points",
@@ -109,14 +105,18 @@ if(isset($_POST['envoi'])){
                   'created_at' => "$date"
             )
             );
-
-            DB::table('users')
-            ->where("id", $student_id)
-            ->update(
+            };
+           /* DB::table('users')->DB::update(
                   array(
-                        'total_pts'=> "$nbr_points"+"$total_points"
+                        
                   )
                   );
+                  };*/
+     }
+     else if ($type_test=="event"){
+           echo "TAMERE";
+     };
+           
 
                   DB::table('users')
                   ->where("id", $student_id)
