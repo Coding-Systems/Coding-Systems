@@ -35,14 +35,10 @@ use Illuminate\Support\Facades\DB;
 
             <?php
 
-            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, houses.name AS hname
-                FROM mvt_points
-                LEFT JOIN users
-                    ON users.id = mvt_points.users_id
-                LEFT JOIN houses
-                    ON houses.id = users.house_id
+            $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
+                FROM houses
                 GROUP BY houses.id
-                ORDER BY pts DESC', ['id' => 1]);
+                ORDER BY pts DESC');
 
             $rank=0;
 
