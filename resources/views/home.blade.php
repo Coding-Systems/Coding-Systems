@@ -99,12 +99,13 @@ use Illuminate\Support\Facades\DB;
         <?php
                 $rank=0;
                 $mvt_points = DB::table('mvt_points')
-                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*' , 'users.id AS idUser')
-                ->orderBy ('mvt_points.created_at', 'DESC')
-                ->get();
+                    ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                    ->join ('houses', 'users.house_id', '=', 'houses.id')
+                    ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                    ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*' , 'users.id AS idUser')
+                    ->orderBy ('mvt_points.created_at', 'DESC')
+                    ->limit(20)
+                    ->get();
                 foreach ($mvt_points as $user) {
                     $rank++;
                     if($user->hname=='Crackend'){

@@ -207,19 +207,8 @@
                             ->select ('student.first_name AS sName', 'type_points.name AS typePTS', 'mvt_points.*')
                             ->where('PO.id', $idUser)
                             ->orderBy ('mvt_points.created_at', 'DESC')
+                            ->limit(50)
                             ->get();
-/*
-                        $mvt_point = DB::select('SELECT * , type_points.name AS typePTS, student.first_name as sName
-                            FROM mvt_points
-                            LEFT JOIN users as PO
-                                ON PO.id = mvt_points.professor_id
-                            LEFT JOIN users as student
-                                ON student.id = mvt_points.users_id
-                            LEFT JOIN type_points
-                                ON type_points.id = mvt_points.type_point_id
-                            WHERE PO.id = :id
-                            ORDER BY mvt_points.created_at DESC  ', ['id' => $idUser]);
-                          */
 
                         $nbr =0;
                         foreach ($mvt_point as $point){
@@ -246,6 +235,7 @@
                                         ->where('users.id', $idUser)
                                         ->where ('type_points.type', 'PO')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->limit(50)
                                         ->get();
                                     break;
                                 case 'ptsDefi';
@@ -257,6 +247,7 @@
                                         ->where('users.id', $idUser)
                                         ->where ('type_points.type', 'defi')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->limit(50)
                                         ->get();
                                      break;
                                 case 'ptsNote' :
@@ -268,6 +259,7 @@
                                         ->where('users.id', $idUser)
                                         ->where ('type_points.type', 'note')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->limit(50)
                                         ->get();
                                     break;
                                 default :
@@ -278,6 +270,7 @@
                                         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
                                         ->where('users.id', $idUser)
                                         ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->limit(50)
                                         ->get();
                             }
                         }
@@ -289,6 +282,7 @@
                                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
                                 ->where('users.id', $idUser)
                                 ->orderBy ('mvt_points.created_at', 'DESC')
+                                ->limit(50)
                                 ->get();
                             }
 
