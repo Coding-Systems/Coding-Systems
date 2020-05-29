@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\DB;$numero = rand(0, 3);// un numero aléatoire d
                     $mdp = $_GET['setmdp'];
 
                     try {
-                        $bdd = new PDO('mysql:host=localhost:8889;dbname=coding_house;charset=utf8', 'root', 'coding');
+                        $bdd = new PDO('mysql:host=localhost:8889;dbname=coding_house;charset=utf8', 'root', 'root');
                         $results = DB::select('SELECT * FROM `users` where `mail`=' . '"' . $email . '"' . 'and `password`=' . '"' . $mdp . '"' . ';');
                     } catch (Exception $e) {
                         die('Erreur : ' . $e->getMessage());

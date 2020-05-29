@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
      ?>
 
@@ -57,73 +57,73 @@
     if(isset($_POST['histo'])){
         if($_POST['histo']=="all"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
         elseif($_POST['histo']=="gitsune"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->where ('houses.name', 'Gitsune')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('houses.name', 'Gitsune')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
         elseif($_POST['histo']=="crackend"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->where ('houses.name', 'Crackend')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('houses.name', 'Crackend')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
         elseif($_POST['histo']=="phoenixml"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->where ('houses.name', 'phoeniXML')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('houses.name', 'phoeniXML')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
         elseif($_POST['histo']=="defis"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->where ('type_points.type', 'defi')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('type_points.type', 'defi')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
         elseif($_POST['histo']=="events"){
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->where ('type_points.type', 'events')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('type_points.type', 'events')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
         }
     }
 
     else{
             $mvt_points = DB::table('mvt_points')
-            ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-            ->join ('houses', 'users.house_id', '=', 'houses.id')
-            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-            ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-            ->orderBy ('mvt_points.created_at')
-            ->get();
+                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->orderBy ('mvt_points.created_at', 'DESC')
+                ->get();
 
             }
         if ($mvt_points->isEmpty()) {

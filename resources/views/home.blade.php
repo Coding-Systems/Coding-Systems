@@ -108,7 +108,7 @@ use Illuminate\Support\Facades\DB;
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
                 ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*' , 'users.id AS idUser')
-                ->orderBy ('mvt_points.created_at')
+                ->orderBy ('mvt_points.created_at', 'DESC')
                 ->get();
                 foreach ($mvt_points as $user) {
                     $rank++;
