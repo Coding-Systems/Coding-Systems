@@ -80,7 +80,7 @@ if(isset($_POST['envoi'])){
       ->where('id', $student_id)
       ->get();
       
-      $type_Po = DB::table('type_points')
+      $type_Pts = DB::table('type_points')
       ->select ('type_points.type', 'type_points.id')
       ->where ('id', $challenge_id )
       ->get ();
@@ -95,12 +95,12 @@ if(isset($_POST['envoi'])){
             echo $total_pts_po;
       }
       
-      foreach ($type_Po as $type) {
-            $type_test = $type->type;
-            echo $type_test;
+      foreach ($type_Pts as $type) {
+            $type_select = $type->type;
+            echo $type_select;
       }
 
-     if ($type_test=="PO"){
+     if ($type_select=="PO"){
       DB::table('mvt_points')->insert(
             array(
                   'label' => "$nbr_points",
@@ -128,7 +128,7 @@ if(isset($_POST['envoi'])){
             }
 
             
-     else if($type_test=="events") {
+     else if($type_select=="events") {
       array(
             'label' => "$nbr_points",
             'users_id' => "$student_id",
