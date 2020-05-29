@@ -20,8 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('mail')->unique();
             $table->string('password');
             $table->integer('year');
-            $table->integer('points_up');
-            $table->integer('points_down');
             $table->foreignId('house_id');
             $table->timestamps();
         });

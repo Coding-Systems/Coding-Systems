@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
-
+<?php
+use Illuminate\Support\Facades\DB;
+?>
 <head>
   <meta charset="UTF-8">
   <title>Coding house</title>
@@ -21,7 +23,6 @@
   <div class="bg bg3"></div>
 
   <div class="card" id="Crackend_card">
-    <div class="cardContent">
       <h3 class="title">Crack'End</h3>
       <div class="bar">
         <div class="emptybar"></div>
@@ -30,7 +31,14 @@
       <div class="houseInfos">
         <section class="houseStory">
           <p>
-            <img class="houseIconStory" src="img/logoCrackend.png" alt="logo de la maison">
+              <?php
+              echo '<img class="houseIconStory" src="img/logoCrackend_';
+              $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name ="Crackend"');
+              echo $logoLvl[0]->logo_lvl;
+              echo '.png" alt="logo de la maison">'
+              ?>
           </p>
           <h2 class="secretTitle">Histoire</h2>
           <p class="story secret">
@@ -44,44 +52,98 @@
         <section class="houseMembers secret">
           <h2>Membres</h2>
 
-          <form class="houseRankForm">
-            <select>
-              <option>Ordre alphabétique</option>
-              <option>Nombre de points</option>
-              <option>Nombre de défis gagnés</option>
-            </select>
+            <form method="post" class="houseRankForm">
+                {{ csrf_field() }}
+                <select id="triMembre1" name="triMembre1">
+                    <option value="alpha">Ordre alphabétique</option>
+                    <option value="NbPoints">Nombre de points</option>
+                    <option value="NbDefis">Nombre de défis gagnés</option>
+                </select>
+                <button>Valider</button>
+            </form>
             <button>Valider</button>
           </form>
 
           <div class="listMembers">
             <p>
-              <br/> 1. blibli
-              <br/> 2. blublu
-              <br> 3. blibli
-              <br> 4. blublu
-              <br> 5. blibli
-              <br/> 6. blublu
-              <br/> 7. blibli
-              <br/> 8. blublu
-              <br/> 9. blibli
-              <br/> 10. Anticonstitut
-            </p>
-            <p>
-              <br/> 1. blibli
-              <br/> 2. blublu
-              <br> 3. blibli
-              <br> 4. blublu
-              <br> 5. blibli
-              <br/> 6. blublu
-              <br/> 7. blibli
-              <br/> 8. blublu
-              <br/> 9. blibli
-              <br/> 10. Anticonstitutio
+                <?php
+                if(isset($_POST['triMembre1'])){
+                    switch ($_POST['triMembre1']){
+                        case 'alpha' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY users.first_name ASC', ['id' => 1]);
+                            break;
+                            /*
+                        case 'NbPoints'  :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 1]);
+                            break;*/
+                        case 'NbDefis' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id', ['id' => 1]);
+                            break;
+                        default :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 1]);
+                    }
+                }
+                else {
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 1
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 1]);
+                }
+                $rank=0;
+                foreach ($results as $users) {
+                    $rank++;
+                    echo '<img class="houseIcon" src="img/logoCrackend_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM users
+                        WHERE users.id =:id', ['id' => $users->idUser]);
+                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
+                    if($rank==intdiv(sizeof($results),2))  {
+                        echo '</p>';
+                        echo '<p>';
+                    }
+                }
+                ?>
             </p>
           </div>
         </section>
       </div>
-    </div>
   </div>
   <div class="card" id="Gitsune_card">
     <h3 class="title">Gitsune</h3>
@@ -92,7 +154,15 @@
     <div class="houseInfos">
       <section class="houseStory">
         <p>
-          <img class="houseIconStory" src="img/logoGitsune.png" alt="logo de la maison">
+          <?php
+              echo '<img class="houseIconStory" src="img/logoGitsune_';
+          $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name ="Gitsune"');
+          echo $logoLvl[0]->logo_lvl;
+          echo '.png" alt="logo de la maison">'
+          ?>
+
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
@@ -107,40 +177,94 @@
       <section class="houseMembers secret">
         <h2>Membres</h2>
 
-        <form class="houseRankForm">
-          <select>
-            <option>Ordre alphabétique</option>
-            <option>Nombre de points</option>
-            <option>Nombre de défis gagnés</option>
-          </select>
-          <button>Valider</button>
-        </form>
+          <form method="post" class="houseRankForm">
+              {{ csrf_field() }}
+              <select id="triMembre3" name="triMembre3">
+                  <option value="alpha">Ordre alphabétique</option>
+                  <option value="NbPoints">Nombre de points</option>
+                  <option value="NbDefis">Nombre de défis gagnés</option>
+              </select>
+              <button>Valider</button>
+          </form>
 
         <div class="listMembers">
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitut
-          </p>
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitutio
-          </p>
+            <p>
+                <?php
+                if(isset($_POST['triMembre3'])){
+                    switch ($_POST['triMembre3']){
+                        case 'alpha' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY users.first_name ASC', ['id' => 3]);
+                            break;
+                            /*
+                        case 'NbPoints'  :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 3]);
+                            break;*/
+                        case 'NbDefis' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id', ['id' => 3]);
+                            break;
+                        default :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 3]);
+                    }
+                }
+                else {
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 3
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 3]);
+                }
+                $rank=0;
+                foreach ($results as $users) {
+                    $rank++;
+                    echo '<img class="houseIcon" src="img/logoGitsune_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM users
+                        WHERE users.id =:id', ['id' => $users->idUser]);
+                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
+                    if($rank==intdiv(sizeof($results),2))  {
+                        echo '</p>';
+                        echo '<p>';
+                    }
+                }
+                ?>
+            </p>
+
         </div>
       </section>
     </div>
@@ -154,8 +278,14 @@
     <section class="houseInfos">
       <section class="houseStory">
         <p>
-          <img class="houseIconStory" src="img/logoPhoenixml.png" alt="logo de la maison">
-        </p>
+            <?php
+            echo '<img class="houseIconStory" src="img/logoPhoeniXML_';
+            $logoLvl = DB::select('SELECT logo_lvl
+                        FROM houses
+                        WHERE houses.name ="PhoeniXML"');
+            echo $logoLvl[0]->logo_lvl;
+            echo '.png" alt="logo de la maison">'
+            ?>        </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret">
             Créer, ça c'est leur spécialité !
@@ -168,40 +298,92 @@
 
         <h2>Membres</h2>
 
-        <form class="houseRankForm">
-          <select>
-            <option>Ordre alphabétique</option>
-            <option>Nombre de points</option>
-            <option>Nombre de défis gagnés</option>
+        <form method="post" class="houseRankForm">
+            {{ csrf_field() }}
+          <select id="triMembre2" name="triMembre2">
+            <option value="alpha">Ordre alphabétique</option>
+            <option value="NbPoints">Nombre de points</option>
+            <option value="NbDefis">Nombre de défis gagnés</option>
           </select>
           <button>Valider</button>
         </form>
 
         <div class="listMembers">
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitut
-          </p>
-          <p>
-            <br/> 1. blibli
-            <br/> 2. blublu
-            <br> 3. blibli
-            <br> 4. blublu
-            <br> 5. blibli
-            <br/> 6. blublu
-            <br/> 7. blibli
-            <br/> 8. blublu
-            <br/> 9. blibli
-            <br/> 10. Anticonstitutio
-          </p>
+            <p>
+                <?php
+                if(isset($_POST['triMembre2'])){
+                    switch ($_POST['triMembre2']){
+                        case 'alpha' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY users.first_name ASC', ['id' => 2]);
+                            break;
+                        /*case 'NbPoints'  :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 2]);
+                            break;*/
+                        case 'NbDefis' :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id', ['id' => 2]);
+                            break;
+                        default :
+                            $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 2]);
+                    }
+                }
+                else {
+                    $results = DB::select('SELECT SUM(mvt_points.label) AS pts, users.first_name, users.id AS idUser
+                                        FROM mvt_points
+                                        LEFT JOIN users
+                                            ON users.id = mvt_points.users_id
+                                        LEFT JOIN houses
+                                            ON houses.id = users.house_id
+                                        WHERE houses.id = 2
+                                        GROUP BY mvt_points.users_id
+                                        ORDER BY pts DESC', ['id' => 2]);
+                }
+                $rank=0;
+                foreach ($results as $users) {
+                    $rank++;
+                    echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                    $logoLvl = DB::select('SELECT logo_lvl
+                        FROM users
+                        WHERE users.id =:id', ['id' => $users->idUser]);
+                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
+                    if($rank==intdiv(sizeof($results),2))  {
+                        echo '</p>';
+                        echo '<p>';
+                    }
+                }
+                ?>
+            </p>
         </div>
       </section>
     </section>

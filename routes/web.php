@@ -21,7 +21,7 @@ Route::get('/challenges', function () {
     return view('challenges');
 });
 
-Route::get('/maisons', function () {
+Route::match(['get', 'post'],'/maisons', function () {
     return view('houses');
 });
 
@@ -41,7 +41,7 @@ Route::get('/regles', function () {
     return view('rules');
 });
 
-Route::get('/utilisateur', function () {
+Route::match(['get', 'post'],'/utilisateur', function () {
     return view('user');
 });
 
