@@ -16,11 +16,15 @@ class CreateHouseTable extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 10);
+            $table->mediumInteger('total_pts')->default(0);
+            $table->mediumInteger('total_pts_note')->default(0);
+            $table->mediumInteger('total_pts_po')->default(0);
+            $table->mediumInteger('total_pts_defi')->default(0);
+            $table->tinyInteger('logo_lvl')->default(1);
             $table->timestamps();
         });
     }
-
 
     /*public function up()
     {
@@ -32,7 +36,6 @@ class CreateHouseTable extends Migration
             $table->timestamps();
         });
     }
-
     */
 
     /**
