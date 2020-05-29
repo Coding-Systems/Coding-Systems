@@ -82,7 +82,7 @@ class UsersTableSeeder extends Seeder
             'total_pts_defi'=>38,
             'total_pts_po'=>-7,
             'total_given_pts'=>0,
-            'created_at'=>1,
+            'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
             'logo_lvl'=>2,
@@ -120,7 +120,7 @@ class UsersTableSeeder extends Seeder
             'total_pts_defi'=>0,
             'total_pts_po'=>-9,
             'total_given_pts'=>0,
-            'created_at'=>1,
+            'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
             'logo_lvl'=>3
