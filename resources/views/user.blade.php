@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =6;
+    $idUser =9;
 ?>
 
 <head>
@@ -206,6 +206,16 @@
                     <?php
 
                     if($userType[0]->statut=='PO'){
+                        $mvt_point = DB::table('mvt_points')
+                            ->join ('users AS student', 'mvt_points.users_id', '=', 'student.id')
+                            ->join ('users AS PO', 'mvt_points.professor_id', '=', 'PO.id')
+                            ->join ('houses', 'student.house_id', '=', 'houses.id')
+                            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                            ->select ('student.first_name AS sName', 'type_points.name AS typePTS', 'mvt_points.*')
+                            ->where('PO.id', $idUser)
+                            ->orderBy ('mvt_points.created_at', 'DESC')
+                            ->get();
+/*
                         $mvt_point = DB::select('SELECT * , type_points.name AS typePTS, student.first_name as sName
                             FROM mvt_points
                             LEFT JOIN users as PO
@@ -216,6 +226,7 @@
                                 ON type_points.id = mvt_points.type_point_id
                             WHERE PO.id = :id
                             ORDER BY mvt_points.created_at DESC  ', ['id' => $idUser]);
+                          */
 
                         $nbr =0;
                         foreach ($mvt_point as $point){
@@ -234,58 +245,58 @@
                         if(isset($_POST['rank'])){
                             switch ($_POST['rank']){
                                 case 'ptsPO' :
-                                $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
-                                    FROM mvt_points
-                                    LEFT JOIN users
-                                        ON users.id = mvt_points.users_id
-                                    LEFT JOIN type_points
-                                        ON type_points.id = mvt_points.type_point_id
-                                    WHERE users.id= :id
-                                        AND type_points.type="PO"
-                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    $mvt_point = DB::table('mvt_points')
+                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
+                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->where('users.id', $idUser)
+                                        ->where ('type_points.type', 'PO')
+                                        ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->get();
                                     break;
                                 case 'ptsDefi';
-                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
-                                    FROM mvt_points
-                                    LEFT JOIN users
-                                        ON users.id = mvt_points.users_id
-                                    LEFT JOIN type_points
-                                        ON type_points.id = mvt_points.type_point_id
-                                    WHERE users.id= :id
-                                        AND type_points.type="defi"
-                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    $mvt_point = DB::table('mvt_points')
+                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
+                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->where('users.id', $idUser)
+                                        ->where ('type_points.type', 'defi')
+                                        ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->get();
                                      break;
                                 case 'ptsNote' :
-                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
-                                    FROM mvt_points
-                                    LEFT JOIN users
-                                        ON users.id = mvt_points.users_id
-                                    LEFT JOIN type_points
-                                        ON type_points.id = mvt_points.type_point_id
-                                    WHERE users.id= :id
-                                        AND type_points.type="note"
-                                    ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    $mvt_point = DB::table('mvt_points')
+                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
+                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->where('users.id', $idUser)
+                                        ->where ('type_points.type', 'note')
+                                        ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->get();
                                     break;
                                 default :
-                                    $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
-                                        FROM mvt_points
-                                        LEFT JOIN users
-                                            ON users.id = mvt_points.users_id
-                                        LEFT JOIN type_points
-                                            ON type_points.id = mvt_points.type_point_id
-                                        WHERE users.id= :id
-                                        ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                                    $mvt_point = DB::table('mvt_points')
+                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
+                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->where('users.id', $idUser)
+                                        ->orderBy ('mvt_points.created_at', 'DESC')
+                                        ->get();
                             }
                         }
                         else{
-                             $mvt_point = DB::select('SELECT * , type_points.name AS typePTS
-                            FROM mvt_points
-                            LEFT JOIN users
-                                ON users.id = mvt_points.users_id
-                            LEFT JOIN type_points
-                                ON type_points.id = mvt_points.type_point_id
-                            WHERE users.id= :id
-                            ORDER BY mvt_points.created_at DESC', ['id' => $idUser]);
+                            $mvt_point = DB::table('mvt_points')
+                                ->join ('users', 'mvt_points.users_id', '=', 'users.id')
+                                ->join ('houses', 'users.house_id', '=', 'houses.id')
+                                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
+                                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                ->where('users.id', $idUser)
+                                ->orderBy ('mvt_points.created_at', 'DESC')
+                                ->get();
                             }
 
 
