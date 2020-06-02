@@ -21,7 +21,8 @@ class CreateDefisTable extends Migration
             $table->foreignId('arbiter_id');
             $table->foreignId('winner_id');
             $table->foreignId('type_id');
-            $table->timestamps();
+            $table->boolean('is_accepted')->nullable(true);
+            $table->timestamps()->nullable(true);;
 
             $table->foreign('challenger_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('target_id')->references('id')->on('users')->onDelete('cascade');

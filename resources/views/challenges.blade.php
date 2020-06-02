@@ -20,107 +20,124 @@
 
 <h1>Défis</h1>
 
-<h2>Choisissez votre défis :</h2>
+<?php
 
-<br class="createDefi">
-    <select size="5">
-        <option>Défis 0 </option>
-        <option>Défis 1 </option>
-        <option>Défis 2 </option>
-        <option>Défis 3 </option>
-        <option>Défis 4 </option>
-        <option>Défis 5 </option>
-        <option>Défis 6 </option>
-        <option>Défis 7 </option>
-        <option>Défis 8 </option>
-        <option>Défis 9 </option>
-        <option>Défis 10 </option>
-        <option>Défis 11 </option>
-        <option>Défis 12 </option>
-        <option>Défis 13 </option>
-        <option>Défis 14 </option>
-        <option>Défis 15 </option>
-        <option>Défis 16 </option>
-        <option>Défis 17 </option>
-        <option>Défis 18 </option>
-        <option>Défis 19 </option>
-    </select>
+    $idUser=5;
 
-<h2>Choisissez votre adversaire :</h2>
+$userType = DB::select('SELECT statut
+                    FROM users
+                    WHERE id = :id', ['id' => $idUser]);
 
-    <select size="5" id="listAdv">
-        <option>(M1)Adversaire 0 </option>
-        <option>(M1)Adversaire 1 </option>
-        <option>(M1)Adversaire 2 </option>
-        <option>(M1)Adversaire 3 </option>
-        <option>(M1)Adversaire 4 </option>
-        <option>(M1)Adversaire 5 </option>
-        <option>(M1)Adversaire 6 </option>
-        <option>(M1)Adversaire 7 </option>
-        <option>(M1)Adversaire 8 </option>
-        <option>(M1)Adversaire 9 </option>
-        <option>(M2)Adversaire 10 </option>
-        <option>(M2)Adversaire 11 </option>
-        <option>(M2)Adversaire 12 </option>
-        <option>(M2)Adversaire 13 </option>
-        <option>(M2)Adversaire 14 </option>
-        <option>(M2)Adversaire 15 </option>
-        <option>(M2)Adversaire 16 </option>
-        <option>(M2)Adversaire 17 </option>
-        <option>(M2)Adversaire 18 </option>
-        <option>(M2)Adversaire 19 </option>
-    </select>
-    </br>
-    <input type="submit" value="Choisir son Arbitre" id="buttonAdv" onclick="
-    document.getElementById('listAdv').setAttribute('disabled', true);
-    document.getElementById('buttonAdv').setAttribute('disabled', true);
-    document.getElementById('listArb').removeAttribute('disabled');
-    document.getElementById('buttonArb').removeAttribute('disabled');">
-</form>
+if($userType[0]->statut=='student'){
 
-<form class="choiceArb">
-    <h2>Choisissez votre arbitre :</h2>
+    echo '<h2>Lancer un défi</h1>';
+    echo "<p>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
 
-    <select size="5" id="listArb" disabled>
-        <option>Arbitre 0 </option>
-        <option>Arbitre 1 </option>
-        <option>Arbitre 2 </option>
-        <option>Arbitre 3 </option>
-        <option>Arbitre 4 </option>
-        <option>Arbitre 5 </option>
-        <option>Arbitre 6 </option>
-        <option>Arbitre 7 </option>
-        <option>Arbitre 8 </option>
-        <option>Arbitre 9 </option>
-        <option>Arbitre 10 </option>
-        <option>Arbitre 11 </option>
-        <option>Arbitre 12 </option>
-        <option>Arbitre 13 </option>
-        <option>Arbitre 14 </option>
-        <option>Arbitre 15 </option>
-        <option>Arbitre 16 </option>
-        <option>Arbitre 17 </option>
-        <option>Arbitre 18 </option>
-        <option>Arbitre 19 </option>
-    </select>
-    </br>
-    <input type="submit" value="Lancer le Défi" id="buttonArb" disabled>
-</form>
+    $listDefis = DB::select('SELECT name, id
+        FROM type_points
+        WHERE type="defi"');
+
+    echo '<form name="newDefiForm" id="newDefiForm" method="post"> '. csrf_field() ; //echo '{{ csrf_field() }}';
+
+    echo '<h3>Choisissez votre défis :</h3>';
+
+    echo '<section class="addPoints">';
+    //echo '<label class="typeDefi">Type de défi';
+    echo '<select required="required" name="defiTypeId" size="5">';
+
+    foreach ($listDefis as $defi){
+        echo '<option value="'.$defi->id.'">'.$defi->name.'</option>';
+    };
+    echo '</select>';
+
+    $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, houses.name AS houseName
+        FROM users
+        LEFT JOIN houses
+        	ON houses.id =users.house_id
+        WHERE house_id != (SELECT house_id
+                            	FROM users AS usersOne
+                            	WHERE usersOne.id = :id)
+        ORDER BY houseName, fName', ['id' => $idUser]);
+
+
+    echo '<h3>Choisissez votre adversaire :</h3>';
+
+    echo '<section class="oppenents">';
+    //echo '<label class="typeDefi">Type de défi';
+    echo '<select required="required" name="OpponentId" size="7">';
+
+    foreach ($listUsers as $user){
+        echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
+    };
+    echo '</select>';
+
+    echo'<h3>Choisissez votre arbitre :</h3>';
+
+    echo '<section class="arbiter">';
+    //echo '<label class="typeDefi">Type de défi';
+    echo '<select required="required" name="arbiterId" size="7">';
+
+    foreach ($listUsers as $user){
+        echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
+    };
+    echo '</select>';
+
+    echo '</br><input type="submit" value="Valider"> ';
+
+    echo '</form>';
+    }
+
+    echo '<h2>Demandes en attente :</h2>';
+
+?>
+
+<?php
+if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['defiTypeId'])){
+    //OpponentId arbiterId defiTypeId
+
+    $listDefis = DB::select('SELECT COUNT(id) AS total
+        FROM defis
+        WHERE challenger_id = :id', ['id' => $idUser]);
+
+    echo "<p>";
+    if ($listDefis[0]->total==0){
+        echo "Demande de défi et d'arbitrage envoyés";
+    }
+    else {
+        echo"Vous avez déja un défi en attente de reponse. Annulez-le ou finissez-le avant de défier d'autres personnes.";
+    }
+    echo "</p>";
+
+
+
+}
+
+?>
+
+
 <form class="tableDefi">
     <table>
-        <thead>
-        <tr>
-            <th colspan="2">Demande de défis ou d'arbitrage</th>
-        </tr>
-        </thead>
         <tbody>
         <tr>
-            <td>Alyssia : Demande de Défis de PFC</td>
+            <th colspan="2">Demandes de défis</th>
+        </tr>
+        <tr>
+            <td>Smash | Vous VS Houssam | Arbitre : Marion</td>
             <td><input type="button" value="Accepter"><input type="button" value="Refuser"></td>
         </tr>
         <tr>
-            <td>Marion : Demande d'Arbitrage de PFC</td>
+            <th colspan="2">Demandes d'arbitrage</th>
+        </tr>
+        <tr>
+            <td>Smash | Hugo VS Houssam | Arbitre : Vous</td>
             <td><input type="button" value="Accepter"><input type="button" value="Refuser"></td>
+        </tr>
+        <tr>
+            <th colspan="2">Demandes envoyées</th>
+        </tr>
+        <tr>
+            <td>Smash | Vous VS Houssam | Arbitre : Alyssia</td>
+            <td><input type="button" value="Annuler"></td>
         </tr>
         </tbody>
     </table>
