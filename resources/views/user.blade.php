@@ -277,6 +277,15 @@ if(isset($_POST['envoi'])){
             $type_select = $type->type;
       }
 
+      $professor_pts = DB::table('users')
+      ->select('users.total_given_pts')
+      ->where('id', $idUser)
+      ->get();
+
+      foreach ($professor_pts as $professor){
+          $given_pts = $professor->total_given_pts;
+      }
+
      if ($type_select=="PO"){
             DB::table('mvt_points')->insert(
             array(
@@ -287,6 +296,14 @@ if(isset($_POST['envoi'])){
                   'professor_id' =>"$idUser"
             )
             );
+
+            DB::table('users')
+            ->where("id", $idUser)
+            ->update(
+                array(
+                    'total_given_pts'=>"$nbr_points"+"$given_pts"
+                )
+                );
 
             DB::table('users')
             ->where("id", $student_id)
