@@ -11,6 +11,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/historique.scss"/>
+    <link href="resources/js/app.js">
+
 
     <!-- <link rel="stylesheet" href="../sass/app.css"/>
     <link rel="stylesheet" href="../sass/pages/home.css"/>-->

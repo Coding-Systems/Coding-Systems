@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
     <meta charset="UTF-8">
     <title>Coding house</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
+    <link href="resources/js/app.js">
 
     @include('cssSwitcher')
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 </head>
 
 <body>
+
 
 @include('header')
 

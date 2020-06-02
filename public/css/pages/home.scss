@@ -12,6 +12,7 @@ section {
 }
 p {
     font-size: 150%;
+    flex: auto;
     justify-content: space-around;
     color: white;
     margin-left: 50px;
@@ -20,6 +21,8 @@ p {
 
 section #rankings {
     justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 #rankings {
