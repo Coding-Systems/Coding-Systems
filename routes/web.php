@@ -45,7 +45,7 @@ Route::match(['get', 'post'],'/utilisateur', function () {
     return view('user');
 });
 
-Route::get('/quizz', function () {
+Route::match(['get', 'post'], '/quizz', function () {
     return view('quizz');
 });
 Route::get('/loginregister.blade.php', function () {
