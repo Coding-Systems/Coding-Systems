@@ -47,6 +47,21 @@
 #history p {
 }
 
+select, input{
+    background-color: #bbbcc4;
+    border-radius: 10px;
+    border : 0px;
+    outline: none;
+    font-size: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:focus{
+    background-color: #7d838a;
+}
+
 /* -------------------------------- Theme Switcher -------------------------------- */
 
 #cssThemeSwitcher {

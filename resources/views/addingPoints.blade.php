@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
-    <link rel="stylesheet" href="css/pages/historique.scss"/>
 
     <!-- <link rel="stylesheet" href="../sass/app.css"/>
     <link rel="stylesheet" href="../sass/pages/home.css"/>-->
@@ -121,7 +120,7 @@ if(isset($_POST['envoi'])){
       }
 
      if ($type_select=="PO"){
-      DB::table('mvt_points')->insert(
+            DB::table('mvt_points')->insert(
             array(
                   'label' => "$nbr_points",
                   'users_id' => "$student_id",
