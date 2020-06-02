@@ -11,6 +11,8 @@ section {
     justify-content: space-around;
 }
 p {
+    text-justify:newspaper;
+    text-align:justify;
     font-size: 150%;
     flex: auto;
     justify-content: space-around;
@@ -70,9 +72,7 @@ section #rankings {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    text-align: left;
     margin-bottom : 10%;
-    text-align: left;
     white-space: nowrap;
     //
 }
