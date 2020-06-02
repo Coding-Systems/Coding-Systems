@@ -10,6 +10,10 @@ section {
     margin: auto;
     justify-content: space-around;
 }
+
+section#history p{
+
+}
 p {
     text-justify:newspaper;
     text-align:justify;
@@ -74,5 +78,6 @@ section #rankings {
     justify-content: space-around;
     margin-bottom : 10%;
     white-space: nowrap;
-    //
+    height: auto;
+    width: 410px;
 }
