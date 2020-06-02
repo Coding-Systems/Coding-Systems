@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/houses.scss"/>
+    <link href="resources/js/app.js">
+
 </head>
 
 <body>

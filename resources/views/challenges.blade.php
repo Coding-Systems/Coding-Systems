@@ -11,6 +11,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/challenges.scss"/>
+    <link href="resources/js/app.js">
+
 </head>
 
 <body>
