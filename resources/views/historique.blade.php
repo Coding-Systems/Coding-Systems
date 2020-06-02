@@ -62,6 +62,7 @@
                 ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
         elseif($_POST['histo']=="gitsune"){
@@ -72,6 +73,7 @@
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'Gitsune')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
         elseif($_POST['histo']=="crackend"){
@@ -82,6 +84,7 @@
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'Crackend')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
         elseif($_POST['histo']=="phoenixml"){
@@ -92,6 +95,7 @@
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'phoeniXML')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
         elseif($_POST['histo']=="defis"){
@@ -102,6 +106,7 @@
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('type_points.type', 'defi')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
         elseif($_POST['histo']=="events"){
@@ -112,6 +117,7 @@
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('type_points.type', 'events')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
         }
     }
@@ -123,6 +129,7 @@
                 ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
+                ->limit(100)
                 ->get();
 
             }
