@@ -15,7 +15,8 @@ class CreateTypePointTable extends Migration
     {
         Schema::create('type_points', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 20);
+            $table->string('type', 20);
             $table->timestamps();
         });
     }

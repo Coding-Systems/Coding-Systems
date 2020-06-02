@@ -18,10 +18,19 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('mail')->unique();
+            $table->string('statut', 15);
+            $table->foreignId('house_id')->nullable($value = true);
             $table->string('password');
-            $table->integer('year');
-            $table->foreignId('house_id');
+            $table->mediumInteger('total_pts')->default(0);
+            $table->mediumInteger('total_pts_note')->default(0);
+            $table->mediumInteger('total_pts_po')->default(0);
+            $table->mediumInteger('total_pts_defi')->default(0);
+            $table->mediumInteger('total_given_pts')->default(0);
+            $table->tinyInteger('logo_lvl')->default(1);
+            $table->smallInteger('year');
             $table->timestamps();
+
+            $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
         });
     }
 

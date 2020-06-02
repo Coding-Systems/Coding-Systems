@@ -13,11 +13,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
-<<<<<<< development
         "laravel/installer": "^3.1",
-=======
-        "laravel/installer": "^3.0",
->>>>>>> bug et ne marche pas
         "laravel/tinker": "^2.0",
       "ext-pdo": "*"
     },
