@@ -283,7 +283,8 @@ if(isset($_POST['envoi'])){
                   'label' => "$nbr_points",
                   'users_id' => "$student_id",
                   'type_point_id' => "$challenge_id",
-                  'created_at' => "$date"
+                  'created_at' => "$date",
+                  'professor_id' =>"$idUser"
             )
             );
 
