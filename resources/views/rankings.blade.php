@@ -201,25 +201,37 @@
 
                         if($users->hname=='Crackend'){
                             echo '<img class="houseIcon" src="img/logoCrackend_';
-                            $logoLvl = DB::select('SELECT logo_lvl
+                            if($rank<=3){
+                                echo 'R'.$rank.'.png"';
+                            }else {
+                                $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
+                                echo $logoLvl[0]->logo_lvl.'.png"';
+                            }
                             echo' alt="logo de la maison"> ';                        }
                         else if ($users->hname=='PhoeniXML'){
                             echo '<img class="houseIcon" src="img/logoPhoeniXML_';
-                            $logoLvl = DB::select('SELECT logo_lvl
+                            if($rank<=3){
+                                echo 'R'.$rank.'.png"';
+                            }else {
+                                $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
+                                echo $logoLvl[0]->logo_lvl.'.png"';
+                            }
                             echo' alt="logo de la maison"> ';
                         }
                         else if ($users->hname=='Gitsune'){
                             echo '<img class="houseIcon" src="img/logoGitsune_';
-                            $logoLvl = DB::select('SELECT logo_lvl
+                            if($rank<=3){
+                                echo 'R'.$rank.'.png"';
+                            }else {
+                                $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
+                                echo $logoLvl[0]->logo_lvl.'.png"';
+                            }
                             echo' alt="logo de la maison"> ';                        }
                         else {
                             echo '<img id="logoHeader" src="img/logo.png" alt="logo"> ';
