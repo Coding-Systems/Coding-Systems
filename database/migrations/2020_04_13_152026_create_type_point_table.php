@@ -17,6 +17,7 @@ class CreateTypePointTable extends Migration
             $table->id();
             $table->string('name', 20);
             $table->string('type', 20);
+            $table->integer('default_pts')->nullable(true);
             $table->timestamps();
         });
     }
