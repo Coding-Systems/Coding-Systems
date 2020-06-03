@@ -182,7 +182,7 @@
             </div>
 
         </div>
-        <div id="hirtoryUser">
+        <div id="historyUser">
             <h2>Historique</h2>
 
             <form method="post" class="HistoryForm">

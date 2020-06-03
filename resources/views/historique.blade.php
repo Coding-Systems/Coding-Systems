@@ -53,6 +53,7 @@
         </label>
     </div>
     <section id=history>
+        <div id=historyDiv>
          <p>
             <?php
 
@@ -177,7 +178,7 @@
     }
             ?>
         </p>
-
+</div>
 
     </section>
 
