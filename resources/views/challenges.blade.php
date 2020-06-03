@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php $idUser=7;
+<?php $idUser=9;
 ?>
 
 <head>
@@ -58,6 +58,7 @@ if($userType[0]->statut=='student'){
         WHERE house_id != (SELECT house_id
                             	FROM users AS usersOne
                             	WHERE usersOne.id = :id)
+            AND users.statut="student"
         ORDER BY houseName, fName', ['id' => $idUser]);
 
     echo '<h3>Choisissez votre adversaire :</h3>';
@@ -68,7 +69,8 @@ if($userType[0]->statut=='student'){
 
     foreach ($listUsers as $user){
         echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
-    };
+    }
+
     echo '</select>';
 
     echo'<h3>Choisissez votre arbitre :</h3>';
@@ -80,11 +82,22 @@ if($userType[0]->statut=='student'){
     foreach ($listUsers as $user){
         echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
     };
+
+    $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
+        FROM users
+        WHERE users.statut="PO"
+        ORDER BY fName', ['id' => $idUser]);
+
+    foreach ($listpo as $user){
+        echo '<option value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
+    }
+
     echo '</select>';
 
     echo '</br><input type="submit" value="Valider"> ';
 
     echo '</form>';
+
     }
 
 if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['defiTypeId'])){
@@ -130,8 +143,10 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
     echo '<h2>Demandes en attente :</h2>';
 
+if($userType[0]->statut=='student'){
+
     echo '<h3>Propositions de défis</h3>';
-echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
+    echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
     $challengesInvitation = DB::select('SELECT type_points.name AS type, creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
@@ -163,6 +178,8 @@ echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
     else {
         echo "Aucune proposition de défis en attente.";
     }
+
+}
 
 echo "<h3>Demandes d'arbitrage</h3>";
 echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
@@ -198,11 +215,12 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
         echo "Aucune demande d'arbitrage en attente.";
     }
 
-echo "<h3>Demandes envoyées</h3>";
+if($userType[0]->statut=='student'){
+    echo "<h3>Demandes envoyées</h3>";
 
-echo "<p>Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
+    echo "<p>Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
 
-$createdDefis = DB::select('SELECT type_points.name AS type, arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi
+    $createdDefis = DB::select('SELECT type_points.name AS type, arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi
                 FROM defis
                 LEFT JOIN users AS arbitor
                     ON arbitor.id = defis.arbiter_id
@@ -214,23 +232,23 @@ $createdDefis = DB::select('SELECT type_points.name AS type, arbitor.first_name 
                     AND winner_id IS NULL
                 ', ['id' => $idUser]);
 
-if(isset($createdDefis[0])){
-    echo '<form name="DeleteDdefi" id="DeleteDdefi" method="post"> '.csrf_field() ;
-    echo '<select required="required" id="CreateDdefi" name="CreateDdefi" size="3">';
+    if(isset($createdDefis[0])){
+        echo '<form name="DeleteDdefi" id="DeleteDdefi" method="post"> '.csrf_field() ;
+        echo '<select required="required" id="CreateDdefi" name="CreateDdefi" size="3">';
 
-    foreach ($createdDefis as $challenge){
+        foreach ($createdDefis as $challenge){
 
-        echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | Vous VS '.$challenge->oName.' | Arbitre : '.$challenge->aName.'</option>';
-        echo '</select>
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | Vous VS '.$challenge->oName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '</select>
             <br><input type="submit" value="Annuler">
 
             </form>';
+        }
+    }
+    else {
+        echo "Ancun défi en attente.";
     }
 }
-else {
-    echo "Ancun défi en attente.";
-}
-
 ?>
 
 <?php
@@ -302,10 +320,6 @@ if(isset($_POST['proposedArbi'])){
             )
         );
 
-        /*$actualScoreWinner = DB::select('SELECT total_pts, total_pts_defi, total_won_defis
-            FROM users
-            WHERE id= 3   ', ['id' => $idWinner]);*/
-
         DB::table('users')
             ->where('id', $infosPts->winnerId)
             ->increment('total_pts_defi', $infosPts->pts);
@@ -317,7 +331,6 @@ if(isset($_POST['proposedArbi'])){
         DB::table('users')
             ->where('id', $infosPts->winnerId)
             ->increment('total_won_defis', 1);
-
 
         unset($_POST);
     }
