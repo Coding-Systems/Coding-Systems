@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php $idUser=1;
+<?php $idUser=4;
 ?>
 
 <head>
@@ -24,8 +24,6 @@
 <h1>Défis</h1>
 
 <?php
-
-
 
 $userType = DB::select('SELECT statut
                     FROM users
@@ -61,7 +59,6 @@ if($userType[0]->statut=='student'){
                             	FROM users AS usersOne
                             	WHERE usersOne.id = :id)
         ORDER BY houseName, fName', ['id' => $idUser]);
-
 
     echo '<h3>Choisissez votre adversaire :</h3>';
 
@@ -118,19 +115,19 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
                 )
             );
             echo "<p>Demande de défi et d'arbitrage envoyés</p>";
+            unset($_POST);
         }
         else{
             echo "<p>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
         }
     }
     else {
-        echo"Vous avez déja un défi en attente de reponse. Annulez-le ou finissez-le avant de défier d'autres personnes.";
+        echo"Vous avez déja un défi en attente de réponses. Annulez-le ou finissez-le avant de défier d'autres personnes.";
     }
     echo "</p>";
+    unset($_POST);
 }
-?>
 
-<?php
     echo '<h2>Demandes en attente :</h2>';
 
     echo '<h3>Propositions de défis</h3>';
@@ -151,14 +148,14 @@ echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
 
     if(isset($challengesInvitation[0])){
         echo '<form name="acceptDefi" id="AcceptDefiForm" method="post"> '.csrf_field() ;
-        echo '<select required="required" name="proposedDefid" size="3">';
+        echo '<select required="required" id="proposedDefi" name="proposedDefi" size="3">';
 
         foreach ($challengesInvitation as $challenge){
             echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
         };
         echo '</select>
-            <br><input type="radio" name="acceptDefi" id=acceptDefi checked="checked"> <label for="acceptDefi">Accepter</label>
-            <br><input type="radio" name="acceptDefi" id="deniedDefi"> <label for="deniedDefi">Refuser</label>
+            <br><input type="radio" name="actionDefi" value="acceptDefi" id=actionDefi checked="checked"> <label for="acceptDefi">Accepter</label>
+            <br><input type="radio" name="actionDefi" value="deniedDefi" id="actionDefi"> <label for="deniedDefi">Refuser</label>
             <br><input type="submit" value="valider">
 
             </form>';
@@ -166,8 +163,6 @@ echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
     else {
         echo "Aucune proposition de défis en attente.";
     }
-
-
 
 echo "<h3>Demandes d'arbitrage</h3>";
 echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
@@ -181,19 +176,20 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
                 LEFT JOIN type_points
                     ON type_points.id = type_id
                 WHERE arbiter_id = :id
+                    AND winner_id IS NULL
                     AND is_accepted =True
                 ', ['id' => $idUser]);
 
     if (isset($arbitorInvitation[0])){
         echo '<form name="acceptArbiform" id="acceptArbiform" method="post"> '.csrf_field() ;
-        echo '<select required="required" name="proposedArbi" size="3">';
+        echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
 
         foreach ($arbitorInvitation as $challenge){
             echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
         };
         echo '</select>
-            <br><input type="radio" name="acceptArbiRadio" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
-            <br><input type="radio" name="acceptArbiRadio" id="deniedArbi"> <label for="deniedArbi">Refuser</label>
+            <br><input type="radio" name="actionArbiRadio" value="acceptArbi" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
+            <br><input type="radio" name="actionArbiRadio" value="deniedArbi" id="deniedArbi"> <label for="deniedArbi">Refuser</label>
             <br><input type="submit" value="valider">
 
             </form>';
@@ -201,8 +197,6 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
     else {
         echo "Aucune demande d'arbitrage en attente.";
     }
-
-
 
 echo "<h3>Demandes envoyées</h3>";
 
@@ -217,11 +211,12 @@ $createdDefis = DB::select('SELECT type_points.name AS type, arbitor.first_name 
                 LEFT JOIN type_points
                     ON type_points.id = type_id
                 WHERE challenger_id = :id
+                    AND winner_id IS NULL
                 ', ['id' => $idUser]);
 
 if(isset($createdDefis[0])){
     echo '<form name="DeleteDdefi" id="DeleteDdefi" method="post"> '.csrf_field() ;
-    echo '<select required="required" name="CreateDdefi" size="3">';
+    echo '<select required="required" id="CreateDdefi" name="CreateDdefi" size="3">';
 
     foreach ($createdDefis as $challenge){
 
@@ -236,9 +231,85 @@ else {
     echo "Ancun défi en attente.";
 }
 
-
-
 ?>
+
+<?php
+if(isset($_POST['proposedDefi'])){
+
+    if($_POST['actionDefi']=='acceptDefi'){
+        DB::table('defis')
+            ->where('id', $_POST['proposedDefi'])
+            ->update(array('is_accepted' => 1));
+    }
+    else {
+        DB::table('defis')->where('id', $_POST['proposedDefi'])->delete();
+    }
+    unset($_POST);
+}
+
+if(isset($_POST['proposedArbi'])){
+
+    if($_POST['actionArbiRadio']=='acceptArbi'){
+
+        $usersInfos = DB::select('SELECT challenger.id as cid, challenger.first_name AS cfirst, challenger.last_name AS clast, target.id as tid, target.first_name AS tfirst, target.last_name AS tlast
+            FROM defis
+            LEFT JOIN users as challenger
+                ON challenger.id = defis.challenger_id
+            LEFT JOIN users as target
+                ON target.id = defis.target_id
+            WHERE defis.id = :id
+    ', ['id' => $_POST['proposedArbi']]);
+
+        $match = $usersInfos[0];
+
+        echo "<h3>Zone d'arbitrage</h3>".
+            "<p>Sélectionnez le gagnant</p>".
+            '<form name="winnerForm" id="winnerForm" method="post">'.csrf_field().'
+            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"<label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
+            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->tid.'" id="targetWin"><label for="targetWin">'.$match->tfirst." ".$match->tlast.'</label>
+            <br><input type="submit" value="valider">
+';
+    }
+    else {
+        DB::table('defis')->where('id', $_POST['proposedArbi'])->delete();
+    }
+    unset($_POST);
+}
+
+    if(isset($_POST['winnerRadio'])){
+
+        $winner = explode("_",$_POST['winnerRadio']);
+        $idDefi = $winner[0];
+        $idWinner= $winner[1];
+
+        DB::table('defis')
+            ->where('id', $idDefi)
+            ->update(array('winner_id' => $idWinner));
+
+        $addMvtpts = DB::select('SELECT type_points.default_pts AS pts, type_points.id AS typeId , defis.id as defiID, defis.winner_id as winnerId
+            FROM defis
+            LEFT JOIN type_points
+                ON type_points.id =defis.type_id
+            WHERE defis.id= :id    ', ['id' => $idDefi]);
+
+        $infosPts=$addMvtpts[0];
+
+        DB::table('mvt_points')->insert(
+            array(
+                'label' => "$infosPts->pts",
+                'users_id' => "$infosPts->winnerId",
+                'type_point_id' => "$infosPts->typeId",
+            )
+            );
+
+        unset($_POST);
+    }
+
+
+
+
+
+    ?>
 
 @include('footer')
 
