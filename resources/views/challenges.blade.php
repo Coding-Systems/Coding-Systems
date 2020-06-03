@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php $idUser=4;
+<?php $idUser=7;
 ?>
 
 <head>
@@ -300,14 +300,27 @@ if(isset($_POST['proposedArbi'])){
                 'users_id' => "$infosPts->winnerId",
                 'type_point_id' => "$infosPts->typeId",
             )
-            );
+        );
+
+        /*$actualScoreWinner = DB::select('SELECT total_pts, total_pts_defi, total_won_defis
+            FROM users
+            WHERE id= 3   ', ['id' => $idWinner]);*/
+
+        DB::table('users')
+            ->where('id', $infosPts->winnerId)
+            ->increment('total_pts_defi', $infosPts->pts);
+
+        DB::table('users')
+            ->where('id', $infosPts->winnerId)
+            ->increment('total_pts', $infosPts->pts);
+
+        DB::table('users')
+            ->where('id', $infosPts->winnerId)
+            ->increment('total_won_defis', 1);
+
 
         unset($_POST);
     }
-
-
-
-
 
     ?>
 
