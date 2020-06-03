@@ -20,7 +20,7 @@ class CreateMvtPointTable extends Migration
             $table->foreignId('users_id');
             $table->foreignId('professor_id')->nullable();
             $table->foreignId('type_point_id');
-            $table->timestamps();
+            $table->timestamps()->default(CURRENT_TIMESTAMP);
 
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');;
             $table->foreign('professor_id')->references('id')->on('users')->onDelete('cascade');;
