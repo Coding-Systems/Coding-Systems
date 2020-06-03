@@ -317,6 +317,7 @@ if(isset($_POST['proposedArbi'])){
                 'label' => "$infosPts->pts",
                 'users_id' => "$infosPts->winnerId",
                 'type_point_id' => "$infosPts->typeId",
+                'created_at'=>"CURRENT TIMESTAMPP",
             )
         );
 
