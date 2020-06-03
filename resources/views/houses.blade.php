@@ -110,10 +110,15 @@ use Illuminate\Support\Facades\DB;
                 foreach ($results as $users) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoCrackend_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM users
-                        WHERE users.id =:id', ['id' => $users->idUser]);
-                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    if($rank<=3){
+                        echo 'R'.$rank.'.png"';
+                    }else {
+                        $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                    }
+                    echo 'alt="logo">';
                     echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
                     if($rank==intdiv(sizeof($results),2))  {
                         echo '</p>';
@@ -202,10 +207,15 @@ use Illuminate\Support\Facades\DB;
                 foreach ($results as $users) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoGitsune_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM users
-                        WHERE users.id =:id', ['id' => $users->idUser]);
-                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    if($rank<=3){
+                        echo 'R'.$rank.'.png"';
+                    }else {
+                        $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                    }
+                    echo 'alt="logo">';
                     echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
                     if($rank==intdiv(sizeof($results),2))  {
                         echo '</p>';
@@ -235,8 +245,9 @@ use Illuminate\Support\Facades\DB;
                         WHERE houses.name ="PhoeniXML"');
             echo $logoLvl[0]->logo_lvl;
             echo '.png" alt="logo de la maison">'
-            ?>        </p>
-        <h2 class="secretTitle">Histoire</h2>
+            ?>
+        </p>
+        <h2> class="secretTitle">Histoire</h2>
         <p class="story secret">
             Créer, ça c'est leur spécialité !
             Vous manquez d'idées ? Allez voir un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
@@ -291,10 +302,15 @@ use Illuminate\Support\Facades\DB;
                 foreach ($results as $users) {
                     $rank++;
                     echo '<img class="houseIcon" src="img/logoPhoeniXML_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM users
-                        WHERE users.id =:id', ['id' => $users->idUser]);
-                    echo $logoLvl[0]->logo_lvl.'.png"  alt="logo">';
+                    if($rank<=3){
+                        echo 'R'.$rank.'.png"';
+                    }else {
+                        $logoLvl = DB::select('SELECT logo_lvl
+                                FROM users
+                                WHERE users.id = :id',['id' => $users->idUser] );
+                        echo $logoLvl[0]->logo_lvl.'.png"';
+                    }
+                    echo 'alt="logo">';
                     echo ''.$rank." .". $users->first_name . ' : ' . $users->pts . " pts<br/>";
                     if($rank==intdiv(sizeof($results),2))  {
                         echo '</p>';
