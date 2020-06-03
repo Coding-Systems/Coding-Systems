@@ -20,7 +20,7 @@ class TypesPointsTableSeeder extends Seeder
         ]);
 
         DB::table('type_points')->insert([
-            'name'=>'bottle_flip',
+            'name'=>'Bottle Flip',
             'type'=>'defi',
             'default_pts'=>5,
             'created_at'=>'2020-05-25 22:00:00',
