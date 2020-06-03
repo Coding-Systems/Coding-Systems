@@ -13,14 +13,16 @@ class TypesPointsTableSeeder extends Seeder
     public function run() ///Full version
     {
         DB::table('type_points')->insert([
-            'name'=>'smash',
+            'name'=>'Smash',
             'type'=>'defi',
+            'default_pts'=>7,
             'created_at'=>'2020-05-24 22:00:00',
         ]);
 
         DB::table('type_points')->insert([
             'name'=>'bottle_flip',
             'type'=>'defi',
+            'default_pts'=>5,
             'created_at'=>'2020-05-25 22:00:00',
         ]);
 
