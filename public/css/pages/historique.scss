@@ -81,3 +81,16 @@ input{
 input:hover {
     background-color: #7d838a;
 }
+
+#historyDiv p{
+    margin: 0em;
+}
+
+#historyDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom : 10%;
+    margin-top: 1.5em;
+}

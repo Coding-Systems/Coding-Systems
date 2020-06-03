@@ -1,3 +1,4 @@
+body{width:100%;}
 #logoUser {
     width: 30%;
     height: 30%;
@@ -144,3 +145,14 @@ input:focus{
     background-image: linear-gradient(33deg, #48b8d4 25%, #06006b 25%);
     border : none
 }
+
+
+@media screen and (max-width: 740px) {
+    #statsUser{
+        display : block;
+        color : white;
+    }
+    #cssThemeSwitcher{
+        margin: 0 auto;
+    }
+  }

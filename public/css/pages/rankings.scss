@@ -71,6 +71,19 @@ section #rankings {
     margin-right: 20%;
 }
 
+#rankingNamesUsersDiv{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom : 10%;
+}
+
+#rankingNamesUsersDiv p{
+    margin-top: 0em;
+    margin-left: 0.3em;
+}
+
 .triHouseRankForm select, .triHouseRankForm button{
     background-color: #bbbcc4;
     border-radius: 20px;
@@ -88,3 +101,4 @@ section #rankings {
     width: 40px;
     vertical-align: text-bottom;
 }
+

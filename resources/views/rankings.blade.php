@@ -137,7 +137,7 @@
         <h2>Classement solo</h2>
 
         <section id=rankingNamesUsers>
-
+            <div id=rankingNamesUsersDiv>
             <p>
                 <?php
 
@@ -249,7 +249,7 @@
                     }
                 ?>
             </p>
-
+                </div>
         </section>
 
     </section>
