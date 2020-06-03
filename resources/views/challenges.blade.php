@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php $idUser=9;
+<?php $idUser=7;
 ?>
 
 <head>
@@ -105,7 +105,8 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
     $listDefis = DB::select('SELECT COUNT(id) AS total
         FROM defis
-        WHERE challenger_id = :id', ['id' => $idUser]);
+        WHERE challenger_id = :id
+            AND winner_id IS NULL', ['id' => $idUser]);
 
     echo "<p>";
     if ($listDefis[0]->total==0){
@@ -283,7 +284,7 @@ if(isset($_POST['proposedArbi'])){
         echo "<h3>Zone d'arbitrage</h3>".
             "<p>Sélectionnez le gagnant</p>".
             '<form name="winnerForm" id="winnerForm" method="post">'.csrf_field().'
-            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"<label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
+            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"><label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
             <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->tid.'" id="targetWin"><label for="targetWin">'.$match->tfirst." ".$match->tlast.'</label>
             <br><input type="submit" value="valider">
 ';
@@ -312,12 +313,16 @@ if(isset($_POST['proposedArbi'])){
 
         $infosPts=$addMvtpts[0];
 
+        date_default_timezone_set('Europe/Paris');
+        $date = date("Y-m-d H:i:s");
+
+
         DB::table('mvt_points')->insert(
             array(
                 'label' => "$infosPts->pts",
                 'users_id' => "$infosPts->winnerId",
                 'type_point_id' => "$infosPts->typeId",
-                'created_at'=>"CURRENT TIMESTAMPP",
+                'created_at' => "$date",
             )
         );
 
