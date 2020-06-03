@@ -19,7 +19,7 @@ class CreateDefisTable extends Migration
             $table->foreignId('challenger_id');
             $table->foreignId('target_id');
             $table->foreignId('arbiter_id');
-            $table->foreignId('winner_id');
+            $table->foreignId('winner_id')->nullable(true);
             $table->foreignId('type_id');
             $table->boolean('is_accepted')->nullable(true);
             $table->timestamps();
