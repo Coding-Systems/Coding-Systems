@@ -97,6 +97,7 @@ use Illuminate\Support\Facades\DB;
         <h2>Historique des derniers points</h2>
 
         <section id=history>
+            <div id=historyDiv>
         <p>
         <?php
                 $rank=0;
@@ -144,6 +145,7 @@ use Illuminate\Support\Facades\DB;
 
             ?>
             </p>
+            </div>
         </section>
 
     </section>
