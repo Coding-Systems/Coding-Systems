@@ -236,7 +236,7 @@
                             }
                             echo' alt="logo de la maison"> ';                        }
                         else {
-                            echo '<img id="logoHeader" src="img/logo.png" alt="logo"> ';
+                            echo '<img class="houseIcon" src="img/logo.png" alt="logo"> ';
                         }
 
 

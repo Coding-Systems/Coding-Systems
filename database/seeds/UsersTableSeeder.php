@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+require 'UsersImportExel.php';
 
 class UsersTableSeeder extends Seeder
 {
@@ -10,6 +11,29 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
+
+    public function run() ///exel version
+    {
+        $usersList = getArrayListUsers();
+
+        foreach ($usersList as $user) {
+
+            DB::table('users')->insert([
+                'first_name'=>$user[2],
+                'last_name'=>$user[1],
+                'mail'=>$user[0],
+                'password'=>'mdp',
+                'year'=>2020,
+                'statut'=>'student'
+            ]);
+
+            //print_r($user[]);
+            //echo '</br>';
+            //echo "Nom : " . $user[2] . " | Prénom : " . $user[1] . " | Mail : " . $user[0];
+        }
+    }
+
+    /*
     public function run() ///Full version
     {
         DB::table('users')->insert([
@@ -184,6 +208,7 @@ class UsersTableSeeder extends Seeder
         ]);
         //
     }
+    */
 
     /*
     public function run() ///Empty version

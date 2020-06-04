@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =9;
+    $idUser =2;
 ?>
 
 <head>
@@ -127,7 +127,14 @@
                         echo $x+1;
 
                         echo '<br>Classement maison : ';
-                        $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idU
+
+                        $userHouses = DB::select('SELECT house_id
+                            FROM users
+                            WHERE id = :id', ['id' => $idUser]);
+                        //echo $userHouses[0];
+
+                        if(isset($userHouses[0]->house_id)){
+                            $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idU
                             FROM users
                             LEFT JOIN houses
                             	ON houses.id = users.house_id
@@ -141,11 +148,13 @@
                                 	LIMIT 1)
                             GROUP BY users.id
                             ORDER BY pts DESC', ['id' => $idUser]);
-                        $x =0;
-                        while($ranking[$x]->idU != $idUser){
-                            $x++;
+                            $x =0;
+                            while($ranking[$x]->idU != $idUser){
+                                $x++;
+                            }
+                            echo $x+1;
+
                         }
-                        echo $x+1;
                     }
                 ?>
 
