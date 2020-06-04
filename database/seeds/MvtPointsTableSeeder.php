@@ -188,8 +188,5 @@ class MvtPointsTableSeeder extends Seeder
             'type_point_id'=>3,
             'created_at'=>'2020-05-27 14:57:00',
         ]);
-
     }
-
-
 }

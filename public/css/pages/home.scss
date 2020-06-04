@@ -10,8 +10,15 @@ section {
     margin: auto;
     justify-content: space-around;
 }
+
+section#history p{
+
+}
 p {
+    text-justify:newspaper;
+    text-align:justify;
     font-size: 150%;
+    flex: auto;
     justify-content: space-around;
     color: white;
     margin-left: 50px;
@@ -20,6 +27,8 @@ p {
 
 section #rankings {
     justify-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
 #rankings {
@@ -63,13 +72,33 @@ section #rankings {
 
 #history {
     font-size: 75%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    text-align: left;
     margin-bottom : 10%;
-    text-align: left;
     white-space: nowrap;
-    //
+    margin-left: 5px;
+}
+
+#historyDiv{
+     display: flex;
+     justify-content: left;
+     flex-wrap: nowrap;
+     text-align: left;
+     margin-bottom : 10%;   
+     padding : 0;
+}
+
+#historyDiv p{
+    margin : 20px;
+}
+
+@media screen and (max-width: 1190px) {
+    #history{
+        display: block;
+    }
+    #historyDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    #history p{
+    margin: 0 auto;
+    }
 }

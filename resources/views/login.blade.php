@@ -8,6 +8,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/login.scss"/>
+    <link href="resources/js/app.js">
+
 <!--<?php
 use Illuminate\Support\Facades\DB;$numero = rand(0, 3);// un numero aléatoire de 0 à 3
 ?>

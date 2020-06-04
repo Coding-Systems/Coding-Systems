@@ -13,6 +13,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.scss"/>
     <link rel="stylesheet" href="css/pages/rankings.scss"/>
+    <link href="resources/js/app.js">
+
 
     <!-- <link rel="stylesheet" href="../sass/app.css"/>
     <link rel="stylesheet" href="../sass/pages/home.css"/>-->
@@ -135,7 +137,7 @@
         <h2>Classement solo</h2>
 
         <section id=rankingNamesUsers>
-
+            <div id=rankingNamesUsersDiv>
             <p>
                 <?php
 
@@ -247,7 +249,7 @@
                     }
                 ?>
             </p>
-
+                </div>
         </section>
 
     </section>
