@@ -72,16 +72,33 @@ section #rankings {
 
 #history {
     font-size: 75%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
     margin-bottom : 10%;
     white-space: nowrap;
-    height: auto;
-    width: 410px;
+    margin-left: 5px;
 }
 
-#history p{
-    margin: 0em;
+#historyDiv{
+     display: flex;
+     justify-content: left;
+     flex-wrap: nowrap;
+     text-align: left;
+     margin-bottom : 10%;   
+     padding : 0;
+}
+
+#historyDiv p{
+    margin : 20px;
+}
+
+@media screen and (max-width: 1190px) {
+    #history{
+        display: block;
+    }
+    #historyDiv{
+        display: flex;
+        flex-direction: column;
+    }
+    #history p{
+    margin: 0 auto;
+    }
 }
