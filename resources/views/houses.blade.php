@@ -249,7 +249,7 @@ use Illuminate\Support\Facades\DB;
             echo '.png" alt="logo de la maison">'
             ?>
         </p>
-        <h2> class="secretTitle">Histoire</h2>
+        <h2 class="secretTitle"> Histoire</h2>
         <p class="story secret">
             Créer, ça c'est leur spécialité !
             Vous manquez d'idées ? Allez voir un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
