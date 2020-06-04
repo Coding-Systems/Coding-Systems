@@ -2,7 +2,7 @@
 <html lang="fr">
 <?php
     use Illuminate\Support\Facades\DB;
-    $idUser =2;
+    $idUser =18;
 ?>
 
 <head>
@@ -199,6 +199,7 @@ if($userType[0]->statut=='PO'){
     echo  '<div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
 ->where('statut', 'student')
+->whereNotNull('house_id')
 ->get();
 
 $challengeList = DB::table('type_points')
