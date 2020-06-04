@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->mediumInteger('total_pts_po')->default(0);
             $table->mediumInteger('total_pts_defi')->default(0);
             $table->mediumInteger('total_given_pts')->default(0);
+            $table->smallInteger('total_won_defis')->default(0);
             $table->tinyInteger('logo_lvl')->default(1);
             $table->smallInteger('year');
             $table->timestamps();

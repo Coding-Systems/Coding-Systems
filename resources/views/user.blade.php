@@ -77,8 +77,6 @@
 
             ?>
 
-            <!--Logo évolutif chez les étudiants -->
-
             <div>
                 <p id="stats">
                     <h2>Statistiques</h2>
@@ -100,14 +98,16 @@
                     }
                     else {
                         echo '<br>Total de points : ';
-                        $givenPts = DB::select('SELECT total_pts as pts
+                        $totalPts = DB::select('SELECT total_pts as pts
                             FROM users
                             WHERE users.id= :id', ['id' => $idUser]);
-                        echo $givenPts[0]->pts." pts";
-
-                        echo '<br>Défis lancés : ';
+                        echo $totalPts[0]->pts." pts";
 
                         echo '<br>Défis gagnés : ';
+                        $defisWon = DB::select('SELECT total_won_defis as pts
+                            FROM users
+                            WHERE users.id= :id ', ['id' => $idUser]);
+                        echo $defisWon[0]->pts;
 
                         echo '<br>Classement général : ';
 
@@ -349,8 +349,9 @@ echo "</div>";
         <div id="hirtoryUser">
             <h2>Historique</h2>
 
-            <form method="post" class="HistoryForm">
-                {{ csrf_field() }}
+            <?php
+            if($userType[0]->statut=='student'){
+                echo '<form method="post" class="HistoryForm">'.csrf_field().'
                 <select id="rank" name="rank">
                     <option value="all">Tout les points</option>
                     <option value="ptsPO">Points gagnés avec PO</option>
@@ -358,7 +359,9 @@ echo "</div>";
                     <option value="ptsNote">Points gagnés avec les notes</option>
                 </select>
                 <button>Valider</button>
-            </form>
+            </form>';
+            }
+                ?>
 
             <section id="history">
                 <p>
@@ -463,15 +466,11 @@ echo "</div>";
                                 echo '<p>';
                             }
                         }
-
-                        }
+                    }
 
                     if (sizeof($mvt_point)==0) {
                         echo "Il n'y a encore rien à afficher ici !";
                     }
-
-
-
                     ?>
                 </p>
             </section>
