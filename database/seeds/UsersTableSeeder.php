@@ -33,7 +33,6 @@ class UsersTableSeeder extends Seeder
         }
 
         DB::table('users')->insert([
-            'id'=>9,
             'first_name'=>'Colombe',
             'last_name'=>'Oiseau_Blanc',
             'mail'=>'colombe@mail.com',
