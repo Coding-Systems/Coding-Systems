@@ -31,6 +31,17 @@ class UsersTableSeeder extends Seeder
             //echo '</br>';
             //echo "Nom : " . $user[2] . " | Prénom : " . $user[1] . " | Mail : " . $user[0];
         }
+
+        DB::table('users')->insert([
+            'id'=>9,
+            'first_name'=>'Colombe',
+            'last_name'=>'Oiseau_Blanc',
+            'mail'=>'colombe@mail.com',
+            'password'=>'mdp+++',
+            'year'=>2020,
+            'house_id'=>NULL,
+            'statut'=>'PO',
+        ]);
     }
 
     /*
