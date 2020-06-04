@@ -84,13 +84,30 @@ input:hover {
 
 #historyDiv p{
     margin: 0em;
+    margin-left : 10px;
+    margin-right : 10px;
+
 }
 
 #historyDiv{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
     text-align: left;
     margin-bottom : 10%;
     margin-top: 1.5em;
+}
+
+@media screen and (max-width: 990px) {
+/*
+    #rankingNamesUsers {
+        display: block;
+    }
+
+ */
+
+    #historyDiv{
+        display: flex;
+        flex-direction: column;
+    }
 }
