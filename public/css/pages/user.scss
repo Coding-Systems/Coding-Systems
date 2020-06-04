@@ -34,7 +34,19 @@ body{width:100%;}
     background-color: #7d838a;
 }
 
+
 #history{
+    text-align: center;
+    display: flex;
+    //flex-direction: row;
+    //flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    //width: 100%;
+    //text-align: center;
+    //margin-left: 20%;
+
+    /*
     padding-bottom: 2%;
     display: flex;
     flex-direction: row;
@@ -43,9 +55,29 @@ body{width:100%;}
     text-align: left;
     white-space: nowrap;
     font-size: 120%;
+
+     */
+}
+
+#divHistory{
+    //width: fit-content ;
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    //justify-content: space-around;
+    text-align: left;
+    margin-bottom : 10%;
+    padding : 0;
 }
 
 #history p {
+    text-align: left;
+    width: max-content;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 select, input{
@@ -155,4 +187,14 @@ input:focus{
     #cssThemeSwitcher{
         margin: 0 auto;
     }
-  }
+
+    #historyUser {
+        display: block;
+    }
+
+    #divHistory{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
