@@ -64,28 +64,46 @@ section #rankings {
 #rankingNamesUsers {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    text-align: left;
+    //flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    //text-align: center;
     margin-left: 20%;
-    margin-right: 20%;
 }
 
 #rankingNamesUsersDiv{
+    //width: fit-content ;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: left;
+    flex-wrap: nowrap;
+    //justify-content: space-around;
     text-align: left;
     margin-bottom : 10%;
+    padding : 0;
+}
+
+@media screen and (max-width: 850px) {
+
+    #rankingNamesUsers {
+        display: block;
+    }
+
+    #rankingNamesUsersDiv{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 #rankingNamesUsersDiv p{
+    width: max-content;
     margin-top: 0em;
-    margin-left: 0.3em;
+    margin-bottom: 0em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 .triHouseRankForm select, .triHouseRankForm button{
-    background-color: #bbbcc4;
+    //background-color: #bbbcc4;
     border-radius: 20px;
     border : 0px;
     outline: none;
@@ -102,6 +120,3 @@ section #rankings {
     vertical-align: text-bottom;
 }
 
-#rankingNamesUsersDiv p {
-    margin: 0em;
-}
