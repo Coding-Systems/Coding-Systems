@@ -348,7 +348,7 @@ if(isset($_POST['envoi'])){
 echo "</div>";
 ?>
         
-        <div id="hirtoryUser">
+        <div id="historyUser">
             <h2>Historique</h2>
 
             <?php
