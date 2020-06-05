@@ -195,6 +195,21 @@
                     <?php
 
 if($userType[0]->statut=='PO'){
+
+        echo '<form method="post">'
+         .csrf_field().
+         '<select id="selectType" name="type">
+             <option value="typePoints">Créer un type de points</option>
+             <option value="ptsPO">Donner des points</option>
+             <option value="addPtsNote">Donner des points de note</option>
+         </select>
+         <input type="submit">
+     </form>';
+     
+     if(isset($_POST['type'])){
+         if($_POST['type']=="typePoints"){
+     
+
     echo  '<div id="addPts"><h2>Création de type points</h2>';
     echo'<form name="newTypePtsForm" method="post">' . csrf_field() .
             '<label class="makePoints">
@@ -214,7 +229,9 @@ if($userType[0]->statut=='PO'){
             )
         );
     }
+         }
 
+         if($_POST['type']=="ptsPO"){
     echo  '<div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
 ->where('statut', 'student')
@@ -382,7 +399,9 @@ if(isset($_POST['envoi'])){
       }
 
 }
+         }
 
+         if($_POST['type']=="addPtsNote"){
     $studentList = DB::table('users')
         ->where('statut', 'student')
         ->whereNotNull('house_id')
@@ -471,7 +490,8 @@ if(isset($_POST['envoi'])){
 
         unset($_POST);
     }
-
+         }
+        }
 }
 echo "</div>";
 ?>
