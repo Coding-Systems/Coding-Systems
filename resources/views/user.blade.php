@@ -429,17 +429,6 @@ if(isset($_POST['envoi'])){
         date_default_timezone_set('Europe/Paris');
         $date = date("Y-m-d H:i:s");
 
-        /*
-        $student_points = DB::table('users')
-            ->select('users.id', 'users.total_pts', 'users.total_pts_po')
-            ->where('id', $student_id)
-            ->get();
-
-        $type_pts = DB::table('type_points')
-            ->select ('type_points.type', 'type_points.id')
-            ->where ('id', $challenge_id )
-            ->get ();
-*/
         $house = DB::table('users')
             ->select('users.house_id AS houseId', 'users.id')
             ->where('id', $student_id)
@@ -449,46 +438,6 @@ if(isset($_POST['envoi'])){
         foreach ($house as $house){
             $house_id = $house->houseId;
         }
-
-        /*
-        $house_pts = DB::table('houses')
-            ->select('houses.total_pts', 'houses.total_pts_po')
-            ->where('id', $house_id)
-            ->get();
-
-        foreach ($house_pts as $add_house_pts){
-            $house_total_pts = $add_house_pts->total_pts;
-        }
-
-        foreach ($house_pts as $add_house_pts_po){
-            $house_total_pts_po = $add_house_pts->total_pts_po;
-        }
-
-        foreach ($student_points as $add){
-            $total_pts = $add->total_pts;
-        }
-
-        foreach ($student_points as $add){
-            $total_pts_po = $add->total_pts_po;
-        }
-        */
-
-        /*
-        foreach ($type_pts as $type) {
-            $type_select = $type->type;
-        }
-        */
-
-        /*
-        $professor_pts = DB::table('users')
-            ->select('users.total_given_pts')
-            ->where('id', $idUser)
-            ->get();
-
-        foreach ($professor_pts as $professor){
-            $given_pts = $professor->total_given_pts;
-        }
-        */
 
         DB::table('mvt_points')->insert(
             array(
