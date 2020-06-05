@@ -80,6 +80,22 @@ body{width:100%;}
     margin-right: 0.5em;
 }
 
+#addPoints{
+    display: flex;
+    text-align: center;
+}
+#addPts, #addPtsNote{
+    justify-content: left;
+    display : inline-table;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+}
+
+#addPtsNote h2 {
+    padding-left: 50px;
+}
+
 select, input{
     background-color: #bbbcc4;
     border-radius: 10px;
@@ -193,6 +209,13 @@ input:focus{
     }
 
     #divHistory{
+        display: flex;
+        flex-direction: column;
+    }
+    #addPoints{
+        display: block;
+    }
+    #addPts, #addPtsNote{
         display: flex;
         flex-direction: column;
     }
