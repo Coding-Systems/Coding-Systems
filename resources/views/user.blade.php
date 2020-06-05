@@ -195,6 +195,25 @@
                     <?php
 
 if($userType[0]->statut=='PO'){
+    echo  '<div id="addPts"><h2>Création de type points</h2>';
+    echo'<form name="newTypePtsForm" method="post">' . csrf_field() .
+            '<label class="makePoints">
+            <input name="nameTypePoints" type="text"/>
+            <input type="submit" name="MakeNewPts" value="créer le type de points"/>
+            </label>
+        </form>';
+
+    if(isset($_POST['MakeNewPts'])){
+        $date = date("Y-m-d H:i:s");
+        $nameTypePoints = $_POST['nameTypePoints'];
+        DB::table('type_points')->insert(
+            array(
+                'name' => "$nameTypePoints",
+                'type' => "note",
+                'created_at' => "$date",
+            )
+        );
+    }
 
     echo  '<div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
@@ -205,6 +224,9 @@ $studentList = DB::table('users')
 $challengeList = DB::table('type_points')
 ->where('type_points.type', 'PO')
 ->orWhere('type_points.type', 'events')
+->get();
+
+$typeptsList = DB::table('type_points')
 ->get();
 
 echo '<form name="addPointsForm" method="post">'. csrf_field() .
@@ -220,11 +242,19 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
 
    echo '</select>
     </label> </br>
-    <label class="challenge">Défi
+    <label class="challenge">PO
     <select required="required" name="challengeId" size="5">';
     foreach ($challengeList as $challenge){
           echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';
     }
+    echo '</select>
+    </label> </br>
+    <label class="typePts">type de points
+    <select required="required" name="typeId" size="5">';
+    foreach ($typeptsList as $type){
+        echo '<option value="'.$type->id.'">'.$type->name.'</option>';
+    }
+
    echo '</select>
     </label> </br>
     <label class="points">Nombre de points

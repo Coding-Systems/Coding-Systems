@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php 
+<?php
     use Illuminate\Support\Facades\DB;
      ?>
 
@@ -53,7 +53,7 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
     <label class="challenge">Défi
     <select required="required" name="challengeId" size="5">';
     foreach ($challengeList as $challenge){
-          echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';  
+          echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';
     }
    echo '</select>
     </label> </br>
@@ -79,7 +79,7 @@ if(isset($_POST['envoi'])){
       ->select('users.id', 'users.total_pts', 'users.total_pts_po')
       ->where('id', $student_id)
       ->get();
-      
+
       $type_pts = DB::table('type_points')
       ->select ('type_points.type', 'type_points.id')
       ->where ('id', $challenge_id )
@@ -114,7 +114,7 @@ if(isset($_POST['envoi'])){
       foreach ($student_points as $add){
             $total_pts_po = $add->total_pts_po;
       }
-      
+
       foreach ($type_pts as $type) {
             $type_select = $type->type;
       }
@@ -164,7 +164,7 @@ if(isset($_POST['envoi'])){
       else {
             echo "Une erreur s'est produite. Veuillez réessayer.";
       }
-     
+
 }
 
                   DB::table('users')
@@ -176,7 +176,7 @@ if(isset($_POST['envoi'])){
                         );
             }
 
-            
+
      else if($type_select=="events") {
       array(
             'label' => "$nbr_points",
@@ -197,7 +197,7 @@ if(isset($_POST['envoi'])){
       else {
             echo "Une erreur s'est produite. Veuillez réessayer.";
       }
-     
+
 }
 
 ?>
