@@ -12,6 +12,7 @@ class MvtPointsTableSeeder extends Seeder
      */
     public function run() ///Full version
     {
+        /*
         DB::table('mvt_points')->insert([
             'label'=>7,
             'users_id'=>1,
@@ -188,5 +189,7 @@ class MvtPointsTableSeeder extends Seeder
             'type_point_id'=>3,
             'created_at'=>'2020-05-27 14:57:00',
         ]);
+        */
     }
+
 }

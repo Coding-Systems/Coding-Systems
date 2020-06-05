@@ -10,6 +10,7 @@ class HouseTableSeeder extends Seeder
      *
      * @return void
      */
+    /*
     public function run() ///Full version
     {
         DB::table('houses')->insert([
@@ -49,8 +50,8 @@ class HouseTableSeeder extends Seeder
         ]);
         //
     }
+    */
 
-    /*
     public function run() ///Empty version
     {
         DB::table('houses')->insert([
@@ -68,5 +69,5 @@ class HouseTableSeeder extends Seeder
             'name'=>'Gitsune',
         ]);
     }
-    */
+
 }
