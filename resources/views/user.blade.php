@@ -198,7 +198,7 @@ if($userType[0]->statut=='PO'){
     echo  '<div id="addPts"><h2>Création de type points</h2>';
     echo'<form name="newTypePtsForm" method="post">' . csrf_field() .
             '<label class="makePoints">
-            <input name="nameTypePoints" type="text"/>
+            <input name="nameTypePoints" type="text" required="require"/>
             <input type="submit" name="MakeNewPts" value="créer le type de points"/>
             </label>
         </form>';
