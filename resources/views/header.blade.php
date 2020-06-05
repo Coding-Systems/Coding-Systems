@@ -4,6 +4,7 @@
   <div class="header-limiter" id="menu">
 
     <div id="pagesMenu">
+        <img id="logoHeader" src="img/logo.png" alt="logo">
         <nav>
         <a class="menuLink" href="/">Accueil</a>
         <a class="menuLink" href="/classements">Classements</a>
