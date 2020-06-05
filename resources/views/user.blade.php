@@ -231,7 +231,7 @@ $typeptsList = DB::table('type_points')
 
 echo '<form name="addPointsForm" method="post">'. csrf_field() .
     '<section class="addPoints">
-    <label class="student">Eleve
+    <label class="student">Eleve<br/>
     <select required="required" name="studentId" size="5">';
 
     foreach ($studentList as $student){
@@ -240,7 +240,7 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
 
    echo '</select>
     </label> </br>
-    <label class="challenge">PO
+    <label class="challenge">PO<br/>
     <select required="required" name="challengeId" size="5">';
     foreach ($challengeList as $challenge){
           echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';
@@ -248,7 +248,7 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
 
    echo '</select>
     </label> </br>
-    <label class="points">Nombre de points
+    <label class="points">Nombre de points<br/>
     <input required="required" name="nbrPoints" type="number" max="1000" style="width:80px;"/>
     </label>
     </br>
@@ -388,7 +388,7 @@ if(isset($_POST['envoi'])){
     echo '<div id="addPtsNote"><h2>Points par notes</h2>
         <form name="addNoteForm" method="post">'. csrf_field() .
         '<section class="addPoints">
-    <label class="student">Eleve
+    <label class="student">Eleve<br/>
     <select required="required" name="studentId" size="5">';
 
     foreach ($studentList as $student){
@@ -397,14 +397,14 @@ if(isset($_POST['envoi'])){
 
     echo '</select>
     </label> </br>
-    <label class="challenge" for="noteId">Matière</label>
+    <label class="challenge" for="noteId">Matière</label><br/>
     <select required="required" name="noteId" id="noteId" size="5">';
     foreach ($notesList as $note){
         echo '<option value="'.$note->id.'">'.$note->name.'</option>';
     }
     echo '</select>
     </label> </br>
-    <label class="points">Nombre de points
+    <label class="points">Nombre de points<br/>
     <input required="required" name="nbrPoints" type="number" max="1000" style="width:80px;"/>
     </label>
     </br>
