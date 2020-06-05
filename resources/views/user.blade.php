@@ -262,13 +262,6 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
     foreach ($challengeList as $challenge){
           echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';
     }
-    echo '</select>
-    </label> </br>
-    <label class="typePts">type de points
-    <select required="required" name="typeId" size="5">';
-    foreach ($typeptsList as $type){
-        echo '<option value="'.$type->id.'">'.$type->name.'</option>';
-    }
 
    echo '</select>
     </label> </br>
