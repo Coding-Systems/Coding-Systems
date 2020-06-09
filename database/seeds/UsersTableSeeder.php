@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
             DB::table('users')->insert([
                 'first_name'=>$user[2],
-                'last_name'=>$user[1],
+                'last_name'=>ucfirst(strtolower($user[1])),
                 'mail'=>$user[0],
                 'password'=>'mdp',
                 'year'=>2020,
