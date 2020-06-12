@@ -1,3 +1,3 @@
-<footer>
+<!--<footer>
     Coding Factory 2020
-</footer>
+</footer>-->

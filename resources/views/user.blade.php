@@ -10,8 +10,8 @@
     <title>Coding house</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
-    <link rel="stylesheet" href="css/app.scss"/>
-    <link rel="stylesheet" href="css/pages/user.scss"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/all.css"/>
     <link href="resources/js/app.js">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

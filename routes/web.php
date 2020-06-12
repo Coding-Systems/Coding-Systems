@@ -55,3 +55,9 @@ Route::get('/loginregister.blade.php', function () {
 Route::match(['get', 'post'],'/ajout', function () {
     return view('addingPoints');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');

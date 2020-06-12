@@ -15,10 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name')->nullable($value = true);;
+            $table->string('last_name')->nullable($value = true);;
+            $table->string('name');
             $table->string('mail')->unique();
-            $table->string('statut', 15);
+            $table->string('statut', 15)->default('student');;
             $table->foreignId('house_id')->nullable($value = true);
             $table->string('password');
             $table->mediumInteger('total_pts')->default(0);
@@ -28,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->mediumInteger('total_given_pts')->default(0);
             $table->smallInteger('total_won_defis')->default(0);
             $table->tinyInteger('logo_lvl')->default(1);
-            $table->smallInteger('year');
+            $table->smallInteger('year')->default(1);
             $table->timestamps();
 
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');

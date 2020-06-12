@@ -9,7 +9,7 @@
     <title>Coding house</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
-    <link rel="stylesheet" href="css/app.scss"/>
+    <link rel="stylesheet" href="css/app.css"/>
 
     <!-- <link rel="stylesheet" href="../sass/app.css"/>
     <link rel="stylesheet" href="../sass/pages/home.css"/>-->

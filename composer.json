@@ -15,7 +15,9 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/installer": "^3.1",
+        "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1"
     },
     "require-dev": {

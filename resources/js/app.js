@@ -1,7 +1,5 @@
 require('./bootstrap');
 
-import "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
-
     $(document).ready(function(){
 
         var showHeaderAt = 150;
@@ -29,6 +27,4 @@ import "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
         }
 
     });
-
-<!-- Demo ads. Please ignore and remove. -->
 
