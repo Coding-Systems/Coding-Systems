@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,51 +14,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+
 Route::get('/', function () {
     return view('home');
-});
-
-Route::match(['get', 'post'],'/challenges', function () {
-    return view('challenges');
-});
-
-Route::match(['get', 'post'],'/maisons', function () {
-    return view('houses');
-});
-
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::match(['get', 'post'],'/historique', function () {
-    return view('historique');
-});
-
-Route::match(['get', 'post'],'/classements', function () {
-    return view('rankings');
 });
 
 Route::get('/regles', function () {
     return view('rules');
 });
 
+Auth::routes();
+
 Route::match(['get', 'post'],'/profil', function () {
     return view('user');
-});
+})->middleware('auth');;
 
 Route::match(['get', 'post'], '/quizz', function () {
     return view('quizz');
-});
-
-Route::get('/loginregister.blade.php', function () {
-    return view('loginregister');
-});
+})->middleware('auth');;
 
 Route::match(['get', 'post'],'/ajout', function () {
     return view('addingPoints');
+})->middleware('auth');;
+
+Route::match(['get', 'post'],'/challenges', function () {
+    return view('challenges');
+})->middleware('auth');;
+
+Route::match(['get', 'post'],'/maisons', function () {
+    return view('houses');
 });
 
-Auth::routes();
+Route::match(['get', 'post'],'/historique', function () {
+    return view('historique');
+})->middleware('auth');;
 
-Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
-Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+Route::match(['get', 'post'],'/classements', function () {
+    return view('rankings');
+})->middleware('auth');;
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

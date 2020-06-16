@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run() ///exel version
     {
         $usersList = getArrayListUsers();
-
+        $i = 0;
         foreach ($usersList as $user) {
 
             DB::table('users')->insert([
@@ -24,9 +24,10 @@ class UsersTableSeeder extends Seeder
                 'mail'=>$user[0],
                 'password'=>'mdp',
                 'year'=>2020,
-                'statut'=>'student'
+                'statut'=>'student',
+                'google_id'=>$i,
             ]);
-
+            $i++;
             //print_r($user[]);
             //echo '</br>';
             //echo "Nom : " . $user[2] . " | Prénom : " . $user[1] . " | Mail : " . $user[0];
@@ -40,6 +41,7 @@ class UsersTableSeeder extends Seeder
             'year'=>2020,
             'house_id'=>NULL,
             'statut'=>'PO',
+            'google_id' => 'as223',
         ]);
     }
 

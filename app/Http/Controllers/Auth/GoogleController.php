@@ -36,7 +36,7 @@ class GoogleController extends Controller
 
                 Auth::login($finduser);
 
-                return redirect('/home');
+                return redirect('/');
 
             } else {
                 $name = explode(' ', $user->name);
