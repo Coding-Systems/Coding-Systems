@@ -1,3 +1,5 @@
+<!-- deprecated with google oauth -->
+
 <!DOCTYPE html>
 <html lang="fr">
 

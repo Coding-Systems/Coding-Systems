@@ -30,7 +30,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
     <section id="quizzPage">
 
-        <h1>Quiz de répartition</h1>
+        <h1>Quizz de répartition</h1>
 
         <p>Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
             <br>Ou laissez le hasard total opérer en appuyant <button>ICI</button>

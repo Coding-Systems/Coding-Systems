@@ -39,20 +39,20 @@ class GoogleController extends Controller
                 return redirect('/home');
 
             } else {
+                $name = explode(' ', $user->name);
                 $newUser = User::create([
-                    'first_name'=>'Alsia',
-                    'last_name'=>'Prevo',
-                    'name' => $user->name,
+                    'first_name' => $name[0],
+                    'last_name' => $name[1],
                     'mail' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy'),
-                    'statut'=>'student',
+                    'statut'=>'PO',
                     'logo_lvl'=>1
                 ]);
                 $newUser->save();
                 Auth::login($newUser);
 
-                return redirect('/home');
+                return redirect('/');
             }
 
         } catch (Exception $e) {

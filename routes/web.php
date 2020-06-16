@@ -41,13 +41,14 @@ Route::get('/regles', function () {
     return view('rules');
 });
 
-Route::match(['get', 'post'],'/utilisateur', function () {
+Route::match(['get', 'post'],'/profil', function () {
     return view('user');
 });
 
 Route::match(['get', 'post'], '/quizz', function () {
     return view('quizz');
 });
+
 Route::get('/loginregister.blade.php', function () {
     return view('loginregister');
 });
@@ -58,6 +59,5 @@ Route::match(['get', 'post'],'/ajout', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
