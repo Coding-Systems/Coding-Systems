@@ -141,7 +141,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
                     else {
                         echo '<img class="houseIcon" src="img/logo.png" alt="logo">';
                     }
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " pts [", $user->tname, "]" ;
+                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->nbr_points, " pts [", $user->tname, "]" ;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";

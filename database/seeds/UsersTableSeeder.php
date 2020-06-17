@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-
+/*
     public function run() ///exel version
     {
         $usersList = getArrayListUsers();
@@ -44,8 +44,8 @@ class UsersTableSeeder extends Seeder
             'google_id' => 'as223',
         ]);
     }
+*/
 
-    /*
     public function run() ///Full version
     {
         DB::table('users')->insert([
@@ -220,7 +220,6 @@ class UsersTableSeeder extends Seeder
         ]);
         //
     }
-    */
 
     /*
     public function run() ///Empty version

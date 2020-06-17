@@ -12,9 +12,9 @@ class MvtPointsTableSeeder extends Seeder
      */
     public function run() ///Full version
     {
-        /*
         DB::table('mvt_points')->insert([
-            'label'=>7,
+            'nbr_points'=>7,
+            'label'=>"Something",
             'users_id'=>1,
             'professor_id'=>NULL,
             'type_point_id'=>4,
@@ -22,7 +22,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>7,
+            'nbr_points'=>7,
+            'label'=>"Something",
             'users_id'=>1,
             'professor_id'=>NULL,
             'type_point_id'=>4,
@@ -30,7 +31,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>38,
+            'nbr_points'=>38,
+            'label'=>"Something",
             'users_id'=>1,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -38,7 +40,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>-8,
+            'nbr_points'=>-8,
+            'label'=>"Something",
             'users_id'=>2,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -46,7 +49,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>50,
+            'nbr_points'=>50,
+            'label'=>"Something",
             'users_id'=>2,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -54,7 +58,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>39,
+            'nbr_points'=>39,
+            'label'=>"Something",
             'users_id'=>2,
             'professor_id'=>NULL,
             'type_point_id'=>1,
@@ -62,7 +67,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>70,
+            'nbr_points'=>70,
+            'label'=>"Something",
             'users_id'=>3,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -70,7 +76,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>9,
+            'nbr_points'=>9,
+            'label'=>"Something",
             'users_id'=>3,
             'professor_id'=>NULL,
             'type_point_id'=>2,
@@ -78,7 +85,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>-7,
+            'nbr_points'=>-7,
+            'label'=>"Something",
             'users_id'=>4,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -86,7 +94,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>38,
+            'nbr_points'=>38,
+            'label'=>"Something",
             'users_id'=>4,
             'professor_id'=>NULL,
             'type_point_id'=>1,
@@ -94,7 +103,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>20,
+            'nbr_points'=>20,
+            'label'=>"Something",
             'users_id'=>5,
             'professor_id'=>NULL,
             'type_point_id'=>4,
@@ -102,7 +112,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>30,
+            'nbr_points'=>30,
+            'label'=>"Something",
             'users_id'=>5,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -110,7 +121,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>8,
+            'nbr_points'=>8,
+            'label'=>"Something",
             'users_id'=>5,
             'professor_id'=>NULL,
             'type_point_id'=>1,
@@ -118,7 +130,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>-9,
+            'nbr_points'=>-9,
+            'label'=>"Something",
             'users_id'=>6,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -126,7 +139,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>40,
+            'nbr_points'=>40,
+            'label'=>"Something",
             'users_id'=>5,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -134,7 +148,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>36,
+            'nbr_points'=>36,
+            'label'=>"Something",
             'users_id'=>6,
             'professor_id'=>NULL,
             'type_point_id'=>4,
@@ -143,7 +158,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>80,
+            'nbr_points'=>80,
+            'label'=>"Something",
             'users_id'=>7,
             'professor_id'=>NULL,
             'type_point_id'=>4,
@@ -151,7 +167,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>14,
+            'nbr_points'=>14,
+            'label'=>"Something",
             'users_id'=>7,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -159,7 +176,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>-5,
+            'nbr_points'=>-5,
+            'label'=>"Something",
             'users_id'=>8,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -167,7 +185,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>27,
+            'nbr_points'=>27,
+            'label'=>"Something",
             'users_id'=>8,
             'professor_id'=>9,
             'type_point_id'=>3,
@@ -175,7 +194,8 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>40,
+            'nbr_points'=>40,
+            'label'=>"Something",
             'users_id'=>8,
             'professor_id'=>NULL,
             'type_point_id'=>2,
@@ -183,13 +203,13 @@ class MvtPointsTableSeeder extends Seeder
         ]);
 
         DB::table('mvt_points')->insert([
-            'label'=>100,
+            'nbr_points'=>100,
+            'label'=>"Something",
             'users_id'=>5,
             'professor_id'=>9,
             'type_point_id'=>3,
             'created_at'=>'2020-05-27 14:57:00',
         ]);
-        */
     }
 
 }

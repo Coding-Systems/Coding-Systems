@@ -16,7 +16,8 @@ class CreateMvtPointTable extends Migration
     {
         Schema::create('mvt_points', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('label');
+            $table->smallInteger('nbr_points');
+            $table->text('label')->nullable();
             $table->foreignId('users_id');
             $table->foreignId('professor_id')->nullable();
             $table->foreignId('type_point_id');

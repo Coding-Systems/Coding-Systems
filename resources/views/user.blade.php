@@ -3,7 +3,6 @@
 <?php
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
-    $idUser =18;
 ?>
 
 <head>
@@ -42,7 +41,7 @@
                 FROM houses
                 LEFT JOIN users
                     ON users.house_id = houses.id
-                WHERE users.id =:id', ['id' => $idUser]);
+                WHERE users.id =:id', ['id' => Auth::user()->id]);
 
             echo '<img id="logoUser" ';
 
@@ -63,7 +62,7 @@
 
                 $logoLvl = DB::select('SELECT logo_lvl
                 FROM users
-                WHERE users.id =:id', ['id' => $idUser]);
+                WHERE users.id =:id', ['id' => Auth::user()->id]);
                 echo $logoLvl[0]->logo_lvl.'.png"';
             }
             else {
@@ -81,13 +80,13 @@
 
                 $userType = DB::select('SELECT statut
                     FROM users
-                    WHERE id = :id', ['id' => $idUser]);
+                    WHERE id = :id', ['id' => Auth::user()->id]);
 
-                    if($userType[0]->statut=='PO'){
+                    if(Auth::user()->statut == 'PO'){
                         echo'<br>Points donnés : ';
                         $givenPts = DB::select('SELECT total_given_pts as pts
                             FROM users
-                            WHERE users.id= :id ', ['id' => $idUser]);
+                            WHERE users.id= :id ', ['id' => Auth::user()->id]);
                         echo $givenPts[0]->pts." pts";
 
                         echo '<br>Event organisés : ';
@@ -96,13 +95,13 @@
                         echo '<br>Total de points : ';
                         $totalPts = DB::select('SELECT total_pts as pts
                             FROM users
-                            WHERE users.id= :id', ['id' => $idUser]);
+                            WHERE users.id= :id', ['id' => Auth::user()->id]);
                         echo $totalPts[0]->pts." pts";
 
                         echo '<br>Défis gagnés : ';
                         $defisWon = DB::select('SELECT total_won_defis as pts
                             FROM users
-                            WHERE users.id= :id ', ['id' => $idUser]);
+                            WHERE users.id= :id ', ['id' => Auth::user()->id]);
                         echo $defisWon[0]->pts;
 
                         echo '<br>Classement général : ';
@@ -115,7 +114,7 @@
                             GROUP BY users.id
                             ORDER BY pts DESC');
                         $x =0;
-                        while($ranking[$x]->idU != $idUser){
+                        while($ranking[$x]->idU != Auth::user()->id){
                             $x++;
                         }
                         echo $x+1;
@@ -124,7 +123,7 @@
 
                         $userHouses = DB::select('SELECT house_id
                             FROM users
-                            WHERE id = :id', ['id' => $idUser]);
+                            WHERE id = :id', ['id' => Auth::user()->id]);
                         //echo $userHouses[0];
 
                         if(isset($userHouses[0]->house_id)){
@@ -141,9 +140,9 @@
                                 	WHERE userBIS.id = :id
                                 	LIMIT 1)
                             GROUP BY users.id
-                            ORDER BY pts DESC', ['id' => $idUser]);
+                            ORDER BY pts DESC', ['id' => Auth::user()->id]);
                             $x =0;
-                            while($ranking[$x]->idU != $idUser){
+                            while($ranking[$x]->idU != Auth::user()->id){
                                 $x++;
                             }
                             echo $x+1;
@@ -153,7 +152,6 @@
                 ?>
 
                     <br>
-                </p>
             </div>
 
             <div id="cssThemeSwitcher">
@@ -188,14 +186,14 @@
 
                     <?php
 
-if($userType[0]->statut=='PO'){
-    echo  '<div id="addPts"><h2>Création de type points</h2>';
-    echo'<form name="newTypePtsForm" method="post">' . csrf_field() .
+if (Auth::user()->statut == 'PO'){
+    echo '<div id="addPts"><h2>Création de type points</h2>';
+    echo '<form name="newTypePtsForm" method="post">' . csrf_field() .
             '<label class="makePoints">
             <input name="nameTypePoints" type="text" required="require"/>
             <input type="submit" name="MakeNewPts" value="Créer"/>
             </label>
-        </form>';
+          </form>';
 
     if(isset($_POST['MakeNewPts'])){
         $date = date("Y-m-d H:i:s");
@@ -209,7 +207,7 @@ if($userType[0]->statut=='PO'){
         );
     }
 
-    echo  '<div id="addPoints"><div id="addPts"><h2>Ajouter des points</h2>';
+    echo '<div id="addPoints"><div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
 ->where('statut', 'student')
 ->whereNotNull('house_id')
@@ -306,7 +304,7 @@ if(isset($_POST['envoi'])){
 
       $professor_pts = DB::table('users')
       ->select('users.total_given_pts')
-      ->where('id', $idUser)
+      ->where('id', Auth::user()->id)
       ->get();
 
       foreach ($professor_pts as $professor){
@@ -316,16 +314,16 @@ if(isset($_POST['envoi'])){
      if ($type_select=="PO"){
             DB::table('mvt_points')->insert(
             array(
-                  'label' => "$nbr_points",
+                  'nbr_points' => "$nbr_points",
                   'users_id' => "$student_id",
                   'type_point_id' => "$challenge_id",
                   'created_at' => "$date",
-                  'professor_id' =>"$idUser"
+                  'professor_id' =>Auth::user()->id
             )
             );
 
             DB::table('users')
-            ->where("id", $idUser)
+            ->where("id", Auth::user()->id)
             ->update(
                 array(
                     'total_given_pts'=>"$nbr_points"+"$given_pts"
@@ -428,7 +426,7 @@ if(isset($_POST['envoi'])){
 
         DB::table('mvt_points')->insert(
             array(
-                'label' => "$nbr_points",
+                'nbr_points' => "$nbr_points",
                 'users_id' => "$student_id",
                 'type_point_id' => "$note_id",
                 'created_at' => "$date",
@@ -467,7 +465,7 @@ echo "</div>";
             <h2>Historique</h2>
 
             <?php
-            if($userType[0]->statut=='student'){
+            if(Auth::user()->statut=='student'){
                 echo '<form method="post" class="HistoryForm">'.csrf_field().'
                 <select id="rank" name="rank">
                     <option value="all">Tout les points</option>
@@ -485,14 +483,14 @@ echo "</div>";
                 <p>
                     <?php
 
-                    if($userType[0]->statut=='PO'){
+                    if(Auth::user()->statut=='PO'){
                         $mvt_point = DB::table('mvt_points')
                             ->join ('users AS student', 'mvt_points.users_id', '=', 'student.id')
                             ->join ('users AS PO', 'mvt_points.professor_id', '=', 'PO.id')
                             ->join ('houses', 'student.house_id', '=', 'houses.id')
                             ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                             ->select ('student.first_name AS sName', 'type_points.name AS typePTS', 'mvt_points.*')
-                            ->where('PO.id', $idUser)
+                            ->where('PO.id', Auth::user()->id)
                             ->orderBy ('mvt_points.created_at', 'DESC')
                             ->limit(50)
                             ->get();
@@ -501,7 +499,7 @@ echo "</div>";
                         foreach ($mvt_point as $point){
                             $nbr++;
 
-                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->label.' pts '.'['.$point->sName.'] '.'</br>';
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] ' . $point->nbr_points . ' pts '.'['.$point->sName.'] '.'</br>';
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';
@@ -519,7 +517,7 @@ echo "</div>";
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
                                         ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                                         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', $idUser)
+                                        ->where('users.id', Auth::user()->id)
                                         ->where ('type_points.type', 'PO')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -531,7 +529,7 @@ echo "</div>";
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
                                         ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                                         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', $idUser)
+                                        ->where('users.id', Auth::user()->id)
                                         ->where ('type_points.type', 'defi')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -543,7 +541,7 @@ echo "</div>";
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
                                         ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                                         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', $idUser)
+                                        ->where('users.id', Auth::user()->id)
                                         ->where ('type_points.type', 'note')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -555,7 +553,7 @@ echo "</div>";
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
                                         ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                                         ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', $idUser)
+                                        ->where('users.id', Auth::user()->id)
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
                                         ->get();
@@ -567,7 +565,7 @@ echo "</div>";
                                 ->join ('houses', 'users.house_id', '=', 'houses.id')
                                 ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
                                 ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                ->where('users.id', $idUser)
+                                ->where('users.id', Auth::user()->id)
                                 ->orderBy ('mvt_points.created_at', 'DESC')
                                 ->limit(50)
                                 ->get();
@@ -578,7 +576,7 @@ echo "</div>";
                         foreach ($mvt_point as $point){
                             $nbr++;
 
-                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->label.' pts '.'['.$point->typePTS.'] '.'</br>';
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->nbr_points.' pts '.'['.$point->typePTS.'] '.'</br>';
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';

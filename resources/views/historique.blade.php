@@ -168,7 +168,7 @@
             else {
                 echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
             }
-            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->label, " [", $user->tname, "]" ;
+            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->nbr_points, " [", $user->tname, "]" ;
             echo '<br/>';
             if(intdiv(sizeof($mvt_points),2)==$rank){
                 echo "</p>";
