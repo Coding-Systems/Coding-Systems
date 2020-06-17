@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
     $idUser =18;
 ?>
@@ -30,14 +31,7 @@
     <div id="user">
 
         <?php
-
-        $userName = DB::select('SELECT first_name, last_name
-            FROM users
-            WHERE id = :id', ['id' => $idUser]);
-
-        foreach ($userName as $user){
-            echo '<h1>'.$user->first_name." ".$user->last_name.'</h1>';
-        }
+            echo '<h1>'. Auth::user()->first_name ." ". Auth::user()->last_name .'</h1>';
         ?>
 
         <div id="statsUser">

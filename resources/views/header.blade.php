@@ -18,8 +18,8 @@
                 <a class="menuLink" href="/maisons">Maisons</a>
                 <a class="menuLink" href="/regles">Règles</a>
                 <a class="menuLink" href="/challenges">Défis</a>
-                <a class="nav-link menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->first_name }} <span class="caret"></span>
+                <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    Profil
                 </a>
                 <a class="nav-link menuLink" href="{{ route('logout') }}">Déconnecter</a>
             @endguest
