@@ -187,38 +187,11 @@
                     <?php
 
 if (Auth::user()->statut == 'PO'){
-    echo '<div id="addPts"><h2>Création de type points</h2>';
-    echo '<form name="newTypePtsForm" method="post">' . csrf_field() .
-            '<label class="makePoints">
-            <input name="nameTypePoints" type="text" required="require"/>
-            <input type="submit" name="MakeNewPts" value="Créer"/>
-            </label>
-          </form>';
-
-    if(isset($_POST['MakeNewPts'])){
-        $date = date("Y-m-d H:i:s");
-        $nameTypePoints = $_POST['nameTypePoints'];
-        DB::table('type_points')->insert(
-            array(
-                'name' => "$nameTypePoints",
-                'type' => "note",
-                'created_at' => "$date",
-            )
-        );
-    }
 
     echo '<div id="addPoints"><div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
 ->where('statut', 'student')
 ->whereNotNull('house_id')
-->get();
-
-$challengeList = DB::table('type_points')
-->where('type_points.type', 'PO')
-->orWhere('type_points.type', 'events')
-->get();
-
-$typeptsList = DB::table('type_points')
 ->get();
 
 echo '<form name="addPointsForm" method="post">'. csrf_field() .
@@ -228,17 +201,14 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
 
     foreach ($studentList as $student){
       echo '<option value="'.$student->id.'">'.$student->first_name.'</option>';
-      };
-
-   echo '</select>
-    </label> </br>
-    <label class="challenge">PO<br/>
-    <select required="required" name="challengeId" size="5">';
-    foreach ($challengeList as $challenge){
-          echo '<option value="'.$challenge->id.'">'.$challenge->name.'</option>';
     }
 
    echo '</select>
+    </label> </br>
+    <label class="points">Raison<br/>
+    <input required="required" name="reason" type="text"/>';
+
+   echo '
     </label> </br>
     <label class="points">Nombre de points<br/>
     <input required="required" name="nbrPoints" type="number" max="1000" style="width:80px;"/>
@@ -254,7 +224,7 @@ if(isset($_POST['envoi'])){
 
       $nbr_points = $_POST['nbrPoints'];
       $student_id = $_POST['studentId'];
-      $challenge_id = $_POST['challengeId'];
+      $reason = $_POST['reason'];
       date_default_timezone_set('Europe/Paris');
       $date = date("Y-m-d H:i:s");
 
@@ -263,17 +233,12 @@ if(isset($_POST['envoi'])){
       ->where('id', $student_id)
       ->get();
 
-      $type_pts = DB::table('type_points')
-      ->select ('type_points.type', 'type_points.id')
-      ->where ('id', $challenge_id )
-      ->get ();
-
-      $house = DB::table('users')
+      $houses = DB::table('users')
       ->select('users.house_id', 'users.id')
       ->where('id', $student_id)
       ->get();
 
-      foreach ($house as $house){
+      foreach ($houses as $house){
             $house_id = $house->house_id;
       }
 
@@ -298,10 +263,6 @@ if(isset($_POST['envoi'])){
             $total_pts_po = $add->total_pts_po;
       }
 
-      foreach ($type_pts as $type) {
-            $type_select = $type->type;
-      }
-
       $professor_pts = DB::table('users')
       ->select('users.total_given_pts')
       ->where('id', Auth::user()->id)
@@ -311,60 +272,57 @@ if(isset($_POST['envoi'])){
           $given_pts = $professor->total_given_pts;
       }
 
-     if ($type_select=="PO"){
-            DB::table('mvt_points')->insert(
-            array(
-                  'nbr_points' => "$nbr_points",
-                  'users_id' => "$student_id",
-                  'type_point_id' => "$challenge_id",
-                  'created_at' => "$date",
-                  'professor_id' =>Auth::user()->id
-            )
-            );
 
-            DB::table('users')
-            ->where("id", Auth::user()->id)
-            ->update(
-                array(
-                    'total_given_pts'=>"$nbr_points"+"$given_pts"
-                )
-                );
+      DB::table('mvt_points')->insert(
+          array(
+              'nbr_points' => "$nbr_points",
+              'users_id' => "$student_id",
+              'label' => "$reason",
+              'created_at' => "$date",
+              'professor_id' =>Auth::user()->id
+          )
+      );
 
-            DB::table('users')
-            ->where("id", $student_id)
-            ->update(
-                  array(
-                        'total_pts'=> "$nbr_points"+"$total_pts"
-                  )
-                  );
+      DB::table('users')
+      ->where("id", Auth::user()->id)
+      ->update(
+          array(
+              'total_given_pts'=>"$nbr_points"+"$given_pts"
+          )
+      );
 
-            DB::table('users')
-            ->where("id", $student_id)
-            ->update(
-                  array(
-                        'total_pts_po'=> "$nbr_points"+"$total_pts_po"
-                  )
-            );
+      DB::table('users')
+      ->where("id", $student_id)
+      ->update(
+          array(
+              'total_pts'=> "$nbr_points"+"$total_pts"
+          )
+      );
 
-            DB::table('houses')
-            ->where("id", $house_id)
-            ->update(
-                  array(
-                        'total_pts'=>"$nbr_points"+"$house_total_pts"
-                  )
-                  );
-            DB::table('houses')
-            ->where("id", $house_id)
-            ->update(
-                  array(
-                        'total_pts_po'=>"$nbr_points"+"$house_total_pts_po"
-                  )
-                  );
-            }
+      DB::table('users')
+      ->where("id", $student_id)
+      ->update(
+          array(
+              'total_pts_po'=> "$nbr_points"+"$total_pts_po"
+          )
+      );
 
-      else {
-            echo "Une erreur s'est produite. Veuillez réessayer.";
-      }
+      DB::table('houses')
+      ->where("id", $house_id)
+      ->update(
+          array(
+              'total_pts'=>"$nbr_points"+"$house_total_pts"
+          )
+      );
+
+      DB::table('houses')
+      ->where("id", $house_id)
+      ->update(
+          array(
+              'total_pts_po'=>"$nbr_points"+"$house_total_pts_po"
+          )
+      );
+}
 
 }
 
@@ -373,38 +331,7 @@ if(isset($_POST['envoi'])){
         ->whereNotNull('house_id')
         ->get();
 
-    $notesList = DB::table('type_points')
-        ->where('type_points.type', 'note')
-        ->get();
-
-    echo '<div id="addPtsNote"><h2>Points par notes</h2>
-        <form name="addNoteForm" method="post">'. csrf_field() .
-        '<section class="addPoints">
-    <label class="student">Eleve<br/>
-    <select required="required" name="studentId" size="5">';
-
-    foreach ($studentList as $student){
-        echo '<option value="'.$student->id.'">'.$student->first_name.'</option>';
-    };
-
-    echo '</select>
-    </label> </br>
-    <label class="challenge" for="noteId">Matière</label><br/>
-    <select required="required" name="noteId" id="noteId" size="5">';
-    foreach ($notesList as $note){
-        echo '<option value="'.$note->id.'">'.$note->name.'</option>';
-    }
-    echo '</select>
-    </label> </br>
-    <label class="points">Nombre de points<br/>
-    <input required="required" name="nbrPoints" type="number" max="1000" style="width:80px;"/>
-    </label>
-    </br>
-    <input type="submit" name="envoiNote">
-
-    </section>
-
-</form></div></div>';
+    echo '</div>';
 
     if(isset($_POST['envoiNote'])){
 
@@ -457,7 +384,6 @@ if(isset($_POST['envoi'])){
         unset($_POST);
     }
 
-}
 echo "</div>";
 ?>
 
@@ -488,8 +414,7 @@ echo "</div>";
                             ->join ('users AS student', 'mvt_points.users_id', '=', 'student.id')
                             ->join ('users AS PO', 'mvt_points.professor_id', '=', 'PO.id')
                             ->join ('houses', 'student.house_id', '=', 'houses.id')
-                            ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                            ->select ('student.first_name AS sName', 'type_points.name AS typePTS', 'mvt_points.*')
+                            ->select ('student.first_name AS sName', 'mvt_points.*')
                             ->where('PO.id', Auth::user()->id)
                             ->orderBy ('mvt_points.created_at', 'DESC')
                             ->limit(50)
@@ -511,38 +436,14 @@ echo "</div>";
 
                         if(isset($_POST['rank'])){
                             switch ($_POST['rank']){
+                                case 'ptsDefi':
+                                case 'ptsNote':
                                 case 'ptsPO' :
                                     $mvt_point = DB::table('mvt_points')
                                         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                         ->where('users.id', Auth::user()->id)
-                                        ->where ('type_points.type', 'PO')
-                                        ->orderBy ('mvt_points.created_at', 'DESC')
-                                        ->limit(50)
-                                        ->get();
-                                    break;
-                                case 'ptsDefi';
-                                    $mvt_point = DB::table('mvt_points')
-                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', Auth::user()->id)
-                                        ->where ('type_points.type', 'defi')
-                                        ->orderBy ('mvt_points.created_at', 'DESC')
-                                        ->limit(50)
-                                        ->get();
-                                     break;
-                                case 'ptsNote' :
-                                    $mvt_point = DB::table('mvt_points')
-                                        ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
-                                        ->where('users.id', Auth::user()->id)
-                                        ->where ('type_points.type', 'note')
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
                                         ->get();
@@ -551,8 +452,7 @@ echo "</div>";
                                     $mvt_point = DB::table('mvt_points')
                                         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                                         ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                        ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                         ->where('users.id', Auth::user()->id)
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -563,8 +463,7 @@ echo "</div>";
                             $mvt_point = DB::table('mvt_points')
                                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS typePTS', 'mvt_points.*', 'users.id AS idUser')
+                                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                 ->where('users.id', Auth::user()->id)
                                 ->orderBy ('mvt_points.created_at', 'DESC')
                                 ->limit(50)

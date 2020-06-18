@@ -62,8 +62,7 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -72,8 +71,7 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'Gitsune')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
@@ -83,8 +81,7 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'Crackend')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
@@ -94,8 +91,7 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->where ('houses.name', 'phoeniXML')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
@@ -105,9 +101,7 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-                ->where ('type_points.type', 'defi')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -116,21 +110,17 @@
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
-                ->where ('type_points.type', 'events')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
         }
     }
-
     else{
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
                 ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->join ('type_points', 'mvt_points.type_point_id', '=', 'type_points.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'type_points.name AS tname', 'mvt_points.*', 'users.id AS idUser')
+                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -142,6 +132,7 @@
         else {
             $rank=0;
         foreach ($mvt_points as $user) {
+            # $user is badly named here todo change it
             $rank++;
             if($user->hname=='Crackend'){
                 echo '<img class="houseIcon" src="img/logoCrackend_';
@@ -168,7 +159,7 @@
             else {
                 echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
             }
-            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->nbr_points, " [", $user->tname, "]" ;
+            echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->nbr_points, " [ ", $user->lab, " ]";
             echo '<br/>';
             if(intdiv(sizeof($mvt_points),2)==$rank){
                 echo "</p>";

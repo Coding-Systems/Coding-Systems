@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<?php $idUser=7;
+<?php use Illuminate\Support\Facades\DB;$idUser=7;
 ?>
 
 <head>
@@ -27,11 +27,9 @@
 
 <?php
 
-$userType = DB::select('SELECT statut
-                    FROM users
-                    WHERE id = :id', ['id' => $idUser]);
+$userType = Auth::user();
 
-if($userType[0]->statut=='student'){
+if($userType->statut=='student'){
 
     echo '<h2>Lancer un défi</h1>';
     echo "<p>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
@@ -146,20 +144,18 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
     echo '<h2>Demandes en attente :</h2>';
 
-if($userType[0]->statut=='student'){
+if($userType->statut=='student'){
 
     echo '<h3>Propositions de défis</h3>';
     echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
-    $challengesInvitation = DB::select('SELECT type_points.name AS type, creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
+    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
                 LEFT JOIN users AS arbiter
                     ON arbiter.id = arbiter_id
-                LEFT JOIN type_points
-                    ON type_points.id = type_id
                 WHERE target_id = :id
                     AND is_accepted IS NULL
                 ', ['id' => $idUser]);
@@ -187,14 +183,12 @@ if($userType[0]->statut=='student'){
 echo "<h3>Demandes d'arbitrage</h3>";
 echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
-    $arbitorInvitation = DB::select('SELECT type_points.name AS type, creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi
+    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
                 LEFT JOIN users AS opponent
                     ON opponent.id = target_id
-                LEFT JOIN type_points
-                    ON type_points.id = type_id
                 WHERE arbiter_id = :id
                     AND winner_id IS NULL
                     AND is_accepted =True
@@ -218,7 +212,7 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
         echo "Aucune demande d'arbitrage en attente.";
     }
 
-if($userType[0]->statut=='student'){
+if($userType->statut=='student'){
     echo "<h3>Demandes envoyées</h3>";
 
     echo "<p>Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
@@ -229,8 +223,6 @@ if($userType[0]->statut=='student'){
                     ON arbitor.id = defis.arbiter_id
                 LEFT JOIN users AS opponent
                     ON opponent.id = target_id
-                LEFT JOIN type_points
-                    ON type_points.id = type_id
                 WHERE challenger_id = :id
                     AND winner_id IS NULL
                 ', ['id' => $idUser]);
@@ -307,10 +299,8 @@ if(isset($_POST['proposedArbi'])){
             ->where('id', $idDefi)
             ->update(array('winner_id' => $idWinner));
 
-        $addMvtpts = DB::select('SELECT type_points.default_pts AS pts, type_points.id AS typeId , defis.id as defiID, defis.winner_id as winnerId
+        $addMvtpts = DB::select('SELECT type_points.id AS typeId , defis.id as defiID, defis.winner_id as winnerId
             FROM defis
-            LEFT JOIN type_points
-                ON type_points.id =defis.type_id
             WHERE defis.id= :id    ', ['id' => $idDefi]);
 
         $infosPts=$addMvtpts[0];
