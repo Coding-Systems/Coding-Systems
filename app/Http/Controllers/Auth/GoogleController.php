@@ -27,6 +27,7 @@ class GoogleController extends Controller
      */
     public function handleGoogleCallback()
     {
+        # Check if the person login with google oauth is in the database
         try {
             $user = Socialite::driver('google')->user();
 
@@ -38,6 +39,7 @@ class GoogleController extends Controller
 
                 return redirect('/');
 
+                # This else should later be replaced by an alert, as it does not serve purpose in the project other than testing
             } else {
                 $name = explode(' ', $user->name);
                 $newUser = User::create([
@@ -46,8 +48,9 @@ class GoogleController extends Controller
                     'mail' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy'),
-                    'statut'=>'PO',
-                    'logo_lvl'=>1
+                    'statut'=>'student',
+                    'logo_lvl'=>1,
+                    'house_id'=>1,
                 ]);
                 $newUser->save();
                 Auth::login($newUser);

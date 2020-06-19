@@ -20,7 +20,7 @@ class CreateDefisTable extends Migration
             $table->foreignId('target_id');
             $table->foreignId('arbiter_id');
             $table->foreignId('winner_id')->nullable(true);
-            $table->foreignId('type_id');
+            $table->text('label');
             $table->boolean('is_accepted')->nullable(true);
             $table->timestamps();
 
@@ -28,7 +28,6 @@ class CreateDefisTable extends Migration
             $table->foreign('target_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('arbiter_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('winner_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('type_id')->references('id')->on('mvt_points')->onDelete('cascade');
         });
     }
 
