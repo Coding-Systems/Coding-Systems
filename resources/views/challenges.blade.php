@@ -32,11 +32,11 @@ $userType = Auth::user();
 if($userType->statut == 'student'){
 
     echo '<h2>Lancer un défi</h1>';
-    echo "<p>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
+    echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
 
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
-    echo '<h3>Choisissez votre défis :</h3>';
+    echo '<h3 class="challengePage">Choisissez votre défis :</h3>';
 
     echo '<section class="addPoints">';
     //echo '<label class="typeDefi">Type de défi';
@@ -59,7 +59,7 @@ if($userType->statut == 'student'){
                             	WHERE usersOne.id = :id)
             AND users.statut="student"
         ORDER BY houseName, fName', ['id' => $userType->id]);
-    echo '<h3>Choisissez votre adversaire :</h3>';
+    echo '<h3 class="challengePage">Choisissez votre adversaire :</h3>';
 
     echo '<section class="oppenents">';
     //echo '<label class="typeDefi">Type de défi';
@@ -71,7 +71,7 @@ if($userType->statut == 'student'){
 
     echo '</select>';
 
-    echo'<h3>Choisissez votre arbitre :</h3>';
+    echo'<h3 class="challengePage">Choisissez votre arbitre :</h3>';
 
     echo '<section class="arbiter">';
     //echo '<label class="typeDefi">Type de défi';
@@ -126,11 +126,11 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
                     'label' => $_POST['defiTypeId']
                 )
             );
-            echo "<p>Demande de défi et d'arbitrage envoyés</p>";
+            echo "<p class='challengePage'>Demande de défi et d'arbitrage envoyés</p>";
             unset($_POST);
         }
         else{
-            echo "<p>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
+            echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
         }
     }
     else {
@@ -144,8 +144,8 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
 if($userType->statut=='student'){
 
-    echo '<h3>Propositions de défis</h3>';
-    echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
+    echo '<h3 class="challengePage">Propositions de défis</h3>';
+    echo "<p class='challengePage'>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
     $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
@@ -178,8 +178,8 @@ if($userType->statut=='student'){
 
 }
 
-echo "<h3>Demandes d'arbitrage</h3>";
-echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
+echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
+echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
     $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi
                 FROM defis
@@ -211,9 +211,9 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
     }
 
 if($userType->statut=='student'){
-    echo "<h3>Demandes envoyées</h3>";
+    echo "<h3 class='challengePage' >Demandes envoyées</h3>";
 
-    echo "<p>Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
+    echo "<p class='challengePage' >Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
 
     $createdDefis = DB::select('SELECT arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi, defis.label
                 FROM defis
@@ -273,8 +273,8 @@ if(isset($_POST['proposedArbi'])){
 
         $match = $usersInfos[0];
 
-        echo "<h3>Zone d'arbitrage</h3>".
-            "<p>Sélectionnez le gagnant</p>".
+        echo "<h3 class='challengePage' >Zone d'arbitrage</h3>".
+            "<p class='challengePage' >Sélectionnez le gagnant</p>".
             '<form name="winnerForm" id="winnerForm" method="post">'.csrf_field().'
             <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"><label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
             <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->tid.'" id="targetWin"><label for="targetWin">'.$match->tfirst." ".$match->tlast.'</label>

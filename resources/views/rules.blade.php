@@ -19,8 +19,8 @@
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
-    <h1>Coding Houses, c'est quoi ? </h1>
-    <img id="logo_rules" src="img/logo.png" alt="logo">
+    <h1 class ="rules">Coding Houses, c'est quoi ? </h1>
+    <img id="logo_rules" class="rules" src="img/logo.png" alt="logo">
     <p class="rules">
     Coding Houses, c'est un système de maisons à la Harry Potter mettant en compétition les élèves et permettant
     à chacun de s'amuser dans la bienveillance.

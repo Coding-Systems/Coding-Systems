@@ -103,7 +103,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
         <section id=history>
             <div id=historyDiv>
-        <p>
+        <p class="homePage">
         <?php
                 $rank=0;
                 $mvt_points = DB::table('mvt_points')
@@ -144,7 +144,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
-                        echo "<p>";
+                        echo "<p class='homePage' >";
                     }
                 }
 

@@ -138,7 +138,7 @@
 
         <section id=rankingNamesUsers>
             <div id=rankingNamesUsersDiv>
-            <p>
+            <p class="rankPage">
                 <?php
 
                 if(isset($_POST['rank'])){
@@ -244,7 +244,7 @@
 
                         if(intdiv(sizeof($results),2)==$rank){
                             echo "</p>";
-                            echo "<p>";
+                            echo "<p class='rankPage'>";
                         }
                     }
                 ?>

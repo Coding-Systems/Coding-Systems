@@ -14,7 +14,7 @@ section {
 section#history p{
 
 }
-p {
+p.homePage {
     text-justify:newspaper;
     text-align:justify;
     font-size: 150%;
@@ -82,7 +82,7 @@ section #rankings {
      justify-content: left;
      flex-wrap: nowrap;
      text-align: left;
-     margin-bottom : 10%;   
+     margin-bottom : 10%;
      padding : 0;
 }
 

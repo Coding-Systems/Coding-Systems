@@ -1,14 +1,16 @@
-h3 {
+h3.challengePage {
     margin-top: 1em;
     color: white;
     font-size: 125%;
 }
 
-p{
+p.challengePage{
     color :white;
+    text-align: center;
+    font-size: 100%;
 }
 
-select, input, table{
+select, input, table {
     background-color: #bbbcc4;
     border-radius: 10px;
     border : 0px;
