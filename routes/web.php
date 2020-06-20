@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Middleware\checkPO;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,19 +29,19 @@ Auth::routes();
 
 Route::match(['get', 'post'],'/profil', function () {
     return view('user');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::match(['get', 'post'], '/quizz', function () {
     return view('quizz');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::match(['get', 'post'],'/ajout', function () {
     return view('addingPoints');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::match(['get', 'post'],'/challenges', function () {
     return view('challenges');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::match(['get', 'post'],'/maisons', function () {
     return view('houses');
@@ -50,10 +49,10 @@ Route::match(['get', 'post'],'/maisons', function () {
 
 Route::match(['get', 'post'],'/historique', function () {
     return view('historique');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::match(['get', 'post'],'/classements', function () {
     return view('rankings');
-})->middleware('auth');;
+})->middleware('auth');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

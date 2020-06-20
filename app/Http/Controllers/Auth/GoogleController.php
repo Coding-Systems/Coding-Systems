@@ -28,6 +28,7 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         # Check if the person login with google oauth is in the database
+        # TODO check edu.itescia.fr mail from the data coming from google to authorize the user
         try {
             $user = Socialite::driver('google')->user();
 
@@ -48,7 +49,7 @@ class GoogleController extends Controller
                     'mail' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy'),
-                    'statut'=>'student',
+                    'statut'=>'PO',
                     'logo_lvl'=>1,
                     'house_id'=>1,
                 ]);
