@@ -10,7 +10,7 @@ body {
   align-content: center;
 }
 
-p {
+p.housePage {
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -44,16 +44,16 @@ p {
   visibility: visible;
 }
 
-.container {
-  flex-grow: 1;
-
-  justify-content: space-between;
-  align-content: center;
-  height: 100%;
-  width: 99%;
-  margin: 5px;
-  left: calc(50% - 300px);
-  display: flex;
+.containerHouses {
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    //width: 99%;
+    margin: 0px;
+    left: calc(50% - 300px);
+    display: flex;
+    width: border-box;
 }
 
 .card {

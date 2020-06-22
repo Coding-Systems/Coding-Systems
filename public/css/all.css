@@ -73,17 +73,19 @@ select, .triHouseRankForm button {
 
 /*# sourceMappingURL=historique.css.map */
 
-h3 {
+h3.challengePage {
     margin-top: 1em;
     color: white;
     font-size: 125%;
 }
 
-p{
+p.challengePage{
     color :white;
+    text-align: center;
+    font-size: 100%;
 }
 
-select, input, table{
+select, input, table {
     background-color: #bbbcc4;
     border-radius: 10px;
     border : 0px;
@@ -123,7 +125,7 @@ section {
     margin: auto;
     justify-content: space-around;
 }
-p {
+p.historique {
     font-size: 150%;
     justify-content: space-around;
     color: white;
@@ -240,7 +242,7 @@ section {
 section#history p{
 
 }
-p {
+p.homePage {
     text-justify:newspaper;
     text-align:justify;
     font-size: 150%;
@@ -308,7 +310,7 @@ section #rankings {
      justify-content: left;
      flex-wrap: nowrap;
      text-align: left;
-     margin-bottom : 10%;   
+     margin-bottom : 10%;
      padding : 0;
 }
 
@@ -328,6 +330,7 @@ section #rankings {
     margin: 0 auto;
     }
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -340,7 +343,7 @@ body {
   align-content: center;
 }
 
-p {
+p.housePage {
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -374,16 +377,16 @@ p {
   visibility: visible;
 }
 
-.container {
-  flex-grow: 1;
-
-  justify-content: space-between;
-  align-content: center;
-  height: 100%;
-  width: 99%;
-  margin: 5px;
-  left: calc(50% - 300px);
-  display: flex;
+.containerHouses {
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    //width: 99%;
+    margin: 0px;
+    left: calc(50% - 300px);
+    display: flex;
+    width: border-box;
 }
 
 .card {
@@ -526,7 +529,7 @@ img{
   width: 47%;
 }
 
-.email, .password {
+/*.email, .password {
     font-size: 30px;
     color: rgba(12, 12, 12, 0.7);
     border: rgba(87, 84, 98, 0.50);
@@ -557,6 +560,7 @@ input:focus {
     color: rgba(12, 12, 12, 0.7);
     border: none;
     /*font-size: 30px;*/
+/*
 }
 
 
@@ -589,9 +593,15 @@ footer .login{
     display : table-row;
     height: 10%;
 }
+*/
 
 #quizzPage{
     color : white;
+}
+
+p.quizzPage{
+    text-align: center;
+    font-size : 100%;
 }
 
 button{
@@ -639,7 +649,7 @@ section {
     margin: auto;
     justify-content: space-around;
 }
-p {
+p.rankPage {
     font-size: 150%;
     justify-content: space-around;
     color: white;
@@ -657,7 +667,6 @@ section #rankings {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 #logoHousesPodium {
@@ -750,10 +759,25 @@ section #rankings {
 }
 
 
-p {
-  color: white;
-  text-align: justify;
-  overflow: hidden;
+html, body .rules {
+    margin: 0;
+    padding: 0;
+    //background-color: rgba(0, 0, 0, 0.1);
+}
+
+p.rules {
+    font-size: 100%;
+    color: white;
+    text-align: justify;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius : 20px;
+    padding: 10px;
+    margin: 0px;
+}
+
+h1.rules, img.rules{
+    margin: 1em ;
 }
 
 #logo_rules {
@@ -768,21 +792,15 @@ section#rules.rules {
   padding-left: 2%;
 }
 
-html, body .rules {
-  margin: 0;
-  padding: 0;
-}
-
-body{
-  background-color: rgba(0, 0, 0, 1);
-}
-
 footer .rules {
   display: table-row;
   height: 100px;
 }
 
-body{width:100%;}
+body{
+    width:100%;
+}
+
 #logoUser {
     width: 30%;
     height: 30%;
@@ -880,6 +898,7 @@ body{width:100%;}
     padding-left: 50px;
 }
 
+/*
 select, input{
     background-color: #bbbcc4;
     border-radius: 10px;
@@ -894,6 +913,7 @@ select, input{
 input:focus{
     background-color: #7d838a;
 }
+ */
 
 /* -------------------------------- Theme Switcher -------------------------------- */
 

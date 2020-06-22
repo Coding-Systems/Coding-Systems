@@ -1,7 +1,22 @@
-p {
-  color: white;
-  text-align: justify;
-  overflow: hidden;
+html, body .rules {
+    margin: 0;
+    padding: 0;
+    //background-color: rgba(0, 0, 0, 0.1);
+}
+
+p.rules {
+    font-size: 100%;
+    color: white;
+    text-align: justify;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius : 20px;
+    padding: 10px;
+    margin: 0px;
+}
+
+h1.rules, img.rules{
+    margin: 1em ;
 }
 
 #logo_rules {
@@ -14,15 +29,6 @@ section#rules.rules {
   margin-bottom: 15%;
   padding-right: 2%;
   padding-left: 2%;
-}
-
-html, body .rules {
-  margin: 0;
-  padding: 0;
-}
-
-body{
-  background-color: rgba(0, 0, 0, 1);
 }
 
 footer .rules {

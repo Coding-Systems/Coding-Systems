@@ -10,7 +10,7 @@ section {
     margin: auto;
     justify-content: space-around;
 }
-p {
+p.rankPage {
     font-size: 150%;
     justify-content: space-around;
     color: white;
@@ -28,7 +28,6 @@ section #rankings {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 #logoHousesPodium {
