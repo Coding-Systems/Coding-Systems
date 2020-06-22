@@ -475,7 +475,7 @@ echo "</div>";
                         foreach ($mvt_point as $point){
                             $nbr++;
 
-                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->nbr_points.' pts '.'['.$point->typePTS.'] '.'</br>';
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->nbr_points.' pts '.'['.$point->label.'] '.'</br>';
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';
