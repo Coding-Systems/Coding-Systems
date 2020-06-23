@@ -226,14 +226,7 @@ input:hover {
     }
 }
 
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;
-}
+
 section {
     margin: auto;
     justify-content: space-around;
@@ -637,14 +630,6 @@ label{
     margin :50px;
 }
 
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;
-}
 section {
     margin: auto;
     justify-content: space-around;
@@ -792,10 +777,7 @@ section#rules.rules {
   padding-left: 2%;
 }
 
-footer .rules {
-  display: table-row;
-  height: 100px;
-}
+
 
 body{
     width:100%;

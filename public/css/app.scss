@@ -85,16 +85,6 @@ h2 {
     font-size: 150%;
 }
 
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;left: 0; right: 0;
-    position: absolute;
-}
-
 li {
     padding-right: 5px;
     justify-content: space-between;
@@ -120,3 +110,17 @@ a, a:visited, a:link, a:hover, a:active {
     width: 25px;
     vertical-align: text-bottom;
 }
+
+footer {
+    align-content: center;
+    width: 100%;
+    height: 3em;
+    background-color: black;
+    color: #C8C8CF;
+    margin: 0;left: 0; right: 0;
+    position: absolute;
+}
+
+
+
+
