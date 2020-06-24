@@ -185,13 +185,34 @@ img{
   width: 100%;
 }
 
+.listMembersSec{
+    font-size: 75%;
+    margin-bottom : 10%;
+    white-space: nowrap;
+    margin-left: 5px;
+}
+
 .listMembers{
+    /*
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+
+
+
+     */
+    display: flex;
+    justify-content: space-around;
+    //align-items: start ;
+    flex-wrap: wrap;
+    margin-bottom : 10%;
+    padding : 0;
+    width: 100%;
 }
 
 .listMembers p{
-  width: 47%;
+  //width: 47%;
+    margin : 0px;
+    text-align: left;
+    word-break : keep-all;
+
 }

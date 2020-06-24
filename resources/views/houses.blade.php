@@ -63,9 +63,8 @@ use Illuminate\Support\Facades\DB;
                 </select>
                 <button>Valider</button>
             </form>
-            <button>Valider</button>
-          </form>
 
+            <section class="listMembersSec">
           <div class="listMembers">
             <p>
                 <?php
@@ -130,6 +129,7 @@ use Illuminate\Support\Facades\DB;
                 ?>
             </p>
           </div>
+            </section>
         </section>
       </div>
   </div>
