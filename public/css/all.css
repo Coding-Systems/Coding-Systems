@@ -395,6 +395,7 @@ p.housePage {
   position: relative;
   left: 0;
   color : #45414f;
+    margin-bottom: 7em;
 }
 
 .card:not(:first-child) {
