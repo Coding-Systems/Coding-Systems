@@ -30,10 +30,16 @@ header {
     background-color: #44153C;
     color: #C8C8CF;
 }
+
+nav.headerNav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
 a.menuLink{
     flex-wrap: nowrap;
     box-sizing: border-box;
-
     display: inline-block;
     padding: 0 5px;
     text-decoration:none;
