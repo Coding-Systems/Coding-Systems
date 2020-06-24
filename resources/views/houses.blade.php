@@ -175,6 +175,7 @@ use Illuminate\Support\Facades\DB;
               <button>Valider</button>
           </form>
 
+          <section class="listMembersSec">
         <div class="listMembers">
             <p>
                 <?php
@@ -229,6 +230,7 @@ use Illuminate\Support\Facades\DB;
 
         </div>
       </section>
+      </section>
     </div>
   </div>
   <div class="card" id="PhoeniXMl_Card">
@@ -271,6 +273,7 @@ use Illuminate\Support\Facades\DB;
           <button>Valider</button>
         </form>
 
+          <section class="listMembersSec">
         <div class="listMembers">
             <p>
                 <?php
@@ -322,6 +325,7 @@ use Illuminate\Support\Facades\DB;
                 ?>
             </p>
         </div>
+          </section>
       </section>
     </section>
   </div>

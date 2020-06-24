@@ -512,27 +512,24 @@ img{
 }
 
 .listMembersSec{
+    margin-top: 50px;
+    display: flex;
     font-size: 75%;
     margin-bottom : 10%;
     white-space: nowrap;
     margin-left: 5px;
+    justify-content: center;
 }
 
 .listMembers{
-    /*
-  display: flex;
-  flex-direction: row;
-
-
-
-     */
+    flex-direction: row;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     //align-items: start ;
     flex-wrap: wrap;
     margin-bottom : 10%;
     padding : 0;
-    width: 100%;
+    width: 70%;
 }
 
 .listMembers p{
@@ -540,7 +537,8 @@ img{
     margin : 0px;
     text-align: left;
     word-break : keep-all;
-
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 /*.email, .password {
