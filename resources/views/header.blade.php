@@ -22,7 +22,6 @@
                 <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     Profil
                 </a>
-                <a class="menuLink" href="/quizz">Quizz</a>
                 <a class="menuLink" href="{{ route('logout') }}">Déconnecter</a>
             @endguest
         </nav>
