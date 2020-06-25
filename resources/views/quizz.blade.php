@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
     $idUser =3;
 ?>
 
@@ -33,7 +34,14 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
         <h1>Quizz de répartition</h1>
 
         <p class="quizzPage">Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
-            <br>Ou laissez le hasard total opérer en appuyant <button>ICI</button>
+            <br>Ou laissez le hasard total opérer en appuyant
+
+        <form id="quizzForm" name="skipQuizzForm" method="post">
+            {{ csrf_field() }}
+
+            <input type="submit" value="ICI" name="validSkip" id="validSkip">
+
+        </form>
             <br>
             <br>Si vous rencontrez des réponses troll, c'est qu'ils s'agit de réponses neutres, mais en un peu plus fun :P.
         </p>
@@ -170,16 +178,51 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             else{
                 $pas_de_reponse++;
             };
+/*
+            DB::table('defis')
+                ->where('id', $idDefi)
+                ->update(array('winner_id' => $idWinner));
+*/
 
-            DB::table('result_test')->insert(
+            DB::table('result_test')
+                ->where('users_id' , Auth::user()->id)
+                ->update(
                 array(
-                    'users_id' => "$idUser",
                     'score_gitsune' => "$score_gitsune",
                     'score_phoenixml' => "$score_phoenixml",
-                    'score_crackend' => "$score_crackend"
+                    'score_crackend' => "$score_crackend",
+                    'quizz_is_done' => "1"
                 )
                 );
+
+            //*********** Code temporaire pour la démo ***********
+
+            $array = array('3'=>$score_gitsune, '2'=>$score_phoenixml, '1'=>$score_crackend);
+            arsort($array);
+            $house=array_keys($array)[0];
+
+            DB::table('users')
+                ->where('id' , Auth::user()->id)
+                ->update(
+                    array(
+                        'house_id' => "$house",
+                    )
+                );
+
+
+            //return redirect('/profil');
         }
+
+        else if(isset($_POST['validSkip'])){
+            DB::table('result_test')
+                ->where('users_id' , Auth::user()->id)
+                ->update(
+                    array(
+                        'quizz_is_done' => "1"
+                    )
+                );
+        }
+
         ?>
     </section>
 

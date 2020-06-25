@@ -148,7 +148,7 @@ if($userType->statut=='student'){
     echo "<p class='challengePage'>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
-    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
+    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi, label
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
@@ -163,7 +163,7 @@ if($userType->statut=='student'){
         echo '<select required="required" id="proposedDefi" name="proposedDefi" size="3">';
 
         foreach ($challengesInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
         };
         echo '</select>
             <br><input type="radio" name="actionDefi" value="acceptDefi" id=actionDefi checked="checked"> <label for="acceptDefi">Accepter</label>
@@ -181,7 +181,7 @@ if($userType->statut=='student'){
 echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
 echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
-    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi
+    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, label
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
@@ -197,7 +197,7 @@ echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitr
         echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
 
         foreach ($arbitorInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
         };
         echo '</select>
             <br><input type="radio" name="actionArbiRadio" value="acceptArbi" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
@@ -242,6 +242,13 @@ if($userType->statut=='student'){
         echo "Ancun défi en attente.";
     }
 }
+
+if(isset($_POST['CreateDdefi'])){
+
+    DB::table('defis')->where('id', $_POST['CreateDdefi'])->delete();
+
+}
+
 ?>
 
 <?php
@@ -297,11 +304,13 @@ if(isset($_POST['proposedArbi'])){
             ->where('id', $idDefi)
             ->update(array('winner_id' => $idWinner));
 
-        $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId
+        $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId, label
             FROM defis
             WHERE defis.id= :id    ', ['id' => $idDefi]);
 
         $infosPts=$addMvtpts[0];
+        $label=$infosPts->label;
+        $nbrPts = (5);
 
         date_default_timezone_set('Europe/Paris');
         $date = date("Y-m-d H:i:s");
@@ -309,24 +318,39 @@ if(isset($_POST['proposedArbi'])){
 
         DB::table('mvt_points')->insert(
             array(
-                'label' => "$infosPts->pts",
+                'nbr_points' => "$nbrPts",
                 'users_id' => "$infosPts->winnerId",
-                'type_point_id' => "$infosPts->typeId",
                 'created_at' => "$date",
+                'label'=> "$label"
             )
         );
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
-            ->increment('total_pts_defi', $infosPts->pts);
+            ->increment('total_pts_defi', "$nbrPts");
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
-            ->increment('total_pts', $infosPts->pts);
+            ->increment('total_pts', "$nbrPts");
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
             ->increment('total_won_defis', 1);
+
+        $housesIds = DB::select('SELECT house_id AS houseId
+                FROM users
+                WHERE id = :id
+                ', ['id' => $infosPts->winnerId]);
+
+        $idHouseWinner = $housesIds[0];
+
+        DB::table('houses')
+            ->where('id', $idHouseWinner->houseId)
+            ->increment('total_pts_defi', "$nbrPts");
+
+        DB::table('houses')
+            ->where('id', $idHouseWinner->houseId)
+            ->increment('total_pts', "$nbrPts");
 
         unset($_POST);
     }

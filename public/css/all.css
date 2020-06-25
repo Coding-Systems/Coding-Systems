@@ -226,14 +226,7 @@ input:hover {
     }
 }
 
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;
-}
+
 section {
     margin: auto;
     justify-content: space-around;
@@ -308,7 +301,7 @@ section #rankings {
 #historyDiv{
      display: flex;
      justify-content: left;
-     flex-wrap: nowrap;
+     flex-wrap: wrap;
      text-align: left;
      margin-bottom : 10%;
      padding : 0;
@@ -402,6 +395,7 @@ p.housePage {
   position: relative;
   left: 0;
   color : #45414f;
+    margin-bottom: 7em;
 }
 
 .card:not(:first-child) {
@@ -518,15 +512,34 @@ img{
   width: 100%;
 }
 
+.listMembersSec{
+    margin-top: 50px;
+    display: flex;
+    font-size: 75%;
+    margin-bottom : 10%;
+    white-space: nowrap;
+    margin-left: 5px;
+    justify-content: center;
+}
+
 .listMembers{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: left;
+    //align-items: start ;
+    flex-wrap: wrap;
+    margin-bottom : 10%;
+    padding : 0;
+    width: 70%;
 }
 
 .listMembers p{
-  width: 47%;
+  //width: 47%;
+    margin : 0px;
+    text-align: left;
+    word-break : keep-all;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 /*.email, .password {
@@ -603,6 +616,9 @@ p.quizzPage{
     text-align: center;
     font-size : 100%;
 }
+#quizzForm, #validSkip{
+    display: inline;
+}
 
 button{
     color : white;
@@ -637,14 +653,6 @@ label{
     margin :50px;
 }
 
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;
-}
 section {
     margin: auto;
     justify-content: space-around;
@@ -792,24 +800,27 @@ section#rules.rules {
   padding-left: 2%;
 }
 
-footer .rules {
-  display: table-row;
-  height: 100px;
-}
+
 
 body{
     width:100%;
 }
 
 #logoUser {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    //height: 30%;
 }
 
 #user{
     display : flex;
     flex-direction: column;
     color : white;
+}
+
+#logoUserHouse{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 #statsUser{

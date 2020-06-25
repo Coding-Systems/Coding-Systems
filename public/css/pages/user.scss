@@ -3,14 +3,20 @@ body{
 }
 
 #logoUser {
-    width: 30%;
-    height: 30%;
+    width: 100%;
+    //height: 30%;
 }
 
 #user{
     display : flex;
     flex-direction: column;
     color : white;
+}
+
+#logoUserHouse{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 #statsUser{
