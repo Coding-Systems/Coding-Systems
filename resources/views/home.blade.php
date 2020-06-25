@@ -100,6 +100,13 @@ use Maatwebsite\Excel\Concerns\ToModel;
     <section>
 
         <h2>Historique des derniers points</h2>
+        <h2><?php
+
+            $var="PRÉVOTÉ--HAUGUEL";
+            $result=ucfirst(mb_strtolower($var));
+            echo $result ;
+
+            ?></h2>
 
         <section id=history>
             <div id=historyDiv>
