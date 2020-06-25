@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
     $idUser =3;
 ?>
 
@@ -170,13 +171,20 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             else{
                 $pas_de_reponse++;
             };
+/*
+            DB::table('defis')
+                ->where('id', $idDefi)
+                ->update(array('winner_id' => $idWinner));
+*/
 
-            DB::table('result_test')->insert(
+            DB::table('result_test')
+                ->where('users_id' , Auth::user()->id)
+                ->update(
                 array(
-                    'users_id' => "$idUser",
                     'score_gitsune' => "$score_gitsune",
                     'score_phoenixml' => "$score_phoenixml",
-                    'score_crackend' => "$score_crackend"
+                    'score_crackend' => "$score_crackend",
+                    'quizz_is_done' => "1"
                 )
                 );
         }
