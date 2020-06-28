@@ -32,11 +32,11 @@ $userType = Auth::user();
 if($userType->statut == 'student'){
 
     echo '<h2>Lancer un défi</h1>';
-    echo "<p>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
+    echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
 
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
-    echo '<h3>Choisissez votre défis :</h3>';
+    echo '<h3 class="challengePage">Choisissez votre défis :</h3>';
 
     echo '<section class="addPoints">';
     //echo '<label class="typeDefi">Type de défi';
@@ -59,7 +59,7 @@ if($userType->statut == 'student'){
                             	WHERE usersOne.id = :id)
             AND users.statut="student"
         ORDER BY houseName, fName', ['id' => $userType->id]);
-    echo '<h3>Choisissez votre adversaire :</h3>';
+    echo '<h3 class="challengePage">Choisissez votre adversaire :</h3>';
 
     echo '<section class="oppenents">';
     //echo '<label class="typeDefi">Type de défi';
@@ -71,7 +71,7 @@ if($userType->statut == 'student'){
 
     echo '</select>';
 
-    echo'<h3>Choisissez votre arbitre :</h3>';
+    echo'<h3 class="challengePage">Choisissez votre arbitre :</h3>';
 
     echo '<section class="arbiter">';
     //echo '<label class="typeDefi">Type de défi';
@@ -126,11 +126,11 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
                     'label' => $_POST['defiTypeId']
                 )
             );
-            echo "<p>Demande de défi et d'arbitrage envoyés</p>";
+            echo "<p class='challengePage'>Demande de défi et d'arbitrage envoyés</p>";
             unset($_POST);
         }
         else{
-            echo "<p>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
+            echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
         }
     }
     else {
@@ -144,11 +144,11 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
 if($userType->statut=='student'){
 
-    echo '<h3>Propositions de défis</h3>';
-    echo "<p>Vous pouvez accepter ou non une proposition de défi.</p>";
+    echo '<h3 class="challengePage">Propositions de défis</h3>';
+    echo "<p class='challengePage'>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
-    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi
+    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi, label
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
@@ -163,7 +163,7 @@ if($userType->statut=='student'){
         echo '<select required="required" id="proposedDefi" name="proposedDefi" size="3">';
 
         foreach ($challengesInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
         };
         echo '</select>
             <br><input type="radio" name="actionDefi" value="acceptDefi" id=actionDefi checked="checked"> <label for="acceptDefi">Accepter</label>
@@ -178,10 +178,10 @@ if($userType->statut=='student'){
 
 }
 
-echo "<h3>Demandes d'arbitrage</h3>";
-echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
+echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
+echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
-    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi
+    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, label
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
@@ -197,7 +197,7 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
         echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
 
         foreach ($arbitorInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->type.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
         };
         echo '</select>
             <br><input type="radio" name="actionArbiRadio" value="acceptArbi" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
@@ -211,9 +211,9 @@ echo "<p>Vous pouvez accepter ou non une demande d'arbitrage.</p>";
     }
 
 if($userType->statut=='student'){
-    echo "<h3>Demandes envoyées</h3>";
+    echo "<h3 class='challengePage' >Demandes envoyées</h3>";
 
-    echo "<p>Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
+    echo "<p class='challengePage' >Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
 
     $createdDefis = DB::select('SELECT arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi, defis.label
                 FROM defis
@@ -242,6 +242,13 @@ if($userType->statut=='student'){
         echo "Ancun défi en attente.";
     }
 }
+
+if(isset($_POST['CreateDdefi'])){
+
+    DB::table('defis')->where('id', $_POST['CreateDdefi'])->delete();
+
+}
+
 ?>
 
 <?php
@@ -273,8 +280,8 @@ if(isset($_POST['proposedArbi'])){
 
         $match = $usersInfos[0];
 
-        echo "<h3>Zone d'arbitrage</h3>".
-            "<p>Sélectionnez le gagnant</p>".
+        echo "<h3 class='challengePage' >Zone d'arbitrage</h3>".
+            "<p class='challengePage' >Sélectionnez le gagnant</p>".
             '<form name="winnerForm" id="winnerForm" method="post">'.csrf_field().'
             <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"><label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
             <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->tid.'" id="targetWin"><label for="targetWin">'.$match->tfirst." ".$match->tlast.'</label>
@@ -297,11 +304,13 @@ if(isset($_POST['proposedArbi'])){
             ->where('id', $idDefi)
             ->update(array('winner_id' => $idWinner));
 
-        $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId
+        $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId, label
             FROM defis
             WHERE defis.id= :id    ', ['id' => $idDefi]);
 
         $infosPts=$addMvtpts[0];
+        $label=$infosPts->label;
+        $nbrPts = (5);
 
         date_default_timezone_set('Europe/Paris');
         $date = date("Y-m-d H:i:s");
@@ -309,24 +318,39 @@ if(isset($_POST['proposedArbi'])){
 
         DB::table('mvt_points')->insert(
             array(
-                'label' => "$infosPts->pts",
+                'nbr_points' => "$nbrPts",
                 'users_id' => "$infosPts->winnerId",
-                'type_point_id' => "$infosPts->typeId",
                 'created_at' => "$date",
+                'label'=> "$label"
             )
         );
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
-            ->increment('total_pts_defi', $infosPts->pts);
+            ->increment('total_pts_defi', "$nbrPts");
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
-            ->increment('total_pts', $infosPts->pts);
+            ->increment('total_pts', "$nbrPts");
 
         DB::table('users')
             ->where('id', $infosPts->winnerId)
             ->increment('total_won_defis', 1);
+
+        $housesIds = DB::select('SELECT house_id AS houseId
+                FROM users
+                WHERE id = :id
+                ', ['id' => $infosPts->winnerId]);
+
+        $idHouseWinner = $housesIds[0];
+
+        DB::table('houses')
+            ->where('id', $idHouseWinner->houseId)
+            ->increment('total_pts_defi', "$nbrPts");
+
+        DB::table('houses')
+            ->where('id', $idHouseWinner->houseId)
+            ->increment('total_pts', "$nbrPts");
 
         unset($_POST);
     }

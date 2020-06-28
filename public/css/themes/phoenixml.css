@@ -38,3 +38,13 @@ h1, h2, .numberRanking{
 }
 
 /*backgroud*/
+
+.userRank_1{
+    color : gold;
+}
+.userRank_2{
+    color : #9ea3a3;
+}
+.userRank_3{
+    color : #e0977a;
+}

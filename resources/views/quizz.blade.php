@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <?php
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
     $idUser =3;
 ?>
 
@@ -32,8 +33,15 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
         <h1>Quizz de répartition</h1>
 
-        <p>Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
-            <br>Ou laissez le hasard total opérer en appuyant <button>ICI</button>
+        <p class="quizzPage">Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
+            <br>Ou laissez le hasard total opérer en appuyant
+
+        <form id="quizzForm" name="skipQuizzForm" method="post">
+            {{ csrf_field() }}
+
+            <input type="submit" value="ICI" name="validSkip" id="validSkip">
+
+        </form>
             <br>
             <br>Si vous rencontrez des réponses troll, c'est qu'ils s'agit de réponses neutres, mais en un peu plus fun :P.
         </p>
@@ -41,7 +49,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
         <form id="quizzForm" name="quizzForm" method="post"> <!-- PENSER A CHANGER L'ORDRE DE CERTAINES !!!!! -->
         {{ csrf_field() }}
             <h2>Question 1</h2>
-            <p>À quel élément tu t'identifie le plus ?</p>
+            <p class="quizzPage">À quel élément tu t'identifie le plus ?</p>
             <input type="radio" name="question1" id="Q1A1" value="1" required>
             <label for="Q1A1">L'eau</label>
             <input type="radio" name="question1" id="Q1A2" value="2" required>
@@ -52,7 +60,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <label for="Q1A4">L'air</label>
 
             <h2>Question 2</h2>
-            <p>Quelle est ta plus grande qualité ?</p>
+            <p class="quizzPage" >Quelle est ta plus grande qualité ?</p>
             <input type="radio" name="question2" id="Q2A1" value="1" required>
             <label for="Q2A1">Tu es débrouillard</label>
             <input type="radio" name="question2" id="Q2A2" value="2" required>
@@ -63,7 +71,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <label for="Q2A4">Toutes bien évidemment !</label>
 
             <h2>Question 3</h2>
-            <p>Laquelle de ses choses de frustre le plus ?</p>
+            <p class="quizzPage">Laquelle de ses choses de frustre le plus ?</p>
             <input type="radio" name="question3" id="Q3A1" value="1" required>
             <label for="Q3A1">Un bruit de craie sur un tableau</label>
             <input type="radio" name="question3" id="Q3A2" value="2" required>
@@ -74,7 +82,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <label for="Q3A4">Je suis insensible</label>
 
             <h2>Question 4</h2>
-            <p>Dans un projet, tu es plutôt celui qui... ?</p>
+            <p class="quizzPage">Dans un projet, tu es plutôt celui qui... ?</p>
             <input type="radio" name="question4" id="Q4A1" value="1" required>
             <label for="Q4A1">Donne des idées</label>
             <input type="radio" name="question4" id="Q4A2" value="2" required>
@@ -84,8 +92,9 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="question4" id="Q4A4" value="4" required>
             <label for="Q4A4">Je fais tout solo moi</label>
 
+            <!--
             <h2>Question X</h2>
-            <p>BLABBALBALABLABLABLABALA ?</p>
+            <p class="quizzPage">BLABBALBALABLABLABLABALA ?</p>
             <input type="radio" name="questionX" id="QXA1" value="1" required>
             <label for="QXA1">BLA</label>
             <input type="radio" name="questionX" id="QXA2" value="2" required>
@@ -95,7 +104,10 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             <input type="radio" name="questionX" id="QXA4" value="4" required>
             <label for="QXA4">BLA</label>
 
-            <br></b><input type="submit" value="Envoyer" name="envoi" id="submitButton">
+            <br></b>
+
+            --></br>
+            <input type="submit" value="Envoyer" name="envoi" id="submitButton">
 
         </form>
 
@@ -166,16 +178,51 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
             else{
                 $pas_de_reponse++;
             };
+/*
+            DB::table('defis')
+                ->where('id', $idDefi)
+                ->update(array('winner_id' => $idWinner));
+*/
 
-            DB::table('result_test')->insert(
+            DB::table('result_test')
+                ->where('users_id' , Auth::user()->id)
+                ->update(
                 array(
-                    'users_id' => "$idUser",
                     'score_gitsune' => "$score_gitsune",
                     'score_phoenixml' => "$score_phoenixml",
-                    'score_crackend' => "$score_crackend"
+                    'score_crackend' => "$score_crackend",
+                    'quizz_is_done' => "1"
                 )
                 );
+
+            //*********** Code temporaire pour la démo ***********
+
+            $array = array('3'=>$score_gitsune, '2'=>$score_phoenixml, '1'=>$score_crackend);
+            arsort($array);
+            $house=array_keys($array)[0];
+
+            DB::table('users')
+                ->where('id' , Auth::user()->id)
+                ->update(
+                    array(
+                        'house_id' => "$house",
+                    )
+                );
+
+
+            //return redirect('/profil');
         }
+
+        else if(isset($_POST['validSkip'])){
+            DB::table('result_test')
+                ->where('users_id' , Auth::user()->id)
+                ->update(
+                    array(
+                        'quizz_is_done' => "1"
+                    )
+                );
+        }
+
         ?>
     </section>
 

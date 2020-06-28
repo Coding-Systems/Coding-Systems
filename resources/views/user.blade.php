@@ -34,6 +34,7 @@
         ?>
 
         <div id="statsUser">
+            <div id="logoUserHouse">
 
             <?php
 
@@ -70,17 +71,30 @@
             }
             echo ' alt="logo">';
 
+                $userType = DB::select('SELECT statut
+                    FROM users
+                    WHERE id = :id', ['id' => Auth::user()->id]);
+
+                if(Auth::user()->statut == 'student'){
+
+                    $isQuizzDone = DB::select('SELECT quizz_is_done AS statusQuizz
+                    FROM result_test
+                    WHERE users_id = :id', ['id' => Auth::user()->id]);
+
+                    if($isQuizzDone[0]->statusQuizz == 0){
+                        echo'<a class="menuLink" href="/quizz">Quizz</a>';
+                    }
+                }
+
             ?>
+
+            </div>
 
             <div>
                 <p id="stats">
                     <h2>Statistiques</h2>
 
                 <?php
-
-                $userType = DB::select('SELECT statut
-                    FROM users
-                    WHERE id = :id', ['id' => Auth::user()->id]);
 
                     if(Auth::user()->statut == 'PO'){
                         echo'<br>Points donnés : ';
@@ -475,7 +489,7 @@ echo "</div>";
                         foreach ($mvt_point as $point){
                             $nbr++;
 
-                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->nbr_points.' pts '.'['.$point->typePTS.'] '.'</br>';
+                            echo '['.date('d/m H:i', strtotime($point->created_at)).'] '.$point->nbr_points.' pts '.'['.$point->label.'] '.'</br>';
                             if($nbr==intdiv(sizeof($mvt_point),2))  {
                                 echo '</p>';
                                 echo '<p>';

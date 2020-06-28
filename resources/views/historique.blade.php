@@ -54,7 +54,7 @@
     </div>
     <section id=history>
         <div id=historyDiv>
-         <p>
+         <p class = "historique">
             <?php
 
     if(isset($_POST['histo'])){
@@ -163,7 +163,7 @@
             echo '<br/>';
             if(intdiv(sizeof($mvt_points),2)==$rank){
                 echo "</p>";
-                echo "<p>";
+                echo "<p class = 'historique'>";
             }
         }
     }

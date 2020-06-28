@@ -138,7 +138,7 @@
 
         <section id=rankingNamesUsers>
             <div id=rankingNamesUsersDiv>
-            <p>
+            <p class="rankPage">
                 <?php
 
                 if(isset($_POST['rank'])){
@@ -203,44 +203,35 @@
 
                         if($users->hname=='Crackend'){
                             echo '<img class="houseIcon" src="img/logoCrackend_';
-                            if($rank<=3){
-                                echo 'R'.$rank.'.png"';
-                            }else {
-                                $logoLvl = DB::select('SELECT logo_lvl
+                            $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                                echo $logoLvl[0]->logo_lvl.'.png"';
-                            }
+                            echo $logoLvl[0]->logo_lvl.'.png"';
                             echo' alt="logo de la maison"> ';                        }
                         else if ($users->hname=='PhoeniXML'){
                             echo '<img class="houseIcon" src="img/logoPhoeniXML_';
-                            if($rank<=3){
-                                echo 'R'.$rank.'.png"';
-                            }else {
-                                $logoLvl = DB::select('SELECT logo_lvl
+                            $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                                echo $logoLvl[0]->logo_lvl.'.png"';
-                            }
+                            echo $logoLvl[0]->logo_lvl.'.png"';
                             echo' alt="logo de la maison"> ';
                         }
                         else if ($users->hname=='Gitsune'){
                             echo '<img class="houseIcon" src="img/logoGitsune_';
-                            if($rank<=3){
-                                echo 'R'.$rank.'.png"';
-                            }else {
-                                $logoLvl = DB::select('SELECT logo_lvl
+                            $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
-                                echo $logoLvl[0]->logo_lvl.'.png"';
-                            }
+                            echo $logoLvl[0]->logo_lvl.'.png"';
                             echo' alt="logo de la maison"> ';                        }
                         else {
                             echo '<img class="houseIcon" src="img/logo.png" alt="logo"> ';
                         }
 
-
-                        echo $rank .'. '. $users->first_name . ' : ' . $users->pts . " pts<br/>";
+                        echo '<span ';
+                        if ($rank <=3){
+                            echo 'class= "userRank_'.$rank.'" ';
+                        }
+                        echo '>'.$rank .'. '. $users->first_name . ' : ' . $users->pts . " pts</span><br/>";
 
                         if(intdiv(sizeof($results),2)==$rank){
                             echo "</p>";

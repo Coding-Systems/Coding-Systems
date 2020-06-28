@@ -2,6 +2,14 @@
     color : white;
 }
 
+p.quizzPage{
+    text-align: center;
+    font-size : 100%;
+}
+#quizzForm, #validSkip{
+    display: inline;
+}
+
 button{
     color : white;
     background-color: rgba(187, 188, 196, 0.71);
@@ -21,7 +29,6 @@ input{
     font-size: 130%;
     font-family: 'Comic Neue', 'Open Sans', sans-serif;
 }
-
 
 button:hover, input:hover {
     background-color: #7d838a;

@@ -1,16 +1,8 @@
-footer {
-    align-content: center;
-    width: 100%;
-    height: 3em;
-    background-color: black;
-    color: #C8C8CF;
-    margin: 0;
-}
 section {
     margin: auto;
     justify-content: space-around;
 }
-p {
+p.rankPage {
     font-size: 150%;
     justify-content: space-around;
     color: white;
@@ -28,7 +20,6 @@ section #rankings {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 #logoHousesPodium {

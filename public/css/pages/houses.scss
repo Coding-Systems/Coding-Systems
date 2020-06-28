@@ -10,7 +10,7 @@ body {
   align-content: center;
 }
 
-p {
+p.housePage {
   width: 100%;
   text-align: center;
   overflow: hidden;
@@ -44,16 +44,16 @@ p {
   visibility: visible;
 }
 
-.container {
-  flex-grow: 1;
-
-  justify-content: space-between;
-  align-content: center;
-  height: 100%;
-  width: 99%;
-  margin: 5px;
-  left: calc(50% - 300px);
-  display: flex;
+.containerHouses {
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    height: 100%;
+    //width: 99%;
+    margin: 0px;
+    left: calc(50% - 300px);
+    display: flex;
+    width: border-box;
 }
 
 .card {
@@ -69,6 +69,7 @@ p {
   position: relative;
   left: 0;
   color : #45414f;
+    margin-bottom: 7em;
 }
 
 .card:not(:first-child) {
@@ -185,13 +186,32 @@ img{
   width: 100%;
 }
 
+.listMembersSec{
+    margin-top: 50px;
+    display: flex;
+    font-size: 75%;
+    margin-bottom : 10%;
+    white-space: nowrap;
+    margin-left: 5px;
+    justify-content: center;
+}
+
 .listMembers{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+    flex-direction: row;
+    display: flex;
+    justify-content: left;
+    //align-items: start ;
+    flex-wrap: wrap;
+    margin-bottom : 10%;
+    padding : 0;
+    width: 70%;
 }
 
 .listMembers p{
-  width: 47%;
+  //width: 47%;
+    margin : 0px;
+    text-align: left;
+    word-break : keep-all;
+    margin-right: 20px;
+    margin-left: 20px;
 }
