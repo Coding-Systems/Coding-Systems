@@ -95,5 +95,3 @@ fabric.properties
 *.lock
 
 .DS_Store
-
-composer.json
