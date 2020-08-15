@@ -92,6 +92,4 @@ fabric.properties
 
 *.xml
 
-*.lock
-
 .DS_Store
