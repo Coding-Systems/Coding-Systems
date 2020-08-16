@@ -42,9 +42,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
             <?php
 
-            $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
-                FROM houses
-                ORDER BY pts DESC');
+            $results = App\House::select('total_pts as pts', 'name as hname')->orderBy('pts', 'DESC')->get();
 
             $rank=0;
 
@@ -59,34 +57,10 @@ use Maatwebsite\Excel\Concerns\ToModel;
                     echo '<img class="logoPodium logoP"' ;
                 }
 
-                if($house->hname=='Crackend'){
-                    echo 'src="img/logoCrackend_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "Crackend" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else if ($house->hname=='PhoeniXML'){
-                    echo 'src="img/logoPhoeniXML_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "PhoeniXML" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else if ($house->hname=='Gitsune'){
-                    echo 'src="img/logoGitsune_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "Gitsune" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else {
-                    echo 'src="img/logo.png" alt="logo"> ';
-                }
-
+                echo 'src="img/logo' . $house->hname . '_';
+                $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                echo $logoLvl.'.png"';
+                echo' alt="logo de la maison"> ';
                 echo '<p class="numberRanking">'.$rank.'</p>';
                 echo '<p>'.$house->pts.' pts</p>';
                 echo '</section>';
