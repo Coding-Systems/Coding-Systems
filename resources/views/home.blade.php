@@ -80,41 +80,24 @@ use Maatwebsite\Excel\Concerns\ToModel;
         <p class="homePage">
         <?php
                 $rank=0;
-                $mvt_points = DB::table('mvt_points')
-                    ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                    ->join ('houses', 'users.house_id', '=', 'houses.id')
-                    ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*' , 'users.id AS idUser')
+                $mvt_points = App\Mvt_point::select(
+                        'users.first_name', 'houses.name AS hname',
+                        'mvt_points.label AS lab', 'mvt_points.*' ,
+                        'users.id AS idUser')
+                    ->join('users', 'mvt_points.users_id', '=', 'users.id')
+                    ->join('houses', 'users.house_id', '=', 'houses.id')
                     ->orderBy ('mvt_points.created_at', 'DESC')
-                    ->limit(20)
-                    ->get();
-                foreach ($mvt_points as $user) {
+                    ->limit(20)->get();
+
+            foreach ($mvt_points as $mvt) {
                     # badly named, todo change it
                     $rank++;
-                    if($user->hname=='Crackend'){
-                        echo '<img class="houseIcon" src="img/logoCrackend_';
-                        $logoLvl = DB::select('SELECT logo_lvl
-                            FROM users
-                            WHERE users.id = :id',['id' => $user->idUser] );
-                        echo $logoLvl[0]->logo_lvl.'.png"';
-                        echo' alt="logo de la maison"> ';                    }
-                    else if ($user->hname=='PhoeniXML'){
-                        echo '<img class="houseIcon" src="img/logoPhoeniXML_';
-                        $logoLvl = DB::select('SELECT logo_lvl
-                            FROM users
-                            WHERE users.id = :id',['id' => $user->idUser] );
-                        echo $logoLvl[0]->logo_lvl.'.png"';
-                        echo' alt="logo de la maison"> ';                        }
-                    else if ($user->hname=='Gitsune'){
-                        echo '<img class="houseIcon" src="img/logoGitsune_';
-                        $logoLvl = DB::select('SELECT logo_lvl
-                            FROM users
-                            WHERE users.id = :id',['id' => $user->idUser] );
-                        echo $logoLvl[0]->logo_lvl.'.png"';
-                        echo' alt="logo de la maison"> ';                        }
-                    else {
-                        echo '<img class="houseIcon" src="img/logo.png" alt="logo">';
-                    }
-                    echo " [", date('d/m H:i', strtotime($user->created_at)), "] ", $user->first_name, " : ", $user->nbr_points, " [", $user->lab, "]";
+
+                    echo '<img class="houseIcon" src="img/logo' . $mvt->hname . '_';
+                    $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                    echo $logoLvl . '.png"';
+                    echo' alt="logo de la maison"> ';
+                    echo " [", date('d/m H:i', strtotime($mvt->created_at)), "] ", $mvt->first_name, " : ", $mvt->nbr_points, " [", $mvt->lab, "]";
                     echo '<br/>';
                     if(intdiv(sizeof($mvt_points),2)==$rank){
                         echo "</p>";
