@@ -37,10 +37,10 @@
         <form method="post" class="triHouseRankForm">
             {{ csrf_field() }}
             <select id="rank" name="rank">
-                <option value="all">Tout les points</option>
-                <option value="ptsPO">Points gagnés avec PO</option>
-                <option value="ptsDefi">Points gagnés avec les défis</option>
-                <option value="ptsNote">Points gagnés avec les notes</option>
+                <option value="total_pts">Tout les points</option>
+                <option value="total_pts_po">Points gagnés avec PO</option>
+                <option value="total_pts_defi">Points gagnés avec les défis</option>
+                <option value="total_pts_note">Points gagnés avec les notes</option>
             </select>
             <button>Valider</button>
         </form>
@@ -52,32 +52,14 @@
             <?php
 
             if(isset($_POST['rank'])){
-                switch ($_POST['rank']){
-                    case 'ptsPO' :
-                        $results = DB::select('SELECT total_pts_po AS pts, houses.name AS hname
-                            FROM houses
-                            ORDER BY pts DESC');
-                        break;
-                    case 'ptsDefi'  :
-                        $results = DB::select('SELECT total_pts_defi AS pts, houses.name AS hname
-                             FROM houses
-                             ORDER BY pts DESC');
-                        break;
-                    case 'ptsNote' :
-                         $results = DB::select('SELECT total_pts_note AS pts, houses.name AS hname
-                            FROM houses
-                            ORDER BY pts DESC');
-                        break;
-                    default :
-                        $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
-                            FROM houses
-                            ORDER BY pts DESC');
-                }
+                $results = App\House::select($_POST['rank'] . ' AS pts', 'houses.name AS hname')
+                    ->orderBy('pts', 'DESC')
+                    ->get();
             }
             else {
-                $results = DB::select('SELECT total_pts AS pts, houses.name AS hname
-                     FROM houses
-                     ORDER BY pts DESC');
+                $results = App\House::select('total_pts AS pts', 'houses.name AS hname')
+                    ->orderBy('pts', 'DESC')
+                    ->get();
             }
 
             $rank=0;
@@ -93,37 +75,12 @@
                     echo '<img class="logoPodium logoP"' ;
                 }
 
-                if($house->hname=='Crackend'){
-                    echo 'src="img/logoCrackend_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "Crackend" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else if ($house->hname=='PhoeniXML'){
-                    echo 'src="img/logoPhoeniXML_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "PhoeniXML" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else if ($house->hname=='Gitsune'){
-                    echo 'src="img/logoGitsune_';
-                    $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name = "Gitsune" ');
-                    echo $logoLvl[0]->logo_lvl.'.png"';
-                    echo' alt="logo de la maison"> ';
-                }
-                else {
-                    echo 'src="img/logo.png" alt="logo"> ';
-                }
-
-
-                echo '<p class="numberRanking">'.$rank.'</p>';
-                echo '<p>'.$house->pts.' pts</p>';
+                echo 'src="img/logo' . $house->hname . '_';
+                $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                echo $logoLvl . '.png"';
+                echo ' alt="logo de la maison"> ';
+                echo '<p class="numberRanking">' . $rank . '</p>';
+                echo '<p>' . $house->pts . ' pts</p>';
                 echo '</section>';
             }
 
@@ -142,55 +99,20 @@
                 <?php
 
                 if(isset($_POST['rank'])){
-                    switch ($_POST['rank']){
-                        case 'ptsPO' :
-                            $results = DB::select('SELECT users.total_pts_po AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
-                            break;
-
-                        case 'ptsDefi' :
-                            $results = DB::select('SELECT users.total_pts_defi AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
-                            break;
-
-                        case 'ptsNote' :
-                            $results = DB::select('SELECT users.total_pts_note AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
-                            break;
-
-                        default :
-                            $results = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
-                    }
+                    $results = App\User::select('users.' . $_POST['rank'] . ' AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser')
+                        ->leftJoin('houses', 'houses.id', '=', 'users.house_id')
+                        ->where('users.statut', '=', 'student')
+                        ->groupBy('users.id')
+                        ->orderBy('pts', 'DESC')
+                        ->get();
                 }
                 else{
-                    $results = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idUser
-                            FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
+                    $results = App\User::select('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser')
+                        ->leftJoin('houses', 'houses.id', '=', 'users.house_id')
+                        ->where('users.statut', '=', 'student')
+                        ->groupBy('users.id')
+                        ->orderBy('pts', 'DESC')
+                        ->get();
                 }
 
                 if (sizeof($results)==0) {
@@ -201,32 +123,10 @@
                     foreach ($results as $users) {
                         $rank++;
 
-                        if($users->hname=='Crackend'){
-                            echo '<img class="houseIcon" src="img/logoCrackend_';
-                            $logoLvl = DB::select('SELECT logo_lvl
-                                FROM users
-                                WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
-                            echo' alt="logo de la maison"> ';                        }
-                        else if ($users->hname=='PhoeniXML'){
-                            echo '<img class="houseIcon" src="img/logoPhoeniXML_';
-                            $logoLvl = DB::select('SELECT logo_lvl
-                                FROM users
-                                WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
-                            echo' alt="logo de la maison"> ';
-                        }
-                        else if ($users->hname=='Gitsune'){
-                            echo '<img class="houseIcon" src="img/logoGitsune_';
-                            $logoLvl = DB::select('SELECT logo_lvl
-                                FROM users
-                                WHERE users.id = :id',['id' => $users->idUser] );
-                            echo $logoLvl[0]->logo_lvl.'.png"';
-                            echo' alt="logo de la maison"> ';                        }
-                        else {
-                            echo '<img class="houseIcon" src="img/logo.png" alt="logo"> ';
-                        }
-
+                        echo '<img class="houseIcon" src="img/logo' . $users->hname . '_';
+                        $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                        echo $logoLvl . '.png"';
+                        echo' alt="logo de la maison"> ';
                         echo '<span ';
                         if ($rank <=3){
                             echo 'class= "userRank_'.$rank.'" ';
