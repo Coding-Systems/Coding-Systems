@@ -29,9 +29,9 @@ Route::match(['get', 'post'],'/profil', function () {
     return view('user');
 })->middleware('auth');
 
-Route::match(['get', 'post'], '/quizz', function () {
-    return view('quizz');
-})->middleware('auth');
+Route::get('/quizz', 'QuizzController@index')->middleware('auth');
+
+Route::post('/quizz', 'QuizzController@quizzResult')->middleware('auth');
 
 Route::match(['get', 'post'],'/ajout', function () {
     return view('addingPoints');

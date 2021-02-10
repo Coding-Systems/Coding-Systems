@@ -1,0 +1,424 @@
+{
+    "questions": [
+            {
+                "questionText": "À quel élément tu t'identifie le plus ?",
+                "value": 5,
+                "answers": [
+                    {
+                        "text": "Le feu, j'suis peut être un peu PYROMANE !!",
+                        "house": "PhoeniXML"
+                    },
+                    {
+                        "text": "La terre, c'est bien les randonnées.",
+                        "house": "Gitsune"
+                    },
+                    {
+                        "text": "L'eau. J'aime faire trempette.",
+                        "house": "Crackend"
+                    },
+                    {
+                        "text": "L'air, c'est bien de respirer de temps en temps.",
+                        "house": "neutral"
+                    }
+                ]
+            },
+            {
+                "questionText": "Quelle est ta plus grande qualité ?",
+                "value": 5,
+                "answers": [
+                    {
+                        "text": "Je suis créatif, je fais des gribouillis partout !",
+                        "house": "PhoeniXML"
+                    },
+                    {
+                        "text": "Je suis organisé, mon bureau est bien rangé !",
+                        "house": "Gitsune"
+                    },
+                    {
+                        "text": "Je suis débrouillard, je sais faire mes lacets tout seul !",
+                        "house": "Crackend"
+                    },
+                    {
+                        "text": "Toutes, je suis parfait bien évidemment.",
+                        "house": "neutral"
+                    }
+                ]
+            },
+        {
+            "questionText": "Laquelle de ses choses de frustre le plus ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Une tache sur beau drap blanc",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Le désordre, je range mes livres par ordre alphabétique",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Un bruit de craie sur un tableau",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "Dans un projet, tu es plutôt celui qui... ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "Donne des idées, même les pires",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Planifie tout, même les pauses pipi",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Débug le code, vive les console.log",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Fais tout solo. Les autres me ralentissent de toute manière",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel est ton signe astrologique ?",
+            "value": 2,
+            "answers": [
+                {
+                    "text": "Taureau, Lion, Verseaux ou Sagitaire",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Vierge, Capricorne, Balance ou Bélier",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Cancer, Scorpion, Gémeaux ou Poisson!",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "En classe, tu es plutôt celui qui... ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "A toujours plein de gommes sur la table",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Prête du matériel à tout le monde",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Mange et bavarde au fond mais ne se fait jamais prendre",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Est l'élève calme du premier rang",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Journée shopping. Tu achètes... ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "Vous vous perdez dans le rayon des loisirs créatifs",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "ous suivez méticuleusement votre liste de course selon ce qu'il vous manque",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Peu importe, je regarde selon les promos",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Je papillone à chaque rayon mais repart les mains vides",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Un génie t’offre un voeux, lequel fais-tu ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "Rendre réel ce que tu souhaite",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Que toute l'humanité ne soit que bienveillance",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Avoir des vœux illimités",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel accessoire (tech) voudrais-tu ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "Une tablette graphique pour avoir des bonhommes batons en full HD",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Une montre connectée pour suivre ton actualité",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Un Action Replay, shhhhh...",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel animal domestique voudrais-tu ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Serpent, araignées, ou autre NAC",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Chien, chat, poisson, le classique",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Un singe, un éléphant ou un tigre, comment ça c'est illégal ?",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Aucun, je suis mieux sans",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "De quelle OS team est-tu ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Windows pour faire tourner Minecraft",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Mac pour son côté épuré",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Linux pour être libre de tout contrôler",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "Votre boisson favorite ?",
+            "value": 2,
+            "answers": [
+                {
+                    "text": "Les jus de fruits naturels, c'est bon pour la santé !",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "L'eau, sans gout mais indémodable",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Les sodas parce que j'aime le sucre",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Une bonne bière pour avoir les idées eau clair.",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel est ton couple Goal à la Coding ?",
+            "value": 2000,
+            "answers": [
+                {
+                    "text": "Thibaud et Alyssia mais elle ne l'avouera jamais",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Olaf et Marion. Elle aime les grosses carottes",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Les fesses d'Anis et la main d'Axel, le duo parfait !",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Hugo et le scrumstick. L'agile en profondeur",
+                    "house": "neutral"
+                },
+                {
+                    "text": "Houssam et son mac, le courant passe si bien",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Tes fleurs préférées ?",
+            "value": 2,
+            "answers": [
+                {
+                    "text": "Des roses pour leur variété",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Des orchidées, signe de réconciliation",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Des Lotus parce que c'est classe de pousser sur l'eau",
+                    "house": "Crackend"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel est ton moyen de transport favoris ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "À pied c'est bon pour le cardio",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Le bon vieux vélo pour l'écologie",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Une voiture par personne voyons !",
+                    "house": "Crackend"
+                },
+                {
+                    "text": ">Les transports en communs, j'aime les gens et LA covid",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel pouvoir aimerais-tu avoir ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "L'immortalité pour voir si les voitures volantes existeront",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Figer le temps pour ramasser ta tasse de café",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Passer à travers la matière pour t'échapper de prison",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Lire dans les pensées pour savoir si ton crush est réciproque",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel thème utilises-tu sur ton ordinateur ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "Un thème 100% personnalisé",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Un thème clair, pour éblouir mon entourage",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Un thème sombre, comme mes intentions",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Ah parce que ça se change ?",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Enfin majeur ! Que fais-tu en premier ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Je fais la tournée des bars, c'est moi qui régale !",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Je prépare soigneusement mon bulletin de vote, c'est important !",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Enfin aller sur des sites X sans mentir",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "Ah parce que ça change quelque chose ?",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel est ton premier choix de System ?",
+            "value": 20,
+            "answers": [
+                {
+                    "text": "PhoeniXML",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Gitsune",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Crack'end",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "J'en sais fishtrement rien",
+                    "house": "neutral"
+                }
+            ]
+        },
+        {
+            "questionText": "Quel est ton second choix de System ?",
+            "value": 10,
+            "answers": [
+                {
+                    "text": "PhoeniXML",
+                    "house": "PhoeniXML"
+                },
+                {
+                    "text": "Gitsune",
+                    "house": "Gitsune"
+                },
+                {
+                    "text": "Crack'end",
+                    "house": "Crackend"
+                },
+                {
+                    "text": "J'en sais fishtrement rien",
+                    "house": "neutral"
+                }
+            ]
+        }
+    ]
+}
