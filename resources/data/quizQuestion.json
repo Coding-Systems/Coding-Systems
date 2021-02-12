@@ -245,32 +245,6 @@
             ]
         },
         {
-            "questionText": "Quel est ton couple Goal à la Coding ?",
-            "value": 2000,
-            "answers": [
-                {
-                    "text": "Thibaud et Alyssia mais elle ne l'avouera jamais",
-                    "house": "PhoeniXML"
-                },
-                {
-                    "text": "Olaf et Marion. Elle aime les grosses carottes",
-                    "house": "Gitsune"
-                },
-                {
-                    "text": "Les fesses d'Anis et la main d'Axel, le duo parfait !",
-                    "house": "Crackend"
-                },
-                {
-                    "text": "Hugo et le scrumstick. L'agile en profondeur",
-                    "house": "neutral"
-                },
-                {
-                    "text": "Houssam et son mac, le courant passe si bien",
-                    "house": "neutral"
-                }
-            ]
-        },
-        {
             "questionText": "Tes fleurs préférées ?",
             "value": 2,
             "answers": [
