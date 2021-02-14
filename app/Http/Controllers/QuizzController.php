@@ -16,6 +16,7 @@ class QuizzController
             'data' => $data
         ]);
     }
+
     public function quizzResult()
     {
         if (isset($_POST['skipQuizzForm'])) {
@@ -33,21 +34,20 @@ class QuizzController
             $jsonString = file_get_contents(base_path('resources/data/quizQuestion.json'));
             $data = json_decode($jsonString, true)['questions'];
 
-
             $score_phoenixml = 0;
             $score_crackend = 0;
             $score_gitsune = 0;
 
-            foreach ($_POST['answers'] as $key=>$answer) {
-                switch ($data[$key][$answer - 1]) {
+            for ($i = 0; $i < count($data); $i++){
+                switch ($data[$i]['answers'][(int)$_POST['radio' . $i]]['house']) {
                     case 'PhoeniXML':
-                        $score_phoenixml++;
+                        $score_phoenixml += $data[$i]['value'];
                         break;
                     case 'Gitsune':
-                        $score_crackend++;
+                        $score_gitsune += $data[$i]['value'];
                         break;
                     case 'Crackend':
-                        $score_gitsune++;
+                        $score_crackend += $data[$i]['value'];
                         break;
                 }
             }
@@ -64,14 +64,14 @@ class QuizzController
                 );
         }
 
-
-
-
         //*********** Code temporaire pour la démo -- allow to class a user directly into a System after the quiz ***********
 
-        $array = array('3'=>$score_gitsune, '2'=>$score_phoenixml, '1'=>$score_crackend);
-        arsort($array);
-        $house=array_keys($array)[0];
+        $house = 3;
+        if ($score_crackend >= $score_gitsune && $score_crackend >= $score_phoenixml) {
+            $house = 1;
+        } elseif ($score_phoenixml > $score_gitsune) {
+            $house = 2;
+        }
 
         DB::table('users')
             ->where('id' , Auth::user()->id)

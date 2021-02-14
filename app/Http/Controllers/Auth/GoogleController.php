@@ -73,7 +73,7 @@ class GoogleController extends Controller
                     'mail' => $user->email,
                     'google_id'=> $user->id,
                     'password' => encrypt('123456dummy'),
-                    'statut'=>'PO',
+                    'statut'=>'student',
                     'logo_lvl'=>1,
                 ]);
 
