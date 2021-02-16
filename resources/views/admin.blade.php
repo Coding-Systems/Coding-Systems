@@ -27,5 +27,5 @@
         </section>
         @include("footer")
     </body>
-sss
+
 </html>
