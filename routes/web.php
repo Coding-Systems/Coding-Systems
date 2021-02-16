@@ -53,4 +53,8 @@ Route::match(['get', 'post'],'/classements', function () {
     return view('rankings');
 })->middleware('auth');
 
+Route::match(['get', 'post'],'/admin', function () {
+    return view('admin');
+})->middleware('auth');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
