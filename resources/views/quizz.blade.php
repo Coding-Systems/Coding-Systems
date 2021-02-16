@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+$idUser = 3;
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +13,8 @@
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/all.css"/>
+    <link rel="stylesheet" href="css/pages/quizz.scss"/>
+    <link rel="stylesheet" href="css/pages/quizzsass.css"/>
     <link href="resources/js/app.js">
 
 <!--<?php
@@ -24,23 +31,24 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 
-    <section id="quizzPage">
+<section id="quizzPage">
 
-        <h1>Quizz de répartition</h1>
+    <h1>Quizz de répartition</h1>
 
         <img id="logo_servbere" class="rules" src="img/servbere.png" alt="logo">
 
         <p class="quizzPage">Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
             <br>Ou laissez le hasard total opérer en appuyant
 
-        <form id="quizzForm" name="skipQuizzForm" method="post">
-            {{ csrf_field() }}
+    <form id="quizzForm" name="skipQuizzForm" method="post">
+        {{ csrf_field() }}
 
-            <input type="submit" value="ICI" name="validSkip" id="validSkip">
+        <input type="submit" value="ICI" name="validSkip" id="validSkip">
 
-        </form>
-            <br>
-        </p>
+    </form>
+    <br>
+    <br>Si vous rencontrez des réponses troll, c'est qu'ils s'agit de réponses neutres, mais en un peu plus fun :P.
+    </p>
 
         <form id="quizzForm" name="quizzForm" method="post"> <!-- PENSER A CHANGER L'ORDRE DE CERTAINES !!!!! -->
         {{ csrf_field() }} <!-- 2, 5, 10, 20-->

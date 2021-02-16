@@ -11,76 +11,76 @@ button #buttonAdmin{
 }
 
 img#H {
-  margin-top: 0;
-  height: 250px;
-  filter: saturate(150%);
-  padding-top: 48px;
-  padding-bottom: 48px;
+    margin-top: 0;
+    height: 250px;
+    filter: saturate(150%);
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
 
 div.stat {
-  height: 18em;
-  padding-bottom: 48px;
+    height: 18em;
+    padding-bottom: 48px;
 }
 
 section {
-  margin: auto;
-  justify-content: space-around;
+    margin: auto;
+    justify-content: space-around;
 }
 
 p {
-  font-size: 150%;
-  justify-content: space-around;
-  color: white;
-  margin-left: 50px;
-  margin-right: 50px;
+    font-size: 150%;
+    justify-content: space-around;
+    color: white;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 section #rankings {
-  justify-content: center;
+    justify-content: center;
 }
 
 #rankings {
-  background-size: 50% 50%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+    background-size: 50% 50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #logoHousesPodium {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .logoPodium {
-  height: 125px;
-  width: 125px;
+    height: 125px;
+    width: 125px;
 }
 
 .logoPodiumFirst {
-  height: 150px;
-  width: 150px;
+    height: 150px;
+    width: 150px;
 }
 
 #history {
-  font-size: 75%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  text-align: left;
-  margin-bottom: 10%;
+    font-size: 75%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: left;
+    margin-bottom: 10%;
 }
 
 select, .triHouseRankForm button {
-  background-color: #bbbcc4;
-  border-radius: 20px;
-  border: 0px;
-  outline: none;
-  font-size: 80%;
+    background-color: #bbbcc4;
+    border-radius: 20px;
+    border: 0px;
+    outline: none;
+    font-size: 80%;
 }
 
 /*# sourceMappingURL=historique.css.map */
@@ -91,8 +91,8 @@ h3.challengePage {
     font-size: 125%;
 }
 
-p.challengePage{
-    color :white;
+p.challengePage {
+    color: white;
     text-align: center;
     font-size: 100%;
 }
@@ -100,7 +100,7 @@ p.challengePage{
 select, input, table {
     background-color: #bbbcc4;
     border-radius: 10px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 80%;
     padding-left: 10px;
@@ -108,11 +108,11 @@ select, input, table {
     margin: 10px 10px 10px 10px;
 }
 
-input:focus{
+input:focus {
     background-color: #7d838a;
 }
 
-table{
+table {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 25px;
@@ -122,21 +122,26 @@ td {
     border-bottom: 1px solid #7d838a;
 }
 
-[type="submit"]:checked {}
+[type="submit"]:checked {
+}
 
-img#H{
+img#H {
     margin-top: 0;
     height: 250px;
-    padding-top: 48px;padding-bottom: 48px;
+    padding-top: 48px;
+    padding-bottom: 48px;
 }
-div.stat{
+
+div.stat {
     height: 18em;
     padding-bottom: 48px;
 }
+
 section {
     margin: auto;
     justify-content: space-around;
 }
+
 p.historique {
     font-size: 150%;
     justify-content: space-around;
@@ -182,24 +187,25 @@ section #rankings {
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: left;
-    margin-bottom : 10%;
+    margin-bottom: 10%;
     text-align: left;
     white-space: nowrap;
     font-size: 70%;
-    //
+/ /
 }
-select, .triHouseRankForm button{
+
+select, .triHouseRankForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 80%;
 }
 
-input{
+input {
     background-color: #bbbcc4;
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 100%;
 }
@@ -208,31 +214,30 @@ input:hover {
     background-color: #7d838a;
 }
 
-#historyDiv p{
+#historyDiv p {
     margin: 0em;
-    margin-left : 10px;
-    margin-right : 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 
 }
 
-#historyDiv{
+#historyDiv {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
     text-align: left;
-    margin-bottom : 10%;
+    margin-bottom: 10%;
     margin-top: 1.5em;
 }
 
 @media screen and (max-width: 990px) {
-/*
-    #rankingNamesUsers {
-        display: block;
-    }
+    /*
+        #rankingNamesUsers {
+            display: block;
+        }
 
- */
-
-    #historyDiv{
+     */
+    #historyDiv {
         display: flex;
         flex-direction: column;
     }
@@ -244,12 +249,13 @@ section {
     justify-content: space-around;
 }
 
-section#history p{
+section#history p {
 
 }
+
 p.homePage {
-    text-justify:newspaper;
-    text-align:justify;
+    text-justify: newspaper;
+    text-align: justify;
     font-size: 150%;
     flex: auto;
     justify-content: space-around;
@@ -290,97 +296,101 @@ section #rankings {
     width: 150px;
 }
 
-#logoHousesPodium section:nth-of-type(1){
-    order :2;
-    -webkit-order : 2;
+#logoHousesPodium section:nth-of-type(1) {
+    order: 2;
+    -webkit-order: 2;
 }
-#logoHousesPodium section:nth-of-type(2){
-    order : 1;
-    -webkit-order : 1;
+
+#logoHousesPodium section:nth-of-type(2) {
+    order: 1;
+    -webkit-order: 1;
 }
-#logoHousesPodium section:nth-of-type(3){
-    order : 3;
-    -webkit-order : 3;
+
+#logoHousesPodium section:nth-of-type(3) {
+    order: 3;
+    -webkit-order: 3;
 }
 
 #history {
     font-size: 75%;
-    margin-bottom : 10%;
+    margin-bottom: 10%;
     white-space: nowrap;
     margin-left: 5px;
 }
 
-#historyDiv{
-     display: flex;
-     justify-content: left;
-     flex-wrap: wrap;
-     text-align: left;
-     margin-bottom : 10%;
-     padding : 0;
+#historyDiv {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-bottom: 10%;
+    padding: 0;
 }
 
-#historyDiv p{
-    margin : 20px;
+#historyDiv p {
+    margin: 20px;
 }
 
 @media screen and (max-width: 1190px) {
-    #history{
+    #history {
         display: block;
     }
-    #historyDiv{
+
+    #historyDiv {
         display: flex;
         flex-direction: column;
     }
-    #history p{
-    margin: 0 auto;
+
+    #history p {
+        margin: 0 auto;
     }
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 p.housePage {
-  width: 100%;
-  text-align: center;
-  overflow: hidden;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
 }
 
-.story{
-  width: 90%;
-  margin: 0 auto;
+.story {
+    width: 90%;
+    margin: 0 auto;
 }
 
-.houseIconStory{
-  width: 300px;
-  height: 300px;
-  transition-duration: 1s;
+.houseIconStory {
+    width: 300px;
+    height: 300px;
+    transition-duration: 1s;
 }
 
 .houseInfos {
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 5em;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5em;
 }
 
-.cardContent{
-  visibility: hidden;
+.cardContent {
+    visibility: hidden;
 }
-.cardContent{
-  visibility: visible;
+
+.cardContent {
+    visibility: visible;
 }
 
 .containerHouses {
@@ -388,7 +398,7 @@ p.housePage {
     justify-content: center;
     align-content: center;
     height: 100%;
-    //width: 99%;
+/ / width: 99 %;
     margin: 0px;
     left: calc(50% - 300px);
     display: flex;
@@ -396,161 +406,161 @@ p.housePage {
 }
 
 .card {
-  display: flex;
-  flex-grow: 1;
-  height: 500px;
-  width: 200px;
-  background-color: #45414f;
-  opacity: 50%;
-  border-radius: 10px;
-  box-shadow: -1rem 0 3rem #000;
-  transition: 0.4s ease-out;
-  position: relative;
-  left: 0;
-  color : #45414f;
+    display: flex;
+    flex-grow: 1;
+    height: 500px;
+    width: 200px;
+    background-color: #45414f;
+    opacity: 50%;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0;
+    color: #45414f;
     margin-bottom: 7em;
 }
 
 .card:not(:first-child) {
-  justify-content: center;
-  align-content: center;
+    justify-content: center;
+    align-content: center;
 }
 
-.secretTitle, .secret{
-  visibility: hidden;
+.secretTitle, .secret {
+    visibility: hidden;
 }
 
-.secret{
-  font-size: 0px;
+.secret {
+    font-size: 0px;
 }
 
 .card:hover .secretTitle, .card:hover .secret {
-  visibility: visible;
+    visibility: visible;
 }
 
-.card:hover .secret{
-  font-size: 100%;
+.card:hover .secret {
+    font-size: 100%;
 }
 
-img{
-  visibility: visible;
+img {
+    visibility: visible;
 }
 
 .card:hover {
-  z-index: 99999999;
-  opacity: 80%;
-  height: 100%;
-  width: 80%;
-  transform: translateY(-20px);
-  transition: 0.4s ease-out;
-  word-break: break-word;
-  color : white;
+    z-index: 99999999;
+    opacity: 80%;
+    height: 100%;
+    width: 80%;
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+    word-break: break-word;
+    color: white;
 }
 
 .title {
-  color: white;
-  font-weight: 300;
-  position: absolute;
-  left: 20px;
-  top: 15px;
+    color: white;
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 15px;
 }
 
 .bar {
-  position: absolute;
-  top: 100px;
-  left: 20px;
-  height: 5px;
-  width: 150px;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    height: 5px;
+    width: 150px;
 }
 
 .emptybar {
-  background-color: #2e3033;
-  width: 100%;
-  height: 100%;
+    background-color: #2e3033;
+    width: 100%;
+    height: 100%;
 }
 
 .filledbar {
-  position: absolute;
-  top: 0px;
-  z-index: 3;
-  width: 0px;
-  height: 100%;
-  background: rgb(125, 131, 138);
-  background: linear-gradient(90deg, rgb(69, 65, 79) 0%, rgb(57, 8, 47) 65%, rgb(37, 14, 28) 100%);
-  transition: 0.6s ease-out;
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: rgb(125, 131, 138);
+    background: linear-gradient(90deg, rgb(69, 65, 79) 0%, rgb(57, 8, 47) 65%, rgb(37, 14, 28) 100%);
+    transition: 0.6s ease-out;
 }
 
 #Crackend_card .filledbar {
-  background: linear-gradient(90deg, #FFF9FF 0%, #006FA1 65%, #070057 100%);
+    background: linear-gradient(90deg, #FFF9FF 0%, #006FA1 65%, #070057 100%);
 }
 
 #Gitsune_card .filledbar {
-  background: linear-gradient(90deg, #fffefc 0%, #9a7c53 65%, #895f32 100%);
+    background: linear-gradient(90deg, #fffefc 0%, #9a7c53 65%, #895f32 100%);
 }
 
 #PhoeniXMl_Card .filledbar {
-  background: linear-gradient(90deg, #ffee72 0%, #fa6c00 65%, #ac0000 100%);
+    background: linear-gradient(90deg, #ffee72 0%, #fa6c00 65%, #ac0000 100%);
 }
 
 .card:hover .filledbar {
-  width: 100%;
-  transition: 0.4s ease-out;
+    width: 100%;
+    transition: 0.4s ease-out;
 }
 
 .stroke {
-  stroke: white;
-  stroke-dasharray: 360;
-  stroke-dashoffset: 360;
-  transition: 0.6s ease-out;
+    stroke: white;
+    stroke-dasharray: 360;
+    stroke-dashoffset: 360;
+    transition: 0.6s ease-out;
 }
 
 .card:hover .stroke {
-  stroke-dashoffset: 100;
-  transition: 0.6s ease-out;
+    stroke-dashoffset: 100;
+    transition: 0.6s ease-out;
 }
 
-.houseRankForm select, .houseRankForm button{
-  background-color: #bbbcc4;
-  border-radius: 20px;
-  border : 0px;
-  outline: none;
-  font-size: 100%;
+.houseRankForm select, .houseRankForm button {
+    background-color: #bbbcc4;
+    border-radius: 20px;
+    border: 0px;
+    outline: none;
+    font-size: 100%;
 }
 
 .houseRankForm button:hover {
-  background-color: #7d838a;
+    background-color: #7d838a;
 }
 
-.houseMembers{
-  width: 100%;
+.houseMembers {
+    width: 100%;
 }
 
-.listMembersSec{
+.listMembersSec {
     margin-top: 50px;
     display: flex;
     font-size: 75%;
-    margin-bottom : 10%;
+    margin-bottom: 10%;
     white-space: nowrap;
     margin-left: 5px;
     justify-content: center;
 }
 
-.listMembers{
+.listMembers {
     flex-direction: row;
     display: flex;
     justify-content: left;
-    //align-items: start ;
+/ / align-items: start;
     flex-wrap: wrap;
-    margin-bottom : 10%;
-    padding : 0;
+    margin-bottom: 10%;
+    padding: 0;
     width: 70%;
 }
 
-.listMembers p{
-  //width: 47%;
-    margin : 0px;
+.listMembers p {
+/ / width: 47 %;
+    margin: 0px;
     text-align: left;
-    word-break : keep-all;
+    word-break: keep-all;
     margin-right: 20px;
     margin-left: 20px;
 }
@@ -621,33 +631,31 @@ footer .login{
 }
 */
 
-#quizzPage{
-    color : white;
+
+p.quizzPage {
+    text-align: center;
+    font-size: 100%;
 }
 
-p.quizzPage{
-    text-align: center;
-    font-size : 100%;
-}
-#quizzForm, #validSkip{
+#quizzForm, #validSkip {
     display: inline;
 }
 
-button{
-    color : white;
+button {
+    color: white;
     background-color: rgba(187, 188, 196, 0.71);
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 80%;
     font-family: 'Comic Neue', 'Open Sans', sans-serif;
 }
 
-input{
-    color : white;
+input {
+    color: white;
     background-color: rgba(187, 188, 196, 0.71);
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 130%;
     font-family: 'Comic Neue', 'Open Sans', sans-serif;
@@ -658,18 +666,41 @@ button:hover, input:hover {
     background-color: #7d838a;
 }
 
-label{
-    padding-right : 30px;
+label {
+    padding-right: 30px;
 }
 
-#submitButton{
-    margin :50px;
+#submitButton {
+    transition-duration: 0.7s;
+    display: inline;
+    margin: 50px;
+    color: rgb(50, 50, 50);
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    border: 0px;
+    outline: none;
+    font-size: 130%;
+    font-family: 'Comic Neue', 'Open Sans', sans-serif;
+}
+
+#submitButton:hover {
+    display: inline;
+    transition-duration: 0.7s;
+    margin: 50px;
+    color: rgb(215, 215, 215);
+    background-color: #4a1741;
+    border-radius: 25px;
+    border: 0px;
+    outline: none;
+    font-size: 130%;
+    font-family: "Roboto", sans-serif;
 }
 
 section {
     margin: auto;
     justify-content: space-around;
 }
+
 p.rankPage {
     font-size: 150%;
     justify-content: space-around;
@@ -697,17 +728,19 @@ section #rankings {
     align-items: flex-end;
 }
 
-#logoHousesPodium section:nth-of-type(1){
-    order :2;
-    -webkit-order : 2;
+#logoHousesPodium section:nth-of-type(1) {
+    order: 2;
+    -webkit-order: 2;
 }
-#logoHousesPodium section:nth-of-type(2){
-    order : 1;
-    -webkit-order : 1;
+
+#logoHousesPodium section:nth-of-type(2) {
+    order: 1;
+    -webkit-order: 1;
 }
-#logoHousesPodium section:nth-of-type(3){
-    order : 3;
-    -webkit-order : 3;
+
+#logoHousesPodium section:nth-of-type(3) {
+    order: 3;
+    -webkit-order: 3;
 }
 
 .logoPodium {
@@ -723,22 +756,22 @@ section #rankings {
 #rankingNamesUsers {
     display: flex;
     flex-direction: row;
-    //flex-wrap: wrap;
+/ / flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    //text-align: center;
+/ / text-align: center;
     margin-left: 20%;
 }
 
-#rankingNamesUsersDiv{
-    //width: fit-content ;
+#rankingNamesUsersDiv {
+/ / width: fit-content;
     display: flex;
     justify-content: left;
     flex-wrap: nowrap;
-    //justify-content: space-around;
+/ / justify-content: space-around;
     text-align: left;
-    margin-bottom : 10%;
-    padding : 0;
+    margin-bottom: 10%;
+    padding: 0;
 }
 
 @media screen and (max-width: 850px) {
@@ -747,13 +780,13 @@ section #rankings {
         display: block;
     }
 
-    #rankingNamesUsersDiv{
+    #rankingNamesUsersDiv {
         display: flex;
         flex-direction: column;
     }
 }
 
-#rankingNamesUsersDiv p{
+#rankingNamesUsersDiv p {
     width: max-content;
     margin-top: 0em;
     margin-bottom: 0em;
@@ -761,10 +794,10 @@ section #rankings {
     margin-right: 0.5em;
 }
 
-.triHouseRankForm select, .triHouseRankForm button{
-    //background-color: #bbbcc4;
+.triHouseRankForm select, .triHouseRankForm button {
+/ / background-color: #bbbcc4;
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 80%;
 }
@@ -783,7 +816,7 @@ section #rankings {
 html, body .rules {
     margin: 0;
     padding: 0;
-    //background-color: rgba(0, 0, 0, 0.1);
+/ / background-color: rgba(0, 0, 0, 0.1);
 }
 
 p.rules {
@@ -792,25 +825,25 @@ p.rules {
     text-align: justify;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.1);
-    border-radius : 20px;
+    border-radius: 20px;
     padding: 10px;
     margin: 0px;
 }
 
-h1.rules, img.rules{
-    margin: 1em ;
+h1.rules, img.rules {
+    margin: 1em;
 }
 
 #logo_rules {
-  margin-top: -2%;
-  margin-bottom: 1%;
-  width: 250px;
+    margin-top: -2%;
+    margin-bottom: 1%;
+    width: 250px;
 }
 
 section#rules.rules {
-  margin-bottom: 15%;
-  padding-right: 2%;
-  padding-left: 2%;
+    margin-bottom: 15%;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 #logo_servbere {
@@ -819,45 +852,43 @@ section#rules.rules {
     width: 300px;
 }
 
-
-
-body{
-    width:100%;
+body {
+    width: 100%;
 }
 
 #logoUser {
     width: 100%;
-    //height: 30%;
+/ / height: 30 %;
 }
 
-#user{
-    display : flex;
+#user {
+    display: flex;
     flex-direction: column;
-    color : white;
+    color: white;
 }
 
-#logoUserHouse{
+#logoUserHouse {
     display: flex;
     flex-direction: column;
     width: 30%;
 }
 
-#statsUser{
+#statsUser {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#stats{
+#stats {
     text-align: left;
     font-size: 150%;
     width: 30%;
 }
 
-.HistoryForm select, .HistoryForm button{
+.HistoryForm select, .HistoryForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 100%;
 }
@@ -867,16 +898,16 @@ body{
 }
 
 
-#history{
+#history {
     text-align: center;
     display: flex;
-    //flex-direction: row;
-    //flex-wrap: nowrap;
+/ / flex-direction: row;
+/ / flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    //width: 100%;
-    //text-align: center;
-    //margin-left: 20%;
+/ / width: 100 %;
+/ / text-align: center;
+/ / margin-left: 20 %;
 
     /*
     padding-bottom: 2%;
@@ -891,16 +922,16 @@ body{
      */
 }
 
-#divHistory{
-    //width: fit-content ;
+#divHistory {
+/ / width: fit-content;
     display: flex;
     justify-content: left;
     flex-direction: row;
     flex-wrap: nowrap;
-    //justify-content: space-around;
+/ / justify-content: space-around;
     text-align: left;
-    margin-bottom : 10%;
-    padding : 0;
+    margin-bottom: 10%;
+    padding: 0;
 }
 
 #history p {
@@ -912,13 +943,14 @@ body{
     margin-right: 0.5em;
 }
 
-#addPoints{
+#addPoints {
     display: flex;
     text-align: center;
 }
-#addPts, #addPtsNote{
+
+#addPts, #addPtsNote {
     justify-content: left;
-    display : inline-table;
+    display: inline-table;
     flex-direction: row;
     flex-wrap: nowrap;
     margin: 0 auto;
@@ -962,7 +994,7 @@ input:focus{
     border-radius: 10px;
     font-size: 17px;
     outline: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .cssTheme:hover {
@@ -980,7 +1012,7 @@ input:focus{
 #defaultTheme:hover {
     transition-duration: 0.5s;
     background-image: linear-gradient(33deg, rgb(199, 200, 207) 25%, rgb(143, 149, 156) 25%);
-    border : none
+    border: none
 }
 
 #phoenixmlTheme {
@@ -995,7 +1027,7 @@ input:focus{
 #phoenixmlTheme:hover {
     transition-duration: 0.5s;
     background-image: linear-gradient(33deg, rgb(255, 181, 0) 25%, rgb(154, 71, 66) 25%);
-    border : none
+    border: none
 }
 
 #gistuneTheme {
@@ -1010,7 +1042,7 @@ input:focus{
 #gistuneTheme:hover {
     transition-duration: 0.5s;
     background-image: linear-gradient(33deg, #9c7242 25%, #b9b2a8 25%);
-    border : none
+    border: none
 }
 
 #crackendTheme {
@@ -1025,16 +1057,17 @@ input:focus{
 #crackendTheme:hover {
     transition-duration: 0.5s;
     background-image: linear-gradient(33deg, #48b8d4 25%, #06006b 25%);
-    border : none
+    border: none
 }
 
 
 @media screen and (max-width: 740px) {
-    #statsUser{
-        display : block;
-        color : white;
+    #statsUser {
+        display: block;
+        color: white;
     }
-    #cssThemeSwitcher{
+
+    #cssThemeSwitcher {
         margin: 0 auto;
     }
 
@@ -1042,14 +1075,16 @@ input:focus{
         display: block;
     }
 
-    #divHistory{
+    #divHistory {
         display: flex;
         flex-direction: column;
     }
-    #addPoints{
+
+    #addPoints {
         display: block;
     }
-    #addPts, #addPtsNote{
+
+    #addPts, #addPtsNote {
         display: flex;
         flex-direction: column;
     }

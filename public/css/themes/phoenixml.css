@@ -4,7 +4,9 @@
 h1, h2, .numberRanking{
     font-family: 'Metal Mania', cursive;
 }
-
+#quizzPage{
+    color : rgba(253, 169, 23, 0.85);
+}
 
 /*backgroud*/
 .bg {
