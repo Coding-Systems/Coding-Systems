@@ -60,7 +60,6 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
         </form>
     </section>
 
-
 @include("footer")
 
 </body>
