@@ -44,10 +44,11 @@
 
             <?php
             const DistributionServiceProvider = 'app\Providers\DistributionServiceProvider.php';
+            $distrib = new DistributionServiceProvider;
 
              if(isset($_POST['promoSelect'])){
-                 DistributionServiceProvider::indexBis($_POST['promoSelect']);
-                 echo $_POST['promoSelect'];
+                 $distrib->indexBis($_POST['promoSelect']);
+                 //echo $_POST['promoSelect'];
             }
             ?>
         </section>
