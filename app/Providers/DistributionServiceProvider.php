@@ -14,6 +14,7 @@ class DistributionServiceProvider
     private $list_gitsune = array();
     private $unplacedUserList = array();
     private $otherUsersList = array();
+    private $promo=999;
 
     private $totalOfUsers = 0;
     private $usersUnplacedCount = 0;
@@ -378,9 +379,22 @@ class DistributionServiceProvider
                 ->where("id", $gitsuneId)
                 ->update(
                     array(
-                        'house_id'=>"3"
+                        'house_id'=>"3",
+                        'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $gitsuneId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "3")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
         }
 
         $listPhoenixmlId = array();
@@ -391,9 +405,22 @@ class DistributionServiceProvider
                 ->where("id", $phonixmlId)
                 ->update(
                     array(
-                        'house_id'=>"2"
+                        'house_id'=>"2",
+                        'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $phonixmlId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "2")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
         }
 
         $listCrackendId = array();
@@ -404,15 +431,37 @@ class DistributionServiceProvider
                 ->where("id", $crackendId)
                 ->update(
                     array(
-                        'house_id'=>"1"
+                        'house_id'=>"1",
+                        'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $crackendId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "1")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
         }
+
+        DB::table('promo')
+            ->where("id", $this->promo)
+            ->update(
+                array(
+                    'is_distributed'=>"1"
+                )
+            );
 
     }
 
     public function index()
     {
+        $this->getuserList(1);
         $data = $this->lanchDistribution();
         return view('test', [
             'data' => $data
@@ -422,6 +471,7 @@ class DistributionServiceProvider
 
     public function indexBis($promo)
     {
+        $this->promo = $promo;
         echo 'Start distribution, id promo : '.$promo.'<br>';
         $this->getuserList($promo);
         //print_r($this->listUsersPoints);
