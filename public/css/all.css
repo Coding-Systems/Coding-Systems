@@ -331,6 +331,7 @@ html, body {
 
 body {
   height: 100%;
+  width: 100%;
   align-items: center;
   justify-content: center;
   align-content: center;
