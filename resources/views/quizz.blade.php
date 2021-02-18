@@ -28,6 +28,8 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
         <h1>Quizz de répartition</h1>
 
+        <img id="logo_servbere" class="rules" src="img/servbere.png" alt="logo">
+
         <p class="quizzPage">Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
             <br>Ou laissez le hasard total opérer en appuyant
 
