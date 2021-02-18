@@ -23,6 +23,11 @@
             <div class="bg bg2"></div>
             <div class="bg bg3"></div>
             <h1>Admin</h1>
+            <select>
+                <option>année 1</option>
+                <option>année 2</option>
+                <option>année 3</option>
+            </select>
             <button>Start</button>
         </section>
         @include("footer")
