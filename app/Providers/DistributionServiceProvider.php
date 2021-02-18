@@ -52,7 +52,6 @@ class DistributionServiceProvider
                 "s_crackend" => $user->score_crackend,);
             $this->listUsersPoints[$user->users_id] = $userScores;
         }
-        //print_r($listUsers);
     }
 
     private function otherRepart($phoenixOther, $gitsuneOther, $crackendOther)
@@ -121,9 +120,6 @@ class DistributionServiceProvider
             }
         }
 
-        //echo '<br>Before<br>';
-        //print_r($this->unplacedUserList);
-
         arsort($max_crackend);
         arsort($max_gitsune);
         arsort($max_phoenixml);
@@ -131,7 +127,6 @@ class DistributionServiceProvider
         $crackendOther =['noOne', 0];
         $phoenixOther = ['noOne', 0];
         $gitsuneOther = ['noOne', 0];
-
 
         foreach ($max_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
@@ -344,6 +339,45 @@ class DistributionServiceProvider
         }
     }
 
+    public function lastUsers(){
+
+        for ($i=0; $i<count($this->unplacedUserList); $i++){
+
+            echo"Unplaced";
+            print_r($this->unplacedUserList);
+
+            $countSystems = array(
+                'phoenixml' => count($this->list_phoenixml),
+                'gistune' => count($this->list_gitsune),
+                'crackend' => count($this->list_crackend)
+            );
+
+            arsort($countSystems);
+
+            $userId = array_key_first($this->unplacedUserList);
+
+            switch (array_key_first($countSystems)) {
+                case 'phoenixml' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_phoenixml[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+                case 'crackend' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_crackend[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+                case 'gitsune' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_gitsune[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+            }
+
+        echo '<br>'.count($this->unplacedUserList).'<br>';
+        }
+    }
+
     public function lanchDistribution()
     {
         //$this->createFakeScores();
@@ -359,6 +393,9 @@ class DistributionServiceProvider
         $this->firstDistrib();
         $this->secondDistrib();
         $this->lastDistrib();
+        if(count($this->unplacedUserList)>0){
+            $this->lastUsers();
+        }
 
         $data['listp'] = $this->list_phoenixml;
         $data['listc'] = $this->list_crackend;
@@ -373,8 +410,6 @@ class DistributionServiceProvider
         $listGitsuneId = array();
         foreach ($this->list_gitsune as $gitsuneId => $gitsuneScore){
             array_push($listGitsuneId, $gitsuneId);
-
-            echo $gitsuneId.' ';
             DB::table('users')
                 ->where("id", $gitsuneId)
                 ->update(
@@ -474,8 +509,8 @@ class DistributionServiceProvider
         $this->promo = $promo;
         echo 'Start distribution, id promo : '.$promo.'<br>';
         $this->getuserList($promo);
-        //print_r($this->listUsersPoints);
         $this->lanchDistribution();
+        print_r($this->unplacedUserList);
         $this->sendToDB();
     }
 

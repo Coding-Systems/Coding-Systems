@@ -785,6 +785,17 @@ class ResultTestSeeder extends Seeder
             'updated_at'=>null,
         ]);
 
+        DB::table('result_test')->insert([
+            'id'=>72,
+            'users_id'=>72,
+            'score_gitsune'=>20,
+            'score_phoenixml'=>91,
+            'score_crackend'=>149,
+            'quizz_is_done'=>1,
+            'created_at'=>null,
+            'updated_at'=>null,
+        ]);
+
     }
 
 }

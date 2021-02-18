@@ -66,6 +66,7 @@ class QuizzController
 
         //*********** Code temporaire pour la démo -- allow to class a user directly into a System after the quiz ***********
 
+        /*
         $house = 3;
         if ($score_crackend >= $score_gitsune && $score_crackend >= $score_phoenixml) {
             $house = 1;
@@ -80,7 +81,7 @@ class QuizzController
                     'house_id' => "$house",
                 )
             );
-
+*/
         // todo redirect to a page indicating that the result of the quiz will be taking in account later
         return redirect('/profil');
     }
