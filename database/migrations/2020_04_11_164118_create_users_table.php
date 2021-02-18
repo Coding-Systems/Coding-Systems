@@ -29,10 +29,12 @@ class CreateUsersTable extends Migration
             $table->mediumInteger('total_given_pts')->default(0);
             $table->smallInteger('total_won_defis')->default(0);
             $table->tinyInteger('logo_lvl')->default(1);
-            $table->smallInteger('year')->default(1);
+            $table->foreignId('promo_id')->nullable();
             $table->timestamps();
 
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
+            $table->foreign('promo_id')->references('id')->on('promo')->onDelete('cascade');
+
         });
     }
 
