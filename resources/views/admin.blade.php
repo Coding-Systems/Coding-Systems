@@ -3,7 +3,8 @@
 <?php
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\DB;
-    use app\Providers\DistributionServiceProvider;
+    use App\Providers\DistributionServiceProvider;
+    //const DistributionServiceProvider = 'app\Providers\DistributionServiceProvider.php';
 ?>
 
     <head>
@@ -27,22 +28,25 @@
 
             <p>Lancer la répartition</p>
             <form method="post"> {{ csrf_field() }} <select id="promoSelect" name="promoSelect">
-            <?php 
+            <?php
          $promoList = DB::select('SELECT id, name
          FROM promo WHERE is_distributed = false');
 
          foreach ($promoList as $promo){
             echo '<option value="'.$promo->id.'">'.$promo->name.'</option>';
         };
-        echo '</select>';
 
         ?>
+                </select>
             <button>Start</button>
+
             </form>
 
             <?php
+            const DistributionServiceProvider = 'app\Providers\DistributionServiceProvider.php';
+
              if(isset($_POST['promoSelect'])){
-                DistributionServiceProvider::indexBis($_POST['promoSelect']);
+                 DistributionServiceProvider::indexBis($_POST['promoSelect']);
                  echo $_POST['promoSelect'];
             }
             ?>

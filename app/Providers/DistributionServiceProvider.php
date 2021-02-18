@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class DistributionServiceProvider extends ServiceProvider
+class DistributionServiceProvider
 {
     private $listUsersPoints = array();
     private $listPlacedUsers = array();
