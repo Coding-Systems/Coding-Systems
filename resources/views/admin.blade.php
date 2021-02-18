@@ -58,6 +58,8 @@ use App\Providers\DistributionServiceProvider;
 
             }
         ?>
+                </select>
+            <button id="buttonAdmin">Start</button>
 
 
     <form method="post"> {{ csrf_field() }} <select id="promoSelect" name="promoSelect">
