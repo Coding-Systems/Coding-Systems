@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'hlaghzil@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -76,7 +76,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'hlaghzilo@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>81,
             'total_pts_note'=>0,
             'total_pts_defi'=>39,
@@ -171,7 +171,6 @@ class UsersTableSeeder extends Seeder
             'mail'=>'aPrévoté--Hauguel@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>2,
             'total_pts'=>94,
             'total_pts_note'=>0,
             'total_pts_defi'=>80,
@@ -190,7 +189,6 @@ class UsersTableSeeder extends Seeder
             'mail'=>'aPrévoté--uguel@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>2,
             'total_pts'=>62,
             'total_pts_note'=>0,
             'total_pts_defi'=>40,
@@ -227,7 +225,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User01@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -246,7 +244,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User02@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -265,7 +263,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User03@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -284,7 +282,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User04@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -303,7 +301,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'Houssam05@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -322,7 +320,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User06@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -341,7 +339,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User07@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -360,7 +358,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User08@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -379,7 +377,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User09@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -398,7 +396,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User10@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -417,7 +415,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User11@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -436,7 +434,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User12@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -455,7 +453,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User13@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -474,7 +472,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User14@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -493,7 +491,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User15@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -512,7 +510,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User16@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -531,7 +529,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User17@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -550,7 +548,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User18@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -569,7 +567,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User19@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -588,7 +586,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User20@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -607,7 +605,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User21@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -626,7 +624,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User22@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -645,7 +643,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User23@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -664,7 +662,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User24@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -683,7 +681,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User25@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -702,7 +700,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User26@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -721,7 +719,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User27@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -740,7 +738,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User28@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -759,7 +757,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User29@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -778,7 +776,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User30@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -797,7 +795,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User31@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -816,7 +814,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User32@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -835,7 +833,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User33@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -854,7 +852,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'user34@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -873,7 +871,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User35@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -892,7 +890,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User36@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -911,7 +909,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User37@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -930,7 +928,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User38@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -949,7 +947,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User39@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -968,7 +966,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User40@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -987,7 +985,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User41@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1006,7 +1004,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User42@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1025,7 +1023,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User43@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1044,7 +1042,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User44@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1063,7 +1061,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User45@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1082,7 +1080,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User46@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1101,7 +1099,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User47@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"2",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1120,7 +1118,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User48@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1139,7 +1137,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User49@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1158,7 +1156,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User50@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1177,7 +1175,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User51@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1196,7 +1194,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User52@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1215,7 +1213,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User53@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1234,7 +1232,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User54@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1253,7 +1251,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User55@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1272,7 +1270,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User56@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1291,7 +1289,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User57@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1310,7 +1308,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User58@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1329,7 +1327,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User59@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1348,7 +1346,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User60@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1367,7 +1365,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User61@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1386,7 +1384,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'User62@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
-            'house_id'=>1,
+            
             'total_pts'=>52,
             'total_pts_note'=>7,
             'total_pts_defi'=>0,
@@ -1410,7 +1408,7 @@ DB::table('users')->insert([
             'mail'=>'hlaghzil@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>1,
+            
             'statut'=>'student',
         ]);
 
@@ -1421,7 +1419,7 @@ DB::table('users')->insert([
             'mail'=>'hlaghzilo@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>1,
+            
             'statut'=>'student',
         ]);
 

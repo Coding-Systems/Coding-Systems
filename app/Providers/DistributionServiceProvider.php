@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Providers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Support\ServiceProvider;
 
-class SystemDistributionController extends Controller
+class DistributionServiceProvider extends ServiceProvider
 {
     private $listUsersPoints = array();
     private $listPlacedUsers = array();
