@@ -238,7 +238,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>11,
             'first_name'=>'User02',
@@ -276,7 +276,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>13,
             'first_name'=>'User04',
@@ -295,7 +295,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>14,
             'first_name'=>'Houssam05',
@@ -314,7 +314,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>15,
             'first_name'=>'User06',
@@ -333,7 +333,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>16,
             'first_name'=>'User07',
@@ -352,7 +352,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>17,
             'first_name'=>'User08',
@@ -371,7 +371,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>18,
             'first_name'=>'User09',
@@ -390,7 +390,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>19,
             'first_name'=>'User10',
@@ -409,7 +409,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>20,
             'first_name'=>'User11',
@@ -428,7 +428,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>21,
             'first_name'=>'User12',
@@ -447,7 +447,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>22,
             'first_name'=>'User13',
@@ -466,7 +466,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>23,
             'first_name'=>'User14',
@@ -485,7 +485,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>24,
             'first_name'=>'User15',
@@ -504,7 +504,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>25,
             'first_name'=>'User16',
@@ -523,7 +523,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>26,
             'first_name'=>'User17',
@@ -542,7 +542,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>27,
             'first_name'=>'User18',
@@ -561,7 +561,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>28,
             'first_name'=>'User19',
@@ -580,7 +580,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>29,
             'first_name'=>'User20',
@@ -599,7 +599,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>30,
             'first_name'=>'User21',
@@ -618,7 +618,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>31,
             'first_name'=>'User22',
@@ -637,7 +637,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>32,
             'first_name'=>'User23',
@@ -656,7 +656,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>33,
             'first_name'=>'User24',
@@ -675,7 +675,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>34,
             'first_name'=>'User25',
@@ -694,7 +694,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>35,
             'first_name'=>'User26',
@@ -713,7 +713,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>36,
             'first_name'=>'User27',
@@ -732,7 +732,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>37,
             'first_name'=>'User28',
@@ -751,7 +751,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>38,
             'first_name'=>'User29',
@@ -770,7 +770,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>39,
             'first_name'=>'User30',
@@ -789,7 +789,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>40,
             'first_name'=>'User31',
@@ -808,7 +808,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>41,
             'first_name'=>'User32',
@@ -827,7 +827,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>42,
             'first_name'=>'User33',
@@ -846,7 +846,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>43,
             'first_name'=>'User34',
@@ -865,7 +865,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>44,
             'first_name'=>'User35',
@@ -884,7 +884,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>45,
             'first_name'=>'User36',
@@ -903,7 +903,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>46,
             'first_name'=>'User37',
@@ -922,7 +922,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>47,
             'first_name'=>'User38',
@@ -941,7 +941,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>48,
             'first_name'=>'User39',
@@ -960,7 +960,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>49,
             'first_name'=>'User40',
@@ -979,7 +979,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>50,
             'first_name'=>'User41',
@@ -998,7 +998,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>51,
             'first_name'=>'User42',
@@ -1017,7 +1017,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>52,
             'first_name'=>'User43',
@@ -1036,7 +1036,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>53,
             'first_name'=>'User44',
@@ -1055,7 +1055,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>54,
             'first_name'=>'User45',
@@ -1074,7 +1074,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>55,
             'first_name'=>'User46',
@@ -1093,7 +1093,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>56,
             'first_name'=>'User47',
@@ -1112,7 +1112,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>57,
             'first_name'=>'User48',
@@ -1131,7 +1131,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>58,
             'first_name'=>'User49',
@@ -1150,7 +1150,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>59,
             'first_name'=>'User50',
@@ -1169,7 +1169,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>60,
             'first_name'=>'User51',
@@ -1188,7 +1188,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>61,
             'first_name'=>'User52',
@@ -1207,7 +1207,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>62,
             'first_name'=>'User53',
@@ -1226,7 +1226,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>63,
             'first_name'=>'User54',
@@ -1245,7 +1245,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>64,
             'first_name'=>'User55',
@@ -1264,7 +1264,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>65,
             'first_name'=>'User56',
@@ -1283,7 +1283,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>66,
             'first_name'=>'User57',
@@ -1302,7 +1302,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>67,
             'first_name'=>'User58',
@@ -1321,7 +1321,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>68,
             'first_name'=>'User59',
@@ -1340,7 +1340,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>69,
             'first_name'=>'User60',
@@ -1359,7 +1359,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>70,
             'first_name'=>'User61',
@@ -1378,7 +1378,7 @@ class UsersTableSeeder extends Seeder
             'statut'=>'student',
             'logo_lvl'=>3
         ]);
-        
+
         DB::table('users')->insert([
             'id'=>71,
             'first_name'=>'User62',
