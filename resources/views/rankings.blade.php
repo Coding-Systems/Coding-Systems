@@ -123,9 +123,15 @@
                     foreach ($results as $users) {
                         $rank++;
 
-                        echo '<img class="houseIcon" src="img/logo' . $users->hname . '_';
-                        $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
-                        echo $logoLvl . '.png"';
+                        if(isset($users->hname)) {
+                            echo '<img class="houseIcon" src="img/logo' . $users->hname . '_';
+                            $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                            echo $logoLvl . '.png"';
+                        }
+                        else {
+                            echo '<img class="houseIcon" src="img/logo.png"';
+                        }
+                        
                         echo' alt="logo de la maison"> ';
                         echo '<span ';
                         if ($rank <=3){

@@ -53,8 +53,12 @@ Route::match(['get', 'post'],'/classements', function () {
     return view('rankings');
 })->middleware('auth');
 
+Route::get('/test', 'SystemDistributionController@index');
+
 Route::match(['get', 'post'],'/admin', function () {
     return view('admin');
 })->middleware('auth');
+
+Route::get('/test', 'SystemDistributionController@index');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
