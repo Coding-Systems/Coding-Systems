@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PromoTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(MvtPointsTableSeeder::class);
-        $this->call(ResultTestSeeder::class);
+        //$this->call(ResultTestSeeder::class);
 
 
     }

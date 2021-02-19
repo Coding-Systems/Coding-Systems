@@ -13,28 +13,38 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-/*
+
     public function run() ///exel version
     {
         $usersList = getArrayListUsers();
-        $i = 0;
+        //$i = 0;
         foreach ($usersList as $user) {
 
+            /*
+            'mail'      => $row[0],
+            'firstname' => $row[1],
+            'lastname'  => $row[2],
+            'status'    => $row[3],
+            'is_admin'  => $row[4],
+            'promo_id'  => $row[5]
+             */
+
             DB::table('users')->insert([
-                'first_name'=>$user[2],
-                'last_name'=>ucfirst(strtolower($user[1])),
+                'first_name'=>$user[1],
+                'last_name'=>ucfirst(strtolower($user[2])),
                 'mail'=>$user[0],
-                'password'=>'mdp',
-                'year'=>2020,
-                'statut'=>'student',
-                'google_id'=>$i,
+                //'password'=>'mdp',
+                'promo_id'=>$user[5],
+                'statut'=>$user[3],
+                'is_admin' => $user[4]
             ]);
-            $i++;
+            //$i++;
             //print_r($user[]);
             //echo '</br>';
             //echo "Nom : " . $user[2] . " | Prénom : " . $user[1] . " | Mail : " . $user[0];
         }
 
+        /*
         DB::table('users')->insert([
             'first_name'=>'Colombe',
             'last_name'=>'Oiseau_Blanc',
@@ -45,9 +55,11 @@ class UsersTableSeeder extends Seeder
             'statut'=>'PO',
             'google_id' => 'as223',
         ]);
+        */
     }
-*/
 
+
+    /*
     public function run() ///Full version
     {
         DB::table('users')->insert([

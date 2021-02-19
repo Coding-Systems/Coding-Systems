@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('statut', 15)->default('student');
             $table->string('is_admin', 15)->boolean()->default(false);
             $table->foreignId('house_id')->nullable();
-            $table->string('password');
+            //$table->string('password');
             $table->mediumInteger('total_pts')->default(0);
             $table->mediumInteger('total_pts_note')->default(0);
             $table->mediumInteger('total_pts_po')->default(0);

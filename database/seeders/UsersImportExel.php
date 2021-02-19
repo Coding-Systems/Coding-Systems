@@ -12,11 +12,13 @@ class UsersImportAxel implements ToModel
     public function model(array $row)
     {
         return new User([
-            'email'     => $row[0],
+            'mail'     => $row[0],
             'firstname' => $row[1],
             'lastname'  => $row[2],
+            'status'    => $row[3],
+            'is_admin'  => $row[4],
+            'promo_id'  => $row[5]
         ]);
-
     }
 }
 
