@@ -22,18 +22,7 @@ class DistributionServiceProvider
     private $gitsuneUnplaced = 0;
     private $otherUnplaced = 0;
 
-    private function createFakeScores()
-    {
-        for ($i = 0; $i < 32; $i++) {
-            $newuser = array(
-                "s_phoenixml" => rand(0, 150),
-                "s_gitsune" => rand(0, 150),
-                "s_crackend" => rand(0, 150));
-            $idStr = (1000 + $i);
-            $this->listUsersPoints[$idStr] = $newuser;
-        }
-    }
-
+    //Get the users form the db in the wanted promo
     private function getuserList($promo)
     {
         $listUsers = DB::select('SELECT users_id , score_gitsune, score_crackend, score_phoenixml
@@ -43,6 +32,7 @@ class DistributionServiceProvider
         WHERE users.promo_id = :id
         ', ['id' => $promo]);
 
+        //Add the id and scores of each user in listUsersPoints
         foreach ($listUsers as $user){
             $userScores = array(
                 "s_phoenixml" => $user->score_phoenixml,
@@ -52,6 +42,7 @@ class DistributionServiceProvider
         }
     }
 
+    //Add users in systems for case when the number of users isn't %3
     private function otherRepart($phoenixOther, $gitsuneOther, $crackendOther)
     {
         if ($phoenixOther[1] > $gitsuneOther[1] && $phoenixOther[1] > $crackendOther[1]) {
@@ -84,12 +75,14 @@ class DistributionServiceProvider
         }
     }
 
+    //Start the distribution of users in their first score system
     private function firstDistrib()
     {
         $max_phoenixml = array();
         $max_gitsune = array();
         $max_crackend = array();
 
+        //For each users, search the greater score
         foreach ($this->listUsersPoints as $userId => $userScores) {
             $maxSyst = "";
             $maxScore = 0;
@@ -104,6 +97,7 @@ class DistributionServiceProvider
 
             $maxSyst = explode("_", $maxSyst)[1];
 
+            //Add users in the list of the right system
             switch ($maxSyst) {
                 case "phoenixml":
                     $max_phoenixml[$userId] = $maxScore;
@@ -118,6 +112,7 @@ class DistributionServiceProvider
             }
         }
 
+        //Sort users by score
         arsort($max_crackend);
         arsort($max_gitsune);
         arsort($max_phoenixml);
@@ -126,6 +121,7 @@ class DistributionServiceProvider
         $phoenixOther = ['noOne', 0];
         $gitsuneOther = ['noOne', 0];
 
+        //Add users of each system list while list empty or number limit achieved
         foreach ($max_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
                 $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
@@ -138,7 +134,6 @@ class DistributionServiceProvider
                 break;
             }
         }
-
 
         foreach ($max_gitsune as $user=> $score) {
             if ($this->gitsuneUnplaced > 0) {
@@ -166,6 +161,7 @@ class DistributionServiceProvider
             }
         }
 
+        //Launc otherepart for specific cases
         if($this->otherUnplaced > 0) {
             $repartedOne = $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
 
@@ -184,6 +180,7 @@ class DistributionServiceProvider
         }
     }
 
+    //Same as firstDistrib but with second system by score
     private function secondDistrib()
     {
         $middle_phoenixml = array();
@@ -293,6 +290,7 @@ class DistributionServiceProvider
         }
     }
 
+    //Same as firstDistrib but with system with less score
     private function lastDistrib()
     {
         $last_phoenixml = array();
@@ -366,6 +364,7 @@ class DistributionServiceProvider
         }
     }
 
+    //Boucle for dispatch last users in the system with the less members
     public function lastUsers(){
 
         for ($i=0; $i<count($this->unplacedUserList); $i++){
@@ -405,6 +404,7 @@ class DistributionServiceProvider
         }
     }
 
+    //Call the others for the distribution ans initialize global value
     public function lanchDistribution()
     {
         $data['orininalList'] = $this->listUsersPoints;
@@ -431,8 +431,10 @@ class DistributionServiceProvider
         return $data;
     }
 
+    //Update the database with the list get with the distribution
+    //Add the users in the right system and update the total of pts of each system
     public function sendToDB() {
-
+        //Update of gitsune
         $listGitsuneId = array();
         foreach ($this->list_gitsune as $gitsuneId => $gitsuneScore){
             array_push($listGitsuneId, $gitsuneId);
@@ -458,6 +460,7 @@ class DistributionServiceProvider
                 ]);
         }
 
+        //Update of phoenixml
         $listPhoenixmlId = array();
         foreach ($this->list_phoenixml as $phonixmlId => $phoenixmlScore){
             array_push($listPhoenixmlId, $phonixmlId);
@@ -484,6 +487,7 @@ class DistributionServiceProvider
                 ]);
         }
 
+        //Update of crack'end
         $listCrackendId = array();
         foreach ($this->list_crackend as $crackendId => $crackendScore){
             array_push($listCrackendId, $crackendId);
@@ -510,6 +514,7 @@ class DistributionServiceProvider
                 ]);
         }
 
+        //Set the promo to is_distributed = true
         DB::table('promo')
             ->where("id", $this->promo)
             ->update(
@@ -517,9 +522,8 @@ class DistributionServiceProvider
                     'is_distributed'=>"1"
                 )
             );
-
     }
-
+    
     public function index($promo)
     {
         $this->promo = $promo;
