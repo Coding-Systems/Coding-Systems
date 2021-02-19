@@ -137,6 +137,7 @@ class DistributionServiceProvider
                 $this->phoenixmlUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
@@ -149,7 +150,8 @@ class DistributionServiceProvider
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $gitsuneOther = [$user, $score];
+                break;
             }
         }
 
@@ -161,7 +163,8 @@ class DistributionServiceProvider
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $crackendOther = [$user, $score];
+                break;
             }
         }
     }
@@ -226,6 +229,7 @@ class DistributionServiceProvider
                 $this->phoenixmlUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
@@ -238,7 +242,8 @@ class DistributionServiceProvider
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $gitsuneOther = [$user, $score];
+                break;
             }
         }
 
@@ -250,7 +255,8 @@ class DistributionServiceProvider
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $crackendOther = [$user, $score];
+                break;
             }
         }
     }
@@ -310,6 +316,7 @@ class DistributionServiceProvider
                 $this->phoenixmlUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
@@ -323,6 +330,7 @@ class DistributionServiceProvider
                 $this->gitsuneUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
@@ -335,6 +343,7 @@ class DistributionServiceProvider
                 $this->crackendUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
     }
@@ -352,7 +361,7 @@ class DistributionServiceProvider
                 'crackend' => count($this->list_crackend)
             );
 
-            arsort($countSystems);
+            asort($countSystems);
 
             $userId = array_key_first($this->unplacedUserList);
 
