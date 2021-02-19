@@ -1,0 +1,56 @@
+@charset "UTF-8";
+h3.challengePage {
+  margin-top: 1em;
+  color: white;
+  font-size: 125%;
+}
+
+p.challengePage {
+  color: white;
+  text-align: center;
+  font-size: 100%;
+}
+
+select, input, table {
+  background-color: #bbbcc4;
+  border-radius: 10px;
+  border: 0px;
+  outline: none;
+  font-size: 80%;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+input:focus {
+  background-color: #7d838a;
+}
+
+table {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+td {
+  border-bottom: 1px solid #7d838a;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: table;
+  width: 100%;
+}
+
+footer {
+  display: table-row;
+  height: 100px;
+  /* à titre d'exemple */
+}
+
+/*# sourceMappingURL=challenges.css.map */

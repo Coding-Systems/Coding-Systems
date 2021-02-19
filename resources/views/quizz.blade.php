@@ -58,8 +58,11 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
                 <p class="quizzPage">{{$question['questionText']}}</p>
                 @foreach($question['answers'] as $answer)
 
-                    <input type="radio" name="radio{{$loop->parent->index}}" id="Q{{$loop->parent->iteration}}A{{$loop->index}}" value="{{$loop->index}}">
-                    <label for="Q{{$loop->parent->iteration}}A{{$loop->index}}">{{$answer['text']}}</label>
+                    <div class="question">
+                        <input type="radio" name="radio{{$loop->parent->index}}" id="Q{{$loop->parent->iteration}}A{{$loop->index}}" value="{{$loop->index}}">
+                        <label for="Q{{$loop->parent->iteration}}A{{$loop->index}}">{{$answer['text']}}</label>
+                    </div>
+
 
                 @endforeach
             @endforeach
