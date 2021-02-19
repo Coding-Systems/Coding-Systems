@@ -8,7 +8,7 @@ $idUser = 3;
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -37,7 +37,7 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
         <img id="logo_servbere" class="rules" src="img/servbere.png" alt="logo">
 
-        <p class="quizzPage">Répondez à ce quiz pour être répartit dans la maison vous correspondant le mieux.
+        <p class="quizzPage">Répondez à ce quiz pour être répartit dans la system vous correspondant le mieux.
             <br>Ou laissez le hasard total opérer en appuyant
 
     <form id="quizzForm" name="skipQuizzForm" method="post">

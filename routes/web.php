@@ -41,8 +41,8 @@ Route::match(['get', 'post'],'/challenges', function () {
     return view('challenges');
 })->middleware('auth');
 
-Route::match(['get', 'post'],'/maisons', function () {
-    return view('houses');
+Route::match(['get', 'post'],'/systems', function () {
+    return view('systems');
 });
 
 Route::match(['get', 'post'],'/historique', function () {

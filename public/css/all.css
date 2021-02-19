@@ -48,7 +48,7 @@ section #rankings {
     justify-content: center;
 }
 
-#logoHousesPodium {
+#logoSystemsPodium {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,7 +75,7 @@ section #rankings {
     margin-bottom: 10%;
 }
 
-select, .triHouseRankForm button {
+select, .triSystemRankForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
     border: 0px;
@@ -162,7 +162,7 @@ section #rankings {
     justify-content: center;
 }
 
-#logoHousesPodium {
+#logoSystemsPodium {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -194,7 +194,7 @@ section #rankings {
 / /
 }
 
-select, .triHouseRankForm button {
+select, .triSystemRankForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
     border: 0px;
@@ -278,7 +278,7 @@ section #rankings {
     justify-content: center;
 }
 
-#logoHousesPodium {
+#logoSystemsPodium {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -296,17 +296,17 @@ section #rankings {
     width: 150px;
 }
 
-#logoHousesPodium section:nth-of-type(1) {
+#logoSystemsPodium section:nth-of-type(1) {
     order: 2;
     -webkit-order: 2;
 }
 
-#logoHousesPodium section:nth-of-type(2) {
+#logoSystemsPodium section:nth-of-type(2) {
     order: 1;
     -webkit-order: 1;
 }
 
-#logoHousesPodium section:nth-of-type(3) {
+#logoSystemsPodium section:nth-of-type(3) {
     order: 3;
     -webkit-order: 3;
 }
@@ -358,7 +358,7 @@ body {
     align-content: center;
 }
 
-p.housePage {
+p.systemPage {
     width: 100%;
     text-align: center;
     overflow: hidden;
@@ -369,13 +369,13 @@ p.housePage {
     margin: 0 auto;
 }
 
-.houseIconStory {
+.systemIconStory {
     width: 300px;
     height: 300px;
     transition-duration: 1s;
 }
 
-.houseInfos {
+.systemInfos {
     overflow: hidden;
     width: 100%;
     display: flex;
@@ -393,7 +393,7 @@ p.housePage {
     visibility: visible;
 }
 
-.containerHouses {
+.containerSystems {
     flex-grow: 1;
     justify-content: center;
     align-content: center;
@@ -519,7 +519,7 @@ img {
     transition: 0.6s ease-out;
 }
 
-.houseRankForm select, .houseRankForm button {
+.systemRankForm select, .systemRankForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
     border: 0px;
@@ -527,11 +527,11 @@ img {
     font-size: 100%;
 }
 
-.houseRankForm button:hover {
+.systemRankForm button:hover {
     background-color: #7d838a;
 }
 
-.houseMembers {
+.systemMembers {
     width: 100%;
 }
 
@@ -721,24 +721,24 @@ section #rankings {
     justify-content: center;
 }
 
-#logoHousesPodium {
+#logoSystemsPodium {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
 }
 
-#logoHousesPodium section:nth-of-type(1) {
+#logoSystemsPodium section:nth-of-type(1) {
     order: 2;
     -webkit-order: 2;
 }
 
-#logoHousesPodium section:nth-of-type(2) {
+#logoSystemsPodium section:nth-of-type(2) {
     order: 1;
     -webkit-order: 1;
 }
 
-#logoHousesPodium section:nth-of-type(3) {
+#logoSystemsPodium section:nth-of-type(3) {
     order: 3;
     -webkit-order: 3;
 }
@@ -794,7 +794,7 @@ section #rankings {
     margin-right: 0.5em;
 }
 
-.triHouseRankForm select, .triHouseRankForm button {
+.triSystemRankForm select, .triSystemRankForm button {
 / / background-color: #bbbcc4;
     border-radius: 20px;
     border: 0px;
@@ -802,11 +802,11 @@ section #rankings {
     font-size: 80%;
 }
 
-.triHouseRankForm button:hover {
+.triSystemRankForm button:hover {
     background-color: #7d838a;
 }
 
-.houseIcon {
+.systemIcon {
     height: 40px;
     width: 40px;
     vertical-align: text-bottom;
@@ -867,7 +867,7 @@ body {
     color: white;
 }
 
-#logoUserHouse {
+#logoUserSystem {
     display: flex;
     flex-direction: column;
     width: 30%;

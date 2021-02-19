@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -35,7 +35,7 @@
 
         <h1>Historique</h1>
         <div id="imgH">
-        <img id="H" src="img/logo.png" alt="image de la maison">
+        <img id="H" src="img/logo.png" alt="image de la system">
         </div>
         <label>
         <form method="post">
@@ -61,8 +61,8 @@
         if($_POST['histo']=="all"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -70,9 +70,9 @@
         elseif($_POST['histo']=="gitsune"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
-                ->where ('houses.name', 'Gitsune')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('systems.name', 'Gitsune')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -80,9 +80,9 @@
         elseif($_POST['histo']=="crackend"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
-                ->where ('houses.name', 'Crackend')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('systems.name', 'Crackend')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -90,9 +90,9 @@
         elseif($_POST['histo']=="phoenixml"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
-                ->where ('houses.name', 'phoeniXML')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->where ('systems.name', 'phoeniXML')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -100,8 +100,8 @@
         elseif($_POST['histo']=="defis"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -109,8 +109,8 @@
         elseif($_POST['histo']=="events"){
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -119,8 +119,8 @@
     else{
             $mvt_points = DB::table('mvt_points')
                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
+                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.label AS lab', 'mvt_points.*', 'users.id AS idUser')
                 ->orderBy ('mvt_points.created_at', 'DESC')
                 ->limit(100)
                 ->get();
@@ -135,27 +135,27 @@
             # $user is badly named here todo change it
             $rank++;
             if($user->hname=='Crackend'){
-                echo '<img class="houseIcon" src="img/logoCrackend_';
+                echo '<img class="systemIcon" src="img/logoCrackend_';
                 $logoLvl = DB::select('SELECT logo_lvl
                     FROM users
                     WHERE users.id = :id',['id' => $user->idUser] );
                 echo $logoLvl[0]->logo_lvl.'.png"';
-                echo' alt="logo de la maison"> ';            }
+                echo' alt="logo de la system"> ';            }
             else if ($user->hname=='PhoeniXML'){
-                echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                echo '<img class="systemIcon" src="img/logoPhoeniXML_';
                 $logoLvl = DB::select('SELECT logo_lvl
                     FROM users
                     WHERE users.id = :id',['id' => $user->idUser] );
                 echo $logoLvl[0]->logo_lvl.'.png"';
-                echo' alt="logo de la maison"> ';
+                echo' alt="logo de la system"> ';
             }
             else if ($user->hname=='Gitsune'){
-                echo '<img class="houseIcon" src="img/logoGitsune_';
+                echo '<img class="systemIcon" src="img/logoGitsune_';
                 $logoLvl = DB::select('SELECT logo_lvl
                     FROM users
                     WHERE users.id = :id',['id' => $user->idUser] );
                 echo $logoLvl[0]->logo_lvl.'.png"';
-                echo' alt="logo de la maison"> ';            }
+                echo' alt="logo de la system"> ';            }
             else {
                 echo '<img id="logoHeader" src="img/logo.png" alt="logo">';
             }

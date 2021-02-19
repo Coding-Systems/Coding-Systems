@@ -5,19 +5,19 @@
         "answers": [
             {
                 "text": "Le feu, j'suis peut être un peu PYROMANE !!",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "La terre, c'est bien les randonnées.",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "L'eau. J'aime faire trempette.",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "L'air, c'est bien de respirer de temps en temps.",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -27,19 +27,19 @@
         "answers": [
             {
                 "text": "Je suis créatif, je fais des gribouillis partout !",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Je suis organisé, mon bureau est bien rangé !",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Je suis débrouillard, je sais faire mes lacets tout seul !",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Toutes, je suis parfait bien évidemment.",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -49,15 +49,15 @@
         "answers": [
             {
                 "text": "Une tache sur beau drap blanc",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Le désordre, je range mes livres par ordre alphabétique",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Un bruit de craie sur un tableau",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -67,19 +67,19 @@
         "answers": [
             {
                 "text": "Donne des idées, même les pires",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Planifie tout, même les pauses pipi",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Débug le code, vive les console.log",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Fais tout solo. Les autres me ralentissent de toute manière",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -89,15 +89,15 @@
         "answers": [
             {
                 "text": "Taureau, Lion, Verseaux ou Sagitaire",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Vierge, Capricorne, Balance ou Bélier",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Cancer, Scorpion, Gémeaux ou Poisson!",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -107,19 +107,19 @@
         "answers": [
             {
                 "text": "A toujours plein de gommes sur la table",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Prête du matériel à tout le monde",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Mange et bavarde au fond mais ne se fait jamais prendre",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Est l'élève calme du premier rang",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -129,19 +129,19 @@
         "answers": [
             {
                 "text": "Vous vous perdez dans le rayon des loisirs créatifs",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Vous suivez méticuleusement votre liste de course selon ce qu'il vous manque",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Peu importe, je regarde selon les promos",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Je papillone à chaque rayon mais repart les mains vides",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -151,15 +151,15 @@
         "answers": [
             {
                 "text": "Rendre réel ce que tu souhaite",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Que toute l'humanité ne soit que bienveillance",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Avoir des vœux illimités",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -169,15 +169,15 @@
         "answers": [
             {
                 "text": "Une tablette graphique pour avoir des bonhommes batons en full HD",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Une montre connectée pour suivre ton actualité",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Un Action Replay, shhhhh...",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -187,19 +187,19 @@
         "answers": [
             {
                 "text": "Serpent, araignées, ou autre NAC",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Chien, chat, poisson, le classique",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Un singe, un éléphant ou un tigre, comment ça c'est illégal ?",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Aucun, je suis mieux sans",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -209,15 +209,15 @@
         "answers": [
             {
                 "text": "Windows pour faire tourner Minecraft",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Mac pour son côté épuré",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Linux pour être libre de tout contrôler",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -227,19 +227,19 @@
         "answers": [
             {
                 "text": "Les jus de fruits naturels, c'est bon pour la santé !",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "L'eau, sans gout mais indémodable",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Les sodas parce que j'aime le sucre",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Une bonne bière pour avoir les idées eau clair.",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -249,15 +249,15 @@
         "answers": [
             {
                 "text": "Des roses pour leur variété",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Des orchidées, signe de réconciliation",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Des Lotus parce que c'est classe de pousser sur l'eau",
-                "house": "Crackend"
+                "system": "Crackend"
             }
         ]
     },
@@ -267,19 +267,19 @@
         "answers": [
             {
                 "text": "À pied c'est bon pour le cardio",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Le bon vieux vélo pour l'écologie",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Une voiture par personne voyons !",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": ">Les transports en communs, j'aime les gens et LA covid",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -289,19 +289,19 @@
         "answers": [
             {
                 "text": "L'immortalité pour voir si les voitures volantes existeront",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Figer le temps pour ramasser ta tasse de café",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Passer à travers la matière pour t'échapper de prison",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Lire dans les pensées pour savoir si ton crush est réciproque",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -311,19 +311,19 @@
         "answers": [
             {
                 "text": "Un thème 100% personnalisé",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Un thème clair, pour éblouir mon entourage",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Un thème sombre, comme mes intentions",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Ah parce que ça se change ?",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     },
@@ -333,19 +333,19 @@
         "answers": [
             {
                 "text": "Je fais la tournée des bars, c'est moi qui régale !",
-                "house": "PhoeniXML"
+                "system": "PhoeniXML"
             },
             {
                 "text": "Je prépare soigneusement mon bulletin de vote, c'est important !",
-                "house": "Gitsune"
+                "system": "Gitsune"
             },
             {
                 "text": "Enfin aller sur des sites X sans mentir",
-                "house": "Crackend"
+                "system": "Crackend"
             },
             {
                 "text": "Ah parce que ça change quelque chose ?",
-                "house": "neutral"
+                "system": "neutral"
             }
         ]
     }

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class HouseTableSeeder extends Seeder
+class SystemTableSeeder extends Seeder
 {
     /**
      * Run the database seeders.
@@ -15,7 +15,7 @@ class HouseTableSeeder extends Seeder
 
     public function run() ///Full version
     {
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>1,
             'name'=>'Crackend',
             'created_at'=>NULL,
@@ -26,7 +26,7 @@ class HouseTableSeeder extends Seeder
             'total_pts_defi'=>39
         ]);
 
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>2,
             'name'=>'PhoeniXML',
             'created_at'=>NULL,
@@ -37,7 +37,7 @@ class HouseTableSeeder extends Seeder
             'total_pts_defi'=>49
         ]);
 
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>3,
             'name'=>'Gitsune',
             'created_at'=>NULL,
@@ -53,17 +53,17 @@ class HouseTableSeeder extends Seeder
 /*
     public function run() ///Empty version
     {
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>1,
             'name'=>'Crackend',
         ]);
 
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>2,
             'name'=>'PhoeniXML',
         ]);
 
-        DB::table('houses')->insert([
+        DB::table('systems')->insert([
             'id'=>3,
             'name'=>'Gitsune',
         ]);

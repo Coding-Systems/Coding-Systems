@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 <head>
   <meta charset="UTF-8">
-  <title>Coding house</title>
+  <title>Coding system</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -33,7 +33,7 @@ $userType = Auth::user();
 if($userType->statut == 'student'){
 
     echo '<h2>Lancer un défi</h1>';
-    echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de maisons différentes !</p>";
+    echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de systems différentes !</p>";
 
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
@@ -51,15 +51,15 @@ if($userType->statut == 'student'){
 //    };
 //    echo '</select>';
 
-    $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, houses.name AS houseName
+    $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, systems.name AS systemName
         FROM users
-        LEFT JOIN houses
-        	ON houses.id = users.house_id
-        WHERE house_id != (SELECT house_id
+        LEFT JOIN systems
+        	ON systems.id = users.system_id
+        WHERE system_id != (SELECT system_id
                             	FROM users AS usersOne
                             	WHERE usersOne.id = :id)
             AND users.statut="student"
-        ORDER BY houseName, fName', ['id' => $userType->id]);
+        ORDER BY systemName, fName', ['id' => $userType->id]);
     echo '<h3 class="challengePage">Choisissez votre adversaire :</h3>';
 
     echo '<section class="oppenents">';
@@ -67,7 +67,7 @@ if($userType->statut == 'student'){
     echo '<select required="required" name="OpponentId" size="7">';
 
     foreach ($listUsers as $user){
-        echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     }
 
     echo '</select>';
@@ -79,7 +79,7 @@ if($userType->statut == 'student'){
     echo '<select required="required" name="arbiterId" size="7">';
 
     foreach ($listUsers as $user){
-        echo '<option value="'.$user->Uid.'">'."[".$user->houseName."] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     };
 
     $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
@@ -110,15 +110,15 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
     echo "<p>";
     if ($listDefis[0]->total==0){
 
-        $houseOponent = DB::select('SELECT house_id
+        $systemOponent = DB::select('SELECT system_id
             FROM users
             WHERE id= :id', ['id' => $_POST['OpponentId']]);
 
-        $houseArbiter = DB::select('SELECT house_id
+        $systemArbiter = DB::select('SELECT system_id
             FROM users
             WHERE id= :id', ['id' => $_POST['arbiterId']]);
 
-        if($houseArbiter[0]->house_id != $houseOponent[0]->house_id){
+        if($systemArbiter[0]->system_id != $systemOponent[0]->system_id){
             DB::table('defis')->insert(
                 array(
                     'challenger_id' => "$userType->id",
@@ -131,7 +131,7 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
             unset($_POST);
         }
         else{
-            echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des maisons différentes.</p>";
+            echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des systems différentes.</p>";
         }
     }
     else {
@@ -338,19 +338,19 @@ if(isset($_POST['proposedArbi'])){
             ->where('id', $infosPts->winnerId)
             ->increment('total_won_defis', 1);
 
-        $housesIds = DB::select('SELECT house_id AS houseId
+        $systemsIds = DB::select('SELECT system_id AS systemId
                 FROM users
                 WHERE id = :id
                 ', ['id' => $infosPts->winnerId]);
 
-        $idHouseWinner = $housesIds[0];
+        $idSystemWinner = $systemsIds[0];
 
-        DB::table('houses')
-            ->where('id', $idHouseWinner->houseId)
+        DB::table('systems')
+            ->where('id', $idSystemWinner->systemId)
             ->increment('total_pts_defi', "$nbrPts");
 
-        DB::table('houses')
-            ->where('id', $idHouseWinner->houseId)
+        DB::table('systems')
+            ->where('id', $idSystemWinner->systemId)
             ->increment('total_pts', "$nbrPts");
 
         unset($_POST);

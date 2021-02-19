@@ -442,7 +442,7 @@ class DistributionServiceProvider
                 ->where("id", $gitsuneId)
                 ->update(
                     array(
-                        'house_id'=>"3",
+                        'system_id'=>"3",
                         'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
@@ -450,7 +450,7 @@ class DistributionServiceProvider
                 ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
                 ->where('id', $gitsuneId)
                 ->get();
-            DB::table('houses')
+            DB::table('systems')
                 ->where("id", "3")
                 ->update([
                     'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
@@ -469,7 +469,7 @@ class DistributionServiceProvider
                 ->where("id", $phonixmlId)
                 ->update(
                     array(
-                        'house_id'=>"2",
+                        'system_id'=>"2",
                         'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
@@ -477,7 +477,7 @@ class DistributionServiceProvider
                 ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
                 ->where('id', $phonixmlId)
                 ->get();
-            DB::table('houses')
+            DB::table('systems')
                 ->where("id", "2")
                 ->update([
                     'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
@@ -496,7 +496,7 @@ class DistributionServiceProvider
                 ->where("id", $crackendId)
                 ->update(
                     array(
-                        'house_id'=>"1",
+                        'system_id'=>"1",
                         'updated_at' =>date("Y-m-d H:i:s")
                     )
                 );
@@ -504,7 +504,7 @@ class DistributionServiceProvider
                 ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
                 ->where('id', $crackendId)
                 ->get();
-            DB::table('houses')
+            DB::table('systems')
                 ->where("id", "1")
                 ->update([
                     'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),

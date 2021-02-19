@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -34,14 +34,14 @@
         ?>
 
         <div id="statsUser">
-            <div id="logoUserHouse">
+            <div id="logoUserSystem">
 
             <?php
 
-            $mvt_point = DB::select('SELECT houses.name AS hName
-                FROM houses
+            $mvt_point = DB::select('SELECT systems.name AS hName
+                FROM systems
                 LEFT JOIN users
-                    ON users.house_id = houses.id
+                    ON users.system_id = systems.id
                 WHERE users.id =:id', ['id' => Auth::user()->id]);
 
             echo '<img id="logoUser" ';
@@ -120,10 +120,10 @@
 
                         echo '<br>Classement général : ';
 
-                        $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idU
+                        $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , systems.name AS hname, users.id AS idU
                             FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
+                            LEFT JOIN systems
+                            	ON systems.id = users.system_id
                             WHERE users.statut="student"
                             GROUP BY users.id
                             ORDER BY pts DESC');
@@ -133,24 +133,24 @@
                         }
                         echo $x+1;
 
-                        echo '<br>Classement maison : ';
+                        echo '<br>Classement system : ';
 
-                        $userHouses = DB::select('SELECT house_id
+                        $userSystems = DB::select('SELECT system_id
                             FROM users
                             WHERE id = :id', ['id' => Auth::user()->id]);
-                        //echo $userHouses[0];
+                        //echo $userSystems[0];
 
-                        if(isset($userHouses[0]->house_id)){
-                            $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , houses.name AS hname, users.id AS idU
+                        if(isset($userSystems[0]->system_id)){
+                            $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , systems.name AS hname, users.id AS idU
                             FROM users
-                            LEFT JOIN houses
-                            	ON houses.id = users.house_id
+                            LEFT JOIN systems
+                            	ON systems.id = users.system_id
                             WHERE users.statut="student"
-								AND houses.id = (
-                                	SELECT houses.id
-                                    FROM houses
+								AND systems.id = (
+                                	SELECT systems.id
+                                    FROM systems
                                 	LEFT JOIN users AS userBIS
-                                		ON userBIS.house_id = houses.id
+                                		ON userBIS.system_id = systems.id
                                 	WHERE userBIS.id = :id
                                 	LIMIT 1)
                             GROUP BY users.id
@@ -175,7 +175,7 @@
                 <button id="defaultTheme" class="cssTheme"
                         onclick='document.cookie = "themeCookie=default"; path="/";
                 document.getElementById("cssTheme").href="css/themes/default.css";
-                ;'>Thème Coding Houses
+                ;'>Thème Coding Systems
                 </button>
                 <button id="crackendTheme" class="cssTheme"
                         onclick='document.cookie = "themeCookie=crackend"; path="/";
@@ -205,7 +205,7 @@ if (Auth::user()->statut == 'PO'){
     echo '<div id="addPoints"><div id="addPts"><h2>Ajouter des points</h2>';
 $studentList = DB::table('users')
 ->where('statut', 'student')
-->whereNotNull('house_id')
+->whereNotNull('system_id')
 ->get();
 
 echo '<form name="addPointsForm" method="post">'. csrf_field() .
@@ -247,26 +247,26 @@ if(isset($_POST['envoi'])){
       ->where('id', $student_id)
       ->get();
 
-      $houses = DB::table('users')
-      ->select('users.house_id', 'users.id')
+      $systems = DB::table('users')
+      ->select('users.system_id', 'users.id')
       ->where('id', $student_id)
       ->get();
 
-      foreach ($houses as $house){
-            $house_id = $house->house_id;
+      foreach ($systems as $system){
+            $system_id = $system->system_id;
       }
 
-      $house_pts = DB::table('houses')
-      ->select('houses.total_pts', 'houses.total_pts_po')
-      ->where('id', $house_id)
+      $system_pts = DB::table('systems')
+      ->select('systems.total_pts', 'systems.total_pts_po')
+      ->where('id', $system_id)
       ->get();
 
-      foreach ($house_pts as $add_house_pts){
-            $house_total_pts = $add_house_pts->total_pts;
+      foreach ($system_pts as $add_system_pts){
+            $system_total_pts = $add_system_pts->total_pts;
       }
 
-      foreach ($house_pts as $add_house_pts_po){
-            $house_total_pts_po = $add_house_pts->total_pts_po;
+      foreach ($system_pts as $add_system_pts_po){
+            $system_total_pts_po = $add_system_pts->total_pts_po;
       }
 
       foreach ($student_points as $add){
@@ -321,19 +321,19 @@ if(isset($_POST['envoi'])){
           )
       );
 
-      DB::table('houses')
-      ->where("id", $house_id)
+      DB::table('systems')
+      ->where("id", $system_id)
       ->update(
           array(
-              'total_pts'=>"$nbr_points"+"$house_total_pts"
+              'total_pts'=>"$nbr_points"+"$system_total_pts"
           )
       );
 
-      DB::table('houses')
-      ->where("id", $house_id)
+      DB::table('systems')
+      ->where("id", $system_id)
       ->update(
           array(
-              'total_pts_po'=>"$nbr_points"+"$house_total_pts_po"
+              'total_pts_po'=>"$nbr_points"+"$system_total_pts_po"
           )
       );
 }
@@ -342,7 +342,7 @@ if(isset($_POST['envoi'])){
 
     $studentList = DB::table('users')
         ->where('statut', 'student')
-        ->whereNotNull('house_id')
+        ->whereNotNull('system_id')
         ->get();
 
     echo '</div>';
@@ -355,14 +355,14 @@ if(isset($_POST['envoi'])){
         date_default_timezone_set('Europe/Paris');
         $date = date("Y-m-d H:i:s");
 
-        $house = DB::table('users')
-            ->select('users.house_id AS houseId', 'users.id')
+        $system = DB::table('users')
+            ->select('users.system_id AS systemId', 'users.id')
             ->where('id', $student_id)
             ->get();
 
-        $houseId=$house[0]->houseId;
-        foreach ($house as $house){
-            $house_id = $house->houseId;
+        $systemId=$system[0]->systemId;
+        foreach ($system as $system){
+            $system_id = $system->systemId;
         }
 
         DB::table('mvt_points')->insert(
@@ -385,13 +385,13 @@ if(isset($_POST['envoi'])){
             ->increment('total_pts_note', "$nbr_points"
             );
 
-        DB::table('houses')
-            ->where("id", $house_id)
+        DB::table('systems')
+            ->where("id", $system_id)
             ->increment('total_pts',"$nbr_points"
             );
 
-        DB::table('houses')
-            ->where("id", $house_id)
+        DB::table('systems')
+            ->where("id", $system_id)
             ->increment('total_pts_note',"$nbr_points"
             );
 
@@ -427,7 +427,7 @@ echo "</div>";
                         $mvt_point = DB::table('mvt_points')
                             ->join ('users AS student', 'mvt_points.users_id', '=', 'student.id')
                             ->join ('users AS PO', 'mvt_points.professor_id', '=', 'PO.id')
-                            ->join ('houses', 'student.house_id', '=', 'houses.id')
+                            ->join ('systems', 'student.system_id', '=', 'systems.id')
                             ->select ('student.first_name AS sName', 'mvt_points.*')
                             ->where('PO.id', Auth::user()->id)
                             ->orderBy ('mvt_points.created_at', 'DESC')
@@ -455,8 +455,8 @@ echo "</div>";
                                 case 'ptsPO' :
                                     $mvt_point = DB::table('mvt_points')
                                         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
+                                        ->join ('systems', 'users.system_id', '=', 'systems.id')
+                                        ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                         ->where('users.id', Auth::user()->id)
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -465,8 +465,8 @@ echo "</div>";
                                 default :
                                     $mvt_point = DB::table('mvt_points')
                                         ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                                        ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                        ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
+                                        ->join ('systems', 'users.system_id', '=', 'systems.id')
+                                        ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                         ->where('users.id', Auth::user()->id)
                                         ->orderBy ('mvt_points.created_at', 'DESC')
                                         ->limit(50)
@@ -476,8 +476,8 @@ echo "</div>";
                         else{
                             $mvt_point = DB::table('mvt_points')
                                 ->join ('users', 'mvt_points.users_id', '=', 'users.id')
-                                ->join ('houses', 'users.house_id', '=', 'houses.id')
-                                ->select ('users.first_name', 'houses.name AS hname', 'mvt_points.*', 'users.id AS idUser')
+                                ->join ('systems', 'users.system_id', '=', 'systems.id')
+                                ->select ('users.first_name', 'systems.name AS hname', 'mvt_points.*', 'users.id AS idUser')
                                 ->where('users.id', Auth::user()->id)
                                 ->orderBy ('mvt_points.created_at', 'DESC')
                                 ->limit(50)
