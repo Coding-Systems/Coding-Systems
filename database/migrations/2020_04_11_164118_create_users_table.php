@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('mail')->unique();
             $table->string('statut', 15)->default('student');
+            $table->string('is_admin', 15)->boolean()->default(false);
             $table->foreignId('house_id')->nullable();
             $table->string('password');
             $table->mediumInteger('total_pts')->default(0);
@@ -29,10 +30,12 @@ class CreateUsersTable extends Migration
             $table->mediumInteger('total_given_pts')->default(0);
             $table->smallInteger('total_won_defis')->default(0);
             $table->tinyInteger('logo_lvl')->default(1);
-            $table->smallInteger('year')->default(1);
+            $table->foreignId('promo_id')->nullable();
             $table->timestamps();
 
             $table->foreign('house_id')->references('id')->on('houses')->onDelete('cascade');
+            $table->foreign('promo_id')->references('id')->on('promo')->onDelete('cascade');
+
         });
     }
 

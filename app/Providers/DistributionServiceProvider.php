@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Providers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class SystemDistributionController extends Controller
+class DistributionServiceProvider
 {
     private $listUsersPoints = array();
     private $listPlacedUsers = array();
@@ -22,6 +21,18 @@ class SystemDistributionController extends Controller
     private $crackendUnplaced = 0;
     private $gitsuneUnplaced = 0;
     private $otherUnplaced = 0;
+
+    private function createFakeScores()
+    {
+        for ($i = 0; $i < 32; $i++) {
+            $newuser = array(
+                "s_phoenixml" => rand(0, 150),
+                "s_gitsune" => rand(0, 150),
+                "s_crackend" => rand(0, 150));
+            $idStr = (1000 + $i);
+            $this->listUsersPoints[$idStr] = $newuser;
+        }
+    }
 
     private function getuserList($promo)
     {
@@ -360,7 +371,7 @@ class SystemDistributionController extends Controller
         for ($i=0; $i<count($this->unplacedUserList); $i++){
 
             echo"Unplaced";
-            print_r($this->unplacedUserList);
+            //print_r($this->unplacedUserList);
 
             $countSystems = array(
                 'phoenixml' => count($this->list_phoenixml),
@@ -390,7 +401,7 @@ class SystemDistributionController extends Controller
                     break;
             }
 
-            echo '<br>'.count($this->unplacedUserList).'<br>';
+        echo '<br>'.count($this->unplacedUserList).'<br>';
         }
     }
 
@@ -420,19 +431,105 @@ class SystemDistributionController extends Controller
         return $data;
     }
 
-    public function index()
+    public function sendToDB() {
+
+        $listGitsuneId = array();
+        foreach ($this->list_gitsune as $gitsuneId => $gitsuneScore){
+            array_push($listGitsuneId, $gitsuneId);
+            DB::table('users')
+                ->where("id", $gitsuneId)
+                ->update(
+                    array(
+                        'house_id'=>"3",
+                        'updated_at' =>date("Y-m-d H:i:s")
+                    )
+                );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $gitsuneId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "3")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
+        }
+
+        $listPhoenixmlId = array();
+        foreach ($this->list_phoenixml as $phonixmlId => $phoenixmlScore){
+            array_push($listPhoenixmlId, $phonixmlId);
+
+            DB::table('users')
+                ->where("id", $phonixmlId)
+                ->update(
+                    array(
+                        'house_id'=>"2",
+                        'updated_at' =>date("Y-m-d H:i:s")
+                    )
+                );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $phonixmlId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "2")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
+        }
+
+        $listCrackendId = array();
+        foreach ($this->list_crackend as $crackendId => $crackendScore){
+            array_push($listCrackendId, $crackendId);
+
+            DB::table('users')
+                ->where("id", $crackendId)
+                ->update(
+                    array(
+                        'house_id'=>"1",
+                        'updated_at' =>date("Y-m-d H:i:s")
+                    )
+                );
+            $user_pts = DB::table('users')
+                ->select('total_pts', 'total_pts_note', 'total_pts_po', 'total_pts_defi')
+                ->where('id', $crackendId)
+                ->get();
+            DB::table('houses')
+                ->where("id", "1")
+                ->update([
+                    'total_pts' => DB::raw('total_pts + '.strval($user_pts[0]->total_pts)),
+                    'total_pts_note' => DB::raw('total_pts_note + '.strval($user_pts[0]->total_pts_note)),
+                    'total_pts_po' => DB::raw('total_pts_po + '.strval($user_pts[0]->total_pts_po)),
+                    'total_pts_defi' => DB::raw('total_pts_defi +'.strval($user_pts[0]->total_pts_defi)),
+                ]);
+        }
+
+        DB::table('promo')
+            ->where("id", $this->promo)
+            ->update(
+                array(
+                    'is_distributed'=>"1"
+                )
+            );
+
+    }
+
+    public function index($promo)
     {
-        $promo = 1;
         $this->promo = $promo;
         //echo '<br>Start distribution, id promo : '.$promo.'<br>';
         $this->getuserList($promo);
-        $data = $this->lanchDistribution();
+        $this->lanchDistribution();
         //echo '<br>Après la répartition<br>';
-        //print_r($this->unplacedUserList);
-        return view('test', [
-            'data' => $data
-        ]);
+        $this->sendToDB();
 
+        echo '<br>Répartition terminée ;)<br>';
     }
 
 }

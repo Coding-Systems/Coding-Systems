@@ -83,7 +83,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
                 $mvt_points = App\Mvt_point::select(
                         'users.first_name', 'houses.name AS hname',
                         'mvt_points.label AS lab', 'mvt_points.*' ,
-                        'users.id AS idUser')
+                        'users.id AS idUser', 'users.logo_lvl AS logoUser')
                     ->join('users', 'mvt_points.users_id', '=', 'users.id')
                     ->join('houses', 'users.house_id', '=', 'houses.id')
                     ->orderBy ('mvt_points.created_at', 'DESC')
@@ -94,8 +94,8 @@ use Maatwebsite\Excel\Concerns\ToModel;
                     $rank++;
 
                     echo '<img class="houseIcon" src="img/logo' . $mvt->hname . '_';
-                    $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
-                    echo $logoLvl . '.png"';
+                    //$logoLvl = App\User::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                    echo $mvt->logoUser . '.png"';
                     echo' alt="logo de la maison"> ';
                     echo " [", date('d/m H:i', strtotime($mvt->created_at)), "] ", $mvt->first_name, " : ", $mvt->nbr_points, " [", $mvt->lab, "]";
                     echo '<br/>';
