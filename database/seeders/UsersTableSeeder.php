@@ -1398,11 +1398,30 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'id'=>72,
-            'first_name'=>'User6XX',
-            'last_name'=>'User6XW',
-            'mail'=>'User6XG@gmail.com',
+            'first_name'=>'User63',
+            'last_name'=>'User63',
+            'mail'=>'User63G@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"3",
+
+            'total_pts'=>52,
+            'total_pts_note'=>7,
+            'total_pts_defi'=>0,
+            'total_pts_po'=>38,
+            'total_given_pts'=>0,
+            'created_at'=>NULL,
+            'updated_at'=>NULL,
+            'statut'=>'student',
+            'logo_lvl'=>3
+        ]);
+
+        DB::table('users')->insert([
+            'id'=>73,
+            'first_name'=>'User64',
+            'last_name'=>'User64',
+            'mail'=>'User64G@gmail.com',
+            'password'=>'mdp',
+            'promo_id'=>"1",
 
             'total_pts'=>52,
             'total_pts_note'=>7,

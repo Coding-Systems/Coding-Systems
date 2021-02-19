@@ -30,7 +30,6 @@ class DistributionServiceProvider
                 "s_phoenixml" => rand(0, 150),
                 "s_gitsune" => rand(0, 150),
                 "s_crackend" => rand(0, 150));
-
             $idStr = (1000 + $i);
             $this->listUsersPoints[$idStr] = $newuser;
         }
@@ -52,6 +51,7 @@ class DistributionServiceProvider
                 "s_crackend" => $user->score_crackend,);
             $this->listUsersPoints[$user->users_id] = $userScores;
         }
+        print_r($this->listUsersPoints);
     }
 
     private function otherRepart($phoenixOther, $gitsuneOther, $crackendOther)
@@ -63,7 +63,7 @@ class DistributionServiceProvider
                 array_push($this->list_phoenixml , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $phoenixOther;
+                return "phoenixOther";
             }
         } else if ($gitsuneOther[1] > $phoenixOther[1] && $gitsuneOther[1] > $crackendOther[1]) {
             if (!($gitsuneOther[0] === "noOne")) {
@@ -72,7 +72,7 @@ class DistributionServiceProvider
                 array_push($this->list_gitsune , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $gitsuneOther;
+                return "gitsuneOther";
             }
         } else if ($crackendOther[1] > $phoenixOther[1] && $crackendOther[1] > $gitsuneOther[1]) {
             if (!($crackendOther[0] === "noOne")) {
@@ -81,7 +81,7 @@ class DistributionServiceProvider
                 array_push($this->list_crackend , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $crackendOther;
+                return "crackendOther";
             }
         }
     }
@@ -165,6 +165,23 @@ class DistributionServiceProvider
             } else if ($this->otherUnplaced > 0) {
                 $crackendOther = [$user, $score];
                 break;
+            }
+        }
+
+        if($this->otherUnplaced > 0) {
+            $repartedOne = $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
+
+            if ( $this->otherUnplaced > 0) {
+                if($repartedOne == "phoenixml") {
+                    $phoenixOther = ['noOne', 0];
+                }
+                else if($repartedOne == "gitsune") {
+                    $gitsuneOther = ['noOne', 0];
+                }
+                else if($repartedOne == "crackend") {
+                    $crackendOther = ['noOne', 0];
+                }
+                $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
             }
         }
     }
@@ -259,6 +276,23 @@ class DistributionServiceProvider
                 break;
             }
         }
+
+        if($this->otherUnplaced > 0) {
+            $repartedOne = $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
+
+            if ( $this->otherUnplaced > 0) {
+                if($repartedOne == "phoenixml") {
+                    $phoenixOther = ['noOne', 0];
+                }
+                else if($repartedOne == "gitsune") {
+                    $gitsuneOther = ['noOne', 0];
+                }
+                else if($repartedOne == "crackend") {
+                    $crackendOther = ['noOne', 0];
+                }
+                $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
+            }
+        }
     }
 
     private function lastDistrib()
@@ -302,11 +336,6 @@ class DistributionServiceProvider
         arsort($last_gitsune);
         arsort($last_phoenixml);
 
-        $crackendOther =['noOne', 0];
-        $phoenixOther = ['noOne', 0];
-        $gitsuneOther = ['noOne', 0];
-
-
         foreach ($last_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
                 $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
@@ -314,9 +343,6 @@ class DistributionServiceProvider
                 unset($last_phoenixml[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->phoenixmlUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
-                break;
             }
         }
 
@@ -328,9 +354,6 @@ class DistributionServiceProvider
                 unset($last_gitsune[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
-                break;
             }
         }
 
@@ -341,9 +364,6 @@ class DistributionServiceProvider
                 unset($last_crackend[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
-                break;
             }
         }
     }
@@ -389,7 +409,6 @@ class DistributionServiceProvider
 
     public function lanchDistribution()
     {
-        //$this->createFakeScores();
         $data['orininalList'] = $this->listUsersPoints;
 
         $this->totalOfUsers = count($this->listUsersPoints);
@@ -505,8 +524,14 @@ class DistributionServiceProvider
 
     public function index()
     {
-        $this->getuserList(1);
+        $promo = 1;
+        $this->promo = $promo;
+        //echo '<br>Start distribution, id promo : '.$promo.'<br>';
+        $this->getuserList($promo);
         $data = $this->lanchDistribution();
+        //echo '<br>Après la répartition<br>';
+        //print_r($this->unplacedUserList);
+        $this->sendToDB();
         return view('test', [
             'data' => $data
         ]);
@@ -516,11 +541,14 @@ class DistributionServiceProvider
     public function indexBis($promo)
     {
         $this->promo = $promo;
-        echo 'Start distribution, id promo : '.$promo.'<br>';
+        echo '<br>Start distribution, id promo : '.$promo.'<br>';
         $this->getuserList($promo);
         $this->lanchDistribution();
+        echo '<br>Après la répartition<br>';
         print_r($this->unplacedUserList);
         $this->sendToDB();
+
+        echo '<br>Répartition terminée ;)<br>';
     }
 
 }
