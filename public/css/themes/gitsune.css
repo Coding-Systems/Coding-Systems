@@ -4,7 +4,9 @@ h1, h2, .numberRanking{
     font-family:  'Condiment', cursive;
 }
 
-
+#quizzPage{
+    color : #836039;
+}
 
 /*backgroud*/
 .bg {

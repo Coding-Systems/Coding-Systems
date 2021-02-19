@@ -4,7 +4,9 @@ h1, h2 , .numberRanking{
     font-family: 'Chakra Petch', cursive;
 }
 
-
+#quizzPage{
+    color : #54a1be;
+}
 
 /*backgroud*/
 .bg {

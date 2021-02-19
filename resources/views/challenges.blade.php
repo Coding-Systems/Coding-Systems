@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/all.css"/>
+    <link rel="stylesheet" href="/public/css/pages/challenges.scss"/>
     <link href="resources/js/app.js">
 
 </head>

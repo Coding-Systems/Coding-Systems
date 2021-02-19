@@ -36,3 +36,16 @@ td {
 }
 
 [type="submit"]:checked {}
+
+html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+}
+body {
+    display : table;
+    width: 100%;
+}
+footer {
+    display : table-row;
+    height: 100px; /* à titre d'exemple */
+}

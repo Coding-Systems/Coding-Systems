@@ -4,7 +4,9 @@ h1, h2, .numberRanking{
     font-family: 'Cinzel Decorative', cursive;
 }
 
-
+label#quizzPage{
+    color : #1c1c1c !important;
+}
 
 /*backgroud*/
 
