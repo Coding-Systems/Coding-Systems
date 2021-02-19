@@ -80,20 +80,6 @@ class GoogleController extends Controller
 
                 $userToConnect = User::where('google_id', $user->id)->first();
 
-                $idUser= $newUserCreated[0]->id;
-                $statutUser=$newUserCreated[0]->statut;
-
-                if($statutUser=='student'){
-                    DB::table('result_test')->insert(
-                        array(
-                            'users_id' => $idUser,
-                            'score_gitsune' => "0",
-                            'score_phoenixml' => "0",
-                            'score_crackend' => "0"
-                        )
-                    );
-                }
-
                 //$newUser->save();
                 Auth::login($userToConnect);
 

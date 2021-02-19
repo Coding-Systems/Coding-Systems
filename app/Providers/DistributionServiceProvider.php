@@ -523,7 +523,7 @@ class DistributionServiceProvider
                 )
             );
     }
-    
+
     public function index($promo)
     {
         $this->promo = $promo;
@@ -531,6 +531,9 @@ class DistributionServiceProvider
         $this->getuserList($promo);
         $this->lanchDistribution();
         //echo '<br>Après la répartition<br>';
+        print_r($this->list_gitsune);
+        print_r($this->list_crackend);
+        print_r($this->list_phoenixml);
         $this->sendToDB();
 
         echo '<br>Répartition terminée ;)<br>';

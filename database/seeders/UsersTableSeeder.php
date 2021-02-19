@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'promo_id'  => $row[5]
              */
 
-            DB::table('users')->insert([
+            $newUser = DB::table('users')->insert([
                 'first_name'=>$user[1],
                 'last_name'=>ucfirst(strtolower($user[2])),
                 'mail'=>$user[0],
@@ -38,6 +38,29 @@ class UsersTableSeeder extends Seeder
                 'statut'=>$user[3],
                 'is_admin' => $user[4]
             ]);
+
+            $newUserCreated= DB::table('users')->select('id', 'statut')
+                ->where('mail',$user[0])
+                ->get();
+
+            $idUser= $newUserCreated[0]->id;
+            $statutUser=$newUserCreated[0]->statut;
+
+            if($statutUser=='student'){
+                DB::table('result_test')->insert(
+                    array(
+                        'users_id' => $idUser,
+                        'score_gitsune' => "0",
+                        'score_phoenixml' => "0",
+                        'score_crackend' => "0"
+                    )
+                );
+            }
+
+
+
+
+
             //$i++;
             //print_r($user[]);
             //echo '</br>';
