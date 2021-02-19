@@ -107,7 +107,7 @@
                         ->get();
                 }
                 else{
-                    $results = App\User::select('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser')
+                    $results = App\User::select('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser', 'users.logo_lvl AS logoUser')
                         ->leftJoin('houses', 'houses.id', '=', 'users.house_id')
                         ->where('users.statut', '=', 'student')
                         ->groupBy('users.id')
@@ -125,13 +125,13 @@
 
                         if(isset($users->hname)) {
                             echo '<img class="houseIcon" src="img/logo' . $users->hname . '_';
-                            $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
-                            echo $logoLvl . '.png"';
+                            //$logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                            echo $users->logoUser . '.png"';
                         }
                         else {
                             echo '<img class="houseIcon" src="img/logo.png"';
                         }
-                        
+
                         echo' alt="logo de la maison"> ';
                         echo '<span ';
                         if ($rank <=3){

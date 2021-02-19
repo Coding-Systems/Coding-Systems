@@ -65,8 +65,8 @@ class UsersTableSeeder extends Seeder
             'total_given_pts'=>0,
             'created_at'=>NULL,
             'updated_at'=>NULL,
-            'statut'=>'student',
-            'logo_lvl'=>3
+            'statut'=>'student'
+
         ]);
 
         DB::table('users')->insert([
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>1
+
         ]);
 
         DB::table('users')->insert([
@@ -104,7 +104,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>4
+
         ]);
 
         DB::table('users')->insert([
@@ -123,7 +123,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>2,
+
         ]);
 
         DB::table('users')->insert([
@@ -142,7 +142,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>5
+
         ]);
 
         DB::table('users')->insert([
@@ -161,7 +161,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -179,7 +179,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>5
+
         ]);
 
         DB::table('users')->insert([
@@ -197,7 +197,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>1
+
         ]);
 
         DB::table('users')->insert([
@@ -215,7 +215,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'PO',
-            'logo_lvl'=>1
+
         ]);
 
         DB::table('users')->insert([
@@ -234,7 +234,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -253,7 +253,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -272,7 +272,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -291,7 +291,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -310,7 +310,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -329,7 +329,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -348,7 +348,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -367,7 +367,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -386,7 +386,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -405,7 +405,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -424,7 +424,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -443,7 +443,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -462,7 +462,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -481,7 +481,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -500,7 +500,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -519,7 +519,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -538,7 +538,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -557,7 +557,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -576,7 +576,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -595,7 +595,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -614,7 +614,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -633,7 +633,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -652,7 +652,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -671,7 +671,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -690,7 +690,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -709,7 +709,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -728,7 +728,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -747,7 +747,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -766,7 +766,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -785,7 +785,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -804,7 +804,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -823,7 +823,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -842,7 +842,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -861,7 +861,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -880,7 +880,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -899,7 +899,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -918,7 +918,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -937,7 +937,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -956,7 +956,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -975,7 +975,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -994,7 +994,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1013,7 +1013,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1032,7 +1032,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1051,7 +1051,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1070,7 +1070,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1089,7 +1089,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1108,7 +1108,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1127,7 +1127,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1146,7 +1146,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1165,7 +1165,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1184,7 +1184,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1203,7 +1203,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1222,7 +1222,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1241,7 +1241,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1260,7 +1260,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1279,7 +1279,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1298,7 +1298,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1317,7 +1317,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1336,7 +1336,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1355,7 +1355,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1374,7 +1374,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1393,7 +1393,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1412,7 +1412,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
 
         DB::table('users')->insert([
@@ -1431,7 +1431,7 @@ class UsersTableSeeder extends Seeder
             'created_at'=>NULL,
             'updated_at'=>NULL,
             'statut'=>'student',
-            'logo_lvl'=>3
+
         ]);
         //
     }

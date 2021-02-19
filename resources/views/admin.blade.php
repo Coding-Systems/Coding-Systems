@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Providers\DistributionServiceProvider;
-//const DistributionServiceProvider = 'app\Providers\DistributionServiceProvider.php';
+use App\Providers\CheckLogoLvl;
 ?>
 
 <head>
@@ -26,7 +26,7 @@ use App\Providers\DistributionServiceProvider;
     <div class="bg bg3"></div>
     <h1>Admin</h1>
 
-    <p>Lancer la répartition</p>
+    <H2>Lancer la répartition</H2>
 
     <?php
     $promoList = DB::select('SELECT id, name
@@ -35,7 +35,7 @@ use App\Providers\DistributionServiceProvider;
     //foreach ($promoList as $promo)
     ?>
 
-    <h2>Ratio de personnes ayant répondu :</h2>
+    <h3>Ratio de personnes ayant répondu :</h3>
 
         <?php
         foreach ($promoList as $promo)
@@ -79,6 +79,25 @@ use App\Providers\DistributionServiceProvider;
         $distrib->index($_POST['promoSelect']);
     }
     ?>
+
+    <h2>Lancer l'mélioration des logos</h2>
+
+    <form method="post"> {{ csrf_field() }}
+        <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
+    </form>
+
+    <?php
+
+    const CheckLogoLvl = 'app\Providers\CheckLogoLvl.php';
+    $checkLogo = new CheckLogoLvl;
+
+    if (isset($_POST['startCheckLogolvl'])) {
+        $checkLogo->startCheck();
+    }
+    ?>
+
+
+
 </section>
 
 @include("footer")
