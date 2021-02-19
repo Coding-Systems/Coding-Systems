@@ -24,11 +24,6 @@
     }
     */
 
-    echo '<br>Before<br>';
-    foreach ($data['orininalList'] as $user){
-        echo "P: ".$user['s_phoenixml']."; C: ".$user['s_crackend']."; G: ".$user['s_gitsune']."<br>";
-        }
-
     echo '<br>PhoeniXML<br>';
     foreach ($data['listp'] as $user){
         echo "P: ".$user['s_phoenixml']."; C: ".$user['s_crackend']."; G: ".$user['s_gitsune']."<br>";

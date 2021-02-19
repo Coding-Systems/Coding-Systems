@@ -76,7 +76,7 @@ use App\Providers\DistributionServiceProvider;
     $distrib = new DistributionServiceProvider;
 
     if (isset($_POST['promoSelect'])) {
-        $distrib->indexBis($_POST['promoSelect']);
+        $distrib->index($_POST['promoSelect']);
     }
     ?>
 </section>

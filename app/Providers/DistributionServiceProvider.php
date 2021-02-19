@@ -51,7 +51,6 @@ class DistributionServiceProvider
                 "s_crackend" => $user->score_crackend,);
             $this->listUsersPoints[$user->users_id] = $userScores;
         }
-        print_r($this->listUsersPoints);
     }
 
     private function otherRepart($phoenixOther, $gitsuneOther, $crackendOther)
@@ -373,7 +372,7 @@ class DistributionServiceProvider
         for ($i=0; $i<count($this->unplacedUserList); $i++){
 
             echo"Unplaced";
-            print_r($this->unplacedUserList);
+            //print_r($this->unplacedUserList);
 
             $countSystems = array(
                 'phoenixml' => count($this->list_phoenixml),
@@ -522,30 +521,13 @@ class DistributionServiceProvider
 
     }
 
-    public function index()
+    public function index($promo)
     {
-        $promo = 1;
         $this->promo = $promo;
         //echo '<br>Start distribution, id promo : '.$promo.'<br>';
         $this->getuserList($promo);
-        $data = $this->lanchDistribution();
-        //echo '<br>Après la répartition<br>';
-        //print_r($this->unplacedUserList);
-        $this->sendToDB();
-        return view('test', [
-            'data' => $data
-        ]);
-
-    }
-
-    public function indexBis($promo)
-    {
-        $this->promo = $promo;
-        echo '<br>Start distribution, id promo : '.$promo.'<br>';
-        $this->getuserList($promo);
         $this->lanchDistribution();
-        echo '<br>Après la répartition<br>';
-        print_r($this->unplacedUserList);
+        //echo '<br>Après la répartition<br>';
         $this->sendToDB();
 
         echo '<br>Répartition terminée ;)<br>';

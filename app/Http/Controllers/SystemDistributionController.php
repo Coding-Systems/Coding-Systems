@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class SystemDistributionController extends Controller
 {
@@ -13,6 +14,7 @@ class SystemDistributionController extends Controller
     private $list_gitsune = array();
     private $unplacedUserList = array();
     private $otherUsersList = array();
+    private $promo=999;
 
     private $totalOfUsers = 0;
     private $usersUnplacedCount = 0;
@@ -21,16 +23,21 @@ class SystemDistributionController extends Controller
     private $gitsuneUnplaced = 0;
     private $otherUnplaced = 0;
 
-    private function createFakeScores()
+    private function getuserList($promo)
     {
-        for ($i = 0; $i < 32; $i++) {
-            $newuser = array(
-                "s_phoenixml" => rand(0, 150),
-                "s_gitsune" => rand(0, 150),
-                "s_crackend" => rand(0, 150));
+        $listUsers = DB::select('SELECT users_id , score_gitsune, score_crackend, score_phoenixml
+        FROM result_test
+        LEFT JOIN users
+        	ON users.id = result_test.users_id
+        WHERE users.promo_id = :id
+        ', ['id' => $promo]);
 
-            $idStr = (1000 + $i);
-            $this->listUsersPoints[$idStr] = $newuser;
+        foreach ($listUsers as $user){
+            $userScores = array(
+                "s_phoenixml" => $user->score_phoenixml,
+                "s_gitsune" => $user->score_gitsune,
+                "s_crackend" => $user->score_crackend,);
+            $this->listUsersPoints[$user->users_id] = $userScores;
         }
     }
 
@@ -43,7 +50,7 @@ class SystemDistributionController extends Controller
                 array_push($this->list_phoenixml , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $phoenixOther;
+                return "phoenixOther";
             }
         } else if ($gitsuneOther[1] > $phoenixOther[1] && $gitsuneOther[1] > $crackendOther[1]) {
             if (!($gitsuneOther[0] === "noOne")) {
@@ -52,7 +59,7 @@ class SystemDistributionController extends Controller
                 array_push($this->list_gitsune , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $gitsuneOther;
+                return "gitsuneOther";
             }
         } else if ($crackendOther[1] > $phoenixOther[1] && $crackendOther[1] > $gitsuneOther[1]) {
             if (!($crackendOther[0] === "noOne")) {
@@ -61,7 +68,7 @@ class SystemDistributionController extends Controller
                 array_push($this->list_crackend , $userName);
                 unset($this->unplacedUserList[array_search($userName, $this->unplacedUserList)]);
                 $this->otherUnplaced--;
-                return $crackendOther;
+                return "crackendOther";
             }
         }
     }
@@ -100,9 +107,6 @@ class SystemDistributionController extends Controller
             }
         }
 
-        //echo '<br>Before<br>';
-        //print_r($this->unplacedUserList);
-
         arsort($max_crackend);
         arsort($max_gitsune);
         arsort($max_phoenixml);
@@ -111,41 +115,60 @@ class SystemDistributionController extends Controller
         $phoenixOther = ['noOne', 0];
         $gitsuneOther = ['noOne', 0];
 
-
         foreach ($max_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_phoenixml, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_phoenixml[$user]= $this->listUsersPoints[$user];
                 unset($max_phoenixml[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->phoenixmlUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
 
         foreach ($max_gitsune as $user=> $score) {
             if ($this->gitsuneUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_gitsune, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_gitsune[$user]= $this->listUsersPoints[$user];
                 unset($max_gitsune[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $gitsuneOther = [$user, $score];
+                break;
             }
         }
 
         foreach ($max_crackend as $user=> $score) {
             if ($this->crackendUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_crackend, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_crackend[$user]= $this->listUsersPoints[$user];
                 unset($max_crackend[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $crackendOther = [$user, $score];
+                break;
+            }
+        }
+
+        if($this->otherUnplaced > 0) {
+            $repartedOne = $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
+
+            if ( $this->otherUnplaced > 0) {
+                if($repartedOne == "phoenixml") {
+                    $phoenixOther = ['noOne', 0];
+                }
+                else if($repartedOne == "gitsune") {
+                    $gitsuneOther = ['noOne', 0];
+                }
+                else if($repartedOne == "crackend") {
+                    $crackendOther = ['noOne', 0];
+                }
+                $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
             }
         }
     }
@@ -203,38 +226,58 @@ class SystemDistributionController extends Controller
 
         foreach ($middle_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_phoenixml, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_phoenixml[$user]= $this->listUsersPoints[$user];
                 unset($middle_phoenixml[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->phoenixmlUnplaced--;
             } else if ($this->otherUnplaced > 0) {
                 $phoenixOther = [$user, $score];
+                break;
             }
         }
 
 
         foreach ($middle_gitsune as $user=> $score) {
             if ($this->gitsuneUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_gitsune, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_gitsune[$user]= $this->listUsersPoints[$user];
                 unset($middle_gitsune[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $gitsuneOther = [$user, $score];
+                break;
             }
         }
 
         foreach ($middle_crackend as $user=> $score) {
             if ($this->crackendUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_crackend, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_crackend[$user]= $this->listUsersPoints[$user];
                 unset($middle_crackend[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
             } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
+                $crackendOther = [$user, $score];
+                break;
+            }
+        }
+
+        if($this->otherUnplaced > 0) {
+            $repartedOne = $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
+
+            if ( $this->otherUnplaced > 0) {
+                if($repartedOne == "phoenixml") {
+                    $phoenixOther = ['noOne', 0];
+                }
+                else if($repartedOne == "gitsune") {
+                    $gitsuneOther = ['noOne', 0];
+                }
+                else if($repartedOne == "crackend") {
+                    $crackendOther = ['noOne', 0];
+                }
+                $this->otherRepart($phoenixOther, $gitsuneOther, $crackendOther);
             }
         }
     }
@@ -280,52 +323,79 @@ class SystemDistributionController extends Controller
         arsort($last_gitsune);
         arsort($last_phoenixml);
 
-        $crackendOther =['noOne', 0];
-        $phoenixOther = ['noOne', 0];
-        $gitsuneOther = ['noOne', 0];
-
-
         foreach ($last_phoenixml as $user=> $score) {
             if ($this->phoenixmlUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_phoenixml, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_phoenixml[$user]= $this->listUsersPoints[$user];
                 unset($last_phoenixml[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->phoenixmlUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
             }
         }
 
 
         foreach ($last_gitsune as $user=> $score) {
             if ($this->gitsuneUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_gitsune, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_gitsune[$user]= $this->listUsersPoints[$user];
                 unset($last_gitsune[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->gitsuneUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
             }
         }
 
         foreach ($last_crackend as $user=> $score) {
             if ($this->crackendUnplaced > 0) {
-                array_push($this->listPlacedUsers, $this->listUsersPoints[$user]);
-                array_push($this->list_crackend, $this->listUsersPoints[$user]);
+                $this->listPlacedUsers[$user]= $this->listUsersPoints[$user];
+                $this->list_crackend[$user]= $this->listUsersPoints[$user];
                 unset($last_crackend[$user]);
                 unset($this->unplacedUserList[$user]);
                 $this->crackendUnplaced--;
-            } else if ($this->otherUnplaced > 0) {
-                $phoenixOther = [$user, $score];
             }
+        }
+    }
+
+    public function lastUsers(){
+
+        for ($i=0; $i<count($this->unplacedUserList); $i++){
+
+            echo"Unplaced";
+            print_r($this->unplacedUserList);
+
+            $countSystems = array(
+                'phoenixml' => count($this->list_phoenixml),
+                'gistune' => count($this->list_gitsune),
+                'crackend' => count($this->list_crackend)
+            );
+
+            asort($countSystems);
+
+            $userId = array_key_first($this->unplacedUserList);
+
+            switch (array_key_first($countSystems)) {
+                case 'phoenixml' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_phoenixml[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+                case 'crackend' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_crackend[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+                case 'gitsune' :
+                    $this->listPlacedUsers[$userId]= $this->listUsersPoints[$userId];
+                    $this->list_gitsune[$userId]= $this->listUsersPoints[$userId];
+                    unset($this->unplacedUserList[$userId]);
+                    break;
+            }
+
+            echo '<br>'.count($this->unplacedUserList).'<br>';
         }
     }
 
     public function lanchDistribution()
     {
-        $this->createFakeScores();
         $data['orininalList'] = $this->listUsersPoints;
 
         $this->totalOfUsers = count($this->listUsersPoints);
@@ -338,6 +408,9 @@ class SystemDistributionController extends Controller
         $this->firstDistrib();
         $this->secondDistrib();
         $this->lastDistrib();
+        if(count($this->unplacedUserList)>0){
+            $this->lastUsers();
+        }
 
         $data['listp'] = $this->list_phoenixml;
         $data['listc'] = $this->list_crackend;
@@ -349,17 +422,17 @@ class SystemDistributionController extends Controller
 
     public function index()
     {
+        $promo = 1;
+        $this->promo = $promo;
+        //echo '<br>Start distribution, id promo : '.$promo.'<br>';
+        $this->getuserList($promo);
         $data = $this->lanchDistribution();
+        //echo '<br>Après la répartition<br>';
+        //print_r($this->unplacedUserList);
         return view('test', [
             'data' => $data
         ]);
 
     }
-
-    public static function indexBis($promo)
-    {
-        echo 'indexBis';
-    }
-
 
 }
