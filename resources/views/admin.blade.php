@@ -80,7 +80,7 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
-    <h2>Lancer l'mélioration des logos</h2>
+    <h2>Lancer l'amélioration des logos</h2>
 
     <form method="post"> {{ csrf_field() }}
         <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
