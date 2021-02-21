@@ -35,7 +35,7 @@
 
         <h1>Historique</h1>
         <div id="imgH">
-        <img id="H" src="img/logo.png" alt="image de la system">
+        <img id="H" src="img/logo.png" alt="logo Coding System">
         </div>
         <label>
         <form method="post">

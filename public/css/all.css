@@ -13,7 +13,6 @@ button #buttonAdmin{
 img#H {
     margin-top: 0;
     height: 250px;
-    filter: saturate(150%);
     padding-top: 48px;
     padding-bottom: 48px;
 }
