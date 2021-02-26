@@ -1,7 +1,6 @@
 img#H {
   margin-top: 0;
   height: 250px;
-  filter: saturate(150%);
   padding-top: 48px;
   padding-bottom: 48px;
 }
@@ -36,7 +35,7 @@ section #rankings {
   justify-content: center;
 }
 
-#logoHousesPodium {
+#logoSystemsPodium {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,7 +62,7 @@ section #rankings {
   margin-bottom: 10%;
 }
 
-select, .triHouseRankForm button {
+select, .triSystemRankForm button {
   background-color: #bbbcc4;
   border-radius: 20px;
   border: 0px;

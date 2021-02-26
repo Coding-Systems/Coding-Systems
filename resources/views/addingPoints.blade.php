@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -85,26 +85,26 @@ if(isset($_POST['envoi'])){
       ->where ('id', $challenge_id )
       ->get ();
 
-      $house = DB::table('users')
-      ->select('users.house_id', 'users.id')
+      $system = DB::table('users')
+      ->select('users.system_id', 'users.id')
       ->where('id', $student_id)
       ->get();
 
-      foreach ($house as $house){
-            $house_id = $house->house_id;
+      foreach ($system as $system){
+            $system_id = $system->system_id;
       }
 
-      $house_pts = DB::table('houses')
-      ->select('houses.total_pts', 'houses.total_pts_po')
-      ->where('id', $house_id)
+      $system_pts = DB::table('systems')
+      ->select('systems.total_pts', 'systems.total_pts_po')
+      ->where('id', $system_id)
       ->get();
 
-      foreach ($house_pts as $add_house_pts){
-            $house_total_pts = $add_house_pts->total_pts;
+      foreach ($system_pts as $add_system_pts){
+            $system_total_pts = $add_system_pts->total_pts;
       }
 
-      foreach ($house_pts as $add_house_pts_po){
-            $house_total_pts_po = $add_house_pts->total_pts_po;
+      foreach ($system_pts as $add_system_pts_po){
+            $system_total_pts_po = $add_system_pts->total_pts_po;
       }
 
       foreach ($student_points as $add){
@@ -145,18 +145,18 @@ if(isset($_POST['envoi'])){
                   )
             );
 
-            DB::table('houses')
-            ->where("id", $house_id)
+            DB::table('systems')
+            ->where("id", $system_id)
             ->update(
                   array(
-                        'total_pts'=>"$nbr_points"+"$house_total_pts"
+                        'total_pts'=>"$nbr_points"+"$system_total_pts"
                   )
                   );
-            DB::table('houses')
-            ->where("id", $house_id)
+            DB::table('systems')
+            ->where("id", $system_id)
             ->update(
                   array(
-                        'total_pts_po'=>"$nbr_points"+"$house_total_pts_po"
+                        'total_pts_po'=>"$nbr_points"+"$system_total_pts_po"
                   )
                   );
             }

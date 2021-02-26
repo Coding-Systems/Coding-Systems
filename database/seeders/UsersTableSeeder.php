@@ -13,41 +13,76 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-/*
+
     public function run() ///exel version
     {
         $usersList = getArrayListUsers();
-        $i = 0;
+        //$i = 0;
         foreach ($usersList as $user) {
 
-            DB::table('users')->insert([
-                'first_name'=>$user[2],
-                'last_name'=>ucfirst(strtolower($user[1])),
+            /*
+            'mail'      => $row[0],
+            'firstname' => $row[1],
+            'lastname'  => $row[2],
+            'status'    => $row[3],
+            'is_admin'  => $row[4],
+            'promo_id'  => $row[5]
+             */
+
+            $newUser = DB::table('users')->insert([
+                'first_name'=>$user[1],
+                'last_name'=>ucfirst(strtolower($user[2])),
                 'mail'=>$user[0],
-                'password'=>'mdp',
-                'year'=>2020,
-                'statut'=>'student',
-                'google_id'=>$i,
+                //'password'=>'mdp',
+                'promo_id'=>$user[5],
+                'statut'=>$user[3],
+                'is_admin' => $user[4]
             ]);
-            $i++;
+
+            $newUserCreated= DB::table('users')->select('id', 'statut')
+                ->where('mail',$user[0])
+                ->get();
+
+            $idUser= $newUserCreated[0]->id;
+            $statutUser=$newUserCreated[0]->statut;
+
+            if($statutUser=='student'){
+                DB::table('result_test')->insert(
+                    array(
+                        'users_id' => $idUser,
+                        'score_gitsune' => "0",
+                        'score_phoenixml' => "0",
+                        'score_crackend' => "0"
+                    )
+                );
+            }
+
+
+
+
+
+            //$i++;
             //print_r($user[]);
             //echo '</br>';
             //echo "Nom : " . $user[2] . " | Prénom : " . $user[1] . " | Mail : " . $user[0];
         }
 
+        /*
         DB::table('users')->insert([
             'first_name'=>'Colombe',
             'last_name'=>'Oiseau_Blanc',
             'mail'=>'colombe@mail.com',
             'password'=>'mdp+++',
             'year'=>2020,
-            'house_id'=>NULL,
+            'system_id'=>NULL,
             'statut'=>'PO',
             'google_id' => 'as223',
         ]);
+        */
     }
-*/
 
+
+    /*
     public function run() ///Full version
     {
         DB::table('users')->insert([
@@ -95,7 +130,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'Hmonnerie@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>2,
+            'system_id'=>2,
             'total_pts'=>79,
             'total_pts_note'=>0,
             'total_pts_defi'=>9,
@@ -114,7 +149,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'hminnerie@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>3,
+            'system_id'=>3,
             'total_pts'=>31,
             'total_pts_note'=>0,
             'total_pts_defi'=>38,
@@ -133,7 +168,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'mmeurent@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>3,
+            'system_id'=>3,
             'total_pts'=>198,
             'total_pts_note'=>20,
             'total_pts_defi'=>8,
@@ -152,7 +187,7 @@ class UsersTableSeeder extends Seeder
             'mail'=>'mmeurint@gmail.com',
             'password'=>'mdp',
             'promo_id'=>"1",
-            'house_id'=>3,
+            'system_id'=>3,
             'total_pts'=>27,
             'total_pts_note'=>36,
             'total_pts_defi'=>0,
@@ -206,7 +241,7 @@ class UsersTableSeeder extends Seeder
             'last_name'=>'Oiseau_Blanc',
             'mail'=>'colombe@mail.com',
             'password'=>'mdp+++',
-            'house_id'=>NULL,
+            'system_id'=>NULL,
             'total_pts'=>0,
             'total_pts_note'=>0,
             'total_pts_defi'=>0,
@@ -1468,7 +1503,7 @@ DB::table('users')->insert([
             'mail'=>'Hmonnerie@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>2,
+            'system_id'=>2,
             'statut'=>'student',
         ]);
 
@@ -1479,7 +1514,7 @@ DB::table('users')->insert([
             'mail'=>'hminnerie@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>3,
+            'system_id'=>3,
             'statut'=>'student',
         ]);
 
@@ -1490,7 +1525,7 @@ DB::table('users')->insert([
             'mail'=>'mmeurent@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>3,
+            'system_id'=>3,
             'statut'=>'student',
         ]);
 
@@ -1501,7 +1536,7 @@ DB::table('users')->insert([
             'mail'=>'mmeurint@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>3,
+            'system_id'=>3,
             'statut'=>'student',
         ]);
 
@@ -1512,7 +1547,7 @@ DB::table('users')->insert([
             'mail'=>'aPrévoté--Hauguel@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>2,
+            'system_id'=>2,
             'statut'=>'student',
         ]);
 
@@ -1523,7 +1558,7 @@ DB::table('users')->insert([
             'mail'=>'aPrévoté--uguel@gmail.com',
             'password'=>'mdp',
             'year'=>2020,
-            'house_id'=>2,
+            'system_id'=>2,
             'statut'=>'student',
         ]);
 
@@ -1534,7 +1569,7 @@ DB::table('users')->insert([
             'mail'=>'colombe@mail.com',
             'password'=>'mdp+++',
             'year'=>2020,
-            'house_id'=>NULL,
+            'system_id'=>NULL,
             'statut'=>'PO',
         ]);
     }

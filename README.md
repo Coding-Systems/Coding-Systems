@@ -1,4 +1,4 @@
-## Coding Houses
+## Coding System
 
 Ce projet vise à reproduire une ambiance à la Poudlard avec un système de maisons pour la Coding Factory.
 Le projet a été fait avec le framework laravel.

@@ -9,14 +9,14 @@
             <img id="logoHeader" src="img/logo.png" alt="logo">
             @guest
                 <a class="menuLink" href="/">Accueil</a>
-                <a class="menuLink" href="/maisons">Maisons</a>
+                <a class="menuLink" href="/systems">Systems</a>
                 <a class="menuLink" href="/regles">Règles</a>
                 <a class="menuLink" href="{{ url('auth/google') }}">Se connecter</a>
             @else
                 <a class="menuLink" href="/">Accueil</a>
                 <a class="menuLink" href="/classements">Classements</a>
                 <a class="menuLink" href="/historique">Historique</a>
-                <a class="menuLink" href="/maisons">Maisons</a>
+                <a class="menuLink" href="/systems">Systems</a>
                 <a class="menuLink" href="/regles">Règles</a>
                 <a class="menuLink" href="/challenges">Défis</a>
                 <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

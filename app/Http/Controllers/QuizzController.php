@@ -39,7 +39,7 @@ class QuizzController
             $score_gitsune = 0;
 
             for ($i = 0; $i < count($data); $i++){
-                switch ($data[$i]['answers'][(int)$_POST['radio' . $i]]['house']) {
+                switch ($data[$i]['answers'][(int)$_POST['radio' . $i]]['system']) {
                     case 'PhoeniXML':
                         $score_phoenixml += $data[$i]['value'];
                         break;

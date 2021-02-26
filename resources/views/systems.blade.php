@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 ?>
 <head>
   <meta charset="UTF-8">
-  <title>Coding house</title>
+  <title>Coding system</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\DB;
 
 @include("header")
 
-<div class="containerHouses">
+<div class="containerSystems">
 
   <div class="bg"></div>
   <div class="bg bg2"></div>
@@ -30,20 +30,20 @@ use Illuminate\Support\Facades\DB;
         <div class="emptybar"></div>
         <div class="filledbar"></div>
       </div>
-      <div class="houseInfos">
-        <section class="houseStory">
+      <div class="systemInfos">
+        <section class="systemStory">
           <p>
               <?php
-              echo '<img class="houseIconStory" src="img/logoCrackend_';
+              echo '<img class="systemIconStory" src="img/logoCrackend_';
               $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name ="Crackend"');
+                        FROM systems
+                        WHERE systems.name ="Crackend"');
               echo $logoLvl[0]->logo_lvl;
-              echo '.png" alt="logo de la maison">'
+              echo '.png" alt="logo de la system">'
               ?>
           </p>
           <h2 class="secretTitle">Histoire</h2>
-          <p class="story secret housePage">
+          <p class="story secret systemPage">
               Passer entre les mailles du filet, c'est leur spécialité, et les bons plans, c'est leur passion.
               Besoin d'un code promo ? Pas de problème, ils en ont tout un répertoire !
               Envie d'optimiser votre machine ? Un Crackend sera forcément vous éclairer.
@@ -51,10 +51,10 @@ use Illuminate\Support\Facades\DB;
               <br>Ils ont également une grande affinité avec l'élément de l'eau et peuvent le controler.
           </p>
         </section>
-        <section class="houseMembers secret">
+        <section class="systemMembers secret">
           <h2>Membres</h2>
 
-            <form method="post" class="houseRankForm">
+            <form method="post" class="systemRankForm">
                 {{ csrf_field() }}
                 <select id="triMembre1" name="triMembre1">
                     <option value="alpha">Ordre alphabétique</option>
@@ -73,33 +73,33 @@ use Illuminate\Support\Facades\DB;
                         case 'alpha' :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=1
+                                 WHERE system_id=1
                                  ORDER BY users.first_name ASC');
                             break;
 
                         case 'ptsDefis' :
                             $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=1
+                                 WHERE system_id=1
                                  ORDER BY pts DESC');
                             break;
                         default :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                              FROM users
-                             WHERE house_id=1
+                             WHERE system_id=1
                              ORDER BY pts DESC');
                     }
                 }
                 else {
                     $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                              FROM users
-                             WHERE house_id=1
+                             WHERE system_id=1
                              ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
                     $rank++;
-                    echo '<img class="houseIcon" src="img/logoCrackend_';
+                    echo '<img class="systemIcon" src="img/logoCrackend_';
                     $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
@@ -128,21 +128,21 @@ use Illuminate\Support\Facades\DB;
       <div class="emptybar"></div>
       <div class="filledbar"></div>
     </div>
-    <div class="houseInfos">
-      <section class="houseStory">
+    <div class="systemInfos">
+      <section class="systemStory">
         <p>
           <?php
-              echo '<img class="houseIconStory" src="img/logoGitsune_';
+              echo '<img class="systemIconStory" src="img/logoGitsune_';
           $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name ="Gitsune"');
+                        FROM systems
+                        WHERE systems.name ="Gitsune"');
           echo $logoLvl[0]->logo_lvl;
-          echo '.png" alt="logo de la maison">'
+          echo '.png" alt="logo de la system">'
           ?>
 
         </p>
         <h2 class="secretTitle">Histoire</h2>
-        <p class="story secret housePage">
+        <p class="story secret systemPage">
             L'organiation, ça c'est important !
             Avec les Gitsune tout est toujours plus simple.
             Certains disent qu'ils ont le pouvoir de retourner dans le temps...
@@ -151,10 +151,10 @@ use Illuminate\Support\Facades\DB;
 
         </p>
       </section>
-      <section class="houseMembers secret">
+      <section class="systemMembers secret">
         <h2>Membres</h2>
 
-          <form method="post" class="houseRankForm">
+          <form method="post" class="systemRankForm">
               {{ csrf_field() }}
               <select id="triMembre3" name="triMembre3">
                   <option value="alpha">Ordre alphabétique</option>
@@ -173,32 +173,32 @@ use Illuminate\Support\Facades\DB;
                         case 'alpha' :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=3
+                                 WHERE system_id=3
                                  ORDER BY users.first_name ASC');
                             break;
                         case 'ptsDefis' :
                             $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=3
+                                 WHERE system_id=3
                                  ORDER BY pts DESC');
                             break;
                         default :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=3
+                                 WHERE system_id=3
                                  ORDER BY pts DESC');
                     }
                 }
                 else {
                     $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=3
+                                 WHERE system_id=3
                                  ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
                     $rank++;
-                    echo '<img class="houseIcon" src="img/logoGitsune_';
+                    echo '<img class="systemIcon" src="img/logoGitsune_';
                     $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );
@@ -228,31 +228,31 @@ use Illuminate\Support\Facades\DB;
       <div class="filledbar"></div>
       <div class="emptybar"></div>
     </div>
-    <section class="houseInfos">
-      <section class="houseStory">
+    <section class="systemInfos">
+      <section class="systemStory">
         <p>
             <?php
-            echo '<img class="houseIconStory" src="img/logoPhoeniXML_';
+            echo '<img class="systemIconStory" src="img/logoPhoeniXML_';
             $logoLvl = DB::select('SELECT logo_lvl
-                        FROM houses
-                        WHERE houses.name ="PhoeniXML"');
+                        FROM systems
+                        WHERE systems.name ="PhoeniXML"');
             echo $logoLvl[0]->logo_lvl;
-            echo '.png" alt="logo de la maison">'
+            echo '.png" alt="logo de la system">'
             ?>
         </p>
         <h2 class="secretTitle"> Histoire</h2>
-        <p class="story secret housePage">
+        <p class="story secret systemPage">
             Créer, ça c'est leur spécialité !
             Vous manquez d'idées ? Allez voir un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
             D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
             <br>Le feu ne leur à jamais fait peur, ils ont même appris à le dompter et le maitriser.
         </p>
       </section>
-      <section class="houseMembers secret">
+      <section class="systemMembers secret">
 
         <h2>Membres</h2>
 
-        <form method="post" class="houseRankForm">
+        <form method="post" class="systemRankForm">
             {{ csrf_field() }}
           <select id="triMembre2" name="triMembre2">
             <option value="alpha">Ordre alphabétique</option>
@@ -271,31 +271,31 @@ use Illuminate\Support\Facades\DB;
                         case 'alpha' :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                              FROM users
-                             WHERE house_id=2
+                             WHERE system_id=2
                              ORDER BY users.first_name ASC');
                         case 'ptsDefis' :
                             $results = DB::select('SELECT total_pts_defi AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=2
+                                 WHERE system_id=2
                                  ORDER BY pts DESC');
                             break;
                         default :
                             $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=2
+                                 WHERE system_id=2
                                  ORDER BY pts DESC');
                     }
                 }
                 else {
                     $results = DB::select('SELECT total_pts AS pts, users.id AS idUser, users.first_name
                                  FROM users
-                                 WHERE house_id=2
+                                 WHERE system_id=2
                                  ORDER BY pts DESC');
                 }
                 $rank=0;
                 foreach ($results as $users) {
                     $rank++;
-                    echo '<img class="houseIcon" src="img/logoPhoeniXML_';
+                    echo '<img class="systemIcon" src="img/logoPhoeniXML_';
                     $logoLvl = DB::select('SELECT logo_lvl
                                 FROM users
                                 WHERE users.id = :id',['id' => $users->idUser] );

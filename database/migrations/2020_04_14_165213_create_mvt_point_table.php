@@ -32,7 +32,7 @@ class CreateMvtPointTable extends Migration
         Schema::create('mvt_points', function (Blueprint $table) {
             $table->id();
             $table->text('label');
-            $table->foreignId('house_id');
+            $table->foreignId('system_id');
             $table->foreignId('users_id');
             $table->foreignId('professor_id');
             $table->foreignId('type_point_id');

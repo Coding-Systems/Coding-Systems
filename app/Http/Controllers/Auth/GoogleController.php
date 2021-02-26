@@ -32,6 +32,7 @@ class GoogleController extends Controller
         # TODO check edu.itescia.fr mail from the data coming from google to authorize the user
         try {
             $user = Socialite::driver('google')->user();
+            $userMail = $user->getEmail();
 
             $finduser = User::where('google_id', $user->id)->first();
 
@@ -67,36 +68,20 @@ class GoogleController extends Controller
                     }
                 }
 
-                $newUser = User::create([
-                    'first_name' => $name[0],
-                    'last_name' => $resultName,
-                    'mail' => $user->email,
-                    'google_id'=> $user->id,
-                    'password' => encrypt('123456dummy'),
-                    'statut'=>'student',
-                    'logo_lvl'=>1,
-                ]);
+                DB::table('users')
+                    ->where("mail", $userMail)
+                    ->update([
+                        'google_id' => DB::raw($user->id),
+                    ]);
 
                 $newUserCreated= DB::table('users')->select('id', 'statut')
                     ->where('google_id',$user->id)
                     ->get();
 
-                $idUser= $newUserCreated[0]->id;
-                $statutUser=$newUserCreated[0]->statut;
+                $userToConnect = User::where('google_id', $user->id)->first();
 
-                if($statutUser=='student'){
-                    DB::table('result_test')->insert(
-                        array(
-                            'users_id' => $idUser,
-                            'score_gitsune' => "0",
-                            'score_phoenixml' => "0",
-                            'score_crackend' => "0"
-                        )
-                    );
-                }
-
-                $newUser->save();
-                Auth::login($newUser);
+                //$newUser->save();
+                Auth::login($userToConnect);
 
                 return redirect('/');
             }

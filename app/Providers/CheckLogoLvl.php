@@ -16,7 +16,7 @@ class CheckLogoLvl
         $newlvlLogo = 1;
 
         $listSystems = DB::select('SELECT id , logo_lvl, total_pts
-        FROM houses
+        FROM systems
         ');
 
         foreach ($listSystems as $system){
@@ -33,7 +33,7 @@ class CheckLogoLvl
                 $newlvlLogo = 2;
             }
 
-            DB::table('houses')
+            DB::table('systems')
                 ->where("id", $system->id)
                 ->update([
                     'logo_lvl' => $newlvlLogo,

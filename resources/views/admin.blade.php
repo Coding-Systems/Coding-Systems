@@ -9,7 +9,7 @@ use App\Providers\CheckLogoLvl;
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -80,7 +80,7 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
-    <h2>Lancer l'mélioration des logos</h2>
+    <h2>Lancer l'amélioration des logos</h2>
 
     <form method="post"> {{ csrf_field() }}
         <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>

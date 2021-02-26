@@ -7,19 +7,19 @@
             "answers": [
                 {
                     "text": "PhoeniXML",
-                    "house": "PhoeniXML"
+                    "system": "PhoeniXML"
                 },
                 {
                     "text": "Gitsune",
-                    "house": "Gitsune"
+                    "system": "Gitsune"
                 },
                 {
                     "text": "Crack'end",
-                    "house": "Crackend"
+                    "system": "Crackend"
                 },
                 {
                     "text": "J'en sais fishtrement rien",
-                    "house": "neutral"
+                    "system": "neutral"
                 }
             ]
         },
@@ -29,19 +29,19 @@
             "answers": [
                 {
                     "text": "PhoeniXML",
-                    "house": "PhoeniXML"
+                    "system": "PhoeniXML"
                 },
                 {
                     "text": "Gitsune",
-                    "house": "Gitsune"
+                    "system": "Gitsune"
                 },
                 {
                     "text": "Crack'end",
-                    "house": "Crackend"
+                    "system": "Crackend"
                 },
                 {
                     "text": "J'en sais fishtrement rien",
-                    "house": "neutral"
+                    "system": "neutral"
                 }
             ]
         }

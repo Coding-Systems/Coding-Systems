@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Coding house</title>
+    <title>Coding system</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
@@ -34,7 +34,7 @@
 
         <h1>Classement</h1>
 
-        <form method="post" class="triHouseRankForm">
+        <form method="post" class="triSystemRankForm">
             {{ csrf_field() }}
             <select id="rank" name="rank">
                 <option value="total_pts">Tout les points</option>
@@ -47,24 +47,24 @@
 
         <h2>Classement général</h2>
 
-        <section id=logoHousesPodium>
+        <section id=logoSystemsPodium>
 
             <?php
 
             if(isset($_POST['rank'])){
-                $results = App\House::select($_POST['rank'] . ' AS pts', 'houses.name AS hname')
+                $results = App\System::select($_POST['rank'] . ' AS pts', 'systems.name AS hname')
                     ->orderBy('pts', 'DESC')
                     ->get();
             }
             else {
-                $results = App\House::select('total_pts AS pts', 'houses.name AS hname')
+                $results = App\System::select('total_pts AS pts', 'systems.name AS hname')
                     ->orderBy('pts', 'DESC')
                     ->get();
             }
 
             $rank=0;
 
-            foreach ($results as $house){
+            foreach ($results as $system){
                 $rank++;
                 echo '<section>';
 
@@ -75,12 +75,12 @@
                     echo '<img class="logoPodium logoP"' ;
                 }
 
-                echo 'src="img/logo' . $house->hname . '_';
-                $logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                echo 'src="img/logo' . $system->hname . '_';
+                $logoLvl = App\System::select('logo_lvl')->where('systems.name', '=', $system->hname)->first()->logo_lvl;
                 echo $logoLvl . '.png"';
-                echo ' alt="logo de la maison"> ';
+                echo ' alt="logo de la system"> ';
                 echo '<p class="numberRanking">' . $rank . '</p>';
-                echo '<p>' . $house->pts . ' pts</p>';
+                echo '<p>' . $system->pts . ' pts</p>';
                 echo '</section>';
             }
 
@@ -99,16 +99,16 @@
                 <?php
 
                 if(isset($_POST['rank'])){
-                    $results = App\User::select('users.' . $_POST['rank'] . ' AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser')
-                        ->leftJoin('houses', 'houses.id', '=', 'users.house_id')
+                    $results = App\User::select('users.' . $_POST['rank'] . ' AS pts', 'users.first_name', 'users.last_name', 'systems.name AS hname', 'users.id AS idUser')
+                        ->leftJoin('systems', 'systems.id', '=', 'users.system_id')
                         ->where('users.statut', '=', 'student')
                         ->groupBy('users.id')
                         ->orderBy('pts', 'DESC')
                         ->get();
                 }
                 else{
-                    $results = App\User::select('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'houses.name AS hname', 'users.id AS idUser', 'users.logo_lvl AS logoUser')
-                        ->leftJoin('houses', 'houses.id', '=', 'users.house_id')
+                    $results = App\User::select('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'systems.name AS hname', 'users.id AS idUser', 'users.logo_lvl AS logoUser')
+                        ->leftJoin('systems', 'systems.id', '=', 'users.system_id')
                         ->where('users.statut', '=', 'student')
                         ->groupBy('users.id')
                         ->orderBy('pts', 'DESC')
@@ -124,15 +124,15 @@
                         $rank++;
 
                         if(isset($users->hname)) {
-                            echo '<img class="houseIcon" src="img/logo' . $users->hname . '_';
-                            //$logoLvl = App\House::select('logo_lvl')->where('houses.name', '=', $house->hname)->first()->logo_lvl;
+                            echo '<img class="systemIcon" src="img/logo' . $users->hname . '_';
+                            //$logoLvl = App\System::select('logo_lvl')->where('systems.name', '=', $system->hname)->first()->logo_lvl;
                             echo $users->logoUser . '.png"';
                         }
                         else {
-                            echo '<img class="houseIcon" src="img/logo.png"';
+                            echo '<img class="systemIcon" src="img/logo.png"';
                         }
 
-                        echo' alt="logo de la maison"> ';
+                        echo' alt="logo de la system"> ';
                         echo '<span ';
                         if ($rank <=3){
                             echo 'class= "userRank_'.$rank.'" ';
