@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 ?>
 
-
 <head>
     <meta charset="UTF-8">
     <title>Coding house</title>
@@ -24,15 +23,15 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
 <body>
 
-
 @include('header')
 
 <section>
+    
     <h1>Connection refusée</h1>
 
     <p>Votre compte n'existe pas</p>
 
-    <a>Retour à l'accueil</a>
+    <a href="/">Retour à l'accueil</a>
 
 </section>
 
