@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 ?>
 
-
 <head>
     <meta charset="UTF-8">
     <title>Coding system</title>

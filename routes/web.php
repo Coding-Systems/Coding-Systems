@@ -44,6 +44,9 @@ Route::match(['get', 'post'],'/challenges', function () {
 Route::match(['get', 'post'],'/systems', function () {
     return view('systems');
 });
+Route::match(['get', 'post'],'/refused', function () {
+    return view('refused');
+});
 
 Route::match(['get', 'post'],'/historique', function () {
     return view('historique');

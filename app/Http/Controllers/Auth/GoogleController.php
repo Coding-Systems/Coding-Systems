@@ -81,9 +81,15 @@ class GoogleController extends Controller
                 $userToConnect = User::where('google_id', $user->id)->first();
 
                 //$newUser->save();
-                Auth::login($userToConnect);
 
-                return redirect('/');
+                if($userToConnect) {
+                    Auth::login($userToConnect);
+                    return redirect('/');
+                }
+                else{
+                    return redirect('/refused');
+                }
+
             }
 
         } catch (Exception $e) {
