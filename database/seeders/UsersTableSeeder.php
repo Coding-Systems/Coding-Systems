@@ -59,8 +59,6 @@ class UsersTableSeeder extends Seeder
 
 
 
-
-
             //$i++;
             //print_r($user[]);
             //echo '</br>';
