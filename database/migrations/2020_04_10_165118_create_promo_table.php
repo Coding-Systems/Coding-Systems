@@ -16,7 +16,7 @@ class CreatePromoTable extends Migration
         Schema::dropIfExists('promo');
         Schema::create('promo', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->boolean('is_distributed')->default(false);
 
         });
