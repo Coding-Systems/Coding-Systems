@@ -29,12 +29,19 @@ class UsersTableSeeder extends Seeder
             'promo_id'  => $row[5]
              */
 
+            $promoName = $user[5];
+            $promoId = 3;
+            $promoInfos = DB::table('promo')->select('id')->where('name', $promoName)->get();
+
+            $promoId = $promoInfos[0]->id;
+
+
             $newUser = DB::table('users')->insert([
                 'first_name'=>ucfirst(strtolower($user[2])),
                 'last_name'=>$user[1],
                 'mail'=>$user[0],
                 //'password'=>'mdp',
-                'promo_id'=>$user[5],
+                'promo_id'=>$promoId,
                 'statut'=>$user[3],
                 'is_admin' => $user[4]
             ]);
