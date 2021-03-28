@@ -1,5 +1,3 @@
-
-
 p.quizzPage{
     text-align: center;
     font-size : 100%;
@@ -9,6 +7,9 @@ p.quizzPage{
 }
 div.question{
     display: block;
+}div.question:hover{
+    display: block;
+    color: rgb(90, 1, 0);
 }
 
 button{
