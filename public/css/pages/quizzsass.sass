@@ -36,8 +36,6 @@ input:checked + label span,
     color: rgb(128, 19, 103)
 
 input:checked + label
-    &, span
-        transition-delay: $wormDur
     span
         transform: scale(1.2)
 
@@ -67,9 +65,7 @@ input:checked + label
 @for $s from 2 through 30
     $delay: $wormDur/100 * ($s - 1)
     .worm__segment:nth-child(#{$s})
-        transition-delay: $delay
         &:before
-            animation-delay: $delay
 
 /* States */
 @for $s from 1 through 3
