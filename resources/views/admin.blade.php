@@ -86,6 +86,12 @@ use App\Providers\CheckLogoLvl;
         <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
     </form>
 
+    <h2>Ajouter </h2>
+
+    <form method="post"> {{ csrf_field() }}
+        <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
+    </form>
+
     <?php
 
     const CheckLogoLvl = 'app\Providers\CheckLogoLvl.php';
@@ -96,6 +102,22 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
+    <h2>Ajouter une promotion</h2>
+
+    <form method="post"> {{ csrf_field() }}
+        <input required="required" name="namePromo"/>
+        <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
+    </form>
+
+    <?php
+     if (isset($_POST['addPromo'])) {
+        DB::table('promo')->insert(
+                array(
+                    'name' => $_POST['namePromo']
+                )
+            );
+    }
+    ?>
 
 
 </section>
