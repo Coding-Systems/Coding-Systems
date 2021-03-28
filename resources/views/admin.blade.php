@@ -86,12 +86,6 @@ use App\Providers\CheckLogoLvl;
         <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
     </form>
 
-    <h2>Ajouter </h2>
-
-    <form method="post"> {{ csrf_field() }}
-        <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
-    </form>
-
     <?php
 
     const CheckLogoLvl = 'app\Providers\CheckLogoLvl.php';
