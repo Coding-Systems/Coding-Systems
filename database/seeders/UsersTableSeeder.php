@@ -30,11 +30,17 @@ class UsersTableSeeder extends Seeder
              */
 
             $promoName = $user[5];
-            $promoId = 3;
-            $promoInfos = DB::table('promo')->select('id')->where('name', $promoName)->get();
+            $promoName = str_replace([" ", "\n"], "", $promoName);
 
-            $promoId = $promoInfos[0]->id;
+            if ($promoName == "" ){
+                $promoId = null;
+            }
+            else{
+                $promoId = 3;
+                $promoInfos = DB::table('promo')->select('id')->where('name', $promoName)->get();
 
+                $promoId = $promoInfos[0]->id;
+            }
 
             $newUser = DB::table('users')->insert([
                 'first_name'=>ucfirst(strtolower($user[2])),
