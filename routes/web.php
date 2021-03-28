@@ -60,6 +60,6 @@ Route::get('/test', 'SystemDistributionController@index');
 
 Route::match(['get', 'post'],'/admin', function () {
     return view('admin');
-})->middleware('auth');
+})->middleware('admin');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
