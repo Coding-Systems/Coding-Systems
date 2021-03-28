@@ -1,4 +1,3 @@
-
 <header class="header-fixed">
 
   <div class="header-limiter" id="menu">
@@ -22,7 +21,15 @@
                 <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     Profil
                 </a>
+                <?php
+                if (Auth::user()->is_admin == "1") {
+                    echo '<a class="menuLink" href="/admin">Admin</a>';
+                }
+
+                ?>
                 <a class="menuLink" href="{{ route('logout') }}">Déconnecter</a>
+
+
             @endguest
         </nav>
     </div>

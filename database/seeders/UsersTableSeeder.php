@@ -30,8 +30,8 @@ class UsersTableSeeder extends Seeder
              */
 
             $newUser = DB::table('users')->insert([
-                'first_name'=>$user[1],
-                'last_name'=>ucfirst(strtolower($user[2])),
+                'first_name'=>ucfirst(strtolower($user[2])),
+                'last_name'=>$user[1],
                 'mail'=>$user[0],
                 //'password'=>'mdp',
                 'promo_id'=>$user[5],
@@ -56,8 +56,6 @@ class UsersTableSeeder extends Seeder
                     )
                 );
             }
-
-
 
 
 

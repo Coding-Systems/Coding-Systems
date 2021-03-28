@@ -44,6 +44,9 @@ Route::match(['get', 'post'],'/challenges', function () {
 Route::match(['get', 'post'],'/systems', function () {
     return view('systems');
 });
+Route::match(['get', 'post'],'/refused', function () {
+    return view('refused');
+});
 
 Route::match(['get', 'post'],'/historique', function () {
     return view('historique');
@@ -57,6 +60,6 @@ Route::get('/test', 'SystemDistributionController@index');
 
 Route::match(['get', 'post'],'/admin', function () {
     return view('admin');
-})->middleware('auth');
+})->middleware('admin');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
