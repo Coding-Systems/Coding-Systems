@@ -14,7 +14,7 @@ div.question {
 
 div.question:hover {
   display: block;
-  color: #5a0100;
+  color: #44153C;
 }
 
 button {
@@ -78,7 +78,7 @@ input {
 }
 
 .option-input:hover {
-  background: #9d00ff;
+  background: #44153C;
 }
 
 .option-input:checked::before {
