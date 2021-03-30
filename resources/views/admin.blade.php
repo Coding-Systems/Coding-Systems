@@ -105,11 +105,17 @@ use App\Providers\CheckLogoLvl;
 
     <?php
      if (isset($_POST['addPromo'])) {
-        DB::table('promo')->insert(
+        if (DB::table('promo')->where('name', '=', $_POST['namePromo'])->exists()) {
+            echo 'La promo existe déjà.';
+        }
+        else {
+            DB::table('promo')->insert(
                 array(
                     'name' => $_POST['namePromo']
                 )
             );
+            echo 'La promo a été créée.';
+        }
     }
     ?>
 
