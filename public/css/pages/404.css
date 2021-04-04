@@ -1,28 +1,24 @@
+@import url("public/css/themes/crackend.css");
 .center {
   text-align: center;
 }
 
 #space-invaders {
   margin: 0 auto;
-  background: url("https://i.pinimg.com/originals/0b/06/39/0b06397a3199bee4a5922ee4488ebf5a.jpg");
-}
-
-body {
-  display: flex;
-  text-align: center;
-  width: 100%;
-  height: 100%;
 }
 
 div {
-  justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 75%;
 }
 
 h1 {
   justify-content: center;
   text-align: center;
+}
+
+footer {
+  bottom: 0;
 }
 
 /*# sourceMappingURL=404.css.map */

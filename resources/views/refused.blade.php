@@ -41,7 +41,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 </svg>
 </use>
 
-<a href="/">Retour à l'accueil</a>
+<a class="refused" href="/">Retour à l'accueil</a>
 
 </body>
 

@@ -1,0 +1,101 @@
+section {
+  margin: auto;
+  justify-content: space-around;
+}
+
+p.homePage {
+  text-justify: newspaper;
+  text-align: justify;
+  font-size: 150%;
+  flex: auto;
+  justify-content: space-around;
+  color: white;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+section #rankings {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+#rankings {
+  background-size: 50% 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#logoSystemsPodium {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.logoPodium {
+  height: 125px;
+  width: 125px;
+}
+
+.logoPodiumFirst {
+  height: 150px;
+  width: 150px;
+}
+
+#logoSystemsPodium section:nth-of-type(1) {
+  order: 2;
+  -webkit-order: 2;
+}
+
+#logoSystemsPodium section:nth-of-type(2) {
+  order: 1;
+  -webkit-order: 1;
+}
+
+#logoSystemsPodium section:nth-of-type(3) {
+  order: 3;
+  -webkit-order: 3;
+}
+
+#history {
+  font-size: 75%;
+  margin-bottom: 10%;
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+#historyDiv {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  text-align: left;
+  margin-bottom: 10%;
+  padding: 0;
+}
+
+#historyDiv p {
+  margin: 20px;
+}
+
+@media screen and (max-width: 1190px) {
+  #history {
+    display: block;
+  }
+
+  #historyDiv {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #history p {
+    margin: 0 auto;
+  }
+}
+footer {
+  bottom: 0;
+}
+
+/*# sourceMappingURL=home.css.map */
