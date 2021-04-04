@@ -96,6 +96,28 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
+    <h2>Ajouter une promotion</h2>
+
+    <form method="post"> {{ csrf_field() }}
+        <input required="required" name="namePromo"/>
+        <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
+    </form>
+
+    <?php
+     if (isset($_POST['addPromo'])) {
+        if (DB::table('promo')->where('name', '=', $_POST['namePromo'])->exists()) {
+            echo 'La promo existe déjà.';
+        }
+        else {
+            DB::table('promo')->insert(
+                array(
+                    'name' => $_POST['namePromo']
+                )
+            );
+            echo 'La promo a été créée.';
+        }
+    }
+    ?>
 
 
 </section>
