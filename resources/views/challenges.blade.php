@@ -42,14 +42,16 @@ if($userType->statut == 'student'){
     echo '<section class="addPoints">';
     //echo '<label class="typeDefi">Type de défi';
 
-    echo '<input required="required" name="defiTypeId"/>';
+    // echo '<input required="required" name="defiTypeId"/>';
 
-//    echo '<select required="required" name="defiTypeId" size="5">';
-//
-//    foreach ($listDefis as $defi){
-//        echo '<option value="'.$defi->id.'">'.$defi->name.'</option>';
-//    };
-//    echo '</select>';
+    echo '<select required="required" name="defiTypeId" size="5">';
+
+    $listDefis = DB::table('defis_type')->select("id", "label")->get();
+
+    foreach ($listDefis as $defi){
+        echo '<option value="'.$defi->id.'">'.$defi->label.'</option>';
+    };
+    echo '</select>';
 
     $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, systems.name AS systemName
         FROM users
@@ -124,7 +126,7 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
                     'challenger_id' => "$userType->id",
                     'target_id' => $_POST['OpponentId'],
                     'arbiter_id' => $_POST['arbiterId'],
-                    'label' => $_POST['defiTypeId']
+                    'type_id' => $_POST['defiTypeId']
                 )
             );
             echo "<p class='challengePage'>Demande de défi et d'arbitrage envoyés</p>";
@@ -149,12 +151,14 @@ if($userType->statut=='student'){
     echo "<p class='challengePage'>Vous pouvez accepter ou non une proposition de défi.</p>";
 
 
-    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi, label
+    $challengesInvitation = DB::select('SELECT creator.first_name as cName, arbiter.first_name AS aName, defis.id AS idDefi, typeDefis.label AS defiLabel
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
                 LEFT JOIN users AS arbiter
                     ON arbiter.id = arbiter_id
+                LEFT JOIN defis_type AS typeDefis
+                    ON typeDefis.id = type_id
                 WHERE target_id = :id
                     AND is_accepted IS NULL
                 ', ['id' => $userType->id]);
@@ -164,7 +168,7 @@ if($userType->statut=='student'){
         echo '<select required="required" id="proposedDefi" name="proposedDefi" size="3">';
 
         foreach ($challengesInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
         };
         echo '</select>
             <br><input type="radio" name="actionDefi" value="acceptDefi" id=actionDefi checked="checked"> <label for="acceptDefi">Accepter</label>
@@ -182,12 +186,14 @@ if($userType->statut=='student'){
 echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
 echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
-    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, label
+    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, typeDefis.label AS defiLabel
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
                 LEFT JOIN users AS opponent
                     ON opponent.id = target_id
+                LEFT JOIN defis_type AS typeDefis
+                    ON typeDefis.id = type_id
                 WHERE arbiter_id = :id
                     AND winner_id IS NULL
                     AND is_accepted =True
@@ -198,7 +204,7 @@ echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitr
         echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
 
         foreach ($arbitorInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
         };
         echo '</select>
             <br><input type="radio" name="actionArbiRadio" value="acceptArbi" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
@@ -216,12 +222,14 @@ if($userType->statut=='student'){
 
     echo "<p class='challengePage' >Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
 
-    $createdDefis = DB::select('SELECT arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi, defis.label
+    $createdDefis = DB::select('SELECT arbitor.first_name as aName, opponent.first_name AS oName, defis.id AS idDefi, typeDefis.label AS defiLabel
                 FROM defis
                 LEFT JOIN users AS arbitor
                     ON arbitor.id = defis.arbiter_id
                 LEFT JOIN users AS opponent
                     ON opponent.id = target_id
+                LEFT JOIN defis_type AS typeDefis
+                    ON typeDefis.id = type_id
                 WHERE challenger_id = :id
                     AND winner_id IS NULL
                 ', ['id' => $userType->id]);
@@ -232,7 +240,7 @@ if($userType->statut=='student'){
 
         foreach ($createdDefis as $challenge){
 
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->label.' | Vous VS '.$challenge->oName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | Vous VS '.$challenge->oName.' | Arbitre : '.$challenge->aName.'</option>';
             echo '</select>
             <br><input type="submit" value="Annuler">
 
