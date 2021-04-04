@@ -369,7 +369,7 @@ class DistributionServiceProvider
 
         for ($i=0; $i<count($this->unplacedUserList); $i++){
 
-            echo"Unplaced";
+            //echo"Unplaced";
             //print_r($this->unplacedUserList);
 
             $countSystems = array(
@@ -400,7 +400,7 @@ class DistributionServiceProvider
                     break;
             }
 
-        echo '<br>'.count($this->unplacedUserList).'<br>';
+        //echo '<br>'.count($this->unplacedUserList).'<br>';
         }
     }
 
@@ -531,9 +531,9 @@ class DistributionServiceProvider
         $this->getuserList($promo);
         $this->lanchDistribution();
         //echo '<br>Après la répartition<br>';
-        print_r($this->list_gitsune);
-        print_r($this->list_crackend);
-        print_r($this->list_phoenixml);
+        //print_r($this->list_gitsune);
+        //print_r($this->list_crackend);
+        //print_r($this->list_phoenixml);
         $this->sendToDB();
 
         echo '<br>Répartition terminée ;)<br>';

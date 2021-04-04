@@ -359,8 +359,8 @@ class SystemDistributionController extends Controller
 
         for ($i=0; $i<count($this->unplacedUserList); $i++){
 
-            echo"Unplaced";
-            print_r($this->unplacedUserList);
+            //echo"Unplaced";
+            //print_r($this->unplacedUserList);
 
             $countSystems = array(
                 'phoenixml' => count($this->list_phoenixml),
@@ -390,7 +390,7 @@ class SystemDistributionController extends Controller
                     break;
             }
 
-            echo '<br>'.count($this->unplacedUserList).'<br>';
+            //echo '<br>'.count($this->unplacedUserList).'<br>';
         }
     }
 

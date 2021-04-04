@@ -19,7 +19,7 @@ class QuizzController
 
     public function quizzResult()
     {
-        if (isset($_POST['skipQuizzForm'])) {
+        if (isset($_POST['validSkip'])) {
             DB::table('result_test')
                 ->where('users_id' , Auth::user()->id)
                 ->update(
