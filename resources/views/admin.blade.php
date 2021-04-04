@@ -119,6 +119,33 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
+<h2>Ajouter un défi</h2>
+
+<form method="post"> {{ csrf_field() }}
+    <p>Nom du challenge</p>
+    <input required="required" name="nameChallenge"/>
+    <p>Nombre de points</p>
+    <input required="required" name="numberPointsChallenge" />
+    <button id="buttonAdminChallenge" name="addChallenge">Ajouter</button>
+</form>
+
+<?php
+ if (isset($_POST['addChallenge'])) {
+    if (DB::table('defis_type')->where('label', '=', $_POST['nameChallenge'])->exists()) {
+        echo 'Le défi existe déjà.';
+    }
+    else {
+        DB::table('defis_type')->insert(
+            array(
+                'label' => $_POST['nameChallenge'],
+                'number_of_points' => $_POST['numberPointsChallenge']
+            )
+        );
+        echo 'Le défi a été créé.';
+    }
+}
+?>
+
 
 </section>
 
