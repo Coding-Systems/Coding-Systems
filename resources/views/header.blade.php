@@ -5,14 +5,12 @@
     <div id="pagesMenu">
 
         <nav class="headerNav">
-            <img id="logoHeader" src="img/logo.png" alt="logo">
+            <a class="menuLink" href="/"><img id="logoHeader" src="img/logo.png" alt="logo"></a>
             @guest
-                <a class="menuLink" href="/">Accueil</a>
                 <a class="menuLink" href="/systems">Systems</a>
                 <a class="menuLink" href="/regles">Règles</a>
                 <a class="menuLink" href="{{ url('auth/google') }}">Se connecter</a>
             @else
-                <a class="menuLink" href="/">Accueil</a>
                 <a class="menuLink" href="/classements">Classements</a>
                 <a class="menuLink" href="/historique">Historique</a>
                 <a class="menuLink" href="/systems">Systems</a>
