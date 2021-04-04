@@ -10972,8 +10972,9 @@ a.menuLink {
 
 #pagesMenu {
   background-color: #44153C;
-  width: 100%;
-  display: flex;
+  width: fit-content;
+  display: block;
+  float: left;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
@@ -11058,3 +11059,13 @@ a:active {
   vertical-align: text-bottom;
 }
 
+.logOutIcon {
+  filter: invert(99%) sepia(1%) saturate(6850%) hue-rotate(184deg) brightness(86%) contrast(87%);
+}
+
+.logOutDiv {
+  display: inline;
+  position: absolute;
+  padding-top: 5px;
+  right: 2%;
+}
