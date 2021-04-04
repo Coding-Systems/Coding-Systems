@@ -27,12 +27,14 @@
                 }
 
                 ?>
-                <a class="menuLink" href="{{ route('logout') }}">Déconnecter</a>
 
-
-            @endguest
         </nav>
     </div>
+    <div class="logOutDiv">
+        <a class="menuLink" href="{{ route('logout') }}"><img class="logOutIcon menuLink" src="img/logOutIcon.svg"/></a>
+    </div>
+    @endguest
+
   </div>
 
     <script>
