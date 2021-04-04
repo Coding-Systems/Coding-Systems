@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="/css/app.css"/>
 <link rel="stylesheet" href="css/all.css"/>
+<link rel="stylesheet" href="css/pages/404.css"/>
 
 <body>
+@include('cssSwitcher')
+@include("header")
 <div>
     <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
         <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1>
@@ -460,15 +463,12 @@
 <style>
     .center{text-align:center}
     #space-invaders {
-
         margin: 0 auto;
-        background-image: url("https://i.pinimg.com/originals/c8/3b/99/c83b998ebb38bb33a1d2a634814be171.jpg");
         background-repeat: no-repeat;
         background-size: 100%;
-        background: rgb(0, 174, 255);
     }
     body{
-        background: #1b1e21;
+        background: #44153C;
         color: white;
     }
 
@@ -528,4 +528,6 @@
 
 </style>
 
+
 <a href="/">Revenir à l'accueil</a>
+@include("footer")
