@@ -25,12 +25,11 @@ class SystemDistributionController extends Controller
 
     private function getuserList($promo)
     {
-        $listUsers = DB::select('SELECT users_id , score_gitsune, score_crackend, score_phoenixml
-        FROM result_test
-        LEFT JOIN users
-        	ON users.id = result_test.users_id
-        WHERE users.promo_id = :id
-        ', ['id' => $promo]);
+        $listUsers = DB::table('result_test')
+                        ->join('users', 'users.id', '=', 'result_test.users_id')
+                        ->select('users_id' , 'score_gitsune', 'score_crackend', 'score_phoenixml')
+                        ->where('users.promo_id', '=', $promo)
+                        ->get();
 
         foreach ($listUsers as $user){
             $userScores = array(
