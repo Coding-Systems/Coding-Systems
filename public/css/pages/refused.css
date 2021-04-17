@@ -52,6 +52,6 @@ a.refused{
 }a.refused:hover{
     transition-duration: 50ms;
     text-decoration: underline;
-    font-size: 40px;
+    color: #ffffff;
 }
 
