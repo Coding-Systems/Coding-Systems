@@ -10,7 +10,7 @@ body{
 .whistle{
     width: 20%;
     fill: #ffffff;
-    margin: 100px 40%;
+    margin: 10px 40%;
     text-align: left;
     transform: translate(-50%, -50%);
     transform: rotate(0);
@@ -30,12 +30,12 @@ body{
     }
 }
 h1{
-    margin-bottom: 20px;
     color: #ffffff;
     text-align: center;
     font-family: 'Raleway';
     font-size: 90px;
     font-weight: 800;
+    margin-top: 5px;
 }
 h2{
     color: #455d7a;
