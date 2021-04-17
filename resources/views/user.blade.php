@@ -38,11 +38,11 @@
 
             <?php
 
-            $mvt_point = DB::select('SELECT systems.name AS hName
-                FROM systems
-                LEFT JOIN users
-                    ON users.system_id = systems.id
-                WHERE users.id =:id', ['id' => Auth::user()->id]);
+            $mvt_point = DB::table('systems')
+                            ->join ('users', 'users.system_id', '=', 'systems.id')
+                            ->select ('systems.name AS hName')
+                            ->where('users.id', Auth::user()->id)
+                            ->get();
 
             echo '<img id="logoUser" ';
 
@@ -61,9 +61,11 @@
                         echo 'src="img/logo.png"';
                 }
 
-                $logoLvl = DB::select('SELECT logo_lvl
-                FROM users
-                WHERE users.id =:id', ['id' => Auth::user()->id]);
+                $logoLvl = DB::table('users')
+                            ->select ('logo_lvl')
+                            ->where('users.id', Auth::user()->id)
+                            ->get();
+                
                 echo $logoLvl[0]->logo_lvl.'.png"';
             }
             else {
@@ -71,15 +73,17 @@
             }
             echo ' alt="logo">';
 
-                $userType = DB::select('SELECT statut
-                    FROM users
-                    WHERE id = :id', ['id' => Auth::user()->id]);
+                $userType = DB::table('users')
+                            ->select ('statut')
+                            ->where('id', Auth::user()->id)
+                            ->get();
 
                 if(Auth::user()->statut == 'student'){
 
-                    $isQuizzDone = DB::select('SELECT quizz_is_done AS statusQuizz
-                    FROM result_test
-                    WHERE users_id = :id', ['id' => Auth::user()->id]);
+                    $isQuizzDone = DB::table('result_test')
+                            ->select ('quizz_is_done AS statusQuizz')
+                            ->where('users_id', Auth::user()->id)
+                            ->get();
 
                     if($isQuizzDone[0]->statusQuizz == 0){
                         echo'<a class="menuLink" href="/quizz">Quizz</a>';
@@ -98,35 +102,51 @@
 
                     if(Auth::user()->statut == 'PO'){
                         echo'<br>Points donnés : ';
-                        $givenPts = DB::select('SELECT total_given_pts as pts
-                            FROM users
-                            WHERE users.id= :id ', ['id' => Auth::user()->id]);
+                        $givenPts = DB::table('users')
+                            ->select ('total_given_pts as pts')
+                            ->where('users_id', Auth::user()->id)
+                            ->get();
+                        
                         echo $givenPts[0]->pts." pts";
 
                         echo '<br>Event organisés : ';
                     }
                     else {
                         echo '<br>Total de points : ';
-                        $totalPts = DB::select('SELECT total_pts as pts
-                            FROM users
-                            WHERE users.id= :id', ['id' => Auth::user()->id]);
+                        $totalPts = DB::table('users')
+                            ->select ('total_pts as pts')
+                            ->where('users.id', Auth::user()->id)
+                            ->get();
+                        
                         echo $totalPts[0]->pts." pts";
 
                         echo '<br>Défis gagnés : ';
-                        $defisWon = DB::select('SELECT total_won_defis as pts
-                            FROM users
-                            WHERE users.id= :id ', ['id' => Auth::user()->id]);
+                        $defisWon = DB::table('users')
+                            ->select ('total_won_defis as pts')
+                            ->where('users.id', Auth::user()->id)
+                            ->get();
+                        
                         echo $defisWon[0]->pts;
 
                         echo '<br>Classement général : ';
 
-                        $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , systems.name AS hname, users.id AS idU
-                            FROM users
-                            LEFT JOIN systems
-                            	ON systems.id = users.system_id
-                            WHERE users.statut="student"
-                            GROUP BY users.id
-                            ORDER BY pts DESC');
+                        $ranking = DB::table('users')
+                            ->join ('systems', 'systems.id', '=', 'users.system_id')
+                            ->select ('users.total_pts AS pts', 'users.first_name', 'users.last_name', 'systems.name AS hname', 'users.id AS idU')
+                            ->where('users.statut', '=', "student")
+                            ->groupBy('users.id')
+                            ->orderBy ('pts', 'DESC')
+                            ->get();
+
+                        // NE RETOURNE PAS TOUJOURS LE BON CLASSEMENT
+                        // $ranking = DB::select('SELECT users.total_pts AS pts, users.first_name, users.last_name , systems.name AS hname, users.id AS idU
+                        //     FROM users
+                        //     LEFT JOIN systems
+                        //     	ON systems.id = users.system_id
+                        //     WHERE users.statut="student"
+                        //     GROUP BY users.id
+                        //     ORDER BY pts DESC');
+
                         $x =0;
                         while($ranking[$x]->idU != Auth::user()->id){
                             $x++;
@@ -135,9 +155,11 @@
 
                         echo '<br>Classement system : ';
 
-                        $userSystems = DB::select('SELECT system_id
-                            FROM users
-                            WHERE id = :id', ['id' => Auth::user()->id]);
+                        $userSystems = DB::table('users')
+                            ->select ('system_id')
+                            ->where('id', Auth::user()->id)
+                            ->get();
+                        
                         //echo $userSystems[0];
 
                         if(isset($userSystems[0]->system_id)){

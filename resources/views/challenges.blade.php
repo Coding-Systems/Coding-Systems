@@ -84,10 +84,11 @@ if($userType->statut == 'student'){
         echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     };
 
-    $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
-        FROM users
-        WHERE users.statut="PO"
-        ORDER BY fName', ['id' => $userType->id]);
+    $listpo = DB::table('users')
+                ->select ('first_name AS fName', 'last_name AS lName', 'users.id as Uid')
+                ->where ('users.statut', '=', "PO")
+                ->orderBy ('fName', 'DESC')
+                ->get();
 
     foreach ($listpo as $user){
         echo '<option value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
@@ -104,21 +105,26 @@ if($userType->statut == 'student'){
 if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['defiTypeId'])){
     //OpponentId arbiterId defiTypeId
 
-    $listDefis = DB::select('SELECT COUNT(id) AS total
-        FROM defis
-        WHERE challenger_id = :id
-            AND winner_id IS NULL', ['id' => $userType->id]);
+    $listDefis = DB::table('defis')
+                ->select ('COUNT(id) AS total')
+                ->where ('challenger_id', 'id')
+                ->where ('winner_id IS NULL', 'DESC', $userType->id)
+                ->get();
 
     echo "<p>";
     if ($listDefis[0]->total==0){
 
-        $systemOponent = DB::select('SELECT system_id
-            FROM users
-            WHERE id= :id', ['id' => $_POST['OpponentId']]);
+        $systemOponent = DB::table('users')
+                ->select ('system_id')
+                ->where ('id', 'id')
+                ->where ('id', 'DESC', $_POST['OpponentId'])
+                ->get();
 
-        $systemArbiter = DB::select('SELECT system_id
-            FROM users
-            WHERE id= :id', ['id' => $_POST['arbiterId']]);
+        $systemArbiter =  DB::table('users')
+                ->select ('system_id')
+                ->where ('id', 'id')
+                ->where ('id', 'DESC', $_POST['arbiterId'])
+                ->get();
 
         if($systemArbiter[0]->system_id != $systemOponent[0]->system_id){
             DB::table('defis')->insert(
