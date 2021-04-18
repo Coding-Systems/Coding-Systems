@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/all.css"/>
+    <link rel="stylesheet" href="css/pages/challenges.scss"/>
     <link rel="stylesheet" href="/public/css/pages/challenges.scss"/>
     <link href="resources/js/app.js">
 
@@ -35,13 +36,13 @@ if($userType->statut == 'student'){
     echo '<h2>Lancer un défi</h1>';
     echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de systems différentes !</p>";
 
-    echo "<div id='sendChallenge'>"
+    echo "<div id='sendChallenge'>";
 
-    echo "<div id='chooseChallenge' class='challengeSelect'>"
+    echo "<div id='chooseChallenge' class='challengeSelect'>";
 
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
-    echo '<h3 class="challengePage">Choisissez votre défis :</h3>';
+    echo '<h3 class="challengePage">Type du défis :</h3>';
 
     echo '<section class="addPoints">';
     //echo '<label class="typeDefi">Type de défi';
@@ -57,9 +58,9 @@ if($userType->statut == 'student'){
     };
     echo '</select>';
 
-    echo "</div>"
+    echo "</div>";
 
-    echo "<div id='chooseOpponent' class='challengeSelect'>"
+    echo "<div id='chooseOpponent' class='challengeSelect'>";
 
     $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, systems.name AS systemName
         FROM users
@@ -70,7 +71,7 @@ if($userType->statut == 'student'){
                             	WHERE usersOne.id = :id)
             AND users.statut="student"
         ORDER BY systemName, fName', ['id' => $userType->id]);
-    echo '<h3 class="challengePage">Choisissez votre adversaire :</h3>';
+    echo '<h3 class="challengePage">Votre adversaire :</h3>';
 
     echo '<section class="oppenents">';
     //echo '<label class="typeDefi">Type de défi';
@@ -82,11 +83,11 @@ if($userType->statut == 'student'){
 
     echo '</select>';
 
-    echo "</div>"
+    echo "</div>";
 
-    echo "<div id='chooseArbiter' class='challengeSelect'>"
+    echo "<div id='chooseArbiter' class='challengeSelect'>";
 
-    echo'<h3 class="challengePage">Choisissez votre arbitre :</h3>';
+    echo'<h3 class="challengePage">Votre arbitre :</h3>';
 
     echo '<section class="arbiter">';
     //echo '<label class="typeDefi">Type de défi';
@@ -107,8 +108,8 @@ if($userType->statut == 'student'){
 
     echo '</select>';
 
-    echo "</div>"
-        echo "</div>"
+    echo "</div>";
+        echo "</div>";
 
 
     echo '</br><input type="submit" value="Valider"> ';
@@ -163,6 +164,10 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
 
 if($userType->statut=='student'){
 
+    echo "<div id='requestChallenges'>";
+
+    echo "<div id='receiveChallenge' class='manageRequests'>";
+
     echo '<h3 class="challengePage">Propositions de défis</h3>';
     echo "<p class='challengePage'>Vous pouvez accepter ou non une proposition de défi.</p>";
 
@@ -198,6 +203,10 @@ if($userType->statut=='student'){
     }
 
 }
+    echo "</div>";
+
+    echo "<div id='receiveArbiter' class='manageRequests'>";
+
 
 echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
 echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
@@ -233,6 +242,9 @@ echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitr
         echo "Aucune demande d'arbitrage en attente.";
     }
 
+    echo "</div>";
+echo "<div id='sendRequests' class='manageRequests'>";
+
 if($userType->statut=='student'){
     echo "<h3 class='challengePage' >Demandes envoyées</h3>";
 
@@ -267,6 +279,9 @@ if($userType->statut=='student'){
         echo "Ancun défi en attente.";
     }
 }
+
+echo "</div>";
+
 
 if(isset($_POST['CreateDdefi'])){
 
