@@ -374,6 +374,14 @@ p.systemPage {
     transition-duration: 1s;
 }
 
+.icon_head{
+    position: fixed;
+    right: 0;
+}.icon_head_profil{
+    position: fixed;
+    right: 35px;
+}
+
 .systemInfos {
     overflow: hidden;
     width: 100%;
