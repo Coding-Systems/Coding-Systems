@@ -50,3 +50,9 @@ h1, h2, .numberRanking{
 .userRank_3{
     color : #e0977a;
 }
+
+
+/*backgroud*/
+#404{
+    background-image: linear-gradient(33deg, rgba(253, 169, 23, 0.85) 25%, rgba(133, 3, 0, 0.77) 25%);
+}
