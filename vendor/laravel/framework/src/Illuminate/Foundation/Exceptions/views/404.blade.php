@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/css/app.css"/>
 <link rel="stylesheet" href="css/all.css"/>
 <link rel="stylesheet" href="css/pages/404.css"/>
-
-<body>
 @include('cssSwitcher')
+
+<body id="404">
+
 @include("header")
 <div>
     <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
@@ -11,6 +12,7 @@
 
     <canvas id="space-invaders"/>
 </div>
+
 </body>
 <script>
     ;(function() {
@@ -468,8 +470,9 @@
         background-size: 100%;
     }
     body{
-        background: #44153C;
-        color: white;
+        color: black;
+        background-image: linear-gradient(33deg, #bbbcc3 25%, #7e8389 25%);
+
     }
 
     div {
@@ -477,10 +480,11 @@
         margin: 5px;
     }
 
-    h1{
+    h1.center{
         color: #ffffff;
         justify-content: center;
         text-align: center;
+        font-size: 35px;
     }
 
 
