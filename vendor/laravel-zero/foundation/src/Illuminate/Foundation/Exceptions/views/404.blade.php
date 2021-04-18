@@ -8,11 +8,11 @@
 @include("header")
 <div>
     <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
-        <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1>
+        <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1><button class="btn btn-default btn-xs" id="restart">Restart</button>
 
     <canvas id="space-invaders"/>
+    <a href="/">Revenir à l'accueil</a>
 </div>
-
 </body>
 <script>
     ;(function() {
@@ -471,6 +471,9 @@
     }
     body{
         color: white;
+        height: 90%;
+        background-image: linear-gradient(33deg, #bbbcc3 25%, #7e8389 25%);
+
     }
 
     div {
@@ -531,5 +534,5 @@
 </style>
 
 
-<a href="/">Revenir à l'accueil</a>
+
 @include("footer")
