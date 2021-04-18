@@ -3,16 +3,20 @@
 <link rel="stylesheet" href="css/pages/404.css"/>
 @include('cssSwitcher')
 
-
 <body id="404">
-@include("header")
-<div>
-    <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
-        <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1><button class="btn btn-default btn-xs" id="restart">Restart</button>
 
+@include("header")
+<div class="404_div">
+    <a class="btn btn-default btn-xs btn-hover color-8" id="restart">Restart</a>
+
+    <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
+        <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1>
     <canvas id="space-invaders"/>
-    <a href="/">Revenir à l'accueil</a>
+
 </div>
+<a href="/">Revenir à l'accueil</a>
+
+
 </body>
 <script>
     ;(function() {
@@ -470,22 +474,21 @@
         background-size: 100%;
     }
     body{
-        color: white;
-        height: 90%;
+        height: 100%;
+        color: black;
         background-image: linear-gradient(33deg, #bbbcc3 25%, #7e8389 25%);
 
     }
 
     div {
         justify-content: center;
-        margin: 5px;
     }
 
-    h1{
+    h1.center{
         color: #ffffff;
         justify-content: center;
         text-align: center;
-        font: 12px;
+        font-size: 35px;
     }
 
 
@@ -530,9 +533,11 @@
         left: 100%;
     }
 
+    button{
+        bottom:0;
+    }
+
 
 </style>
-
-
 
 @include("footer")

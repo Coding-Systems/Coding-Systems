@@ -7,15 +7,18 @@
 
 @include("header")
 <div class="404_div">
-    <button class="btn btn-default btn-xs btn-hover color-8" id="restart">Restart</button>
+    <button class="btn btn-default " href="/">Revenir à l'accueil</button>
 
-    <h1 class="center">bah alors comme ça on se perd! vas-y amuse toi bien !
-        <br/> utilise <span class="label label-danger">espace</span> pour tirer et <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> pour bouger&#160;&#160;&#160; bonne chance :)</h1>
+
+    <h1 class="center">Bah alors comme ça on se perd ? Vas-y amuse toi bien !
+        <br>
+        Utilise espace pour tirer et ← → pour bouger.
+        <br>
+        Bonne chance :)</h1>
     <canvas id="space-invaders"/>
 
 </div>
-    <a href="/">Revenir à l'accueil</a>
-
+<button class="btn btn-default " id="restart">Restart</button>
 
 </body>
 <script>
@@ -492,49 +495,13 @@
     }
 
 
-    .box {
-        background: linear-gradient(to right, #00b7ff, #0073ff);
-        --width: 250px;
-        --height: calc(var(--width) / 3);
-        width: var(--width);
-        height: var(--height);
-        text-align: center;
-        line-height: var(--height);
-        font-size: calc(var(--height) / 2.5);
-        font-family: sans-serif;
-        letter-spacing: 0.2em;
-        border: 1px solid #0baab8;
-        border-radius: 2em;
-        transform: perspective(500px) rotateY(-15deg);
-        text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
-        box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
-        transition: 0.5s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .box:hover {
-        transform: perspective(500px) rotateY(15deg);
-        text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
-        box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .box::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to right, transparent, white, transparent);
-        left: -100%;
-        transition: 0.5s;
-    }
-
-    .box:hover::before {
-        left: 100%;
-    }
-
-    button{
+    button.btn{
+        font-size: 30px;
+        color: white;
         bottom:0;
+    }button.btn:hover{
+        font-size: 30px;
+        color: black;
     }
 
 
