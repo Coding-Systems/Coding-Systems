@@ -15,12 +15,14 @@ div {
   height: 75%;
 }
 
-h1 {
+h1.center {
   justify-content: center;
   text-align: center;
+  margin-top: 0;
 }
 
 footer {
+  margin-top: 20px;
   bottom: 0;
 }
 
@@ -35,7 +37,6 @@ footer {
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  margin: 20px;
   height: 55px;
   text-align: center;
   border: none;
