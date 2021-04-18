@@ -35,6 +35,10 @@ if($userType->statut == 'student'){
     echo '<h2>Lancer un défi</h1>';
     echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de systems différentes !</p>";
 
+    echo "<div id='sendChallenge'>"
+
+    echo "<div id='chooseChallenge' class='challengeSelect'>"
+
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
     echo '<h3 class="challengePage">Choisissez votre défis :</h3>';
@@ -52,6 +56,10 @@ if($userType->statut == 'student'){
         echo '<option value="'.$defi->id.'">'.$defi->label.'</option>';
     };
     echo '</select>';
+
+    echo "</div>"
+
+    echo "<div id='chooseOpponent' class='challengeSelect'>"
 
     $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, systems.name AS systemName
         FROM users
@@ -74,6 +82,10 @@ if($userType->statut == 'student'){
 
     echo '</select>';
 
+    echo "</div>"
+
+    echo "<div id='chooseArbiter' class='challengeSelect'>"
+
     echo'<h3 class="challengePage">Choisissez votre arbitre :</h3>';
 
     echo '<section class="arbiter">';
@@ -94,6 +106,10 @@ if($userType->statut == 'student'){
     }
 
     echo '</select>';
+
+    echo "</div>"
+        echo "</div>"
+
 
     echo '</br><input type="submit" value="Valider"> ';
 
