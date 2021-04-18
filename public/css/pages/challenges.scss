@@ -45,3 +45,18 @@ body {
     display : table;
     width: 100%;
 }
+
+#sendChallenge {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#requestChallenges {
+    display: flex;
+    flex-direction: row;
+    //flex-wrap: wrap;
+    justify-content: space-around;
+    text-wrap: normal;
+}
+
