@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\DB;
+use App\Mail\DistributionMail;
+use Illuminate\Support\Facades\Mail;
 
 class DistributionServiceProvider
 {
@@ -524,6 +526,21 @@ class DistributionServiceProvider
             );
     }
 
+    public function sendMailToAll()
+    {
+        $users = DB::table('users')
+            ->join('systems', 'users.system_id', '=', 'systems.id')
+            ->select('first_name', 'mail', 'systems.name as s_name')
+            ->where('promo_id', '=', $this->promo)
+            ->whereNotNull('users.system_id')
+            ->get();
+
+        foreach ($users as $user) {
+            Mail::to($user->mail)->send(new DistributionMail($user));
+            sleep(2);
+        }
+    }
+
     public function index($promo)
     {
         $this->promo = $promo;
@@ -535,6 +552,7 @@ class DistributionServiceProvider
         //print_r($this->list_crackend);
         //print_r($this->list_phoenixml);
         $this->sendToDB();
+        $this->sendMailToAll();
 
         echo '<br>Répartition terminée ;)<br>';
     }
