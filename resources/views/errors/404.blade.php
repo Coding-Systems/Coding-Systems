@@ -17,6 +17,10 @@
 <body>
 
 @include("header")
+<section>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
 <div class="404_div">
 
     <h1 class="center">Tu t'es perdu ?</h1>
@@ -24,6 +28,7 @@
     <p class="center">La chambre des secrets c'est pas ici !</p>
 
 </div>
+</section>
 
 <a class="404Link" href="/">Revenir à l'accueil</a>
 
