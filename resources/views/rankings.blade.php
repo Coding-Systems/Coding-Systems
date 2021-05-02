@@ -99,7 +99,7 @@
                 <?php
 
                 if(isset($_POST['rank'])){
-                    $results = App\User::select('users.' . $_POST['rank'] . ' AS pts', 'users.first_name', 'users.last_name', 'systems.name AS hname', 'users.id AS idUser')
+                    $results = App\User::select('users.' . $_POST['rank'] . ' AS pts', 'users.first_name', 'users.last_name', 'systems.name AS hname', 'users.id AS idUser', 'users.logo_lvl AS logoUser')
                         ->leftJoin('systems', 'systems.id', '=', 'users.system_id')
                         ->where('users.statut', '=', 'student')
                         ->groupBy('users.id')
