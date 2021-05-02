@@ -1,13 +1,5 @@
-@import url("public/css/themes/crackend.css");
-@import url("public/css/themes/default.css");
-@import url("public/css/themes/phoenixml.css");
-@import url("public/css/themes/gitsune.css");
 .center {
   text-align: center;
-}
-
-#space-invaders {
-  margin: 0 auto;
 }
 
 div {
@@ -15,27 +7,10 @@ div {
   height: 75%;
 }
 
-h1.center {
-  justify-content: center;
-  text-align: center;
-  margin-top: 0;
-}
-
-.center{text-align:center}
-#space-invaders {
-    margin: 0 auto;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
 body{
     height: 100%;
     color: black;
     background-image: linear-gradient(33deg, #bbbcc3 25%, #7e8389 25%);
-
-}
-
-div {
-    justify-content: center;
 }
 
 h1.center{
@@ -43,52 +18,7 @@ h1.center{
     justify-content: center;
     text-align: center;
     font-size: 35px;
-}
-
-
-.box {
-    background: linear-gradient(to right, #00b7ff, #0073ff);
-    --width: 250px;
-    --height: calc(var(--width) / 3);
-    width: var(--width);
-    height: var(--height);
+    justify-content: center;
     text-align: center;
-    line-height: var(--height);
-    font-size: calc(var(--height) / 2.5);
-    font-family: sans-serif;
-    letter-spacing: 0.2em;
-    border: 1px solid #0baab8;
-    border-radius: 2em;
-    transform: perspective(500px) rotateY(-15deg);
-    text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: 2px 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: 0.5s;
-    position: relative;
-    overflow: hidden;
+    margin-top: 2%;
 }
-
-.box:hover {
-    transform: perspective(500px) rotateY(15deg);
-    text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.box::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, white, transparent);
-    left: -100%;
-    transition: 0.5s;
-}
-
-.box:hover::before {
-    left: 100%;
-}
-
-button{
-    bottom:0;
-}
-
-/*# sourceMappingURL=404.css.map */
