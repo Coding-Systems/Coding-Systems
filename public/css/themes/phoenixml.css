@@ -2,7 +2,7 @@
 
 header{
     background-color: #450422;
-    background-color: #451304;
+    background-color: #390518;
 }
 
 h1, h2, .numberRanking{
@@ -15,7 +15,7 @@ h1, h2, .numberRanking{
 /*backgroud*/
 .bg {
     animation: slide 5s ease-in-out infinite alternate;
-    background-image: linear-gradient(33deg, rgba(253, 169, 23, 0.85) 25%, rgba(133, 3, 0, 0.77) 25%);
+    background-image: linear-gradient(33deg, #45041b 25%, rgb(23, 15, 26) 25%);
     bottom: 0;
     left: -50%;
     opacity: .5;
