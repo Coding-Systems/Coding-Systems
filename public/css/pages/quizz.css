@@ -1,3 +1,7 @@
+* {
+  color: white;
+}
+
 form {
   display: block;
   margin: auto;
@@ -8,6 +12,10 @@ form {
 div.question:hover {
   display: block;
   color: #801367;
+}
+
+section {
+  margin-bottom: 1.5em;
 }
 
 label {

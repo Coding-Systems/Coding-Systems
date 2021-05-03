@@ -1,26 +1,34 @@
+*{
+    color: white;
+}
 form {
     display: block;
     margin: auto;
     max-width: 10em;
     position: relative;
-  }
+}
 
-  div.question:hover {
+div.question:hover {
     display: block;
     color: #801367;
-  }
-  
-  
-  label {
+}
+
+section{
+    margin-bottom: 1.5em;
+}
+
+label {
     cursor: pointer;
     font-weight: bold;
     text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
     transition: color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-  }
-  label:not(:last-of-type) {
+}
+
+label:not(:last-of-type) {
     margin-bottom: 1.5em;
-  }
-  label span {
+}
+
+label span {
     box-shadow: 0 0 0 0.2em currentColor inset, 0 0.2em 0.2em rgba(0, 0, 0, 0.2), 0 0.3em 0.2em rgba(0, 0, 0, 0.2) inset;
     display: inline-block;
     margin-right: 0.5em;
@@ -28,38 +36,41 @@ form {
     width: 1.5em;
     height: 1.5em;
     transition: transform 0.2s cubic-bezier(0.5, 0, 0.5, 2), box-shadow 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95), color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-  }
-  
-  label span,
-  .worm__segment:before {
+}
+
+label span,
+.worm__segment:before {
     border-radius: 50%;
-  }
-  
-  input:checked + label,
-  input:checked + label span,
-  .worm__segment:before {
+}
+
+input:checked + label,
+input:checked + label span,
+.worm__segment:before {
     color: #801367;
-  }
-  
-  input:checked + label span {
+}
+
+input:checked + label span {
     transform: scale(1.2);
-  }
-  
-  .worm {
+}
+
+.worm {
     top: 0.375em;
     left: 0.375em;
-  }
-  .worm, .worm__segment {
+}
+
+.worm, .worm__segment {
     position: absolute;
-  }
-  .worm__segment {
+}
+
+.worm__segment {
     top: 0;
     left: 0;
     width: 0.75em;
     height: 0.75em;
     transition: transform 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-  }
-  .worm__segment:before {
+}
+
+.worm__segment:before {
     animation-duration: 0.4s;
     animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
     background: currentColor;
@@ -67,54 +78,58 @@ form {
     display: block;
     width: 100%;
     height: 100%;
-  }
-  .worm__segment:first-child:before, .worm__segment:last-child:before {
+}
+
+.worm__segment:first-child:before, .worm__segment:last-child:before {
     box-shadow: 0 0 1em 0 currentColor;
-  }
-  
-  /* States */
-  input:nth-of-type(1):checked ~ .worm .worm__segment:before {
+}
+
+/* States */
+input:nth-of-type(1):checked ~ .worm .worm__segment:before {
     animation-name: hop1;
-  }
-  
-  @keyframes hop1 {
+}
+
+@keyframes hop1 {
     from, to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     50% {
-      transform: translateX(-1.5em);
+        transform: translateX(-1.5em);
     }
-  }
-  input:nth-of-type(2):checked ~ .worm .worm__segment {
+}
+
+input:nth-of-type(2):checked ~ .worm .worm__segment {
     transform: translateY(3em);
-  }
-  input:nth-of-type(2):checked ~ .worm .worm__segment:before {
+}
+
+input:nth-of-type(2):checked ~ .worm .worm__segment:before {
     animation-name: hop2;
-  }
-  
-  @keyframes hop2 {
+}
+
+@keyframes hop2 {
     from, to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     50% {
-      transform: translateX(-1.5em);
+        transform: translateX(-1.5em);
     }
-  }
-  input:nth-of-type(3):checked ~ .worm .worm__segment {
+}
+
+input:nth-of-type(3):checked ~ .worm .worm__segment {
     transform: translateY(6em);
-  }
-  input:nth-of-type(3):checked ~ .worm .worm__segment:before {
+}
+
+input:nth-of-type(3):checked ~ .worm .worm__segment:before {
     animation-name: hop3;
-  }
-  
-  @keyframes hop3 {
+}
+
+@keyframes hop3 {
     from, to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     50% {
-      transform: translateX(-1.5em);
+        transform: translateX(-1.5em);
     }
-  }
-  
-  /*# sourceMappingURL=quizzsass.css.map */
-  
+}
+
+/*# sourceMappingURL=quizzsass.css.map */
