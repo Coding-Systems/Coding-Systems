@@ -49,7 +49,7 @@ if($userType->statut == 'student'){
 
     // echo '<input required="required" name="defiTypeId"/>';
 
-    echo '<select required="required" name="defiTypeId" size="5">';
+    echo '<select required="required" name="defiTypeId" size="7">';
 
     $listDefis = DB::table('defis_type')->select("id", "label")->get();
 
