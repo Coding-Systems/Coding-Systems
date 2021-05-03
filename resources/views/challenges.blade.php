@@ -33,7 +33,6 @@ use Illuminate\Support\Facades\DB;
 $userType = Auth::user();
 if($userType->statut == 'student'){
 
-    
     echo '<h2>Lancer un défi</h2>';
     echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de systems différentes !</p>";
 
@@ -43,116 +42,105 @@ if($userType->statut == 'student'){
 
     echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
 
-        echo '<section class="addPoints">';
+    echo '<h3 class="challengePage">Type du défis :</h3>';
 
-    echo '<h3 class="challengePage">Type du défi :</h3><form action="" method="post">'.csrf_field();
-    echo'<input name="searchChallenge" type="searchChallenge" autofocus><input type="submit" value="Rechercher" name="searchChallengeButton">
-  </form>';
+    echo '<section class="addPoints">';
+    //echo '<label class="typeDefi">Type de défi';
 
-if(isset($_POST['searchChallengeButton'])){
+    // echo '<input required="required" name="defiTypeId"/>';
 
-$searchChallenge=$_POST['searchChallenge'];
+    echo '<input id="challengeInput"  name="searchChallenge" type="searchChallenge" autofocus>';
 
-$defis=DB::table('defis_type')->select("id", "label")->where('label', 'like', '%'. $searchChallenge.'%')->get();
+    echo '<select required="required" id="selectChallenge" name="defiTypeId" size="7">';
 
-if (sizeOf($defis) > 0) {
-    echo '<select required="required" name="defiTypeId" size="7">';
-    foreach ($defis as $defi) {
-        echo '<option value="'.$defi->id.'">'.$defi->label.'</option>';
-}
-}else{
-  echo "Aucun défi trouvé. Essaie une autre recherche<br><br>";
-}
-}else{
-$defis=DB::table('defis_type')->select("id", "label")->get();
-echo '<select required="required" name="defiTypeId" size="7">';
-foreach ($defis as $defi) {
-    echo '<option value="'.$defi->id.'">'.$defi->label.'</option>';
-}
-}
+    $listDefis = DB::table('defis_type')->select("id", "label")->get();
 
-echo '</select>';
+    echo '<script>
+const searchBar = document.getElementById("challengeInput");
+searchBar.addEventListener("keyup", e => {
+    const searchString = e.target.value; 
+    let input = document.getElementById("challengeInput").value;
+    input = input.toLowerCase();
+    var selectElmt = document.getElementById("selectChallenge").options;
 
-echo "</div>";
+    for (i = 0; i < selectElmt.length; i++) { 
+        var optionselm = selectElmt[i].id;
+        console.log(optionselm);
+        if (!optionselm.includes(searchString)) {
+            document.getElementById(optionselm).classList.add("disabled"); 
+            console.log("not include");
+        }
+        else {
+            document.getElementById(optionselm).classList.remove("disabled"); 
+            console.log("include") 
+        }
+    }
+})
+</script>';
 
-echo '<section class="oppenents">';
-echo "<div id='chooseOpponent' class='challengeSelect'>";
+    foreach ($listDefis as $defi){
+        echo '<option id="'.$defi->label.'"value="'.$defi->id.'">'.$defi->label.'</option>';
+    };
+    echo '</select>';
 
-echo '<h3 class="challengePage">Votre adversaire :</h3>
-<form action="" method="post">'.csrf_field();
-    echo '<input name="searchOpponent" type="searchOpponent" autofocus><input type="submit" value="Rechercher" name="searchOpponentButton"></form>';
+    echo "</div>";
 
-if(isset($_POST['searchOpponentButton'])){
+    echo "<div id='chooseOpponent' class='challengeSelect'>";
 
-$searchOpponent=$_POST['searchOpponent'];
+    $listUsers = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid, systems.name AS systemName
+        FROM users
+        LEFT JOIN systems
+        	ON systems.id = users.system_id
+        WHERE system_id != (SELECT system_id
+                            	FROM users AS usersOne
+                            	WHERE usersOne.id = :id)
+            AND users.statut="student"
+        ORDER BY systemName, fName', ['id' => $userType->id]);
+    echo '<h3 class="challengePage">Votre adversaire :</h3>';
 
-$users=DB::table('users')
-                ->join('systems', 'users.system_id', '=', 'systems.id')
-                ->select('users.id', 'first_name', 'last_name', 'systems.name AS systemName')
-                ->where('first_name','like', '%'. $searchOpponent.'%')
-                ->orWhere('last_name', 'like', '%'. $searchOpponent.'%')
-                ->get();
+    echo '<section class="oppenents">';
+    //echo '<label class="typeDefi">Type de défi';
+    echo '<select required="required" name="OpponentId" size="7">';
 
-if (sizeOf($users) > 0) {
-    echo '<select required="required" name="users" size="7">';
-    foreach ($users as $user) {
-        echo '<option value="'.$user->id.'">'."[".$user->systemName."] ".$user->first_name." ".$user->last_name.'</option>';
-}
-}else{
-  echo "Aucun adversaire trouvé. Essaie une autre recherche<br><br>";
-}
+    foreach ($listUsers as $user){
+        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+    }
 
-}else{
-$users=DB::table('users')
-                ->join('systems', 'users.system_id', '=', 'systems.id')
-                ->select('users.id', 'first_name', 'last_name', 'systems.name AS systemName')
-                ->get();
-echo '<select required="required" name="users" size="7">';
-foreach ($users as $user) {
+    echo '</select>';
 
-    echo '<option value="'.$user->id.'">'."[".$user->systemName."] ".$user->first_name." ".$user->last_name.'</option>';
-}
-}
+    echo "</div>";
 
-echo '<h3 class="challengePage">Votre arbitre :</h3>
-<form action="" method="post">'.csrf_field();
-    echo '<input name="searchArbitrer" type="searchArbitrer" autofocus><input type="submit" value="Rechercher" name="searchArbitrerButton"></form>';
+    echo "<div id='chooseArbiter' class='challengeSelect'>";
 
-    if(isset($_POST['searchArbitrerButton'])){
+    echo'<h3 class="challengePage">Votre arbitre :</h3>';
 
-$searchArbitrer=$_POST['searchArbitrer'];
+    echo '<section class="arbiter">';
+    //echo '<label class="typeDefi">Type de défi';
+    echo '<select required="required" name="arbiterId" size="7">';
 
-$users=DB::table('users')
-                ->join('systems', 'users.system_id', '=', 'systems.id')
-                ->select('users.id', 'first_name', 'last_name', 'systems.name AS systemName')
-                ->where('first_name','like', '%'. $searchArbitrer.'%')
-                ->orWhere('last_name', 'like', '%'. $searchArbitrer.'%')
-                ->get();
+    foreach ($listUsers as $user){
+        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+    };
 
-if (sizeOf($users) > 0) {
-    echo '<select required="required" name="users" size="7">';
-    foreach ($users as $user) {
-        echo '<option value="'.$user->id.'">'."[".$user->systemName."] ".$user->first_name." ".$user->last_name.'</option>';
-}
-}else{
-  echo "Aucun adversaire trouvé. Essaie une autre recherche<br><br>";
-}
+    $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
+        FROM users
+        WHERE users.statut="PO"
+        ORDER BY fName', ['id' => $userType->id]);
 
-}else{
-$users=DB::table('users')
-                ->join('systems', 'users.system_id', '=', 'systems.id')
-                ->select('users.id', 'first_name', 'last_name', 'systems.name AS systemName')
-                ->get();
-echo '<select required="required" name="users" size="7">';
-foreach ($users as $user) {
+    foreach ($listpo as $user){
+        echo '<option value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
+    }
 
-    echo '<option value="'.$user->id.'">'."[".$user->systemName."] ".$user->first_name." ".$user->last_name.'</option>';
-}
-}
+    echo '</select>';
 
-echo '</br><input type="submit" value="Valider"> ';
+    echo "</div>";
+        echo "</div>";
 
-echo '</form>';
+
+    echo '</br><input type="submit" value="Valider"> ';
+
+    echo '</form>';
+
 }
 
 if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['defiTypeId'])){

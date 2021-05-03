@@ -37,5 +37,9 @@ html, body {
 
 }
 
+.disabled {
+  display: none;
+}
+
 
 /*# sourceMappingURL=challenges.css.map */
