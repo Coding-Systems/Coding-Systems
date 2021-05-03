@@ -14,6 +14,9 @@
 .btn-radio svg {
   fill: none;
   vertical-align: middle;
+  margin-right: 0.3em;
+  float: left;
+  margin-top: 0.3em;
 }
 .btn-radio svg circle {
   stroke-width: 2;

@@ -1,8 +1,5 @@
-* {
-  color: white;
-}
-
 form {
+  color: white;
   display: block;
   margin: auto;
   max-width: 10em;
@@ -12,6 +9,10 @@ form {
 div.question:hover {
   display: block;
   color: #801367;
+}
+
+svg {
+  float: left;
 }
 
 section {
