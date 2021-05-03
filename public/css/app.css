@@ -55,7 +55,6 @@ article,
 aside,
 figcaption,
 figure,
-footer,
 header,
 hgroup,
 main,
@@ -73,6 +72,7 @@ body {
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  position: relative;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -11027,6 +11027,7 @@ footer {
   left: 0;
   right: 0;
   position: absolute;
+  bottom: 0;
 }
 
 li {

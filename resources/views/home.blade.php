@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/all.css"/>
+    <link rel="stylesheet" href="css/pages/home.css"/>
 
 </head>
 

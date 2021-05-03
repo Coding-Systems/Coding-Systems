@@ -25,6 +25,7 @@ section #rankings {
 }
 
 #rankings {
+    min-height: 100%;
     background-size: 50% 50%;
     display: flex;
     flex-direction: column;
@@ -95,3 +96,4 @@ section #rankings {
     margin: 0 auto;
     }
 }
+

@@ -1,11 +1,57 @@
-.center {
-  text-align: center;
+* {
+    margin:0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+
+}
+.whistle{
+    width: 20%;
+    fill: #ffffff;
+    margin: 10px 40%;
+    text-align: left;
+    transform: translate(-50%, -50%);
+    transform: rotate(0);
+    transform-origin: 80% 30%;
+    animation: wiggle .2s infinite;
 }
 
-#space-invaders {
-  margin: 0 auto;
-  display: block;
-  background: white;
+@keyframes wiggle {
+    0%{
+        transform: rotate(3deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(3deg);
+    }
+}
+h1{
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 90px;
+    font-weight: 800;
+    margin-top: 5px;
+}
+h2{
+    color: #455d7a;
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 30px;
+    text-transform: uppercase;
 }
 
-/*# sourceMappingURL=refused.css.map */
+a.refused{
+    transition-duration: 50ms;
+    text-decoration: underline;
+    font-size: 30px;
+}a.refused:hover{
+    transition-duration: 50ms;
+    text-decoration: underline;
+    color: #ffffff;
+}
+ 

@@ -1,111 +1,127 @@
-@charset "UTF-8";
-p.quizzPage {
-  text-align: center;
-  font-size: 100%;
-}
-
-#quizzForm, #validSkip {
-  display: inline;
-}
-
-div.question {
+form {
   display: block;
-}
-
-button {
-  color: white;
-  border-radius: 20px;
-  border: 0px;
-  outline: none;
-  font-size: 80%;
-  font-family: "Comic Neue", "Open Sans", sans-serif;
-}
-
-input {
-  color: white;
-  border-radius: 20px;
-  border: 0px;
-  outline: none;
-  font-size: 130%;
-  font-family: "Comic Neue", "Open Sans", sans-serif;
-}
-
-* {
-  font-family: "Roboto", sans-serif;
-}
-
-@keyframes click-wave {
-  0% {
-    height: 20px;
-    width: 20px;
-    opacity: 0.35;
-    position: relative;
-  }
-  100% {
-    height: 200px;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 0;
-  }
-}
-.option-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
+  margin: auto;
+  max-width: 10em;
   position: relative;
-  top: 13.33333px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  transition: all 0.15s ease-out 0s;
-  border: none;
+}
+
+div.question:hover {
+  display: block;
+  color: #801367;
+}
+
+label {
   cursor: pointer;
+  font-weight: bold;
+  text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
+  transition: color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+label:not(:last-of-type) {
+  margin-bottom: 1.5em;
+}
+
+label span {
+  box-shadow: 0 0 0 0.2em currentColor inset, 0 0.2em 0.2em rgba(0, 0, 0, 0.2), 0 0.3em 0.2em rgba(0, 0, 0, 0.2) inset;
   display: inline-block;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  z-index: 1000;
+  margin-right: 0.5em;
+  vertical-align: bottom;
+  width: 1.5em;
+  height: 1.5em;
+  transition: transform 0.2s cubic-bezier(0.5, 0, 0.5, 2), box-shadow 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95), color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
-.option-input:hover {
-  background: #9d00ff;
+label span,
+.worm__segment:before {
+  border-radius: 50%;
 }
 
-.option-input:checked::before {
-  height: 20px;
-  width: 20px;
+input:checked + label,
+input:checked + label span,
+.worm__segment:before {
+  color: #801367;
+}
+
+input:checked + label span {
+  transform: scale(1.2);
+}
+
+.worm {
+  top: 0.375em;
+  left: 0.375em;
+}
+
+.worm, .worm__segment {
   position: absolute;
-  content: "✔";
-  display: inline-block;
-  font-size: 26.66667px;
-  text-align: center;
-  line-height: 20px;
 }
 
-.option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
+.worm__segment {
+  top: 0;
+  left: 0;
+  width: 0.75em;
+  height: 0.75em;
+  transition: transform 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+.worm__segment:before {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  background: currentColor;
   content: "";
-  position: relative;
-  z-index: 100;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.option-input.radio {
-  border-radius: 50%;
+.worm__segment:first-child:before, .worm__segment:last-child:before {
+  box-shadow: 0 0 1em 0 currentColor;
 }
 
-.option-input.radio::after {
-  border-radius: 50%;
+/* States */
+input:nth-of-type(1):checked ~ .worm .worm__segment:before {
+  animation-name: hop1;
 }
 
-body label {
-  line-height: 20px;
+@keyframes hop1 {
+  from, to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-1.5em);
+  }
 }
+input:nth-of-type(2):checked ~ .worm .worm__segment {
+  transform: translateY(3em);
+}
+
+input:nth-of-type(2):checked ~ .worm .worm__segment:before {
+  animation-name: hop2;
+}
+
+@keyframes hop2 {
+  from, to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-1.5em);
+  }
+}
+input:nth-of-type(3):checked ~ .worm .worm__segment {
+  transform: translateY(6em);
+}
+
+input:nth-of-type(3):checked ~ .worm .worm__segment:before {
+  animation-name: hop3;
+}
+
+@keyframes hop3 {
+  from, to {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-1.5em);
+  }
+}
+/*# sourceMappingURL=quizzsass.css.map */
 
 /*# sourceMappingURL=quizz.css.map */

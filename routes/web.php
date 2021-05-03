@@ -63,3 +63,7 @@ Route::match(['get', 'post'],'/admin', function () {
 })->middleware('admin');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::fallback(function () {
+    return view('errors.404');
+});
