@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
+header{
+    background-color: #450422;
+    background-color: #451304;
+}
 
 h1, h2, .numberRanking{
     font-family: 'Metal Mania', cursive;
