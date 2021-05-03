@@ -30,7 +30,7 @@
 </div>
 </section>
 
-<a class="404Link" href="/">Revenir à l'accueil</a>
+<a class="linkError" href="/">Revenir à l'accueil</a>
 
 </body>
 

@@ -7,11 +7,19 @@ body{
 }
 
 h1.center{
-    color: #ffffff;
-    justify-content: center;
-    text-align: center;
-    font-size: 35px;
-    justify-content: center;
-    text-align: center;
-    margin-top: 2%;
+  color: #ffffff;
+  justify-content: center;
+  text-align: center;
+  font-size: 35px;
+  justify-content: center;
+  text-align: center;
+  margin-top: 2%;
+}
+
+a.linkError{
+color: #ffffff;
+}
+
+.linkError:hover{
+  color: #434649;
 }
