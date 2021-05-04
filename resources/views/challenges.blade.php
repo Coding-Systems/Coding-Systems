@@ -116,7 +116,7 @@ searchBarChallenge.addEventListener("keyup", e => {
     echo '<select required="required" id="selectOpponent" name="OpponentId" size="7">';
 
         foreach ($listUsers as $user){
-        echo '<option id="'.$user->fName.$user->lName.'" value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option id="'.$user->fName.$user->lName.'" value="'.$user->Uid.'" class="option_'.$user->systemName.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     }
 
         echo '<script>
@@ -168,7 +168,7 @@ searchBarChallenge.addEventListener("keyup", e => {
     echo '<select required="required" id="selectArbiter" name="arbiterId" size="7">';
 
     foreach ($listUsers as $user){
-        echo '<option id="'.$user->lName.$user->fName.'" value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option id="'.$user->lName.$user->fName.'" value="'.$user->Uid.'" class="option_'.$user->systemName.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     };
 
     $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
@@ -178,7 +178,6 @@ searchBarChallenge.addEventListener("keyup", e => {
 
     foreach ($listpo as $user){
         echo '<option id="'.$user->lName.$user->fName.'" value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
-        echo '<p id="caca">SALUT LES COUPAINGS</p>';
     }
 
     echo '<script>

@@ -77,14 +77,14 @@ section #rankings {
     text-align: left;
     margin-bottom: 10%;
 }
-
+/*
 select, .triSystemRankForm button {
     background-color: #bbbcc4;
     border-radius: 20px;
     border: 0px;
     outline: none;
     font-size: 80%;
-}
+}*/
 
 /*# sourceMappingURL=historique.css.map */
 
@@ -99,7 +99,7 @@ p.challengePage {
     text-align: center;
     font-size: 100%;
 }
-
+/*
 select, input, table {
     background-color: #bbbcc4;
     border-radius: 10px;
@@ -114,7 +114,7 @@ select, input, table {
 input:focus {
     background-color: #7d838a;
 }
-
+*/
 table {
     margin: auto;
     margin-top: 10px;

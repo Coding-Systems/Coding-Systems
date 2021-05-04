@@ -16,8 +16,8 @@ select, input, table {
     border : 0px;
     outline: none;
     font-size: 80%;
-    padding-left: 10px;
-    padding-right: 10px;
+    //padding-left: 10px;
+    //padding-right: 10px;
     margin: 10px 10px 10px 10px;
 }
 
@@ -56,4 +56,23 @@ td {
 .disabled {
     display: none;
   }
+
+.option_Crackend{
+    background-color: #91a8c4;
+}
+.option_Crackend:focus{
+    background-color: #7c94b1;
+}
+.option_Gitsune{
+    background-color: #9b8877;
+}
+.option_Gitsune:focus{
+    background-color: #7a6a5a;
+}
+.option_PhoeniXML{
+    background-color: #c49791;
+}
+.option_PhoeniXML:focus{
+    background-color: #99716d;
+}
 
