@@ -97,13 +97,19 @@ use App\Providers\CheckLogoLvl;
     }
     ?>
 
-    <h2>Ajouter une promotion</h2>
+    <h2>Ajouter des users</h2>
 
     <form method="post"> {{ csrf_field() }}
-        <input required="required" name="namePromo"/>
-        <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
+{{--
+        <input type="file" name="file" id="file" class="inputfile" />
+        <label for="file">
+            <img class="iconDl" src="img/down_arrow.png"/>
+            Choose a file
+        </label>
+--}}
+        <input class="form-control-sm input-btn-padding-x" type="file" id="filesUsers" name="pathFiles" multiple>
+        <button id="submitUsers" type="submit">Lancer</button>
     </form>
-
     <?php
      if (isset($_POST['addPromo'])) {
         if (DB::table('promo')->where('name', '=', $_POST['namePromo'])->exists()) {
