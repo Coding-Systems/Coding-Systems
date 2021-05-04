@@ -11,7 +11,7 @@ p.challengePage{
 }
 
 select, input, table {
-    background-color: #ffffff;
+    background-color: #c3c3c3;
     border-radius: 10px;
     border : 0px;
     outline: none;
@@ -55,17 +55,6 @@ td {
 .disabled {
     display: none;
   }
-
-.option_Crackend:first-letter{
-    color: #3c639f;
-}
-.option_Gitsune:first-letter{
-    color: #a77140;
-}
-
-.option_PhoeniXML:first-letter{
-    color: #b33a3a;
-}
 
 section{
     display: grid;

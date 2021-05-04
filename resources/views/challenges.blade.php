@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\DB;
 ?>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Coding system</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Coding system</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
     @include('cssSwitcher')
     <link rel="stylesheet" href="css/app.css"/>
     <link rel="stylesheet" href="css/all.css"/>
@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\DB;
 <?php
 
 $userType = Auth::user();
-if($userType->statut == 'student'){
+if ($userType->statut == 'student') {
 
     echo '<h2>Lancer un défi</h2>';
     echo "<p class='challengePage'>L'adversaire et l'arbitre doivent être de systems différentes !</p>";
@@ -40,7 +40,7 @@ if($userType->statut == 'student'){
 
     echo "<div id='chooseChallenge' class='challengeSelect'>";
 
-    echo '<form name="newDefiForm" id="newDefiForm" method="post"> '.csrf_field() ; //echo '{{ csrf_field() }}';
+    echo '<form name="newDefiForm" id="newDefiForm" method="post"> ' . csrf_field(); //echo '{{ csrf_field() }}';
 
     echo '<h3 class="challengePage">Type du défis :</h3>';
 
@@ -86,8 +86,8 @@ searchBarChallenge.addEventListener("keyup", e => {
 })
 </script>';
 
-    foreach ($listDefis as $defi){
-        echo '<option id="'.$defi->label.'"value="'.$defi->id.'">'.$defi->label.'</option>';
+    foreach ($listDefis as $defi) {
+        echo '<option id="' . $defi->label . '"value="' . $defi->id . '">' . $defi->label . '</option>';
     };
     echo '</select>';
 
@@ -115,11 +115,11 @@ searchBarChallenge.addEventListener("keyup", e => {
 
     echo '<select required="required" id="selectOpponent" name="OpponentId" size="7">';
 
-        foreach ($listUsers as $user){
-        echo '<option id="'.$user->fName.$user->lName.'" value="'.$user->Uid.'" class="option_'.$user->systemName.'">'."".$user->systemName." ".$user->fName." ".$user->lName.'</option>';
+    foreach ($listUsers as $user) {
+        echo '<option id="' . $user->fName . $user->lName . '" value="' . $user->Uid . '" class="option_' . $user->systemName . '">' . "" . $user->systemName . " " . $user->fName . " " . $user->lName . '</option>';
     }
 
-        echo '<script>
+    echo '<script>
     const searchBarOpponent = document.getElementById("opponentInput");
     searchBarOpponent.addEventListener("keyup", e => {
     const searchString = e.target.value;
@@ -156,7 +156,7 @@ searchBarChallenge.addEventListener("keyup", e => {
 
     echo "<div id='chooseArbiter' class='challengeSelect'>";
 
-    echo'<h3 class="challengePage">Votre arbitre :</h3>';
+    echo '<h3 class="challengePage">Votre arbitre :</h3>';
 
     echo '<section class="arbiter">';
     //echo '<label class="typeDefi">Type de défi';
@@ -167,8 +167,8 @@ searchBarChallenge.addEventListener("keyup", e => {
 
     echo '<select required="required" id="selectArbiter" name="arbiterId" size="7">';
 
-    foreach ($listUsers as $user){
-        echo '<option id="'.$user->lName.$user->fName.'" value="'.$user->Uid.'">'.'<strong class="option_'.$user->systemName.'">'.$user->systemName.'"</strong> '.$user->fName." ".$user->lName.'</option>';
+    foreach ($listUsers as $user) {
+        echo '<option id="' . $user->lName . $user->fName . '" value="' . $user->Uid . '">' . '<strong class="option_' . $user->systemName . '">' . $user->systemName . '</strong> ' . $user->fName . " " . $user->lName . '</option>';
     };
 
     $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
@@ -176,8 +176,8 @@ searchBarChallenge.addEventListener("keyup", e => {
         WHERE users.statut="PO"
         ORDER BY fName', ['id' => $userType->id]);
 
-    foreach ($listpo as $user){
-        echo '<option id="'.$user->lName.$user->fName.'" value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
+    foreach ($listpo as $user) {
+        echo '<option id="' . $user->lName . $user->fName . '" value="' . $user->Uid . '">' . "[PO] " . $user->fName . " " . $user->lName . '</option>';
     }
 
     echo '<script>
@@ -214,7 +214,7 @@ searchBarChallenge.addEventListener("keyup", e => {
     echo '</select>';
 
     echo "</div>";
-        echo "</div>";
+    echo "</div>";
 
 
     echo '</br><input class="sumbmitchallanges" type="submit" value="Valider"> ';
@@ -223,7 +223,7 @@ searchBarChallenge.addEventListener("keyup", e => {
 
 }
 
-if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['defiTypeId'])){
+if (isset($_POST['OpponentId']) && isset($_POST['arbiterId']) && isset($_POST['defiTypeId'])) {
     //OpponentId arbiterId defiTypeId
 
     $listDefis = DB::select('SELECT COUNT(id) AS total
@@ -232,7 +232,7 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
             AND winner_id IS NULL', ['id' => $userType->id]);
 
     echo "<p>";
-    if ($listDefis[0]->total==0){
+    if ($listDefis[0]->total == 0) {
 
         $systemOponent = DB::select('SELECT system_id
             FROM users
@@ -242,7 +242,7 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
             FROM users
             WHERE id= :id', ['id' => $_POST['arbiterId']]);
 
-        if($systemArbiter[0]->system_id != $systemOponent[0]->system_id){
+        if ($systemArbiter[0]->system_id != $systemOponent[0]->system_id) {
             DB::table('defis')->insert(
                 array(
                     'challenger_id' => "$userType->id",
@@ -253,21 +253,19 @@ if(isset($_POST['OpponentId']) && isset($_POST['arbiterId']) &&isset($_POST['def
             );
             echo "<p class='challengePage'>Demande de défi et d'arbitrage envoyés</p>";
             unset($_POST);
-        }
-        else{
+        } else {
             echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des systems différentes.</p>";
         }
-    }
-    else {
-        echo"Vous avez déja un défi en attente de réponses. Annulez-le ou finissez-le avant de défier d'autres personnes.";
+    } else {
+        echo "Vous avez déja un défi en attente de réponses. Annulez-le ou finissez-le avant de défier d'autres personnes.";
     }
     echo "</p>";
     unset($_POST);
 }
 
-    echo '<h2>Demandes en attente :</h2>';
+echo '<h2>Demandes en attente :</h2>';
 
-if($userType->statut=='student'){
+if ($userType->statut == 'student') {
 
     echo "<div id='requestChallenges'>";
 
@@ -289,12 +287,12 @@ if($userType->statut=='student'){
                     AND is_accepted IS NULL
                 ', ['id' => $userType->id]);
 
-    if(isset($challengesInvitation[0])){
-        echo '<form name="acceptDefi" id="AcceptDefiForm" method="post"> '.csrf_field() ;
+    if (isset($challengesInvitation[0])) {
+        echo '<form name="acceptDefi" id="AcceptDefiForm" method="post"> ' . csrf_field();
         echo '<select required="required" id="proposedDefi" name="proposedDefi" size="3">';
 
-        foreach ($challengesInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | Vous VS '.$challenge->cName.' | Arbitre : '.$challenge->aName.'</option>';
+        foreach ($challengesInvitation as $challenge) {
+            echo '<option value="' . $challenge->idDefi . '">' . $challenge->defiLabel . ' | Vous VS ' . $challenge->cName . ' | Arbitre : ' . $challenge->aName . '</option>';
         };
         echo '</select>
             <br><input type="radio" name="actionDefi" value="acceptDefi" id=actionDefi checked="checked"> <label for="acceptDefi">Accepter</label>
@@ -302,21 +300,20 @@ if($userType->statut=='student'){
             <br><input type="submit" value="valider">
 
             </form>';
-    }
-    else {
+    } else {
         echo "Aucune proposition de défis en attente.";
     }
 
 }
-    echo "</div>";
+echo "</div>";
 
-    echo "<div id='receiveArbiter' class='manageRequests'>";
+echo "<div id='receiveArbiter' class='manageRequests'>";
 
 
 echo "<h3 class='challengePage' >Demandes d'arbitrage</h3>";
 echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitrage.</p>";
 
-    $arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, typeDefis.label AS defiLabel
+$arbitorInvitation = DB::select('SELECT creator.first_name as cName, opponent.first_name AS oName, defis.id AS idDefi, typeDefis.label AS defiLabel
                 FROM defis
                 LEFT JOIN users AS creator
                     ON creator.id = defis.challenger_id
@@ -329,28 +326,27 @@ echo "<p class='challengePage' >Vous pouvez accepter ou non une demande d'arbitr
                     AND is_accepted =True
                 ', ['id' => $userType->id]);
 
-    if (isset($arbitorInvitation[0])){
-        echo '<form name="acceptArbiform" id="acceptArbiform" method="post"> '.csrf_field() ;
-        echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
+if (isset($arbitorInvitation[0])) {
+    echo '<form name="acceptArbiform" id="acceptArbiform" method="post"> ' . csrf_field();
+    echo '<select required="required" id="proposedArbi" name="proposedArbi" size="3">';
 
-        foreach ($arbitorInvitation as $challenge){
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | '.$challenge->oName.' VS '.$challenge->cName.' | Arbitre : Vous </option>';
-        };
-        echo '</select>
+    foreach ($arbitorInvitation as $challenge) {
+        echo '<option value="' . $challenge->idDefi . '">' . $challenge->defiLabel . ' | ' . $challenge->oName . ' VS ' . $challenge->cName . ' | Arbitre : Vous </option>';
+    };
+    echo '</select>
             <br><input type="radio" name="actionArbiRadio" value="acceptArbi" id=acceptArbi checked="checked"> <label for="acceptArbi">Accepter</label>
             <br><input type="radio" name="actionArbiRadio" value="deniedArbi" id="deniedArbi"> <label for="deniedArbi">Refuser</label>
             <br><input type="submit" value="valider">
 
             </form>';
-    }
-    else {
-        echo "Aucune demande d'arbitrage en attente.";
-    }
+} else {
+    echo "Aucune demande d'arbitrage en attente.";
+}
 
-    echo "</div>";
+echo "</div>";
 echo "<div id='sendRequests' class='manageRequests'>";
 
-if($userType->statut=='student'){
+if ($userType->statut == 'student') {
     echo "<h3 class='challengePage' >Demandes envoyées</h3>";
 
     echo "<p class='challengePage' >Vous pouvez annuler une ancienne demande de défi pour en lancer une nouvelle.</p>";
@@ -367,20 +363,19 @@ if($userType->statut=='student'){
                     AND winner_id IS NULL
                 ', ['id' => $userType->id]);
 
-    if(isset($createdDefis[0])){
-        echo '<form name="DeleteDdefi" id="DeleteDdefi" method="post"> '.csrf_field() ;
+    if (isset($createdDefis[0])) {
+        echo '<form name="DeleteDdefi" id="DeleteDdefi" method="post"> ' . csrf_field();
         echo '<select required="required" id="CreateDdefi" name="CreateDdefi" size="3">';
 
-        foreach ($createdDefis as $challenge){
+        foreach ($createdDefis as $challenge) {
 
-            echo '<option value="'.$challenge->idDefi.'">'.$challenge->defiLabel.' | Vous VS '.$challenge->oName.' | Arbitre : '.$challenge->aName.'</option>';
+            echo '<option value="' . $challenge->idDefi . '">' . $challenge->defiLabel . ' | Vous VS ' . $challenge->oName . ' | Arbitre : ' . $challenge->aName . '</option>';
             echo '</select>
             <br><input type="submit" value="Annuler">
 
             </form>';
         }
-    }
-    else {
+    } else {
         echo "Ancun défi en attente.";
     }
 }
@@ -388,7 +383,7 @@ if($userType->statut=='student'){
 echo "</div>";
 
 
-if(isset($_POST['CreateDdefi'])){
+if (isset($_POST['CreateDdefi'])) {
 
     DB::table('defis')->where('id', $_POST['CreateDdefi'])->delete();
 
@@ -397,22 +392,21 @@ if(isset($_POST['CreateDdefi'])){
 ?>
 
 <?php
-if(isset($_POST['proposedDefi'])){
+if (isset($_POST['proposedDefi'])) {
 
-    if($_POST['actionDefi']=='acceptDefi'){
+    if ($_POST['actionDefi'] == 'acceptDefi') {
         DB::table('defis')
             ->where('id', $_POST['proposedDefi'])
             ->update(array('is_accepted' => 1));
-    }
-    else {
+    } else {
         DB::table('defis')->where('id', $_POST['proposedDefi'])->delete();
     }
     unset($_POST);
 }
 
-if(isset($_POST['proposedArbi'])){
+if (isset($_POST['proposedArbi'])) {
 
-    if($_POST['actionArbiRadio']=='acceptArbi'){
+    if ($_POST['actionArbiRadio'] == 'acceptArbi') {
 
         $usersInfos = DB::select('SELECT challenger.id as cid, challenger.first_name AS cfirst, challenger.last_name AS clast, target.id as tid, target.first_name AS tfirst, target.last_name AS tlast
             FROM defis
@@ -425,82 +419,81 @@ if(isset($_POST['proposedArbi'])){
 
         $match = $usersInfos[0];
 
-        echo "<h3 class='challengePage' >Zone d'arbitrage</h3>".
-            "<p class='challengePage' >Sélectionnez le gagnant</p>".
-            '<form name="winnerForm" id="winnerForm" method="post">'.csrf_field().'
-            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->cid.'" id="challengerWin"><label for="challengerWin">'.$match->cfirst." ".$match->clast.'</label>
-            <br><input type="radio" name="winnerRadio" value="'.$_POST['proposedArbi']."_".$match->tid.'" id="targetWin"><label for="targetWin">'.$match->tfirst." ".$match->tlast.'</label>
+        echo "<h3 class='challengePage' >Zone d'arbitrage</h3>" .
+            "<p class='challengePage' >Sélectionnez le gagnant</p>" .
+            '<form name="winnerForm" id="winnerForm" method="post">' . csrf_field() . '
+            <br><input type="radio" name="winnerRadio" value="' . $_POST['proposedArbi'] . "_" . $match->cid . '" id="challengerWin"><label for="challengerWin">' . $match->cfirst . " " . $match->clast . '</label>
+            <br><input type="radio" name="winnerRadio" value="' . $_POST['proposedArbi'] . "_" . $match->tid . '" id="targetWin"><label for="targetWin">' . $match->tfirst . " " . $match->tlast . '</label>
             <br><input type="submit" value="valider">
 ';
-    }
-    else {
+    } else {
         DB::table('defis')->where('id', $_POST['proposedArbi'])->delete();
     }
     unset($_POST);
 }
 
-    if(isset($_POST['winnerRadio'])){
+if (isset($_POST['winnerRadio'])) {
 
-        $winner = explode("_",$_POST['winnerRadio']);
-        $idDefi = $winner[0];
-        $idWinner= $winner[1];
+    $winner = explode("_", $_POST['winnerRadio']);
+    $idDefi = $winner[0];
+    $idWinner = $winner[1];
 
-        DB::table('defis')
-            ->where('id', $idDefi)
-            ->update(array('winner_id' => $idWinner));
+    DB::table('defis')
+        ->where('id', $idDefi)
+        ->update(array('winner_id' => $idWinner));
 
-        $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId, label
+    $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId, label
             FROM defis
             WHERE defis.id= :id    ', ['id' => $idDefi]);
 
-        $infosPts=$addMvtpts[0];
-        $label=$infosPts->label;
-        $nbrPts = (5);
+    $infosPts = $addMvtpts[0];
+    $label = $infosPts->label;
+    $nbrPts = (5);
 
-        date_default_timezone_set('Europe/Paris');
-        $date = date("Y-m-d H:i:s");
+    date_default_timezone_set('Europe/Paris');
+    $date = date("Y-m-d H:i:s");
 
 
-        DB::table('mvt_points')->insert(
-            array(
-                'nbr_points' => "$nbrPts",
-                'users_id' => "$infosPts->winnerId",
-                'created_at' => "$date",
-                'label'=> "$label"
-            )
-        );
+    DB::table('mvt_points')->insert(
+        array(
+            'nbr_points' => "$nbrPts",
+            'users_id' => "$infosPts->winnerId",
+            'created_at' => "$date",
+            'label' => "$label"
+        )
+    );
 
-        DB::table('users')
-            ->where('id', $infosPts->winnerId)
-            ->increment('total_pts_defi', "$nbrPts");
+    DB::table('users')
+        ->where('id', $infosPts->winnerId)
+        ->increment('total_pts_defi', "$nbrPts");
 
-        DB::table('users')
-            ->where('id', $infosPts->winnerId)
-            ->increment('total_pts', "$nbrPts");
+    DB::table('users')
+        ->where('id', $infosPts->winnerId)
+        ->increment('total_pts', "$nbrPts");
 
-        DB::table('users')
-            ->where('id', $infosPts->winnerId)
-            ->increment('total_won_defis', 1);
+    DB::table('users')
+        ->where('id', $infosPts->winnerId)
+        ->increment('total_won_defis', 1);
 
-        $systemsIds = DB::select('SELECT system_id AS systemId
+    $systemsIds = DB::select('SELECT system_id AS systemId
                 FROM users
                 WHERE id = :id
                 ', ['id' => $infosPts->winnerId]);
 
-        $idSystemWinner = $systemsIds[0];
+    $idSystemWinner = $systemsIds[0];
 
-        DB::table('systems')
-            ->where('id', $idSystemWinner->systemId)
-            ->increment('total_pts_defi', "$nbrPts");
+    DB::table('systems')
+        ->where('id', $idSystemWinner->systemId)
+        ->increment('total_pts_defi', "$nbrPts");
 
-        DB::table('systems')
-            ->where('id', $idSystemWinner->systemId)
-            ->increment('total_pts', "$nbrPts");
+    DB::table('systems')
+        ->where('id', $idSystemWinner->systemId)
+        ->increment('total_pts', "$nbrPts");
 
-        unset($_POST);
-    }
+    unset($_POST);
+}
 
-    ?>
+?>
 
 @include('footer')
 
