@@ -391,7 +391,6 @@ p.systemPage {
     flex-grow: 1;
     justify-content: center;
     align-content: center;
-    height: 100%;
     width: 99%;
     margin: 0px;
     left: calc(50% - 300px);
@@ -540,12 +539,8 @@ img {
 }
 
 .listMembers {
-    flex-direction: row;
+    justify-content: center;
     display: flex;
-    justify-content: left;
-    align-items: start;
-    flex-wrap: wrap;
-    margin-bottom: 10%;
     padding: 0;
     width: 70%;
 }
