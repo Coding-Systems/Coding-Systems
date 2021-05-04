@@ -56,35 +56,22 @@ td {
     display: none;
   }
 
-.option_Crackend:first-letter{
-    color: #3c639f;
+.option_Crackend{
+    background-color: #91a8c4;
 }
-.option_Gitsune:first-letter{
-    color: #a77140;
+.option_Crackend:focus{
+    background-color: #7c94b1;
 }
-
-.option_PhoeniXML:first-letter{
-    color: #b33a3a;
+.option_Gitsune{
+    background-color: #9b8877;
 }
-
-section{
-    display: grid;
+.option_Gitsune:focus{
+    background-color: #7a6a5a;
 }
-
-.sumbmitchallanges{
-    transition-duration: 0.2s;
-    border-radius: 5px;
-    background-color: #4e555b;
-    color: white;
-
-}.sumbmitchallanges:hover{
-    transition-duration: 0.2s;
-     border-radius: 10px;
-     background-color: #ffffff;
-     color: #474747;
+.option_PhoeniXML{
+    background-color: #c49791;
+}
+.option_PhoeniXML:focus{
+    background-color: #99716d;
 }
 
-.challengeSelect{
-    margin-left: 2em;
-    margin-right:  2em;
-}
