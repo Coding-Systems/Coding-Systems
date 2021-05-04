@@ -56,8 +56,8 @@ if($userType->statut == 'student'){
     $listDefis = DB::table('defis_type')->select("id", "label")->get();
 
     echo '<script>
-const searchBar = document.getElementById("challengeInput");
-searchBar.addEventListener("keyup", e => {
+const searchBarChallenge = document.getElementById("challengeInput");
+searchBarChallenge.addEventListener("keyup", e => {
     const searchString = e.target.value; 
     let input = document.getElementById("challengeInput").value;
     input = input.toLowerCase();
@@ -66,7 +66,7 @@ searchBar.addEventListener("keyup", e => {
     for (i = 0; i < selectElmt.length; i++) { 
         var optionselm = selectElmt[i].id;
         console.log(optionselm);
-        if (!optionselm.includes(searchString)) {
+        if (!optionselm.toLowerCase().includes(searchString)) {
             document.getElementById(optionselm).classList.add("disabled"); 
             console.log("not include");
         }
@@ -100,11 +100,38 @@ searchBar.addEventListener("keyup", e => {
 
     echo '<section class="oppenents">';
     //echo '<label class="typeDefi">Type de défi';
-    echo '<select required="required" name="OpponentId" size="7">';
 
-    foreach ($listUsers as $user){
-        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+    echo '<input id="opponentInput"  name="searchOpponent" type="searchOpponent">';
+
+    echo '<select required="required" id="selectOpponent" name="OpponentId" size="7">';
+
+        foreach ($listUsers as $user){
+        echo '<option id="'.$user->fName.$user->lName.'" value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     }
+
+        echo '<script>
+    const searchBarOpponent = document.getElementById("opponentInput");
+    searchBarOpponent.addEventListener("keyup", e => {
+    const searchString = e.target.value; 
+    let input = document.getElementById("opponentInput").value;
+    input = input.toLowerCase();
+    var selectElmtOpponent = document.getElementById("selectOpponent").options;
+
+    for (i = 0; i < selectElmtOpponent.length; i++) { 
+        var optionselmOpponent = selectElmtOpponent[i].text;
+        var optionidOpponent = selectElmtOpponent[i].id;
+        console.log(optionselmOpponent);
+        if (!optionselmOpponent.toLowerCase().includes(searchString)) {
+            document.getElementById(optionidOpponent).classList.add("disabled"); 
+            console.log("not include");
+        }
+        else {
+            document.getElementById(optionidOpponent).classList.remove("disabled"); 
+            console.log("include") 
+        }
+    }
+})
+</script>';
 
     echo '</select>';
 
@@ -116,10 +143,13 @@ searchBar.addEventListener("keyup", e => {
 
     echo '<section class="arbiter">';
     //echo '<label class="typeDefi">Type de défi';
-    echo '<select required="required" name="arbiterId" size="7">';
+
+    echo '<input id="arbiterInput" name="searchArbiter" type="searchArbiter">';
+
+    echo '<select required="required" id="selectArbiter" name="arbiterId" size="7">';
 
     foreach ($listUsers as $user){
-        echo '<option value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option id="'.$user->fName.$user->lName.'" value="'.$user->Uid.'">'."[".$user->systemName."] ".$user->fName." ".$user->lName.'</option>';
     };
 
     $listpo = DB::select('SELECT first_name AS fName, last_name AS lName, users.id as Uid
@@ -128,8 +158,34 @@ searchBar.addEventListener("keyup", e => {
         ORDER BY fName', ['id' => $userType->id]);
 
     foreach ($listpo as $user){
-        echo '<option value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
+        echo '<option id="'.$user->Uid.'" value="'.$user->Uid.'">'."[PO] ".$user->fName." ".$user->lName.'</option>';
+        echo '<p id="caca">SALUT LES COUPAINGS</p>';
     }
+
+    echo '<script>
+    const searchBarArbiter = document.getElementById("arbiterInput");
+    searchBarArbiter.addEventListener("keyup", e => {
+    const searchString = e.target.value; 
+    let input = document.getElementById("arbiterInput").value;
+    input = input.toLowerCase();
+    var selectElmtArbiter = document.getElementById("selectArbiter");
+    console.log(selectElmtArbiter);
+
+    for (i = 0; i < selectElmtArbiter.length; i++) { 
+        var optionselmArbiter = selectElmtArbiter[i].text;
+        var optionidArbiter = selectElmtArbiter[i].id;
+        console.log(optionidArbiter);
+        if (!optionselmArbiter.toLowerCase().includes(searchString)) {
+            document.getElementById(optionidArbiter).classList.add("disabled"); 
+            console.log("not include");
+        }
+        else {
+            document.getElementById(optionidArbiter).classList.remove("disabled"); 
+            console.log("include") 
+        }
+    }
+})
+</script>';
 
     echo '</select>';
 

@@ -109,5 +109,3 @@ users.numbers
 storage/framework/laravel-excel/
 
 users_old.xlsx
-
-composer.json
