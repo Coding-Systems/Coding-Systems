@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
 header{
-    background-color: #450422;
-    background-color: #390518;
+    background-color: #69272a;
 }
 
 h1, h2, .numberRanking{
@@ -15,7 +14,7 @@ h1, h2, .numberRanking{
 /*backgroud*/
 .bg {
     animation: slide 5s ease-in-out infinite alternate;
-    background-image: linear-gradient(33deg, #45041b 25%, rgb(23, 15, 26) 25%);
+    background-image: linear-gradient(33deg, #6e0101 25%, rgb(14, 5, 29) 25%);
     bottom: 0;
     left: -50%;
     opacity: .5;
