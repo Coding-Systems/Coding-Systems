@@ -51,6 +51,8 @@ if($userType->statut == 'student'){
 
     echo '<input id="challengeInput"  name="searchChallenge" type="searchChallenge" autofocus>';
 
+    echo '<p id="notFound" class="disabled">Oups. Ce que tu cherches n\'existe pas...</p>';
+
     echo '<select required="required" id="selectChallenge" name="defiTypeId" size="7">';
 
     $listDefis = DB::table('defis_type')->select("id", "label")->get();
@@ -63,16 +65,22 @@ searchBarChallenge.addEventListener("keyup", e => {
     input = input.toLowerCase();
     var selectElmt = document.getElementById("selectChallenge").options;
 
+    j = 0
     for (i = 0; i < selectElmt.length; i++) {
         var optionselm = selectElmt[i].id;
-        console.log(optionselm);
         if (!optionselm.toLowerCase().includes(searchString)) {
             document.getElementById(optionselm).classList.add("disabled");
-            console.log("not include");
+            j++
+
+            if (j >= selectElmt.length){
+                document.getElementById("selectChallenge").classList.add("disabled");
+                document.getElementById("notFound").classList.remove("disabled");
+            }
         }
         else {
             document.getElementById(optionselm).classList.remove("disabled");
-            console.log("include")
+            document.getElementById("selectChallenge").classList.remove("disabled");
+            document.getElementById("notFound").classList.add("disabled");
         }
     }
 })
@@ -103,6 +111,8 @@ searchBarChallenge.addEventListener("keyup", e => {
 
     echo '<input id="opponentInput"  name="searchOpponent" type="searchOpponent">';
 
+    echo '<p id="notFoundOpponent" class="disabled">Oups. Ce que tu cherches n\'existe pas...</p>';
+
     echo '<select required="required" id="selectOpponent" name="OpponentId" size="7">';
 
         foreach ($listUsers as $user){
@@ -116,6 +126,7 @@ searchBarChallenge.addEventListener("keyup", e => {
     let input = document.getElementById("opponentInput").value;
     input = input.toLowerCase();
     var selectElmtOpponent = document.getElementById("selectOpponent").options;
+    j = 0
 
     for (i = 0; i < selectElmtOpponent.length; i++) {
         var optionselmOpponent = selectElmtOpponent[i].text;
@@ -123,11 +134,17 @@ searchBarChallenge.addEventListener("keyup", e => {
         console.log(optionselmOpponent);
         if (!optionselmOpponent.toLowerCase().includes(searchString)) {
             document.getElementById(optionidOpponent).classList.add("disabled");
-            console.log("not include");
+            j++
+
+            if (j >= selectElmtOpponent.length){
+                document.getElementById("selectOpponent").classList.add("disabled");
+                document.getElementById("notFoundOpponent").classList.remove("disabled");
+            }
         }
         else {
             document.getElementById(optionidOpponent).classList.remove("disabled");
-            console.log("include")
+            document.getElementById("selectOpponent").classList.remove("disabled");
+            document.getElementById("notFoundOpponent").classList.add("disabled");
         }
     }
 })
@@ -145,6 +162,8 @@ searchBarChallenge.addEventListener("keyup", e => {
     //echo '<label class="typeDefi">Type de défi';
 
     echo '<input id="arbiterInput" name="searchArbiter" type="searchArbiter">';
+
+    echo '<p id="notFoundArbiter" class="disabled">Oups. Ce que tu cherches n\'existe pas...</p>';
 
     echo '<select required="required" id="selectArbiter" name="arbiterId" size="7">';
 
@@ -169,19 +188,25 @@ searchBarChallenge.addEventListener("keyup", e => {
     let input = document.getElementById("arbiterInput").value;
     input = input.toLowerCase();
     var selectElmtArbiter = document.getElementById("selectArbiter");
-    console.log(selectElmtArbiter);
+    j = 0
 
     for (i = 0; i < selectElmtArbiter.length; i++) {
         var optionselmArbiter = selectElmtArbiter[i].text;
         var optionidArbiter = selectElmtArbiter[i].id;
-        console.log(optionidArbiter);
         if (!optionselmArbiter.toLowerCase().includes(searchString)) {
             document.getElementById(optionidArbiter).classList.add("disabled");
-            console.log("not include");
+
+            j++
+
+            if (j >= selectElmtArbiter.length){
+                document.getElementById("selectArbiter").classList.add("disabled");
+                document.getElementById("notFoundArbiter").classList.remove("disabled");
+            }
         }
         else {
             document.getElementById(optionidArbiter).classList.remove("disabled");
-            console.log("include")
+            document.getElementById("selectArbiter").classList.remove("disabled");
+            document.getElementById("notFoundArbiter").classList.add("disabled");
         }
     }
 })
