@@ -11,7 +11,7 @@ p.challengePage{
 }
 
 select, input, table {
-    background-color: #bbbcc4;
+    background-color: #ffffff;
     border-radius: 10px;
     border : 0px;
     outline: none;
@@ -41,13 +41,12 @@ td {
 #sendChallenge {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 #requestChallenges {
-    display: flex;
+    display: block;
     flex-direction: row;
-    //flex-wrap: wrap;
+    flex-wrap: wrap;
     justify-content: space-around;
     text-wrap: normal;
     padding-bottom: 10%;
@@ -68,3 +67,24 @@ td {
     color: #b33a3a;
 }
 
+section{
+    display: grid;
+}
+
+.sumbmitchallanges{
+    transition-duration: 0.2s;
+    border-radius: 5px;
+    background-color: #4e555b;
+    color: white;
+
+}.sumbmitchallanges:hover{
+    transition-duration: 0.2s;
+     border-radius: 10px;
+     background-color: #ffffff;
+     color: #474747;
+}
+
+.challengeSelect{
+    margin-left: 2em;
+    margin-right:  2em;
+}

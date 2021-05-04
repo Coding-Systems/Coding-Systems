@@ -217,7 +217,7 @@ searchBarChallenge.addEventListener("keyup", e => {
         echo "</div>";
 
 
-    echo '</br><input type="submit" value="Valider"> ';
+    echo '</br><input class="sumbmitchallanges" type="submit" value="Valider"> ';
 
     echo '</form>';
 

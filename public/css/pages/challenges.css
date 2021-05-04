@@ -11,13 +11,11 @@ p.challengePage {
 }
 
 select, input, table {
-  background-color: #bbbcc4;
+  background-color: #ffffff;
   border-radius: 10px;
   border: 0px;
   outline: none;
   font-size: 80%;
-  padding-left: 10px;
-  padding-right: 10px;
   margin: 10px 10px 10px 10px;
 }
 
@@ -38,8 +36,16 @@ td {
 #sendChallenge {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+#requestChallenges {
+  display: block;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  text-wrap: normal;
+  padding-bottom: 10%;
 }
 
 #requestChallenges {
@@ -48,6 +54,41 @@ td {
   justify-content: space-around;
   text-wrap: normal;
   padding-bottom: 10%;
+}
+
+.option_Crackend:first-letter {
+  color: #3c639f;
+}
+
+.option_Gitsune:first-letter {
+  color: #a77140;
+}
+
+.option_PhoeniXML:first-letter {
+  color: #b33a3a;
+}
+
+section {
+  display: grid;
+}
+
+.sumbmitchallanges {
+  transition-duration: 0.2s;
+  border-radius: 5px;
+  background-color: #4e555b;
+  color: white;
+}
+
+.sumbmitchallanges:hover {
+  transition-duration: 0.2s;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #474747;
+}
+
+.challengeSelect {
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 /*# sourceMappingURL=challenges.css.map */
