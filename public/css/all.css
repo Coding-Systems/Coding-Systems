@@ -17,6 +17,10 @@ img#H {
     padding-bottom: 48px;
 }
 
+.disabled {
+    display: none;
+}
+
 div.stat {
     height: 18em;
     padding-bottom: 48px;
