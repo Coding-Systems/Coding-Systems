@@ -1,5 +1,5 @@
 button #buttonAdmin{
-    background-color: #4CAF50; /* Green */
+    background-color: #4caf4f; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -914,66 +914,6 @@ input:focus{
 .cssTheme:hover {
     transition-duration: 0.3s;
 }
-
-#defaultTheme {
-    /*border: 1px solid rgb(100, 100, 100); */
-    color: rgb(199, 200, 207);
-    text-shadow: rgb(0, 0, 0) 0px 0px 2px;
-    background-image: linear-gradient(33deg, rgb(199, 200, 207) 25%, rgba(52, 13, 46, 0) 25%);
-    border: 1px solid rgb(199, 200, 207);
-}
-
-#defaultTheme:hover {
-    transition-duration: 0.5s;
-    background-image: linear-gradient(33deg, rgb(199, 200, 207) 25%, rgb(143, 149, 156) 25%);
-    border: none
-}
-
-#phoenixmlTheme {
-    /*border: 0px solid #fda917;*/
-    color: #ffb500;
-    text-shadow: rgb(66, 1, 0) 0px 0px 2px;
-    background-image: linear-gradient(33deg, #ffb500 25%, rgba(52, 13, 46, 0) 25%);
-    border: 1px solid #ffb500;
-    /*background-image: linear-gradient(33deg, rgb(253, 169, 23) 25%, rgb(133, 3, 0) 25%);*/
-}
-
-#phoenixmlTheme:hover {
-    transition-duration: 0.5s;
-    background-image: linear-gradient(33deg, rgb(255, 181, 0) 25%, rgb(154, 71, 66) 25%);
-    border: none
-}
-
-#gistuneTheme {
-    /*border: 1px solid #b9b2a8;*/
-    color: #9c7242;
-    text-shadow: #110c05 0px 0px 2px;
-    background-image: linear-gradient(33deg, #9c7242 25%, rgba(52, 13, 46, 0) 25%);
-    border: 1px solid #9c7242;
-    /* background-image: linear-gradient(33deg, #bbb1a7 25%, #836039 25%); */
-}
-
-#gistuneTheme:hover {
-    transition-duration: 0.5s;
-    background-image: linear-gradient(33deg, #9c7242 25%, #b9b2a8 25%);
-    border: none
-}
-
-#crackendTheme {
-    /*border: 1px solid #54a1be;*/
-    color: #48b8d4;
-    text-shadow: #000037 0px 0px 2px;
-    background-image: linear-gradient(33deg, #48b8d4 25%, rgba(52, 13, 46, 0) 25%);
-    border: 1px solid #48b8d4;
-    /*background-image: linear-gradient(33deg, #54a1be 25%, #000053 25%);*/
-}
-
-#crackendTheme:hover {
-    transition-duration: 0.5s;
-    background-image: linear-gradient(33deg, #48b8d4 25%, #06006b 25%);
-    border: none
-}
-
 
 @media screen and (max-width: 740px) {
     #statsUser {

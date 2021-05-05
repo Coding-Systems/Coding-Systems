@@ -10958,7 +10958,7 @@ header {
   flex-direction: row;
   justify-content: center;
   flex-wrap: nowrap;
-  background-color: #44153C;
+
   color: #C8C8CF;
 }
 
@@ -10971,7 +10971,6 @@ a.menuLink {
 }
 
 #pagesMenu {
-  background-color: #44153C;
   width: fit-content;
   display: block;
   float: left;
