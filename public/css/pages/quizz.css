@@ -11,14 +11,6 @@ div.question:hover {
   color: #801367;
 }
 
-svg {
-  float: left;
-}
-
-section {
-  margin-bottom: 1.5em;
-}
-
 label {
   cursor: pointer;
   font-weight: bold;
