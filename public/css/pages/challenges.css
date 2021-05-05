@@ -51,12 +51,8 @@ td {
   padding-bottom: 10%;
 }
 
-#requestChallenges {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  text-wrap: normal;
-  padding-bottom: 10%;
+.disabled {
+  display: none;
 }
 
 section {
@@ -80,7 +76,7 @@ section {
 .challengeSelect {
   margin-left: 2em;
   margin-right: 2em;
-  width: 10em;
+  width: 14em;
 }
 
 p#notFound {
