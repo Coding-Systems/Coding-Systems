@@ -257,7 +257,7 @@ if (isset($_POST['OpponentId']) && isset($_POST['arbiterId']) && isset($_POST['d
             echo "<p class='challengePage'>Échec.</br> L'adversaire et l'arbitre doivent être dans des systems différentes.</p>";
         }
     } else {
-        echo "Vous avez déja un défi en attente de réponses. Annulez-le ou finissez-le avant de défier d'autres personnes.";
+        echo "<P Vous avez déja un défi en attente de réponses. Annulez-le ou finissez-le avant de défier d'autres personnes.</p>";
     }
     echo "</p>";
     unset($_POST);
@@ -301,7 +301,7 @@ if ($userType->statut == 'student') {
 
             </form>';
     } else {
-        echo "Aucune proposition de défis en attente.";
+        echo "<p>Aucune proposition de défis en attente.</p>";
     }
 
 }
@@ -340,7 +340,7 @@ if (isset($arbitorInvitation[0])) {
 
             </form>';
 } else {
-    echo "Aucune demande d'arbitrage en attente.";
+    echo "<p>Aucune demande d'arbitrage en attente.<p>";
 }
 
 echo "</div>";
@@ -376,7 +376,7 @@ if ($userType->statut == 'student') {
             </form>';
         }
     } else {
-        echo "Ancun défi en attente.";
+        echo "<p>Ancun défi en attente.</p>";
     }
 }
 
