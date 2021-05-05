@@ -100,29 +100,73 @@ use App\Providers\CheckLogoLvl;
     <h2>Ajouter des users</h2>
 
     <form method="post"> {{ csrf_field() }}
-{{--
-        <input type="file" name="file" id="file" class="inputfile" />
-        <label for="file">
-            <img class="iconDl" src="img/down_arrow.png"/>
-            Choose a file
-        </label>
---}}
         <input class="form-control-sm input-btn-padding-x" type="file" id="filesUsers" name="pathFiles" multiple>
         <button id="submitUsers" type="submit">Lancer</button>
     </form>
     <?php
-     if (isset($_POST['addPromo'])) {
-        if (DB::table('promo')->where('name', '=', $_POST['namePromo'])->exists()) {
-            echo 'La promo existe déjà.';
+    use Maatwebsite\Excel\Concerns\ToModel;
+
+    class UsersImportAxel implements ToModel
+    {
+        /**
+         * @param array $row
+         *
+         * @return User|null
+         */
+        public function model(array $row)
+        {
+            return new User([
+                'mail'     => $row[0],
+                'firstname' => $row[1],
+                'lastname'  => $row[2],
+                'status'    => $row[3],
+                'is_admin'  => $row[4],
+                'promo_id'  => $row[5]
+            ]);
         }
-        else {
-            DB::table('promo')->insert(
-                array(
-                    'name' => $_POST['namePromo']
-                )
-            );
-            echo 'La promo a été créée.';
-        }
+    }
+    if (isset($_POST["pathFiles"])) {
+        printf($_POST["pathFiles"]);
+/*        $all = Excel::toArray(new UsersImportAxel, storage_path($_POST['pathFiles']));
+        $usersList = $all[0];
+        printf($usersList);
+        foreach ($usersList as $user) {
+            $promoName = $user[5];
+            $promoName = str_replace([" ", "\n"], "", $promoName);
+
+            if ($promoName == "" ){
+                $promoId = null;
+            }
+            else{
+                $promoId = 3;
+                $promoInfos = DB::table('promo')->select('id')->where('name', $promoName)->get();
+
+                $promoId = $promoInfos[0]->id;
+            }
+            $newUser = DB::table('users')->insert([
+                'first_name'=>ucfirst(strtolower($user[2])),
+                'last_name'=>$user[1],
+                'mail'=>$user[0],
+                'promo_id'=>$promoId,
+                'statut'=>$user[3],
+                'is_admin' => $user[4]
+            ]);
+            $newUserCreated= DB::table('users')->select('id', 'statut')
+                ->where('mail',$user[0])
+                ->get();
+            $idUser= $newUserCreated[0]->id;
+            $statutUser=$newUserCreated[0]->statut;
+            if($statutUser=='student'){
+                DB::table('result_test')->insert(
+                    array(
+                        'users_id' => $idUser,
+                        'score_gitsune' => "0",
+                        'score_phoenixml' => "0",
+                        'score_crackend' => "0"
+                    )
+                );
+            }
+        }*/
     }
     ?>
 
