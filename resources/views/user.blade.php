@@ -211,11 +211,46 @@ $studentList = DB::table('users')
 echo '<form name="addPointsForm" method="post">'. csrf_field() .
     '<section class="addPoints">
     <label class="student">Eleve<br/>
-    <select required="required" name="studentId" size="5">';
+    <input id="studentInput"  name="searchStudent" type="searchStudent">
+
+    <p id="notFound" class="disabled">Oups. Ce que tu cherches n\'existe pas...</p>
+
+    <select required="required" id="selectStudent" name="studentId" size="5">';
 
     foreach ($studentList as $student){
-      echo '<option value="'.$student->id.'">'.$student->first_name.'</option>';
+      echo '<option id="'.$student->id.'" value="'.$student->id.'">'.$student->first_name.'</option>';
     }
+
+    echo '<script>
+    const searchBarStudent = document.getElementById("studentInput");
+    searchBarStudent.addEventListener("keyup", e => {
+    const searchString = e.target.value;
+    let input = document.getElementById("studentInput").value;
+    input = input.toLowerCase();
+    var selectElmtStudent = document.getElementById("selectStudent").options;
+    j = 0
+
+    for (i = 0; i < selectElmtStudent.length; i++) {
+        var optionselmStudent = selectElmtStudent[i].text;
+        var optionidStudent = selectElmtStudent[i].id;
+        console.log(optionselmStudent);
+        if (!optionselmStudent.toLowerCase().includes(searchString)) {
+            document.getElementById(optionidStudent).classList.add("disabled");
+            j++
+
+            if (j >= selectElmtStudent.length){
+                document.getElementById("selectStudent").classList.add("disabled");
+                document.getElementById("notFound").classList.remove("disabled");
+            }
+        }
+        else {
+            document.getElementById(optionidStudent).classList.remove("disabled");
+            document.getElementById("selectStudent").classList.remove("disabled");
+            document.getElementById("notFound").classList.add("disabled");
+        }
+    }
+})
+</script>';
 
    echo '</select>
     </label> </br>
