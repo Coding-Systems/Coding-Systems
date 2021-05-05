@@ -10992,7 +10992,7 @@ a.menuLink {
 .menuLink:hover {
   text-shadow: #250e1c 2px 2px 0px;
   color: #7d838a;
-  transition-duration: 0.2s;
+  /*transition-duration: 0.2s;*/
 }
 
 /*-----------------HEADER-----------------*/
