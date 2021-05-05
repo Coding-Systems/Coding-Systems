@@ -6,8 +6,8 @@ h3.challengePage {
     font-size: 125%;
 }
 
-p.challengePage{
-    color :white;
+p.challengePage {
+    color: white;
     text-align: center;
     font-size: 100%;
 }
@@ -17,7 +17,7 @@ select, input, table {
     color: white;
 
     border-radius: 3px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 80%;
     //padding-left: 10px;
@@ -25,11 +25,11 @@ select, input, table {
     margin: 10px 10px 10px 10px;
 }
 
-input:focus{
+input:focus {
     background-color: #7d838a;
 }
 
-table{
+table {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 25px;
@@ -39,7 +39,8 @@ td {
     border-bottom: 1px solid #7d838a;
 }
 
-[type="submit"]:checked {}
+[type="submit"]:checked {
+}
 
 
 #sendChallenge {
@@ -48,6 +49,7 @@ td {
     flex-direction: row;
     justify-content: center;
 }
+
 #requestChallenges {
     display: block;
     flex-direction: row;
@@ -59,34 +61,41 @@ td {
 
 .disabled {
     display: none;
-  }
+}
 
-section{
+section {
     display: grid;
 }
 
-.sumbmitchallanges{
+.sumbmitchallanges {
     transition-duration: 0.2s;
     border-radius: 3px;
     background-color: #4e555b;
     color: white;
 
-}.sumbmitchallanges:hover{
-    transition-duration: 0.2s;
-     border-radius: 3px;
-     background-color: #ffffff;
-     color: #474747;
 }
 
-.challengeSelect{
+.sumbmitchallanges:hover {
+    transition-duration: 0.2s;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #474747;
+}
+
+.challengeSelect {
     margin-left: 2em;
-    margin-right:  2em;
+    margin-right: 2em;
     width: 10em;
 }
-p#notFound{
+
+p#notFound {
     font-size: 80%;
-}p#notFoundOpponent{
+}
+
+p#notFoundOpponent {
     font-size: 80%;
-}p#notFoundArbiter{
+}
+
+p#notFoundArbiter {
     font-size: 80%;
 }
