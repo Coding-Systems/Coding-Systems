@@ -22,8 +22,8 @@ class UsersImportAxel implements ToModel
     }
 }
 
-function getArrayListUsers(){
-    $all = Excel::toArray(new UsersImportAxel, storage_path('../users.xlsx'));
+function getArrayListUsers($pathFile){
+    $all = Excel::toArray(new UsersImportAxel, storage_path($pathFile));
     //print_r ($all);
     $usersList= $all[0];
     return $usersList;
