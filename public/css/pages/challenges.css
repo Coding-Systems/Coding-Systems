@@ -36,6 +36,7 @@ td {
 }
 
 #sendChallenge {
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -79,6 +80,19 @@ section {
 .challengeSelect {
   margin-left: 2em;
   margin-right: 2em;
+  width: 10em;
+}
+
+p#notFound {
+  font-size: 80%;
+}
+
+p#notFoundOpponent {
+  font-size: 80%;
+}
+
+p#notFoundArbiter {
+  font-size: 80%;
 }
 
 /*# sourceMappingURL=challenges.css.map */
