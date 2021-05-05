@@ -15,6 +15,7 @@ p.challengePage {
 select, input, table {
     background-color: #c3c3c3;
     color: white;
+    width: 18fdsem;
 
     border-radius: 3px;
     border: 0px;
@@ -74,10 +75,6 @@ td {
     display: none;
 }
 
-section {
-    display: grid;
-}
-
 .sumbmitchallanges {
     transition-duration: 0.2s;
     border-radius: 3px;
@@ -94,7 +91,7 @@ section {
 }
 
 .challengeSelect {
-    width: 18em;
+    width: 15em;
 }
 
 p#notFound {
