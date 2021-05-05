@@ -42,6 +42,17 @@ td {
 [type="submit"]:checked {
 }
 
+#selectChallenge {
+    width: 18em;
+}
+
+#selectOpponent {
+    width: 18em;
+}
+
+#selectArbiter {
+    width: 18em;
+}
 
 #sendChallenge {
     flex-wrap: wrap;
@@ -83,9 +94,7 @@ section {
 }
 
 .challengeSelect {
-    margin-left: 2em;
-    margin-right: 2em;
-    width: 14em;
+    width: 18em;
 }
 
 p#notFound {
