@@ -4,12 +4,17 @@ h3.challengePage {
     margin-top: 1em;
     color: white;
     font-size: 125%;
+    text-decoration: underline;
 }
 
 p.challengePage {
     color: white;
     text-align: center;
     font-size: 100%;
+}
+
+p{
+    font-size: 1em;
 }
 
 select, input, table {
