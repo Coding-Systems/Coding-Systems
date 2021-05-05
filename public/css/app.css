@@ -11071,13 +11071,13 @@ a:active {
 
 .iconLinkLogout {
   position: absolute;
-  top: 1.5%;
+  top: 25px;
   right: 2%;
 }
 
 .iconLink {
   position: absolute;
-  top: 1.5%;
+  top: 25px;
   right: 5%;
   margin-right: 1%;
 
@@ -11087,12 +11087,8 @@ a:active {
 @media screen and (max-width: 1080px) {
   .iconLinkLogout {
     position: relative;
-    top: 1.5%;
-    right: 2%;
   }
   .iconLink {
     position: relative;
-    top: 1.5%;
-    right: 5%;
   }
 }
