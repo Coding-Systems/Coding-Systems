@@ -80,6 +80,8 @@ section #rankings {
 @media screen and (max-width: 1190px) {
   #history {
     display: block;
+      justify-content: left;
+      padding-bottom: 5%;
   }
 
   #historyDiv {

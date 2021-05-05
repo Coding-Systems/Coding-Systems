@@ -1,4 +1,3 @@
-@charset "UTF-8";
 h3.challengePage {
   margin-top: 1em;
   color: white;
@@ -26,20 +25,29 @@ input:focus {
   background-color: #7d838a;
 }
 
+table {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
 td {
   border-bottom: 1px solid #7d838a;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-
+#sendChallenge {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.disabled {
-  display: none;
+#requestChallenges {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-wrap: normal;
+  padding-bottom: 10%;
 }
-
 
 /*# sourceMappingURL=challenges.css.map */
