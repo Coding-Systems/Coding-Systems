@@ -1,4 +1,5 @@
 form {
+  color: white;
   display: block;
   margin: auto;
   max-width: 10em;
@@ -10,11 +11,18 @@ div.question:hover {
   color: #801367;
 }
 
+svg {
+  float: left;
+}
+
+section {
+  margin-bottom: 1.5em;
+}
+
 label {
   cursor: pointer;
   font-weight: bold;
   text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.2);
-  transition: color 0.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 label:not(:last-of-type) {

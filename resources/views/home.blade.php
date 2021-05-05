@@ -71,7 +71,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
         </section>
 
     </section>
-    <section>
+    <section id="historySection">
 
         <h2>Historique des derniers points</h2>
 
