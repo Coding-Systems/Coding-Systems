@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,300&display=swap");
 h3.challengePage {
   margin-top: 1em;
   color: white;
@@ -12,7 +13,8 @@ p.challengePage {
 
 select, input, table {
   background-color: #c3c3c3;
-  border-radius: 10px;
+  color: white;
+  border-radius: 3px;
   border: 0px;
   outline: none;
   font-size: 80%;
@@ -62,14 +64,14 @@ section {
 
 .sumbmitchallanges {
   transition-duration: 0.2s;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #4e555b;
   color: white;
 }
 
 .sumbmitchallanges:hover {
   transition-duration: 0.2s;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: #ffffff;
   color: #474747;
 }
