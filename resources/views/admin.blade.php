@@ -115,7 +115,7 @@ use App\Providers\CheckLogoLvl;
                     'name' => $_POST['namePromo']
                 )
             );
-            echo 'La promo a été créée.';
+            echo '<p>La promo a été créée.</p>';
         }
     }
     ?>
@@ -142,7 +142,7 @@ use App\Providers\CheckLogoLvl;
                 'number_of_points' => $_POST['numberPointsChallenge']
             )
         );
-        echo 'Le défi a été créé.';
+        echo '<p>Le défi a été créé.</p>';
     }
 }
 ?>
