@@ -93,6 +93,7 @@ body {
     text-align-last: center;
     display: flex;
     text-align: center;
+
 }
 
 #addPts, #addPtsNote {
@@ -221,7 +222,7 @@ input:focus{
         flex-direction: column;
     }
     #addPoints {
-        display: table-caption;
+        display: block;
     }
     #addPts, #addPtsNote {
         display: flex;
@@ -267,10 +268,39 @@ td {
     display: table-caption;
 }
 section.addPoints {
-    display: table-caption;
+    display: inline-flex;
     transform: translate(2%);
 }
 
 input button, [type=button], [type=reset], [type=submit]{
-    transform: translate(-10%);
+    color: white;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    border: 0;
+    outline: none;
+    font-size: 80%;
+    font-family: 'Comic Neue', 'Open Sans', sans-serif;
+    width: fit-content;
+
+}
+
+#selectStudent{
+    width: 400px;
+}
+label {
+    padding-right: 0;
+}
+
+.student{
+    display: grid;
+    justify-items: center;
+}
+
+label.points{
+    display: block;
+}
+
+div.divPoint{
+    width: 400px;
+
 }

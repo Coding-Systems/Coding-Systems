@@ -208,7 +208,7 @@ input:focus{
   }
 
   #addPoints {
-    display: table-caption;
+    display: block;
   }
 
   #addPts, #addPtsNote {
@@ -216,8 +216,15 @@ input:focus{
     flex-direction: column;
   }
 }
+input, select {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+input:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 select, input, table {
-  background-color: #c3c3c3;
   color: white;
   width: 9em;
   border-radius: 3px;
@@ -244,12 +251,40 @@ td {
 }
 
 section.addPoints {
-  display: table-caption;
+  display: inline-flex;
   transform: translate(2%);
 }
 
 input button, [type=button], [type=reset], [type=submit] {
-  transform: translate(-10%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 0;
+  outline: none;
+  font-size: 80%;
+  font-family: "Comic Neue", "Open Sans", sans-serif;
+  width: fit-content;
+}
+
+#selectStudent {
+  width: 400px;
+}
+
+label {
+  padding-right: 0;
+}
+
+.student {
+  display: grid;
+  justify-items: center;
+}
+
+label.points {
+  display: block;
+}
+
+div.divPoint {
+  width: 400px;
 }
 
 /*# sourceMappingURL=user.css.map */

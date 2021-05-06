@@ -3,6 +3,7 @@ h3.challengePage {
   margin-top: 1em;
   color: white;
   font-size: 125%;
+  text-decoration: underline;
 }
 
 p.challengePage {
@@ -11,8 +12,12 @@ p.challengePage {
   font-size: 100%;
 }
 
+p {
+  font-size: 1em;
+}
+
 select, input, table {
-  background-color: #c3c3c3;
+  background-color: rgba(0, 0, 0, 0.3);
   color: white;
   width: 18em;
   border-radius: 3px;
@@ -23,7 +28,7 @@ select, input, table {
 }
 
 input:focus {
-  background-color: #7d838a;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 table {
@@ -38,14 +43,17 @@ td {
 
 #selectChallenge {
   width: 18em;
+  overflow: auto;
 }
 
 #selectOpponent {
   width: 18em;
+  overflow: auto;
 }
 
 #selectArbiter {
   width: 18em;
+  overflow: auto;
 }
 
 #sendChallenge {
