@@ -86,8 +86,8 @@ use App\Providers\CheckLogoLvl;
         }
         ?>
         <div id="buttonUPB">
-            <h2 id="h2logos">rafraîchir les logos</h2>
-            <p id="refreshLogo">Cliquez ici</br> pour rafraîchir les logos</br> </p>
+            <h2 id="h2logos">Rafraîchir les logos</h2>
+            <p id="refreshLogo">Cliquez ici</br> pour rafraîchir les logos.</br> </p>
 
             <form method="post"> {{ csrf_field() }}
                 <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Lancer</button>
