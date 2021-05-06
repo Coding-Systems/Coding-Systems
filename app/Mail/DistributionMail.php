@@ -31,8 +31,8 @@ class DistributionMail extends Mailable
      */
     public function build()
     {
-        return $this->from('mail@example.com', 'Mailtrap')
-            ->subject('Mailtrap Confirmation')
+        return $this->from('coding.system@love.com', 'Mailtrap')
+            ->subject('La répartition des Systems à été effectuée !')
             ->markdown('mails.repartition')
             ->with([
                 'name' => $this->user->first_name,

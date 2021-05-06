@@ -1,11 +1,9 @@
 @component('mail::message')
-    Bonjour ! **{{$name}}**, tu es maintenant membre de **{{$house}}** {{-- use double space for line break --}}
-    La répartition des systèmes a été effectuée, et tu as été
+Bonjour **{{$name}}** !
+La répartition des Systèmes a été effectuée, tu es à présent un fier membre de **{{$house}}**.
 
-    Click below to start working right now
-    @component('mail::button', ['url' => $link])
-        Go to your inbox
-    @endcomponent
-    Sincerely,
-    Mailtrap team.
+
+On te souhaite de t'amuser au sein de ton système.
+
+-L'équipe Coding-System
 @endcomponent
