@@ -61,3 +61,14 @@ label#quizzPage{
 #404{
     background-image: linear-gradient(33deg, #bbbcc3 25%, #7e8389 25%);
 }
+
+.menuLink:hover {
+    color: #7d838a;
+    /*transition-duration: 0.2s;*/
+  }
+
+  .icon:hover{
+    filter: invert(99%) sepia(1%) saturate(6850%) hue-rotate(
+        184deg
+    ) brightness(50%) contrast(87%);
+}

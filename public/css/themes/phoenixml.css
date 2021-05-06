@@ -59,3 +59,11 @@ h1, h2, .numberRanking{
 #404{
     background-image: linear-gradient(33deg, rgba(253, 169, 23, 0.85) 25%, rgba(133, 3, 0, 0.77) 25%);
 }
+
+.menuLink:hover {
+    color: #270303;
+    /*transition-duration: 0.2s;*/
+  }
+
+  .icon:hover{
+    filter: invert(6%) sepia(64%) saturate(2573%) hue-rotate(4deg) brightness(93%) contrast(110%);
