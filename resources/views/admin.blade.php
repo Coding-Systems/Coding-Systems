@@ -100,8 +100,8 @@ use App\Providers\CheckLogoLvl;
     <h2>Ajouter des users</h2>
 
     <form method="post"> {{ csrf_field() }}
-        <input class="form-control-sm input-btn-padding-x" type="file" id="filesUsers" name="pathFiles" multiple>
-        <button id="submitUsers" type="submit">Lancer</button>
+        <input class="form-control-sm input-btn-padding-x" type="file" id="pathFiles" name="pathFiles" multiple>
+        <button type="submit" name="submit">Lancer</button>
     </form>
     <?php
     use Maatwebsite\Excel\Concerns\ToModel;
@@ -125,8 +125,12 @@ use App\Providers\CheckLogoLvl;
             ]);
         }
     }
-    if (isset($_POST["pathFiles"])) {
-        printf($_POST["pathFiles"]);
+    foreach ($_FILES as $FILE){
+        printf("////////////" . $FILE);
+    }
+    if(isset($_FILES["pathFiles"]["tmp_name"])) {
+        printf($_FILES["pathFiles"]["tmp_name"]);
+    }
 /*        $all = Excel::toArray(new UsersImportAxel, storage_path($_POST['pathFiles']));
         $usersList = $all[0];
         printf($usersList);
@@ -167,7 +171,6 @@ use App\Providers\CheckLogoLvl;
                 );
             }
         }*/
-    }
     ?>
 
 <h2>Ajouter un défi</h2>
