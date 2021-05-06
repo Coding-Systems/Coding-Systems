@@ -8,6 +8,7 @@ p {
 }
 
 #adminSection {
+    text-align-last: center;
     padding-bottom: 10%;
 }
 
@@ -79,12 +80,17 @@ td {
 div#buttonUPA{
     margin-right: 35px;
 
+}div#buttonUPA form{
+     display: contents;
+
 }.buttonDown{
+    transform: translate(-2%);
     display: flow-root;
 }
 div#buttonDownA{
     margin-right: 35px;
-
+}div#buttonDownB{
+    margin-right: 35px;
 }
 
 #refreshLogo{
