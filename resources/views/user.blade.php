@@ -83,7 +83,7 @@
                     WHERE users_id = :id', ['id' => Auth::user()->id]);
 
                     if($isQuizzDone[0]->statusQuizz == 0){
-                        echo'<a class="menuLink" href="/quizz">Quizz</a>';
+                        echo'<a id="quizzLink" href="/quizz">Quizz</a>';
                     }
                 }
 
