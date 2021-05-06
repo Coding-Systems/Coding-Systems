@@ -61,15 +61,19 @@ use App\Providers\CheckLogoLvl;
         ?>
                 </select>
 
-    <form method="post"> {{ csrf_field() }} <select id="promoSelect" name="promoSelect">
+    <form method="post"> {{ csrf_field() }}
+        <div>
+            <select id="promoSelect" name="promoSelect">
 
-            <?php
-            foreach ($promoList as $promo) {
-                echo '<option value="' . $promo->id . '">' . $promo->name . '</option>';
-            };
-            ?>
-        </select>
-        <button id="buttonAdmin">Start</button>
+                <?php
+                foreach ($promoList as $promo) {
+                    echo '<option value="' . $promo->id . '">' . $promo->name . '</option>';
+                };
+                ?>
+            </select>
+            <button id="buttonAdmin">Start</button>
+        </div>
+
     </form>
 
     <?php
@@ -100,8 +104,11 @@ use App\Providers\CheckLogoLvl;
     <h2>Ajouter une promotion</h2>
 
     <form method="post"> {{ csrf_field() }}
-        <input required="required" name="namePromo"/>
-        <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
+        <div>
+            <input id="inputAdminPromo" required="required" name="namePromo"/>
+            <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
+        </div>
+
     </form>
 
     <?php
@@ -126,8 +133,11 @@ use App\Providers\CheckLogoLvl;
     <p>Nom du challenge</p>
     <input required="required" name="nameChallenge"/>
     <p>Nombre de points</p>
-    <input required="required" name="numberPointsChallenge" />
-    <button id="buttonAdminChallenge" name="addChallenge">Ajouter</button>
+    <div>
+        <input id="inputAdminChallenge" required="required" name="numberPointsChallenge" />
+        <button id="buttonAdminChallenge" name="addChallenge">Ajouter</button>
+    </div>
+
 </form>
 
 <?php
