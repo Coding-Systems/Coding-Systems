@@ -27,28 +27,28 @@ use App\Providers\CheckLogoLvl;
     <div class="bg bg3"></div>
     <h1>Admin</h1>
     <div class="buttonUP">
-    <div id="buttonUPA">
+        <div id="buttonUPA">
 
-        <H2>Lancer la répartition</H2>
+            <H2>Lancer la répartition</H2>
 
-        <?php
-        $promoList = DB::select('SELECT id, name
+            <?php
+            $promoList = DB::select('SELECT id, name
             FROM promo WHERE is_distributed = false');
 
-        //foreach ($promoList as $promo)
-        ?>
+            //foreach ($promoList as $promo)
+            ?>
 
-        <h3>Ratio de personnes ayant répondu :</h3>
+            <h3>Ratio de personnes ayant répondu :</h3>
 
-        <?php
-        foreach ($promoList as $promo) {
+            <?php
+            foreach ($promoList as $promo) {
 
-            $usersTotal = DB::select('SELECT u.id
+                $usersTotal = DB::select('SELECT u.id
         FROM users AS U
         WHERE u.promo_id = :id
         ', ['id' => $promo->id]);
 
-            $usersDone = DB::select('SELECT u.id
+                $usersDone = DB::select('SELECT u.id
         FROM users AS U
         LEFT JOIN result_test as RT
         	ON U.id = RT.users_id
@@ -56,13 +56,13 @@ use App\Providers\CheckLogoLvl;
         AND RT.quizz_is_done = 1
         ', ['id' => $promo->id]);
 
-            echo '<p>' . $promo->name . " : " . count($usersDone) . "/" . count($usersTotal) . ' ont fait le quiz';
+                echo '<p>' . $promo->name . " : " . count($usersDone) . "/" . count($usersTotal) . ' ont fait le quiz';
 
-        }
-        ?>
-        </select>
+            }
+            ?>
+            </select>
 
-        <form method="post"> {{ csrf_field() }}
+            <form method="post"> {{ csrf_field() }}
 
                 <select id="promoSelect" name="promoSelect">
 
@@ -72,8 +72,8 @@ use App\Providers\CheckLogoLvl;
                     };
                     ?>
                 </select>
-                <button id="buttonAdmin">Start</button>
-            </div>
+                <button id="buttonAdmin">Lancer</button>
+        </div>
 
         </form>
 
@@ -86,11 +86,11 @@ use App\Providers\CheckLogoLvl;
         }
         ?>
         <div id="buttonUPB">
-            <h2 id="h2logos">Lancer l'amélioration des logos</h2>
-            <p>amelioration du logo</br> vous pouvez cliquer ici pour </br> faire passer les logo </br>au niveau superieur </p>
+            <h2 id="h2logos">rafraîchir les logos</h2>
+            <p id="refreshLogo">Cliquez ici</br> pour rafraîchir les logos</br> </p>
 
             <form method="post"> {{ csrf_field() }}
-                <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
+                <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Lancer</button>
             </form>
         </div>
 
@@ -104,6 +104,8 @@ use App\Providers\CheckLogoLvl;
         }
         ?>
     </div>
+    <div class="buttonDown">
+        <div id="buttonDownA">
     <h2>Ajouter une promotion</h2>
 
     <form method="post"> {{ csrf_field() }}
@@ -113,6 +115,7 @@ use App\Providers\CheckLogoLvl;
         </div>
 
     </form>
+
 
     <?php
     if (isset($_POST['addPromo'])) {
@@ -128,35 +131,41 @@ use App\Providers\CheckLogoLvl;
         }
     }
     ?>
+        </div>
+        <div class="buttonDownB">
+            <h2 id="addChallenge">Ajouter un défi</h2>
 
-    <h2>Ajouter un défi</h2>
+            <form method="post"> {{ csrf_field() }}
+                <p id="nameChallenge">Nom du challenge</p>
+                <input id="inputnamechallenge" required="required" name="nameChallenge"/>
+                <p id="nbpoint">Nombre de points</p>
+                <div>
+                    <input id="inputAdminChallenge" required="required" name="numberPointsChallenge"/>
+                    <button id="buttonAdminChallenge" name="addChallenge">Ajouter</button>
+                </div>
 
-    <form method="post"> {{ csrf_field() }}
-        <p>Nom du challenge</p>
-        <input required="required" name="nameChallenge"/>
-        <p>Nombre de points</p>
-        <div>
-            <input id="inputAdminChallenge" required="required" name="numberPointsChallenge"/>
-            <button id="buttonAdminChallenge" name="addChallenge">Ajouter</button>
+            </form>
+
+            <?php
+            if (isset($_POST['addChallenge'])) {
+                if (DB::table('defis_type')->where('label', '=', $_POST['nameChallenge'])->exists()) {
+                    echo 'Le défi existe déjà.';
+                } else {
+                    DB::table('defis_type')->insert(
+                        array(
+                            'label' => $_POST['nameChallenge'],
+                            'number_of_points' => $_POST['numberPointsChallenge']
+                        )
+                    );
+                    echo 'Le défi a été créé.';
+                }
+            }
+            ?>
         </div>
 
-    </form>
 
-    <?php
-    if (isset($_POST['addChallenge'])) {
-        if (DB::table('defis_type')->where('label', '=', $_POST['nameChallenge'])->exists()) {
-            echo 'Le défi existe déjà.';
-        } else {
-            DB::table('defis_type')->insert(
-                array(
-                    'label' => $_POST['nameChallenge'],
-                    'number_of_points' => $_POST['numberPointsChallenge']
-                )
-            );
-            echo 'Le défi a été créé.';
-        }
-    }
-    ?>
+
+    </div>
 
 
 </section>

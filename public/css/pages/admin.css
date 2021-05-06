@@ -46,7 +46,7 @@ div{
 select, input, table {
     background-color: #c3c3c3;
     color: white;
-    width: 18em;
+    width: 9em;
 
     border-radius: 3px;
     border: 0px;
@@ -79,6 +79,26 @@ td {
 div#buttonUPA{
     margin-right: 35px;
 
-}div#buttonUPB{
+}.buttonDown{
+    display: flow-root;
+}
+div#buttonDownA{
+    margin-right: 35px;
 
+}
+
+#refreshLogo{
+
+}
+#addChallenge {
+    margin-bottom: 0;
+}#nameChallenge {
+    margin-bottom: 0;
+}#inputnamechallenge {
+    margin-top: 0;
+    margin-bottom: 2em;
+}#nbpoint {
+    margin-bottom: 0;
+}#inputAdminChallenge {
+    margin-top: 0;
 }
