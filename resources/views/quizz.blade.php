@@ -74,8 +74,6 @@ $numero = rand(0, 3);// un numero aléatoire de 0 à 3
 
                 @endforeach
             @endforeach
-            <br>
-            <br>
             <input type="submit" value="Envoyer" name="envoi" id="submitButton">
 
         </form>
