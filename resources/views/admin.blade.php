@@ -87,6 +87,7 @@ use App\Providers\CheckLogoLvl;
         ?>
         <div id="buttonUPB">
             <h2 id="h2logos">Lancer l'amélioration des logos</h2>
+            <p>amelioration du logo</br> vous pouvez cliquer ici pour </br> faire passer les logo </br>au niveau superieur </p>
 
             <form method="post"> {{ csrf_field() }}
                 <button id="buttonAdminLogoLvl" name="startCheckLogolvl">Start</button>
