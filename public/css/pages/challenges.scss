@@ -15,6 +15,7 @@ p.challengePage {
 select, input, table {
     background-color: #c3c3c3;
     color: white;
+    width: 18em;
 
     border-radius: 3px;
     border: 0px;
@@ -42,6 +43,17 @@ td {
 [type="submit"]:checked {
 }
 
+#selectChallenge {
+    width: 18em;
+}
+
+#selectOpponent {
+    width: 18em;
+}
+
+#selectArbiter {
+    width: 18em;
+}
 
 #sendChallenge {
     flex-wrap: wrap;
@@ -63,10 +75,6 @@ td {
     display: none;
 }
 
-section {
-    display: grid;
-}
-
 .sumbmitchallanges {
     transition-duration: 0.2s;
     border-radius: 3px;
@@ -83,9 +91,7 @@ section {
 }
 
 .challengeSelect {
-    margin-left: 2em;
-    margin-right: 2em;
-    width: 10em;
+    width: 15em;
 }
 
 p#notFound {

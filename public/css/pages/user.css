@@ -137,8 +137,8 @@ input:focus{
 
 #defaultTheme {
   /*border: 1px solid rgb(100, 100, 100); */
-  color: #c7c8cf;
-  text-shadow: black 0px 0px 2px;
+  color: white;
+  /*text-shadow: black 1px 1px 1px;*/
   background-image: linear-gradient(33deg, #c7c8cf 25%, rgba(52, 13, 46, 0) 25%);
   border: 1px solid #c7c8cf;
 }
@@ -151,8 +151,7 @@ input:focus{
 
 #phoenixmlTheme {
   /*border: 0px solid #fda917;*/
-  color: #ffb500;
-  text-shadow: #420100 0px 0px 2px;
+  color: white;
   background-image: linear-gradient(33deg, #ffb500 25%, rgba(52, 13, 46, 0) 25%);
   border: 1px solid #ffb500;
   /*background-image: linear-gradient(33deg, rgb(253, 169, 23) 25%, rgb(133, 3, 0) 25%);*/
@@ -166,8 +165,7 @@ input:focus{
 
 #gistuneTheme {
   /*border: 1px solid #b9b2a8;*/
-  color: #9c7242;
-  text-shadow: #110c05 0px 0px 2px;
+  color: white;
   background-image: linear-gradient(33deg, #9c7242 25%, rgba(52, 13, 46, 0) 25%);
   border: 1px solid #9c7242;
   /* background-image: linear-gradient(33deg, #bbb1a7 25%, #836039 25%); */
@@ -181,8 +179,7 @@ input:focus{
 
 #crackendTheme {
   /*border: 1px solid #54a1be;*/
-  color: #48b8d4;
-  text-shadow: #000037 0px 0px 2px;
+  color: white;
   background-image: linear-gradient(33deg, #48b8d4 25%, rgba(52, 13, 46, 0) 25%);
   border: 1px solid #48b8d4;
   /*background-image: linear-gradient(33deg, #54a1be 25%, #000053 25%);*/
