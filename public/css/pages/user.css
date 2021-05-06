@@ -80,6 +80,7 @@ body {
 }
 
 #addPoints {
+  text-align-last: center;
   display: flex;
   text-align: center;
 }
@@ -90,10 +91,6 @@ body {
   flex-direction: row;
   flex-wrap: nowrap;
   margin: 0 auto;
-}
-
-#addPtsNote h2 {
-  padding-left: 50px;
 }
 
 /*
@@ -211,13 +208,48 @@ input:focus{
   }
 
   #addPoints {
-    display: block;
+    display: table-caption;
   }
 
   #addPts, #addPtsNote {
     display: flex;
     flex-direction: column;
   }
+}
+select, input, table {
+  background-color: #c3c3c3;
+  color: white;
+  width: 9em;
+  border-radius: 3px;
+  border: 0px;
+  outline: none;
+  font-size: 80%;
+  margin: 10px 10px 10px 10px;
+}
+
+input:focus {
+  background-color: #7d838a;
+}
+
+table {
+  margin: 10px auto 25px;
+}
+
+td {
+  border-bottom: 1px solid #7d838a;
+}
+
+#studantinput {
+  display: table-caption;
+}
+
+section.addPoints {
+  display: table-caption;
+  transform: translate(2%);
+}
+
+input button, [type=button], [type=reset], [type=submit] {
+  transform: translate(-10%);
 }
 
 /*# sourceMappingURL=user.css.map */
