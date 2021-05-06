@@ -1,12 +1,110 @@
-h3{
-    color:white;
+h3 {
+    color: white;
     text-decoration: underline;
 }
 
-p{
+p {
     font-size: 1em;
 }
 
-#adminSection{
+#adminSection {
+    text-align-last: center;
     padding-bottom: 10%;
+}
+
+/*#inputAdminPromo {
+    transform: translate(12%);
+}
+
+#buttonAdminPromo {
+    transform: translate(50%);
+
+}
+
+#inputAdminChallenge {
+    transform: translate(12%);
+}
+
+#buttonAdminChallenge {
+    transform: translate(50%);
+}*/
+/*#promoSelect {
+    transform: translate(12%);
+    width: 8em;
+}
+
+#buttonAdmin {
+    transform: translate(50%);
+}*/
+
+div{
+    justify-items: flex-start;
+    display: inline-grid;
+    place-items: center;
+}
+
+
+select, input, table {
+    background-color: #c3c3c3;
+    color: white;
+    width: 9em;
+
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    font-size: 80%;
+//padding-left: 10px;
+//padding-right: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:focus {
+    background-color: #7d838a;
+}
+
+table {
+    margin: 10px auto 25px;
+}
+
+td {
+    border-bottom: 1px solid #7d838a;
+}
+
+.disabled {
+    display: none;
+}
+
+.buttonUP{
+    display: flow-root;
+}
+div#buttonUPA{
+    margin-right: 35px;
+
+}div#buttonUPA form{
+     display: contents;
+
+}.buttonDown{
+    transform: translate(-2%);
+    display: flow-root;
+}
+div#buttonDownA{
+    margin-right: 35px;
+}div#buttonDownB{
+    margin-right: 35px;
+}
+
+#refreshLogo{
+
+}
+#addChallenge {
+    margin-bottom: 0;
+}#nameChallenge {
+    margin-bottom: 0;
+}#inputnamechallenge {
+    margin-top: 0;
+    margin-bottom: 2em;
+}#nbpoint {
+    margin-bottom: 0;
+}#inputAdminChallenge {
+    margin-top: 0;
 }
