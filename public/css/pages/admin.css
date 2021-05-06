@@ -72,3 +72,13 @@ td {
 .disabled {
     display: none;
 }
+
+.buttonUP{
+    display: flow-root;
+}
+div#buttonUPA{
+    margin-right: 35px;
+
+}div#buttonUPB{
+
+}
