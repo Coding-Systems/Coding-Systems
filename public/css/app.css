@@ -10988,18 +10988,6 @@ a.menuLink {
   text-align: center;*/
 }
 
-.menuLink:hover {
-  text-shadow: #250e1c 2px 2px 0px;
-  color: #7d838a;
-  /*transition-duration: 0.2s;*/
-}
-
-.icon:hover{
-    filter: invert(99%) sepia(1%) saturate(6850%) hue-rotate(
-        184deg
-    ) brightness(50%) contrast(87%);
-}
-
 /*-----------------HEADER-----------------*/
 
 section #rankingNamesUsers {
@@ -11048,7 +11036,7 @@ a:link,
 a:hover,
 a:active {
   text-decoration: none;
-  color: #C8C8CF;
+  color: #ffffff;
 }
 
 #logoHeader {
@@ -11065,7 +11053,7 @@ a:active {
 }
 
 .icon {
-  filter: invert(99%) sepia(1%) saturate(6850%) hue-rotate(184deg) brightness(86%) contrast(87%);
+  filter: invert(100%);
   width: 30px;
 }
 

@@ -49,7 +49,7 @@ if ($userType->statut == 'student') {
 
     // echo '<input required="required" name="defiTypeId"/>';
 
-    echo '<input id="challengeInput"  name="searchChallenge" type="searchChallenge" autofocus>';
+    echo '<input id="challengeInput"  name="searchChallenge" type="searchChallenge">';
 
     echo '<p id="notFound" class="disabled">Oups. Ce que tu cherches n\'existe pas...</p>';
 

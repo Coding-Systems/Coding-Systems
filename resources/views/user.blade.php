@@ -219,7 +219,7 @@ echo '<form name="addPointsForm" method="post">'. csrf_field() .
     <select required="required" id="selectStudent" name="studentId" size="5">';
 
     foreach ($studentList as $student){
-      echo '<option id="'.$student->id.'" value="'.$student->id.'">'.$student->first_name.'</option>';
+      echo '<option id="'.$student->id.'" value="'.$student->id.'">'.$student->first_name." ".$student->last_name.'</option>';
     }
 
     echo '<script>

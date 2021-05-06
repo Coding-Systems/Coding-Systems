@@ -61,3 +61,12 @@ h1, h2 , .numberRanking{
 #404{
     background-image: linear-gradient(33deg, #000053 25%, #54a1be 25%);
 }
+
+.menuLink:hover {
+    color: #54a1be;
+    /*transition-duration: 0.2s;*/
+  }
+
+  .icon:hover{
+    filter: invert(75%) sepia(7%) saturate(3391%) hue-rotate(163deg) brightness(79%) contrast(85%);
+}
