@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\DB;
           <p class="story secret systemPage">
               Passer entre les mailles du filet, c'est leur spécialité, et les bons plans, c'est leur passion.
               Besoin d'un code promo ? Pas de problème, ils en ont tout un répertoire !
-              Envie d'optimiser votre machine ? Un Crackend sera forcément vous éclairer.
+              Envie d'optimiser votre machine ? Un Crackend saura forcément vous éclairer.
               Des rumeurs disent qu'ils arrivent à avoir gratuitement certains logiciel payants :O
               <br>Ils ont également une grande affinité avec l'élément de l'eau et peuvent le controler.
           </p>
@@ -144,7 +144,7 @@ use Illuminate\Support\Facades\DB;
         </p>
         <h2 class="secretTitle">Histoire</h2>
         <p class="story secret systemPage">
-            L'organiation, ça c'est important !
+            L'organisation, ça c'est important !
             Avec les Gitsune tout est toujours plus simple.
             Certains disent qu'ils ont le pouvoir de retourner dans le temps...
             <br>Ils ont toujours eu un lien étroit avec l'élément de la terre.
@@ -246,7 +246,7 @@ use Illuminate\Support\Facades\DB;
             Créer, ça c'est leur spécialité !
             Vous manquez d'idées ? Allez voir un PhoeniXML il saura vous en proposer, ils n'en sont jamais à court !
             D'après certaines rumeurs ils peuvent faire apparaître ce qu'ils veulent en un claquement de doigts.
-            <br>Le feu ne leur à jamais fait peur, ils ont même appris à le dompter et le maitriser.
+            <br>Le feu ne leur a jamais fait peur, ils ont même appris à le dompter et le maitriser.
         </p>
       </section>
       <section class="systemMembers secret">
