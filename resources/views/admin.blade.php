@@ -128,7 +128,7 @@ use App\Providers\CheckLogoLvl;
                     'name' => $_POST['namePromo']
                 )
             );
-            echo 'La promo a été créée.';
+            echo '<p>La promo a été créée.</p>';
         }
     }
     ?>
@@ -147,22 +147,22 @@ use App\Providers\CheckLogoLvl;
 
             </form>
 
-            <?php
-            if (isset($_POST['addChallenge'])) {
-                if (DB::table('defis_type')->where('label', '=', $_POST['nameChallenge'])->exists()) {
-                    echo 'Le défi existe déjà.';
-                } else {
-                    DB::table('defis_type')->insert(
-                        array(
-                            'label' => $_POST['nameChallenge'],
-                            'number_of_points' => $_POST['numberPointsChallenge']
-                        )
-                    );
-                    echo 'Le défi a été créé.';
-                }
-            }
-            ?>
-        </div>
+<?php
+ if (isset($_POST['addChallenge'])) {
+    if (DB::table('defis_type')->where('label', '=', $_POST['nameChallenge'])->exists()) {
+        echo 'Le défi existe déjà.';
+    }
+    else {
+        DB::table('defis_type')->insert(
+            array(
+                'label' => $_POST['nameChallenge'],
+                'number_of_points' => $_POST['numberPointsChallenge']
+            )
+        );
+        echo '<p>Le défi a été créé.</p>';
+    }
+}
+?>
 
 
 

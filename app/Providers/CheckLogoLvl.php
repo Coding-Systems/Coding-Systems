@@ -77,7 +77,7 @@ class CheckLogoLvl
     public function startCheck() {
         $this->checkSystemsLvl();
         $this->checkUserLvl();
-        echo 'Vérifications effectuées';
+        echo '<p>Vérifications effectuées</p>';
     }
 
 

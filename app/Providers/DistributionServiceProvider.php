@@ -554,7 +554,7 @@ class DistributionServiceProvider
         $this->sendToDB();
         $this->sendMailToAll();
 
-        echo '<br>Répartition terminée ;)<br>';
+        echo '<p>Répartition terminée ;)<p>';
     }
 
 }

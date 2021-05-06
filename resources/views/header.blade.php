@@ -21,14 +21,11 @@
                     echo '<a class="menuLink" href="/admin">Admin</a>';
                 }
                 ?>
-
+            <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <img class="icon iconLink" src="img/profileIcon.svg"/>
+            </a>
+            <a class="menuLink" href="{{ route('logout') }}"><img class="icon iconLinkLogout" src="img/logOutIcon.svg"/></a>
         </nav>
-    </div>
-    <div class="iconDiv">
-        <a class="menuLink" href="/profil" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            <img class="icon" src="img/profileIcon.svg"/>
-        </a>
-        <a class="menuLink" href="{{ route('logout') }}"><img class="icon" src="img/logOutIcon.svg"/></a>
     </div>
     @endguest
 
