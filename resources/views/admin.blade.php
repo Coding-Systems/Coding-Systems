@@ -109,7 +109,7 @@ use App\Providers\CheckLogoLvl;
     <h2>Ajouter une promotion</h2>
 
     <form method="post"> {{ csrf_field() }}
-        <p id="instruction">Veuillez respecter le format suivant: <br> exemple: "année-campus" <br>avec une maj a la première lettre du campus <3</p>
+        <p id="instruction">Veuillez respecter le format suivant: <br> exemple: "année-campus" <br>Avec une maj à la première lettre du campus <3</p>
         <div>
             <input id="inputAdminPromo" required="required" name="namePromo"/>
             <button id="buttonAdminPromo" name="addPromo">Ajouter</button>
