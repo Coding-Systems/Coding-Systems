@@ -197,7 +197,7 @@ section #rankings {
 }
 
 select, .triSystemRankForm button {
-    background-color: #bbbcc4;
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -205,7 +205,7 @@ select, .triSystemRankForm button {
 }
 
 input {
-    background-color: #bbbcc4;
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -213,7 +213,7 @@ input {
 }
 
 input:hover {
-    background-color: #7d838a;
+    background-color: rgba(0,0,0,0.5);
 }
 
 #historyDiv p {
@@ -517,7 +517,7 @@ img {
 }
 
 .systemRankForm select, .systemRankForm button {
-    background-color: #bbbcc4;
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -525,7 +525,7 @@ img {
 }
 
 .systemRankForm button:hover {
-    background-color: #7d838a;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .systemMembers {
@@ -568,7 +568,7 @@ p.quizzPage {
 
 button {
     color: white;
-    background-color: rgba(187, 188, 196, 0.71);
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -578,7 +578,6 @@ button {
 
 input {
     color: white;
-    background-color: rgba(187, 188, 196, 0.71);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -588,7 +587,7 @@ input {
 
 
 button:hover, input:hover {
-    background-color: #7d838a;
+    background-color: rgba(0,0,0,0.5);
 }
 
 label {
@@ -715,18 +714,6 @@ section #rankings {
     margin-bottom: 0em;
     margin-left: 0.5em;
     margin-right: 0.5em;
-}
-
-.triSystemRankForm select, .triSystemRankForm button {
-    background-color: #bbbcc4;
-    border-radius: 20px;
-    border: 0px;
-    outline: none;
-    font-size: 80%;
-}
-
-.triSystemRankForm button:hover {
-    background-color: #7d838a;
 }
 
 .systemIcon {
