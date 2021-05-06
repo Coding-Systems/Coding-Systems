@@ -2,30 +2,73 @@
     "questions": [
 
         {
-            "questionText": "Quel est ton premier choix de System ?",
-            "value": 20,
+            "questionText": "À quel élément tu t'identifie le plus ?",
+            "value": 5,
             "answers": [
                 {
-                    "text": "PhoeniXML",
+                    "text": "Le feu, j'suis peut être un peu PYROMANE !!",
                     "system": "PhoeniXML"
                 },
                 {
-                    "text": "Gitsune",
+                    "text": "La terre, c'est bien les randonnées.",
                     "system": "Gitsune"
                 },
                 {
-                    "text": "Crack'end",
+                    "text": "L'eau. J'aime faire trempette.",
                     "system": "Crackend"
                 },
                 {
-                    "text": "J'en sais fishtrement rien",
+                    "text": "L'air, c'est bien de respirer de temps en temps.",
                     "system": "neutral"
                 }
             ]
         },
+
         {
-            "questionText": "Quel est ton second choix de System ?",
-            "value": 10,
+            "questionText": "Quel animal domestique voudrais-tu ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Serpent, araignées, ou autre NAC",
+                    "system": "PhoeniXML"
+                },
+                {
+                    "text": "Chien, chat, poisson, le classique",
+                    "system": "Gitsune"
+                },
+                {
+                    "text": "Un singe, un éléphant ou un tigre, comment ça c'est illégal ?",
+                    "system": "Crackend"
+                },
+                {
+                    "text": "Aucun, je suis mieux sans",
+                    "system": "neutral"
+                }
+            ]
+        },
+
+        {
+            "questionText": "De quelle OS team es-tu ?",
+            "value": 5,
+            "answers": [
+                {
+                    "text": "Windows pour faire tourner Minecraft",
+                    "system": "PhoeniXML"
+                },
+                {
+                    "text": "Mac pour son côté épuré",
+                    "system": "Gitsune"
+                },
+                {
+                    "text": "Linux pour être libre de tout contrôler",
+                    "system": "Crackend"
+                }
+            ]
+        },
+
+        {
+            "questionText": "Quel est ton premier choix de System ?",
+            "value": 20,
             "answers": [
                 {
                     "text": "PhoeniXML",
