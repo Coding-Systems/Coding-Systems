@@ -19,6 +19,13 @@ body{
     width: 30%;
 }
 
+#quizzLink{
+    color: white;
+}
+#quizzLink:hover{
+    color: #7d838a;
+}
+
 #statsUser{
     display: flex;
     flex-direction: row;
