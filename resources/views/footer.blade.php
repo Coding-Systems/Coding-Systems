@@ -1,3 +1,3 @@
 <footer>
-    Coding Factory 2020
+    ©Coding Factory 2021
 </footer>
