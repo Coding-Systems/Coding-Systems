@@ -13,7 +13,7 @@
             @else
                 <a class="menuLink" href="/classements">Classements</a>
                 <a class="menuLink" href="/historique">Historique</a>
-                <a class="menuLink" href="/systems">Systems</a>
+                <a class="menuLink" href="/systms">Systèmes</a>
                 <a class="menuLink" href="/regles">Règles</a>
                 <a class="menuLink" href="/challenges">Défis</a>
                 <?php
