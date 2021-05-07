@@ -32,7 +32,7 @@ body {
 }
 
 .HistoryForm select, .HistoryForm button {
-    background-color: #bbbcc4;
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
     border: 0px;
     outline: none;
@@ -40,7 +40,7 @@ body {
 }
 
 .HistoryForm button:hover {
-    background-color: #7d838a;
+    background-color: rgba(0,0,0,0.5);
 }
 
 
