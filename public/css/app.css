@@ -2230,7 +2230,6 @@ input[type=month].form-control {
 }
 
 select.form-control:focus::-ms-value {
-    color: #495057;
     background-color: #fff;
 }
 
