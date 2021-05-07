@@ -424,7 +424,7 @@ if (isset($_POST['proposedArbi'])) {
             '<form name="winnerForm" id="winnerForm" method="post">' . csrf_field() . '
             <br><input type="radio" name="winnerRadio" value="' . $_POST['proposedArbi'] . "_" . $match->cid . '" id="challengerWin"><label for="challengerWin">' . $match->cfirst . " " . $match->clast . '</label>
             <br><input type="radio" name="winnerRadio" value="' . $_POST['proposedArbi'] . "_" . $match->tid . '" id="targetWin"><label for="targetWin">' . $match->tfirst . " " . $match->tlast . '</label>
-            <br><input type="submit" value="valider">
+            <br><input type="submit" style="margin-bottom: 5em" value="valider">
 ';
     } else {
         DB::table('defis')->where('id', $_POST['proposedArbi'])->delete();
@@ -444,6 +444,8 @@ if (isset($_POST['winnerRadio'])) {
 
     $addMvtpts = DB::select('SELECT defis.id as defiID, defis.winner_id as winnerId, label
             FROM defis
+            LEFT JOIN defis_type
+                    ON defis_type.id = defis.type_id
             WHERE defis.id= :id    ', ['id' => $idDefi]);
 
     $infosPts = $addMvtpts[0];
