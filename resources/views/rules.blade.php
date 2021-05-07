@@ -25,9 +25,9 @@
     Coding Systems, c'est un système de maisons à la Harry Potter mettant en compétition les élèves et permettant
     à chacun de s'amuser dans la bienveillance.
         <br/>
-        Les élèves seront placés dans une des trois systems (Gitsune, Crack'end et PhoeniXML)
-        au début de l'année scolaire, qui ont chacune leurs valeurs et leurs symboles.
-        Chaque élève à la possibilité de gagner des points pour sa system de différentes manières :
+        Les élèves seront placés dans un des trois systèmes (Gitsune, Crack'end et PhoeniXML)
+        au début de l'année scolaire, qui ont chacun leurs valeurs et leurs symboles.
+        Chaque élève à la possibilité de gagner des points pour son système de différentes manières :
         <br/>- En participant aux diverses activités au sein de la Coding (Coding Dojo, Coding battle...)
         <br/>- En remportant des défis (chifoumi, Smash bros...)
         <br/>- En participant aux tournois organisés dans l'année (Tournoi Smash...)
@@ -37,7 +37,7 @@
         Les élèves pourront aussi perdre quelques points :
         <br/>- En faisant sonner la clochette pour rien (quand on en aura une de nouveau, RIP Cergy)
 
-        <br/> <br/> À la fin de l'année scolaire, un goûter sera organisé par les systems perdantes.
+        <br/> <br/> À la fin de l'année scolaire, un goûter sera organisé par les systèmes perdants.
         <!--J'sais pas quoi mettre :'(-->
 
     </p>
