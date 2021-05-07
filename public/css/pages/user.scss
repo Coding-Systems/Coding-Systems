@@ -1,5 +1,5 @@
-body{
-    width:100%;
+body {
+    width: 100%;
 }
 
 #logoUser {
@@ -7,51 +7,44 @@ body{
     //height: 30%;
 }
 
-#user{
-    display : flex;
+#user {
+    display: flex;
     flex-direction: column;
-    color : white;
+    color: white;
 }
 
-#logoUserSystem{
+#logoUserSystem {
     display: flex;
     flex-direction: column;
     width: 30%;
 }
 
-#quizzLink{
-    color: white;
-}
-#quizzLink:hover{
-    color: #7d838a;
-}
-
-#statsUser{
+#statsUser {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#stats{
+#stats {
     text-align: left;
     font-size: 150%;
     width: 30%;
 }
 
-.HistoryForm select, .HistoryForm button{
-    background-color: #bbbcc4;
+.HistoryForm select, .HistoryForm button {
+    background-color: rgba(0,0,0,0.3);
     border-radius: 20px;
-    border : 0px;
+    border: 0px;
     outline: none;
     font-size: 100%;
 }
 
 .HistoryForm button:hover {
-    background-color: #7d838a;
+    background-color: rgba(0,0,0,0.5);
 }
 
 
-#history{
+#history {
     text-align: center;
     display: flex;
     //flex-direction: row;
@@ -75,7 +68,7 @@ body{
      */
 }
 
-#divHistory{
+#divHistory {
     //width: fit-content ;
     display: flex;
     justify-content: left;
@@ -83,8 +76,8 @@ body{
     flex-wrap: nowrap;
     //justify-content: space-around;
     text-align: left;
-    margin-bottom : 10%;
-    padding : 0;
+    margin-bottom: 10%;
+    padding: 0;
 }
 
 #history p {
@@ -96,20 +89,22 @@ body{
     margin-right: 0.5em;
 }
 
-#addPoints{
+#addPoints {
+    text-align-last: center;
     display: flex;
     text-align: center;
+
 }
-#addPts, #addPtsNote{
+
+#addPts, #addPtsNote {
     justify-content: left;
-    display : inline-table;
+    display: inline-table;
     flex-direction: row;
     flex-wrap: nowrap;
     margin: 0 auto;
 }
 
 #addPtsNote h2 {
-    padding-left: 50px;
 }
 
 /*
@@ -146,7 +141,7 @@ input:focus{
     border-radius: 10px;
     font-size: 17px;
     outline: none;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .cssTheme:hover {
@@ -210,11 +205,11 @@ input:focus{
 }
 
 @media screen and (max-width: 740px) {
-    #statsUser{
-        display : block;
-        color : white;
+    #statsUser {
+        display: block;
+        color: white;
     }
-    #cssThemeSwitcher{
+    #cssThemeSwitcher {
         margin: 0 auto;
     }
 
@@ -222,14 +217,14 @@ input:focus{
         display: block;
     }
 
-    #divHistory{
+    #divHistory {
         display: flex;
         flex-direction: column;
     }
-    #addPoints{
+    #addPoints {
         display: block;
     }
-    #addPts, #addPtsNote{
+    #addPts, #addPtsNote {
         display: flex;
         flex-direction: column;
     }
@@ -241,4 +236,76 @@ input, select{
 }
 input:focus {
     background-color: rgba(0,0,0,0.5);
+}
+
+
+select, input, table {
+    color: white;
+    width: 9em;
+
+    border-radius: 3px;
+    border: 0px;
+    outline: none;
+    font-size: 80%;
+    //padding-left: 10px;
+    //padding-right: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:focus {
+    background-color: #7d838a;
+}
+
+table {
+    margin: 10px auto 25px;
+}
+
+td {
+    border-bottom: 1px solid #7d838a;
+}
+
+#studantinput {
+    display: table-caption;
+}
+section.addPoints {
+    display: inline-flex;
+    transform: translate(2%);
+}
+
+input button, [type=button], [type=reset], [type=submit]{
+    color: white;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    border: 0;
+    outline: none;
+    font-size: 80%;
+    font-family: 'Comic Neue', 'Open Sans', sans-serif;
+    width: fit-content;
+
+}
+
+#selectStudent{
+    width: 400px;
+}
+label {
+    padding-right: 0;
+}
+
+.student{
+    display: grid;
+    justify-items: center;
+}
+
+label.points{
+    display: block;
+}
+
+div.divPoint{
+    width: 400px;
+
+}
+
+#notFound {
+    width: 400px;
+    font-size: 1em;
 }

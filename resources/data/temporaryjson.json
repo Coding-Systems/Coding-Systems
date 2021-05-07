@@ -44,7 +44,7 @@
         ]
     },
     {
-        "questionText": "Laquelle de ses choses de frustre le plus ?",
+        "questionText": "Laquelle de ces choses te frustre le plus ?",
         "value": 5,
         "answers": [
             {
@@ -204,7 +204,7 @@
         ]
     },
     {
-        "questionText": "De quelle OS team est-tu ?",
+        "questionText": "De quelle OS team es-tu ?",
         "value": 5,
         "answers": [
             {
@@ -345,6 +345,51 @@
             },
             {
                 "text": "Ah parce que ça change quelque chose ?",
+                "system": "neutral"
+            }
+        ]
+    },
+
+    {
+        "questionText": "Quel est ton premier choix de System ?",
+        "value": 20,
+        "answers": [
+            {
+                "text": "PhoeniXML",
+                "system": "PhoeniXML"
+            },
+            {
+                "text": "Gitsune",
+                "system": "Gitsune"
+            },
+            {
+                "text": "Crack'end",
+                "system": "Crackend"
+            },
+            {
+                "text": "J'en sais fishtrement rien",
+                "system": "neutral"
+            }
+        ]
+    },
+    {
+        "questionText": "Quel est ton second choix de System ?",
+        "value": 10,
+        "answers": [
+            {
+                "text": "PhoeniXML",
+                "system": "PhoeniXML"
+            },
+            {
+                "text": "Gitsune",
+                "system": "Gitsune"
+            },
+            {
+                "text": "Crack'end",
+                "system": "Crackend"
+            },
+            {
+                "text": "J'en sais fishtrement rien",
                 "system": "neutral"
             }
         ]
